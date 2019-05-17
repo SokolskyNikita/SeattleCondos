@@ -1,1 +1,1 @@
-[This is a test](www.google.com]
+[This is a test](www.google.com)
