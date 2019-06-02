@@ -1,6 +1,6 @@
 | Building Name                         | Website                                                                                                       | Walking distance to SLU in minutes |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------|------------------------------------|
-| Radius Apartments                     | https://www.radiusslu.com/                                                                                    | 2                                  |
+| Radius Apartments                     | [https://www.radiusslu.com/](https://www.radiusslu.com/)                                                      | 2                                  |
 | Marlowe                               | https://marloweslu.com/                                                                                       | 2                                  |
 | Boxcar                                | https://boxcar.tarragon.com/                                                                                  | 4                                  |
 | 325 Westlake                          | https://325westlake.com/                                                                                      | 4                                  |
