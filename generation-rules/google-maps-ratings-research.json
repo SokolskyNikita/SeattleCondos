@@ -7,8 +7,8 @@
     "buildings": 337,
     "successful": 337,
     "errors": 0,
-    "with_rating": 335,
-    "with_review_count": 335
+    "with_rating": 336,
+    "with_review_count": 336
   },
   "results": [
     {
@@ -4720,18 +4720,37 @@
     },
     {
       "id": "the-magnolia-collection",
-      "place_id": "ChIJAQAQ55AVkFQR4rWukO8RIP4",
-      "source_url": "https://www.google.com/maps/search/?api=1&query=The+Magnolia+Collection%2C+3520+28th+Avenue+W%2C+Seattle%2C+WA+98199&query_place_id=ChIJAQAQ55AVkFQR4rWukO8RIP4",
-      "rating": null,
-      "review_count": null,
-      "checked_at": "2026-10-09T11:15:25-07:00",
+      "place_id": "ChIJc1mOEZMVkFQR2bV0s8QLoes",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=Magnolia+Apartments%2C+3520+28th+Avenue+West+%26%2C+2727+W+Manor+Pl%2C+Seattle%2C+WA+98199&query_place_id=ChIJc1mOEZMVkFQR2bV0s8QLoes",
+      "rating": 3.3,
+      "review_count": 14,
+      "checked_at": "2026-10-09T11:34:18-07:00",
       "raw_response": {
-        "id": "ChIJAQAQ55AVkFQR4rWukO8RIP4",
+        "id": "ChIJc1mOEZMVkFQR2bV0s8QLoes",
+        "rating": 3.3,
+        "userRatingCount": 14,
         "displayName": {
-          "text": "The Magnolia Collection",
+          "text": "Magnolia Apartments",
           "languageCode": "en"
         }
-      }
+      },
+      "previous_snapshots": [
+        {
+          "id": "the-magnolia-collection",
+          "place_id": "ChIJAQAQ55AVkFQR4rWukO8RIP4",
+          "source_url": "https://www.google.com/maps/search/?api=1&query=The+Magnolia+Collection%2C+3520+28th+Avenue+W%2C+Seattle%2C+WA+98199&query_place_id=ChIJAQAQ55AVkFQR4rWukO8RIP4",
+          "rating": null,
+          "review_count": null,
+          "checked_at": "2026-10-09T11:15:25-07:00",
+          "raw_response": {
+            "id": "ChIJAQAQ55AVkFQR4rWukO8RIP4",
+            "displayName": {
+              "text": "The Magnolia Collection",
+              "languageCode": "en"
+            }
+          }
+        }
+      ]
     },
     {
       "id": "the-margot",

@@ -66,7 +66,9 @@ Use the actual research date for `--as-of`. `--input subset.json` accepts an arr
 
 Each building's `google_maps` object also contains `rating` (Google's 1–5 aggregate score), `review_count` (Google's `userRatingCount`, including reviews with or without text) and `ratings_checked_at` (the retrieval timestamp with Seattle's UTC offset). These are snapshots from the selected listing, including the presentation-center and shared-community selections described above. They do not combine ratings from other listings.
 
-The October 9, 2026 refresh successfully queried all 337 listings; 335 returned both values. Junction Central and The Magnolia Collection omitted both fields, so their values are `null`, not an inferred zero. The [ratings research](google-maps-ratings-research.json) preserves per-building source links, timestamps and API responses. Google's [Place resource documentation](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places) defines the returned fields.
+The October 9, 2026 refresh, including the user-selected Magnolia Apartments listing update, successfully queried all 337 listings; 336 returned both values. Junction Central omitted both fields, so its values are `null`, not an inferred zero. The [ratings research](google-maps-ratings-research.json) preserves per-building source links, timestamps and API responses. Google's [Place resource documentation](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places) defines the returned fields.
+
+Magnolia Apartments was renamed from The Magnolia Collection at the user's request and uses the [user-selected Maps listing](https://maps.app.goo.gl/2waqGvohDfd3Ywji7). Its stable ID (`the-magnolia-collection`), building address and existing community research are retained. Google's listing has a compound address covering 3520 28th Avenue West and 2727 W Manor Pl. Prior listing and rating evidence remain in the research files.
 
 To fetch a fresh snapshot using the configured API key:
 

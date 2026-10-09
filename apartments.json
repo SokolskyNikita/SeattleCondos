@@ -80,7 +80,7 @@
       "google_maps": {
         "field": "google_maps",
         "checked_at": "2026-10-09",
-        "description": "Verified named Google Maps listings. google_maps.place_id and google_maps.url identify the selected property listing; location.place_id remains the original address-geocoding result. Seattle House and Stadium Place use listings explicitly selected by the user; their presentation-center and shared-community scope is documented in the research file. google_maps is null if no listing has been verified or explicitly selected.",
+        "description": "Verified named Google Maps listings. google_maps.place_id and google_maps.url identify the selected property listing; location.place_id remains the original address-geocoding result. Seattle House and Stadium Place use listings explicitly selected by the user; their presentation-center and shared-community scope is documented in the research file. google_maps is null if no listing has been verified or explicitly selected. Magnolia Apartments (previously The Magnolia Collection) also uses the listing explicitly selected by the user on 2026-10-09; its stable building ID and existing property research are retained.",
         "research_file": "generation-rules/google-maps-research.json",
         "counts": {
           "verified": 337,
@@ -98,8 +98,8 @@
         "research_file": "generation-rules/google-maps-ratings-research.json",
         "counts": {
           "buildings": 337,
-          "with_rating_and_review_count": 335,
-          "unavailable": 2
+          "with_rating_and_review_count": 336,
+          "unavailable": 1
         }
       }
     },
@@ -37942,8 +37942,10 @@
     },
     {
       "id": "the-magnolia-collection",
-      "name": "The Magnolia Collection",
-      "previous_names": [],
+      "name": "Magnolia Apartments",
+      "previous_names": [
+        "The Magnolia Collection"
+      ],
       "website": "https://www.themagcollection.com/",
       "availability_url": "https://www.themagcollection.com/availability",
       "address": "3520 28th Avenue W, Seattle, WA 98199",
@@ -37957,15 +37959,15 @@
         "checked_at": "2026-10-09"
       },
       "google_maps": {
-        "place_id": "ChIJAQAQ55AVkFQR4rWukO8RIP4",
-        "listing_name": "The Magnolia Collection",
-        "listing_address": "3520 28th Ave W, Seattle, WA 98199",
-        "url": "https://www.google.com/maps/search/?api=1&query=The+Magnolia+Collection%2C+3520+28th+Avenue+W%2C+Seattle%2C+WA+98199&query_place_id=ChIJAQAQ55AVkFQR4rWukO8RIP4",
+        "place_id": "ChIJc1mOEZMVkFQR2bV0s8QLoes",
+        "listing_name": "Magnolia Apartments",
+        "listing_address": "3520 28th Avenue West &, 2727 W Manor Pl, Seattle, WA 98199",
+        "url": "https://www.google.com/maps/search/?api=1&query=Magnolia+Apartments%2C+3520+28th+Avenue+West+%26%2C+2727+W+Manor+Pl%2C+Seattle%2C+WA+98199&query_place_id=ChIJc1mOEZMVkFQR2bV0s8QLoes",
         "source": "Google Places API (New)",
         "checked_at": "2026-10-09",
-        "rating": null,
-        "review_count": null,
-        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
+        "rating": 3.3,
+        "review_count": 14,
+        "ratings_checked_at": "2026-10-09T11:34:18-07:00"
       },
       "year_built": 1959,
       "management_company": "Fathom Property Management",

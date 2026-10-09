@@ -1,6 +1,6 @@
 {
   "checked_at": "2026-10-09",
-  "methodology": "Google Places API (New) Text Search using building name and street address, with targeted alias queries and official-site/Place Details checks for ambiguous results. Researchers reviewed listing names, addresses and place types. Address-only results and unconfirmed parent-community listings are not assigned as business listing IDs. On 2026-10-09 the user explicitly selected the Seattle House presentation-center listing and the shared Stadium Place community listing, and requested renaming the Wave record to Stadium Place. Both supplied short links were resolved and matched to the researched Places API candidates by Maps CID.",
+  "methodology": "Google Places API (New) Text Search using building name and street address, with targeted alias queries and official-site/Place Details checks for ambiguous results. Researchers reviewed listing names, addresses and place types. Address-only results and unconfirmed parent-community listings are not assigned as business listing IDs. On 2026-10-09 the user explicitly selected the Seattle House presentation-center listing and the shared Stadium Place community listing, and requested renaming the Wave record to Stadium Place. Both supplied short links were resolved and matched to the researched Places API candidates by Maps CID. On 2026-10-09 the user selected the Magnolia Apartments listing and requested renaming The Magnolia Collection to Magnolia Apartments. The supplied short link was matched to the Places API result by Maps CID; prior listing evidence remains on that result.",
   "source_documentation": [
     "https://developers.google.com/maps/documentation/places/web-service/text-search",
     "https://developers.google.com/maps/documentation/urls/get-started"
@@ -4555,15 +4555,32 @@
     {
       "id": "the-magnolia-collection",
       "status": "verified",
-      "place_id": "ChIJAQAQ55AVkFQR4rWukO8RIP4",
-      "listing_name": "The Magnolia Collection",
-      "listing_address": "3520 28th Ave W, Seattle, WA 98199",
+      "place_id": "ChIJc1mOEZMVkFQR2bV0s8QLoes",
+      "listing_name": "Magnolia Apartments",
+      "listing_address": "3520 28th Avenue West &, 2727 W Manor Pl, Seattle, WA 98199",
       "types": [
+        "apartment_building",
         "point_of_interest",
+        "service",
         "establishment"
       ],
-      "source_url": "https://maps.google.com/?cid=18311655805510661602&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
-      "notes": "Exact name and address returned. Google Places classifies this direct listing as point_of_interest/establishment; a separate result is “Magnolia Apartments” at a compound address, so the exact-name exact-address result is used."
+      "source_url": "https://maps.google.com/?cid=16978865009615746521&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+      "notes": "On 2026-10-09 the user selected https://maps.app.goo.gl/2waqGvohDfd3Ywji7 and requested the name Magnolia Apartments. The short link resolves to Maps feature 0x54901593118e5973:0xeba10bc4b374b5d9; its CID 16978865009615746521 matches this Places API result. Google lists a compound address covering 3520 28th Avenue West and 2727 W Manor Pl. Preserve the existing building address, stable ID, construction-year interpretation and community research.",
+      "user_selected_url": "https://maps.app.goo.gl/2waqGvohDfd3Ywji7",
+      "checked_at": "2026-10-09",
+      "previous_listing_research": {
+        "id": "the-magnolia-collection",
+        "status": "verified",
+        "place_id": "ChIJAQAQ55AVkFQR4rWukO8RIP4",
+        "listing_name": "The Magnolia Collection",
+        "listing_address": "3520 28th Ave W, Seattle, WA 98199",
+        "types": [
+          "point_of_interest",
+          "establishment"
+        ],
+        "source_url": "https://maps.google.com/?cid=18311655805510661602&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA",
+        "notes": "Exact name and address returned. Google Places classifies this direct listing as point_of_interest/establishment; a separate result is “Magnolia Apartments” at a compound address, so the exact-name exact-address result is used."
+      }
     },
     {
       "id": "the-margot",
