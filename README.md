@@ -1,6 +1,8 @@
 # Seattle-area rental apartments
 
-[Apartment directory (JSON)](apartments.json)
+Browse the data in a neat, easy-to-use interface at [Seattle Apartments](https://sokolsky.me/apartments/seattle/).
+
+Prefer the raw data? Open the [apartment directory (JSON)](apartments.json).
 
 [generation-rules/](generation-rules/README.md) contains metadata, research, and rules documenting how the dataset was generated, for use in future updates.
 
