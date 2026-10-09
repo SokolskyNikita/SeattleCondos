@@ -2,7 +2,7 @@
 
 **[Browser the directory in your browser](https://sokolsky.me/apartments/seattle/)**
 
-337 apartment buildings. Last full area scan: October 9, 2026.
+List of 337 apartment buildings. Last full area scan: October 9, 2026.
 
 | Fields | Description |
 |---|---|
