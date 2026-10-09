@@ -1,6 +1,6 @@
 # Seattle-area rental apartments
 
-**[Browser the directory in your browser](https://sokolsky.me/apartments/seattle/)**
+**[View the directory in your browser](https://sokolsky.me/apartments/seattle/)**
 
 List of 337 apartment buildings. Last full area scan: October 9, 2026.
 
