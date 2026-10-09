@@ -11,6 +11,8 @@ This folder contains the research behind `apartments.json` and the rules and scr
 | [pricing-research.json](pricing-research.json) | Per-building pricing evidence, assumptions, calculations and bedroom-price ratio inputs. |
 | [google-maps-research.json](google-maps-research.json) | Reviewed business-listing Place ID research for all 337 buildings, including name/address discrepancies and unresolved candidates. |
 | [research_maps_lookup.py](research_maps_lookup.py) | Read-only Google Places API lookup utility; returns candidates for manual verification and optional raw response evidence. |
+| [google-maps-ratings-research.json](google-maps-ratings-research.json) | Current Google Maps ratings and review counts, with per-listing timestamps and raw Places API evidence. |
+| [research_maps_ratings.py](research_maps_ratings.py) | Read-only rating and review-count lookup for the directory's verified Google Maps listing IDs. |
 | [research-audit.json](research-audit.json) | Historical research, source evidence, decisions and 71 archived exclusions, including the 18 above. |
 | [amenity-processing-report.json](amenity-processing-report.json) | Generated counts, exclusions and ambiguity report matching the current rules and directory. |
 | [process_amenities.py](process_amenities.py) | Applies amenity mappings while preserving original descriptions and details. |
@@ -59,6 +61,20 @@ python3 generation-rules/research_maps_lookup.py --building-id ion-queen-anne --
 ```
 
 Use the actual research date for `--as-of`. `--input subset.json` accepts an array of building IDs or building objects; `--all` queries the whole directory. `--out` saves parsed candidates and `--raw-out` optionally saves API responses. Queries use Places API Text Search (New) with name and address fields. Normal Google API charges may apply. An exact text match is only a review aid: reject address-only types, check current/former property names and corroborate alternate addresses through official property links or Places Details website URLs. Store accepted business listings in `google_maps`; preserve `location` as geocoding evidence. Record unresolved candidates in the research file and leave `google_maps` null. Code that builds Maps links must use `google_maps.url` or `google_maps.place_id` for the business listing.
+
+### Google Maps ratings and reviews
+
+Each building's `google_maps` object also contains `rating` (Google's 1–5 aggregate score), `review_count` (Google's `userRatingCount`, including reviews with or without text) and `ratings_checked_at` (the retrieval timestamp with Seattle's UTC offset). These are snapshots from the selected listing, including the presentation-center and shared-community selections described above. They do not combine ratings from other listings.
+
+The October 9, 2026 refresh successfully queried all 337 listings; 335 returned both values. Junction Central and The Magnolia Collection omitted both fields, so their values are `null`, not an inferred zero. The [ratings research](google-maps-ratings-research.json) preserves per-building source links, timestamps and API responses. Google's [Place resource documentation](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places) defines the returned fields.
+
+To fetch a fresh snapshot using the configured API key:
+
+```sh
+python3 -B generation-rules/research_maps_ratings.py --all --out /tmp/google-maps-ratings.json
+```
+
+Use `--building-id ion-queen-anne` instead of `--all` for a single listing. This read-only utility does not update the directory. Review errors and missing values, then merge `rating`, `review_count` and `ratings_checked_at` by stable building ID only when the returned Place ID still matches `google_maps.place_id`. Apply the shared update and validation rules, save the evidence to `google-maps-ratings-research.json` and update the rating methodology counts. Preserve listing identity and its original verification date. Normal Google API charges may apply.
 
 ## One-bedroom pricing
 

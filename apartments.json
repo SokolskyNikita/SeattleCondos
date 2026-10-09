@@ -86,6 +86,21 @@
           "verified": 337,
           "unresolved": 0
         }
+      },
+      "google_maps_ratings": {
+        "fields": [
+          "google_maps.rating",
+          "google_maps.review_count",
+          "google_maps.ratings_checked_at"
+        ],
+        "checked_at": "2026-10-09",
+        "description": "Fetch the existing verified google_maps.place_id for each building. rating is Google's 1–5 aggregate score; review_count is userRatingCount (reviews with or without text). Missing API values remain null, never inferred as zero. Listing selections and unrelated building fields are unchanged.",
+        "research_file": "generation-rules/google-maps-ratings-research.json",
+        "counts": {
+          "buildings": 337,
+          "with_rating_and_review_count": 335,
+          "unavailable": 2
+        }
       }
     },
     "counts": {
@@ -117,7 +132,10 @@
         "listing_address": "110 Roy St, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=110+Roy%2C+110+Roy+Street%2C+Seattle%2C+WA+98109&query_place_id=ChIJKUuOhjwVkFQR3S6WjwkzdUg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 31,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2025,
       "management_company": "Avenue5",
@@ -310,7 +328,10 @@
         "listing_address": "1611 8th Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=1611+on+Lake+Union%2C+1611+8th+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJsYba0xcVkFQRiBauU3WHZQA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 29,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2008,
       "management_company": "Greystar",
@@ -433,7 +454,10 @@
         "listing_address": "206 Bell St, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=206+Bell+Apartments%2C+206+Bell+St%2C+Seattle%2C+WA+98121&query_place_id=ChIJZUeMNEwVkFQRTl0P77LbixY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 50,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2013,
       "management_company": "Weidner",
@@ -549,7 +573,10 @@
         "listing_address": "200 2nd Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=2nd+and+John%2C+200+2nd+Ave+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJJ8ZVfIIVkFQRCFXBxcVXclA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 65,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2019,
       "management_company": "Pillar Communities",
@@ -699,7 +726,10 @@
         "listing_address": "3030 NE 143rd St, Seattle, WA 98125",
         "url": "https://www.google.com/maps/search/?api=1&query=3030+Lake+City%2C+3030+NE+143rd+St%2C+Seattle%2C+WA+98125&query_place_id=ChIJIcEjpXURkFQRVra2bLRFDRc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.5,
+        "review_count": 78,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 1975,
       "management_company": "Guide Property Services",
@@ -810,7 +840,10 @@
         "listing_address": "4400 SW Alaska St, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=4400+Alaska%2C+4400+SW+Alaska+Street%2C+Seattle%2C+WA+98116&query_place_id=ChIJc4LPJfpAkFQRW269-qx40ZY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 11,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2016,
       "management_company": "Bonavista",
@@ -904,7 +937,10 @@
         "listing_address": "4730 California Ave SW, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=4730+California%2C+4730+California+Avenue+SW%2C+Seattle%2C+WA+98116&query_place_id=ChIJhzUi3PtAkFQR1ysMQBhOfGw",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.8,
+        "review_count": 55,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2014,
       "management_company": "Avenue5",
@@ -1041,7 +1077,10 @@
         "listing_address": "509 1st Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=509+1st%2C+509+1st+Ave+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJ0T4KC0MVkFQRR6vZAld-bII",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 5,
+        "review_count": 31,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2013,
       "management_company": "Bonavista",
@@ -1161,7 +1200,10 @@
         "listing_address": "700 Broadway E, Seattle, WA 98102",
         "url": "https://www.google.com/maps/search/?api=1&query=700+Broadway%2C+700+Broadway+East%2C+Seattle%2C+WA+98102&query_place_id=ChIJvxWSENgVkFQRYEhdCtZWsyY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 14,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2003,
       "management_company": "American Property Management",
@@ -1267,7 +1309,10 @@
         "listing_address": "708 6th Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=708+Uptown%2C+708+6th+Avenue+North%2C+Seattle%2C+WA+98109&query_place_id=ChIJ7_3nuTgVkFQR-4VuXDMvoBA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 71,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2012,
       "management_company": "Greystar",
@@ -1402,7 +1447,10 @@
         "listing_address": "2630 77th Ave SE, Mercer Island, WA 98040",
         "url": "https://www.google.com/maps/search/?api=1&query=77+Central%2C+2630+77th+Avenue+SE%2C+Mercer+Island%2C+WA+98040&query_place_id=ChIJM3n3B7trkFQRqpstuQBmysA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 47,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2009,
       "management_company": "Cushman & Wakefield",
@@ -1522,7 +1570,10 @@
         "listing_address": "80 South Main St, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=80+Main%2C+80+S+Main+St%2C+Seattle%2C+WA+98104&query_place_id=ChIJZ-yCPaVqkFQRp-7d2yQ1l5E",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.1,
+        "review_count": 12,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2015,
       "management_company": "Real Property Associates",
@@ -1641,7 +1692,10 @@
         "listing_address": "888 108th Ave NE, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=888+Bellevue%2C+888+108th+Avenue+NE%2C+Bellevue%2C+WA+98004&query_place_id=ChIJwWBUHfttkFQR1L48cK9EPNk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 62,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2020,
       "management_company": "Avenue5",
@@ -1803,7 +1857,10 @@
         "listing_address": "430 8th Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=8th+%26+Republican%2C+430+8th+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJf0XWFzgVkFQRZs6JGT9zqWc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 136,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2016,
       "management_company": "GRE Management",
@@ -1898,7 +1955,10 @@
         "listing_address": "900 Rainier Ave S, Seattle, WA 98144",
         "url": "https://www.google.com/maps/search/?api=1&query=900+Rainier%2C+900+Rainier+Avenue+South%2C+Seattle%2C+WA+98144&query_place_id=ChIJw5c9N3hrkFQREGc1m3elIcE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 229,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 2025,
       "management_company": "Thrive",
@@ -2076,7 +2136,10 @@
         "listing_address": "3615 147th Pl NE, Bellevue, WA 98007",
         "url": "https://www.google.com/maps/search/?api=1&query=Adagio+Apartments%2C+3615+147th+Place+NE%2C+Bellevue%2C+WA+98007&query_place_id=ChIJpcRAHhNtkFQRtUwW-bWS4L0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 150,
+        "ratings_checked_at": "2026-10-09T11:15:21-07:00"
       },
       "year_built": 1977,
       "management_company": "Weidner",
@@ -2172,7 +2235,10 @@
         "listing_address": "15311 33rd Ave S, SeaTac, WA 98188",
         "url": "https://www.google.com/maps/search/?api=1&query=Adara+at+SeaTac%2C+15311+33rd+Avenue+S%2C+SeaTac%2C+WA+98188&query_place_id=ChIJEZHSRSFDkFQRjD-x2BzW540",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 73,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2024,
       "management_company": "Allied Residential",
@@ -2425,7 +2491,10 @@
         "listing_address": "3266 SW Avalon Way, Seattle, WA 98126",
         "url": "https://www.google.com/maps/search/?api=1&query=Alcove+West+Seattle%2C+3266+SW+Avalon+Way%2C+Seattle%2C+WA+98126&query_place_id=ChIJd2Fs51ZAkFQRnduwCF2ethU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 1.8,
+        "review_count": 19,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2014,
       "management_company": "Arboreal Management",
@@ -2508,7 +2577,10 @@
         "listing_address": "301 Minor Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Alcyone+Apartments%2C+301+Minor+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJpwEy3TYVkFQRdTRZ5DPohMo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 120,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2004,
       "management_company": "Vivmark",
@@ -2631,7 +2703,10 @@
         "listing_address": "100 Denny Wy, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Alexan+100%2C+100+Denny+Way%2C+Seattle%2C+WA+98109&query_place_id=ChIJU9WwVOMVkFQR_7SPaBszO6Q",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 104,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2020,
       "management_company": "Avenue5",
@@ -2812,7 +2887,10 @@
         "listing_address": "535 Pontius Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=AMLI+535%2C+535+Pontius+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJN-UNlTAVkFQR7LROcHymWjc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 106,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2007,
       "management_company": "AMLI",
@@ -2957,7 +3035,10 @@
         "listing_address": "1800 Boren Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=AMLI+Arc%2C+1800+Boren+Ave%2C+Seattle%2C+WA+98101&query_place_id=ChIJ5UwbEjUVkFQRfe_TGbdxOyE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.8,
+        "review_count": 473,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2017,
       "management_company": "AMLI",
@@ -3113,7 +3194,10 @@
         "listing_address": "10001 NE 1st St, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=AMLI+Bellevue+Park%2C+10001+NE+1st+St%2C+Bellevue%2C+WA+98004&query_place_id=ChIJgek6x4BskFQRZmTK5yxua7s",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 132,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2001,
       "management_company": "AMLI",
@@ -3242,7 +3326,10 @@
         "listing_address": "2428 NW Market St, Seattle, WA 98107",
         "url": "https://www.google.com/maps/search/?api=1&query=AMLI+Mark24%2C+2428+NW+Market+St%2C+Seattle%2C+WA+98107&query_place_id=ChIJm0SbOMQVkFQRRuUlYgAaXso",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 183,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2014,
       "management_company": "AMLI",
@@ -3376,7 +3463,10 @@
         "listing_address": "1850 N 34th St, Seattle, WA 98103",
         "url": "https://www.google.com/maps/search/?api=1&query=AMLI+Wallingford%2C+1850+N+34th+St%2C+Seattle%2C+WA+98103&query_place_id=ChIJnU4Qev0UkFQRZQ8laygue64",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 137,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2015,
       "management_company": "AMLI",
@@ -3486,7 +3576,10 @@
         "listing_address": "50 University St, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=AMLI+Waterfront%2C+50+University+St%2C+Seattle%2C+WA+98101&query_place_id=ChIJw3KpHbJqkFQRhOae8vG8xUo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 103,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2017,
       "management_company": "AMLI",
@@ -3648,7 +3741,10 @@
         "listing_address": "5405 11th Ave NW, Seattle, WA 98107",
         "url": "https://www.google.com/maps/search/?api=1&query=Anker+Ballard%2C+5405+11th+Ave+NW%2C+Seattle%2C+WA+98107&query_place_id=ChIJLSFgVpUVkFQR98k68FwzD-k",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 30,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2023,
       "management_company": "Bonavista",
@@ -3815,7 +3911,10 @@
         "listing_address": "118 6th Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Annaliese%2C+118+6th+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJZ7Sf60gVkFQRvSfbv8mitK4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.2,
+        "review_count": 31,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2009,
       "management_company": "Essex",
@@ -3905,7 +4004,10 @@
         "listing_address": "103 12th Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Anthem+on+12th%2C+103+12th+Ave%2C+Seattle%2C+WA+98122&query_place_id=ChIJQy7xUb9qkFQRxgo05boIBos",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 85,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2016,
       "management_company": "CWS",
@@ -4011,7 +4113,10 @@
         "listing_address": "206 5th Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Aperture+on+Fifth%2C+206+5th+Avenue+North%2C+Seattle%2C+WA+98109&query_place_id=ChIJMyBzp0gVkFQRDa8NizGckkY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 62,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2014,
       "management_company": "Blanton Turner",
@@ -4140,7 +4245,10 @@
         "listing_address": "17763 15th Ave NE, Shoreline, WA 98155",
         "url": "https://www.google.com/maps/search/?api=1&query=Arabella+Apartment+Homes%2C+17763+15th+Ave+NE%2C+Shoreline%2C+WA+98155&query_place_id=ChIJd3OwGFEQkFQRuQbALK8vths",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 70,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2007,
       "management_company": "Epic Asset Management",
@@ -4235,7 +4343,10 @@
         "listing_address": "4720 Rainier Ave S, Seattle, WA 98118",
         "url": "https://www.google.com/maps/search/?api=1&query=Arlo%2C+4720+Rainier+Avenue+South%2C+Seattle%2C+WA+98118&query_place_id=ChIJh4iObLlrkFQRz95Xk5ymDGw",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 98,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2022,
       "management_company": "Greystar",
@@ -4506,7 +4617,10 @@
         "listing_address": "600 7th Ave, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=Arrive+First+Hill%2C+600+7th+Ave%2C+Seattle%2C+WA+98104&query_place_id=ChIJ3U8-qFBrkFQRGhf2CcV_z_U",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.2,
+        "review_count": 60,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 1992,
       "management_company": "Trinity",
@@ -4631,7 +4745,10 @@
         "listing_address": "3520 27th Pl W, Seattle, WA 98199",
         "url": "https://www.google.com/maps/search/?api=1&query=Arrive+Magnolia+and+Arrive+Magnolia+West%2C+3520+27th+Place+W%2C+Seattle%2C+WA+98199&query_place_id=ChIJfXawLJcVkFQRsOEHnUJ0E5g",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 171,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 1968,
       "management_company": "Trinity",
@@ -4768,7 +4885,10 @@
         "listing_address": "2116 4th Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Arriv%C3%A9%2C+2116+4th+Avenue%2C+Seattle%2C+WA+98121&query_place_id=ChIJ05wqXckVkFQRSak9Zevuk3U",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 173,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2019,
       "management_company": "Waterton",
@@ -4905,7 +5025,10 @@
         "listing_address": "2334 Elliott Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=ArtHouse%2C+2334+Elliott+Ave%2C+Seattle%2C+WA+98121&query_place_id=ChIJ63lS9U0VkFQRlPbzTvhTJzM",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 102,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2014,
       "management_company": "GRE Management",
@@ -5045,7 +5168,10 @@
         "listing_address": "400 Queen Anne Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Artix%2C+400+Queen+Anne+Avenue+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJiQ7iEcYVkFQRjURdZrKkVLk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 45,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2023,
       "management_company": "Avenue5",
@@ -5254,7 +5380,10 @@
         "listing_address": "1145 Republican St, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Ascent+South+Lake+Union%2C+1145+Republican+St%2C+Seattle%2C+WA+98109&query_place_id=ChIJ2cy9-oYVkFQRxgL4HzzUswg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 126,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2018,
       "management_company": "Greystar",
@@ -5374,7 +5503,10 @@
         "listing_address": "10710 NE 10th St, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Ashton+Bellevue%2C+10710+NE+10th+Street%2C+Bellevue%2C+WA+98004&query_place_id=ChIJIdn4no5skFQRkOB2jcQ5mzQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 77,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2009,
       "management_company": "UDR",
@@ -5482,7 +5614,10 @@
         "listing_address": "1823 Terry Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=Aspira%2C+1823+Terry+Ave%2C+Seattle%2C+WA+98101&query_place_id=ChIJWfKtfjUVkFQRHtadnR6ndFc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.2,
+        "review_count": 204,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2009,
       "management_company": "Greystar",
@@ -5646,7 +5781,10 @@
         "listing_address": "315 1st Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Astro%2C+315+1st+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJD6QO8EQVkFQRn6P05v-BwHE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 124,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2015,
       "management_company": "Placemakr",
@@ -5790,7 +5928,10 @@
         "listing_address": "23511 56th Ave W #107, Mountlake Terrace, WA 98043",
         "url": "https://www.google.com/maps/search/?api=1&query=Atlas+236%2C+23511+56th+Ave+W%2C+Mountlake+Terrace%2C+WA+98043&query_place_id=ChIJISjPXK0RkFQRoyE-iNSUbLI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 104,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2020,
       "management_company": "Bonavista",
@@ -5969,7 +6110,10 @@
         "listing_address": "4041 Roosevelt Way NE, Seattle, WA 98105",
         "url": "https://www.google.com/maps/search/?api=1&query=Augusta+Apartments%2C+4041+Roosevelt+Way+NE%2C+Seattle%2C+WA+98105&query_place_id=ChIJc4-3-PMUkFQRJ9ZW--DJFL0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 208,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2017,
       "management_company": "Bozzuto",
@@ -6089,7 +6233,10 @@
         "listing_address": "11000 NE 10th St, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Avalon+Bellevue%2C+11000+NE+10th+Street%2C+Bellevue%2C+WA+98004&query_place_id=ChIJkV7zeYxskFQRB6X7BEWSy3U",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 157,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2001,
       "management_company": "Vivmark",
@@ -6182,7 +6329,10 @@
         "listing_address": "210 Wall St, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Avalon+Belltown+Towers%2C+210+Wall+Street%2C+Seattle%2C+WA+98121&query_place_id=ChIJV_4dFQcVkFQRQ2G1sJOlP5o",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 240,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2019,
       "management_company": "Vivmark",
@@ -6311,7 +6461,10 @@
         "listing_address": "10410 NE 2nd St, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Avalon+Meydenbauer%2C+10410+NE+2nd+Street%2C+Bellevue%2C+WA+98004&query_place_id=ChIJ7yvGgodskFQRVGA_MY2fAgg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 303,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2008,
       "management_company": "Vivmark",
@@ -6391,7 +6544,10 @@
         "listing_address": "10349 NE 10th St, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Avalon+Towers+Bellevue%2C+10349+NE+10th+Street%2C+Bellevue%2C+WA+98004&query_place_id=ChIJVVVVVZFskFQRsi0gX-hm3ac",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 376,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2010,
       "management_company": "Vivmark",
@@ -6485,7 +6641,10 @@
         "listing_address": "4708 Southcenter Blvd, Tukwila, WA 98188",
         "url": "https://www.google.com/maps/search/?api=1&query=Avana+at+South+Station%2C+4708+Southcenter+Boulevard%2C+Tukwila%2C+WA+98188&query_place_id=ChIJC9Ihwi9DkFQRz6mE708P4M4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.4,
+        "review_count": 134,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 1979,
       "management_company": "Greystar",
@@ -6606,7 +6765,10 @@
         "listing_address": "2441 76th Ave SE, Mercer Island, WA 98040",
         "url": "https://www.google.com/maps/search/?api=1&query=Aviara%2C+2441+76th+Avenue+SE%2C+Mercer+Island%2C+WA+98040&query_place_id=ChIJZZB0KrtrkFQRkhabwUCYzto",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 49,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2012,
       "management_company": "Essex",
@@ -6709,7 +6871,10 @@
         "listing_address": "123 2nd Ave, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Axis+Seattle%2C+123+2nd+Avenue+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJHa7wc0UVkFQRyV0pe32S5i8",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 65,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2008,
       "management_company": "SRG Residential",
@@ -6825,7 +6990,10 @@
         "listing_address": "3230 16th Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Axle+Apartments%2C+3230+16th+Avenue+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJxZ2weZgVkFQRMRAl_lNRzTE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 113,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2018,
       "management_company": "Greystar",
@@ -6970,7 +7138,10 @@
         "listing_address": "10712 5th Ave NE, Seattle, WA 98125",
         "url": "https://www.google.com/maps/search/?api=1&query=Baldwyn%2C+10712+5th+Ave+NE%2C+Seattle%2C+WA+98125&query_place_id=ChIJqb4fNpMRkFQRlPO28R_n6wo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 40,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2024,
       "management_company": "Greystar",
@@ -7189,7 +7360,10 @@
         "listing_address": "2233 NW 58th St, Seattle, WA 98107",
         "url": "https://www.google.com/maps/search/?api=1&query=Ballard+on+the+Park%2C+2233+NW+58th+St%2C+Seattle%2C+WA+98107&query_place_id=ChIJS7xyn8UVkFQRzKv1uuyLnwk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 124,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2010,
       "management_company": "Greystar",
@@ -7300,7 +7474,10 @@
         "listing_address": "6450 24th Ave NW, Seattle, WA 98107",
         "url": "https://www.google.com/maps/search/?api=1&query=Ballard+Public+Lofts%2C+6450+24th+Ave+NW%2C+Seattle%2C+WA+98107&query_place_id=ChIJ2-jQVtAVkFQRF1qynO75P-I",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 28,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2016,
       "management_company": "Greystar",
@@ -7382,7 +7559,10 @@
         "listing_address": "2421 NW Market St, Seattle, WA 98107",
         "url": "https://www.google.com/maps/search/?api=1&query=Ballard+Yards%2C+2421+NW+Market+St%2C+Seattle%2C+WA+98107&query_place_id=ChIJDyI8zaYVkFQRZ98v8kqXmzY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 37,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2022,
       "management_company": "Greystar",
@@ -7571,7 +7751,10 @@
         "listing_address": "412 Broadway, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Barclay+Broadway%2C+412+Broadway%2C+Seattle%2C+WA+98122&query_place_id=ChIJv9L18MdqkFQRbzmMdQqUSq0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 50,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2012,
       "management_company": "Thrive",
@@ -7703,7 +7886,10 @@
         "listing_address": "4205 SW Genesee St, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=Basalt+West+Seattle%2C+4205+SW+Genesee+Street%2C+Seattle%2C+WA+98116&query_place_id=ChIJHyFFbVBBkFQRmqxRK9u44ag",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.8,
+        "review_count": 13,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2024,
       "management_company": "Redside",
@@ -7886,7 +8072,10 @@
         "listing_address": "1029 S Jackson St, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=BEAM%2C+1029+South+Jackson+Street%2C+Seattle%2C+WA+98104&query_place_id=ChIJh2eo-BNrkFQR-0zH-QorVWM",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 139,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2021,
       "management_company": "Avenue5",
@@ -8101,7 +8290,10 @@
         "listing_address": "10688 NE 10th St, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Belcarra%2C+10688+NE+10th+Street%2C+Bellevue%2C+WA+98004&query_place_id=ChIJSVmw7I5skFQRLilo1oYr1_k",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 125,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2010,
       "management_company": "Essex",
@@ -8224,7 +8416,10 @@
         "listing_address": "3040 148th Ave NE, Redmond, WA 98052",
         "url": "https://www.google.com/maps/search/?api=1&query=Bell+Overlake%2C+3040+148th+Ave+NE%2C+Redmond%2C+WA+98052&query_place_id=ChIJ_TUp7nRtkFQR70yw5ukhTmY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 158,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2019,
       "management_company": "Bell Partners",
@@ -8341,7 +8536,10 @@
         "listing_address": "1623 Bellevue Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Bellevue+Terrace%2C+1623+Bellevue+Avenue%2C+Seattle%2C+WA+98122&query_place_id=ChIJMaSMyTQVkFQRur0oWw_aLuA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.4,
+        "review_count": 5,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2012,
       "management_company": "Pacific Crest Real Estate",
@@ -8447,7 +8645,10 @@
         "listing_address": "1200 E Pike St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Beryl+Apartments%2C+1200+E+Pike+St%2C+Seattle%2C+WA+98122&query_place_id=ChIJ8wliz81qkFQRwavfQ8jbgEI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 35,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2015,
       "management_company": "Tarragon",
@@ -8570,7 +8771,10 @@
         "listing_address": "434 Kirkland Way, Kirkland, WA 98033",
         "url": "https://www.google.com/maps/search/?api=1&query=Boardwalk+Kirkland%2C+434+Kirkland+Way%2C+Kirkland%2C+WA+98033&query_place_id=ChIJ7SDrT7ITkFQR3oPIXA5XoYA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 57,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2022,
       "management_company": "Avenue5",
@@ -8811,7 +9015,10 @@
         "listing_address": "3801 Stone Way N, Seattle, WA 98103",
         "url": "https://www.google.com/maps/search/?api=1&query=Bowman%2C+3801+Stone+Way+N%2C+Seattle%2C+WA+98103&query_place_id=ChIJmTRD4f8UkFQRAQ3IMTAWkd8",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 91,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2016,
       "management_company": "Legacy Partners",
@@ -9004,7 +9211,10 @@
         "listing_address": "975 John St, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Boxcar+South+Lake+Union%2C+975+John+St%2C+Seattle%2C+WA+98109&query_place_id=ChIJT-OAJDYVkFQRgd0qOhS1WCg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 79,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2013,
       "management_company": "Tarragon",
@@ -9120,7 +9330,10 @@
         "listing_address": "11130 NE 10th St, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Brio%2C+11130+NE+10th+Street%2C+Bellevue%2C+WA+98004&query_place_id=ChIJj3R4jEhtkFQRItvEZ000R5Q",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 2.3,
+        "review_count": 120,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2018,
       "management_company": "UDR",
@@ -9269,7 +9482,10 @@
         "listing_address": "1420 E Madison St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Broadcast+Apartments%2C+1420+East+Madison+Street%2C+Seattle%2C+WA+98122&query_place_id=ChIJF1jb_81qkFQRYn6MLgwRRvE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 24,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2017,
       "management_company": "Madrona Real Estate",
@@ -9391,7 +9607,10 @@
         "listing_address": "18815 Aurora Ave N, Shoreline, WA 98133",
         "url": "https://www.google.com/maps/search/?api=1&query=Canopy%2C+18815+Aurora+Ave+N%2C+Shoreline%2C+WA+98133&query_place_id=ChIJ5Xxq3E8RkFQROGiSgSi9Bjs",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.9,
+        "review_count": 337,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2023,
       "management_company": "Shea",
@@ -9633,7 +9852,10 @@
         "listing_address": "600 Elliott Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Canvas%2C+600+Elliott+Ave+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJRYvGRF0VkFQRWX1wRM_cW_s",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 79,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2014,
       "management_company": "Essex",
@@ -9728,7 +9950,10 @@
         "listing_address": "555 15th Ave E, Seattle, WA 98112",
         "url": "https://www.google.com/maps/search/?api=1&query=Capitol+Hilltop+Apartments%2C+555+15th+Avenue+East%2C+Seattle%2C+WA+98112&query_place_id=ChIJWfbQoAoVkFQR14Ag1u0y__o",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 28,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2024,
       "management_company": "Hunters Capital",
@@ -9873,7 +10098,10 @@
         "listing_address": "1633 Bellevue Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Capitol+Steps+Apartments%2C+1633+Bellevue+Ave%2C+Seattle%2C+WA+98122&query_place_id=ChIJAdq8tzQVkFQRTN4v_uaJ8bc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.9,
+        "review_count": 10,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 1997,
       "management_company": "Precision Management",
@@ -9978,7 +10206,10 @@
         "listing_address": "324 Central Way, Kirkland, WA 98033",
         "url": "https://www.google.com/maps/search/?api=1&query=Capri%2C+324+Central+Way%2C+Kirkland%2C+WA+98033&query_place_id=ChIJIe-iFegSkFQR5hJFO-6fj8k",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 36,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2016,
       "management_company": "Thrive",
@@ -10085,7 +10316,10 @@
         "listing_address": "527 Eastlake Ave E, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Carolina+Court+Apartments%2C+527+Eastlake+Ave+E%2C+Seattle%2C+WA+98109&query_place_id=ChIJh9tHWTAVkFQRqsUpEDnp4hw",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 42,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 1915,
       "management_company": "Arboreal Management",
@@ -10178,7 +10412,10 @@
         "listing_address": "221 Minor Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Cascade+Apartments%2C+221+Minor+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJC34ZkzYVkFQRITthqd4IMLw",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 314,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2016,
       "management_company": "Vivmark",
@@ -10312,7 +10549,10 @@
         "listing_address": "2515 4th Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Centennial+Tower+and+Court%2C+2515+4th+Ave%2C+Seattle%2C+WA+98121&query_place_id=ChIJLTHr3E4VkFQRjZspetwiDLU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.4,
+        "review_count": 229,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2001,
       "management_company": "Two Coast Living",
@@ -10415,7 +10655,10 @@
         "listing_address": "153 S 160th St, Burien, WA 98148",
         "url": "https://www.google.com/maps/search/?api=1&query=Century+Plaza%2C+153+S+160th+Street%2C+Burien%2C+WA+98148&query_place_id=ChIJJVE5l6FEkFQRZZH72pW2SLI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 31,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 1969,
       "management_company": "Allied Residential",
@@ -10536,7 +10779,10 @@
         "listing_address": "1401 E Madison St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Chloe+on+Madison%2C+1401+E+Madison+St%2C+Seattle%2C+WA+98122&query_place_id=ChIJJ7HrJSBrkFQR0cMu5E5wkzM",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.7,
+        "review_count": 66,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2019,
       "management_company": "Vivmark",
@@ -10623,7 +10869,10 @@
         "listing_address": "1408 E Union St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Chloe+on+Union%2C+1408+E+Union+St%2C+Seattle%2C+WA+98122&query_place_id=ChIJ____P7RqkFQRylr91g9fv8Q",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 47,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2009,
       "management_company": "Vivmark",
@@ -10714,7 +10963,10 @@
         "listing_address": "800 Seneca St, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=Cielo%2C+800+Seneca+St%2C+Seattle%2C+WA+98101&query_place_id=ChIJxyrt0LVqkFQRpyhHWsdY5MQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3,
+        "review_count": 248,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2015,
       "management_company": "Brookfield Properties",
@@ -10850,7 +11102,10 @@
         "listing_address": "6900 East Green Lake Way N, Seattle, WA 98115",
         "url": "https://www.google.com/maps/search/?api=1&query=Circa+Green+Lake%2C+6900+E+Green+Lake+Way+N%2C+Seattle%2C+WA+98115&query_place_id=ChIJGepUZmwUkFQRmn9rzHlApcc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3,
+        "review_count": 100,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2009,
       "management_company": "Cushman & Wakefield",
@@ -10944,7 +11199,10 @@
         "listing_address": "1222 E Madison St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Citizen%2C+1222+E+Madison+St%2C+Seattle%2C+WA+98122&query_place_id=ChIJ5QYjhM5qkFQRbfPuDJcPd50",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 57,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2012,
       "management_company": "Thrive",
@@ -11062,7 +11320,10 @@
         "listing_address": "4720 32nd Ave S, Seattle, WA 98118, USA",
         "url": "https://www.google.com/maps/search/?api=1&query=CityLine%2C+4740+32nd+Avenue+South%2C+Seattle%2C+WA+98118&query_place_id=ChIJaVQnpgxqkFQRYq8_pvzfULI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.5,
+        "review_count": 110,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2015,
       "management_company": "UDR",
@@ -11167,7 +11428,10 @@
         "listing_address": "105 Warren Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Clarendon%2C+105+Warren+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJAVWzQkUVkFQR3pTD32NSJbw",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 47,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2017,
       "management_company": "Thrive",
@@ -11297,7 +11561,10 @@
         "listing_address": "2709 17th Ave S, Seattle, WA 98144",
         "url": "https://www.google.com/maps/search/?api=1&query=Colina+Apartments%2C+2709+17th+Avenue+South%2C+Seattle%2C+WA+98144&query_place_id=ChIJ-3F4ZTtrkFQRdhtIUNNJmnA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 72,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2021,
       "management_company": "Thrive",
@@ -11470,7 +11737,10 @@
         "listing_address": "3606 Woodland Park Ave N, Seattle, WA 98103",
         "url": "https://www.google.com/maps/search/?api=1&query=Collage%2C+3606+Woodland+Park+Avenue+N%2C+Seattle%2C+WA+98103&query_place_id=ChIJiwDnsAEVkFQR96ONgNFMYso",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 22,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2013,
       "management_company": "Cushman & Wakefield",
@@ -11598,7 +11868,10 @@
         "listing_address": "1601 13th Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Collins+on+Pine%2C+1601+13th+Ave%2C+Seattle%2C+WA+98122&query_place_id=ChIJw9iNkc1qkFQRhVZrfRkmNH0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3,
+        "review_count": 34,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2013,
       "management_company": "North Coast Living",
@@ -11707,7 +11980,10 @@
         "listing_address": "2950 S Dakota St, Seattle, WA 98108",
         "url": "https://www.google.com/maps/search/?api=1&query=Columbia+City+Apartments%2C+2950+South+Dakota+Street%2C+Seattle%2C+WA+98108&query_place_id=ChIJr3mi-1xrkFQRAJjNaRImTAQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.8,
+        "review_count": 18,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2025,
       "management_company": "Fulcrum",
@@ -11830,7 +12106,10 @@
         "listing_address": "3036 16th Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Contour+Apartments%2C+3036+16th+Ave+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJJx-CFZ8VkFQRV2225BMsEv0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 73,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2014,
       "management_company": "Thrive",
@@ -11933,7 +12212,10 @@
         "listing_address": "1000 Minor Ave, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=Coppins+Well%2C+1000+Minor+Ave%2C+Seattle%2C+WA+98104&query_place_id=ChIJLXfh6slqkFQRwLJCF13lazg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 122,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2012,
       "management_company": "Greystar",
@@ -12065,7 +12347,10 @@
         "listing_address": "350 1st Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Cora+Queen+Anne%2C+350+1st+Ave+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJ-YvAnkQVkFQRcGmR7IY8hX0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 43,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2017,
       "management_company": "Thrive",
@@ -12200,7 +12485,10 @@
         "listing_address": "6300 9th Ave NE, Seattle, WA 98115",
         "url": "https://www.google.com/maps/search/?api=1&query=Corner+63%2C+6300+9th+Ave+NE%2C+Seattle%2C+WA+98115&query_place_id=ChIJ00LwVQ4VkFQRecZzUcqVgr4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 34,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2023,
       "management_company": "Avenue5",
@@ -12400,7 +12688,10 @@
         "listing_address": "315 1st Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Counterbalance+Apartments%2C+315+1st+Ave+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJw8POpEQVkFQRRYsf26oyDKo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 31,
+        "ratings_checked_at": "2026-10-09T11:15:22-07:00"
       },
       "year_built": 2001,
       "management_company": "Bonavista",
@@ -12491,7 +12782,10 @@
         "listing_address": "136 102nd Ave SE, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Courtyard+Off+Main%2C+136+102nd+Ave+SE%2C+Bellevue%2C+WA+98004&query_place_id=ChIJp83_E35skFQRg-G7opi14b0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.4,
+        "review_count": 45,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 1998,
       "management_company": "Essex",
@@ -12608,7 +12902,10 @@
         "listing_address": "3200 16th Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Crane+at+Interbay%2C+3200+16th+Avenue+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJrZRH720VkFQR4txDTk5QVvE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 14,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2017,
       "management_company": "Pacific Crest Real Estate",
@@ -12749,7 +13046,10 @@
         "listing_address": "717 Dexter Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Cumulus+SLU%2C+717+Dexter+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJlzWV3jgVkFQRZFJmOgXN-rs",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 60,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2012,
       "management_company": "Avenue5",
@@ -12869,7 +13169,10 @@
         "listing_address": "301 12th Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Decibel+on+12th%2C+301+12th+Ave%2C+Seattle%2C+WA+98122&query_place_id=ChIJoWToDMdqkFQRL00Yx7yPjho",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.5,
+        "review_count": 34,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2016,
       "management_company": "Pillar Communities",
@@ -12977,7 +13280,10 @@
         "listing_address": "123 Bellevue Ave E, Seattle, WA 98102",
         "url": "https://www.google.com/maps/search/?api=1&query=Derby+Capitol+Hill%2C+123+Bellevue+Avenue+East%2C+Seattle%2C+WA+98102&query_place_id=ChIJUV6jFh8VkFQRcw7dTrskrvs",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 21,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2024,
       "management_company": "Koz Properties",
@@ -13084,7 +13390,10 @@
         "listing_address": "225 Cedar St, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Dimension%2C+225+Cedar+St%2C+Seattle%2C+WA+98121&query_place_id=ChIJB7om_k4VkFQRyOQyBWQ0vjQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 231,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2014,
       "management_company": "Holland",
@@ -13206,7 +13515,10 @@
         "listing_address": "2483 Birch Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Domaine%2C+2483+Birch+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJyR9qtBoVkFQRCIbfyGxQqqc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 51,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2009,
       "management_company": "Essex",
@@ -13308,7 +13620,10 @@
         "listing_address": "311 Cedar St, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Dorian%2C+311+Cedar+Street%2C+Seattle%2C+WA+98121&query_place_id=ChIJYyUmHU8VkFQRubgzoW6IOOU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 163,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2012,
       "management_company": "Thrive",
@@ -13442,7 +13757,10 @@
         "listing_address": "1430 Summit Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Dunn+Motors+Building%2C+1430+Summit+Avenue%2C+Seattle%2C+WA+98122&query_place_id=ChIJwy6zCMtqkFQRDYOmThC681o",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 96,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 1925,
       "management_company": "Hunters Capital",
@@ -13566,7 +13884,10 @@
         "listing_address": "1823 Eastlake Ave E, Seattle, WA 98102",
         "url": "https://www.google.com/maps/search/?api=1&query=East+Howe+Steps%2C+1823+Eastlake+Ave+E%2C+Seattle%2C+WA+98102&query_place_id=ChIJZRcxrSEVkFQRKQzS-wL5cFQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 36,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2017,
       "management_company": "Bonavista",
@@ -13672,7 +13993,10 @@
         "listing_address": "2851 Eastlake Ave E, Seattle, WA 98102",
         "url": "https://www.google.com/maps/search/?api=1&query=Eastlake+2851+Apartments%2C+2851+Eastlake+Ave+E%2C+Seattle%2C+WA+98102&query_place_id=ChIJv0vkhOQUkFQRQB2Cymxo28w",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 47,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2008,
       "management_company": "SRG Residential",
@@ -13788,7 +14112,10 @@
         "listing_address": "800 NE 67th St, Seattle, WA 98115",
         "url": "https://www.google.com/maps/search/?api=1&query=Eleanor%2C+800+NE+67th+St%2C+Seattle%2C+WA+98115&query_place_id=ChIJ_xUPbm4UkFQRTA1ttacn-ZU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 62,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2016,
       "management_company": "Bozzuto",
@@ -13912,7 +14239,10 @@
         "listing_address": "2641 42nd Ave SW, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=Element+42%2C+2641+42nd+Avenue+SW%2C+Seattle%2C+WA+98116&query_place_id=ChIJaV3UDmZAkFQRDp_wT7r6-9k",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 51,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2012,
       "management_company": "Thrive",
@@ -14025,7 +14355,10 @@
         "listing_address": "958 111th Ave NE, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Elements+Apartments%2C+958+111th+Ave+NE%2C+Bellevue%2C+WA+98004&query_place_id=ChIJkz8zl4tskFQRBJTDsYXitt0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.2,
+        "review_count": 194,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2006,
       "management_company": "UDR",
@@ -14165,7 +14498,10 @@
         "listing_address": "1537 NW 56th St, Seattle, WA 98107",
         "url": "https://www.google.com/maps/search/?api=1&query=Ellinor+Ballard%2C+1537+NW+56th+St%2C+Seattle%2C+WA+98107&query_place_id=ChIJtyk0HskVkFQREa-32NMKvFc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.7,
+        "review_count": 148,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2017,
       "management_company": "Thrive",
@@ -14260,7 +14596,10 @@
         "listing_address": "3010 118th Ave SE, Bellevue, WA 98005",
         "url": "https://www.google.com/maps/search/?api=1&query=Emerald+Ridge%2C+3010+118th+Avenue+SE%2C+Bellevue%2C+WA+98005&query_place_id=ChIJd4cYDfhrkFQRBIa90QKS2p0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3,
+        "review_count": 62,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 1987,
       "management_company": "Essex",
@@ -14361,7 +14700,10 @@
         "listing_address": "2217 3rd Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Emmons+on+3rd%2C+2217+3rd+Avenue%2C+Seattle%2C+WA+98121&query_place_id=ChIJE5t1504VkFQRGXLdZuIXByE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.1,
+        "review_count": 37,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2014,
       "management_company": "Arboreal Management",
@@ -14477,7 +14819,10 @@
         "listing_address": "620 N 34th St, Seattle, WA 98103",
         "url": "https://www.google.com/maps/search/?api=1&query=Epicenter+Apartments%2C+620+N+34th+Street%2C+Seattle%2C+WA+98103&query_place_id=ChIJNWaUPAcVkFQR18GaPNgG21E",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 48,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2002,
       "management_company": "KG Investment Properties",
@@ -14615,7 +14960,10 @@
         "listing_address": "1524 Eastlake Ave E, Seattle, WA 98102",
         "url": "https://www.google.com/maps/search/?api=1&query=Equinox+Apartments%2C+1524+Eastlake+Ave+E%2C+Seattle%2C+WA+98102&query_place_id=ChIJrQtTSSEVkFQR1x-Sag5rhUk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 149,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2008,
       "management_company": "Greystar",
@@ -14743,7 +15091,10 @@
         "listing_address": "954 E Union St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Evolve+Apartments%2C+954+E+Union+St%2C+Seattle%2C+WA+98122&query_place_id=ChIJlcfREcxqkFQREEEjc7RjjME",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.1,
+        "review_count": 29,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2014,
       "management_company": "Redside",
@@ -14891,7 +15242,10 @@
         "listing_address": "1535 Bellevue Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Excelsior+Seattle%2C+1535+Bellevue+Avenue%2C+Seattle%2C+WA+98122&query_place_id=ChIJxY5LMMtqkFQROAcEt8MoAX4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 136,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2017,
       "management_company": "Thrive",
@@ -15046,7 +15400,10 @@
         "listing_address": "118 Republican St, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Expo%2C+118+Republican+St%2C+Seattle%2C+WA+98109&query_place_id=ChIJIwid9UMVkFQRcwTB34e8zcI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.1,
+        "review_count": 69,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2012,
       "management_company": "Essex",
@@ -15155,7 +15512,10 @@
         "listing_address": "898 137th Ave NE, Bellevue, WA 98005",
         "url": "https://www.google.com/maps/search/?api=1&query=Foothill+Commons%2C+898+137th+Ave+NE%2C+Bellevue%2C+WA+98005&query_place_id=ChIJQ0cdaFFskFQR8JuxeqZqslw",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 157,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 1978,
       "management_company": "Essex",
@@ -15280,7 +15640,10 @@
         "listing_address": "4435 35th Ave SW, Seattle, WA 98126",
         "url": "https://www.google.com/maps/search/?api=1&query=Forge+West+Seattle%2C+4435+35th+Avenue+Southwest%2C+Seattle%2C+WA+98126&query_place_id=ChIJy7NN-lZAkFQRKJAulxaSpCo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 65,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2016,
       "management_company": "Greystar",
@@ -15390,7 +15753,10 @@
         "listing_address": "13865 Interurban Ave S, Tukwila, WA 98168",
         "url": "https://www.google.com/maps/search/?api=1&query=Foster+Greens%2C+13865+Interurban+Avenue+S%2C+Tukwila%2C+WA+98168&query_place_id=ChIJK7bUCNxCkFQRBmKLn27uelQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 80,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 1988,
       "management_company": "Weidner",
@@ -15499,7 +15865,10 @@
         "listing_address": "2400 4th Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Fountain+Court%2C+2400+4th+Ave%2C+Seattle%2C+WA+98121&query_place_id=ChIJBWvMyU4VkFQRS8BZRZ_pJUc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 167,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2000,
       "management_company": "Essex",
@@ -15616,7 +15985,10 @@
         "listing_address": "4316 Fremont Ave N, Seattle, WA 98103",
         "url": "https://www.google.com/maps/search/?api=1&query=Fremont+Village%2C+4316+Fremont+Ave+N%2C+Seattle%2C+WA+98103&query_place_id=ChIJxWS7UNEVkFQREGkRBmMcyXo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 8,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2024,
       "management_company": "Redside",
@@ -15749,7 +16121,10 @@
         "listing_address": "21 Boston St, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Gables+Queen+Anne%2C+21+Boston+Street%2C+Seattle%2C+WA+98109&query_place_id=ChIJ9d9QdT4VkFQREZcJbwvgrvQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.8,
+        "review_count": 55,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2024,
       "management_company": "Gables Residential",
@@ -15945,7 +16320,10 @@
         "listing_address": "17990 Midvale Ave N, Shoreline, WA 98133",
         "url": "https://www.google.com/maps/search/?api=1&query=Geo%2C+17990+Midvale+Ave+N%2C+Shoreline%2C+WA+98133&query_place_id=ChIJ2SqoS78RkFQRBz-rmB8Hs8c",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 67,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2020,
       "management_company": "Avenue5",
@@ -16106,7 +16484,10 @@
         "listing_address": "427 NE 72nd St, Seattle, WA 98115",
         "url": "https://www.google.com/maps/search/?api=1&query=Green+Lake+Village%2C+427+NE+72nd+St%2C+Seattle%2C+WA+98115&query_place_id=ChIJUeieFG0UkFQRp0WRYZuYDMk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 400,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2014,
       "management_company": "Thrive",
@@ -16202,7 +16583,10 @@
         "listing_address": "17567 15th Ave NE, Shoreline, WA 98155",
         "url": "https://www.google.com/maps/search/?api=1&query=Green+Leaf+Shoreline%2C+17567+15th+Ave+NE%2C+Shoreline%2C+WA+98155&query_place_id=ChIJlYsNB1URkFQRAqQn15M7ujg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.8,
+        "review_count": 93,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2021,
       "management_company": "Green Leaf",
@@ -16337,7 +16721,10 @@
         "listing_address": "4745 40th Ave SW, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=Green+Leaf+Sky%2C+4745+40th+Avenue+SW%2C+Seattle%2C+WA+98116&query_place_id=ChIJ5882NPlAkFQRTt4piL2XkCo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 155,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2016,
       "management_company": "Green Leaf",
@@ -16483,7 +16870,10 @@
         "listing_address": "2400 Elliott Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Griffis+Belltown%2C+2400+Elliott+Avenue%2C+Seattle%2C+WA+98121&query_place_id=ChIJXRaVB1IVkFQRYcNfIkRYTV4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 236,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 1992,
       "management_company": "Griffis",
@@ -16630,7 +17020,10 @@
         "listing_address": "888 Western Ave, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=Griffis+Seattle+Waterfront%2C+888+Western+Ave%2C+Seattle%2C+WA+98104&query_place_id=ChIJsQtiJrBqkFQRf0UZE80kmF4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 162,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2013,
       "management_company": "Griffis",
@@ -16759,7 +17152,10 @@
         "listing_address": "15560 Westminster Way N, Shoreline, WA 98133",
         "url": "https://www.google.com/maps/search/?api=1&query=Griffis+Shoreline%2C+15560+Westminster+Way+N%2C+Shoreline%2C+WA+98133&query_place_id=ChIJDdWB4icRkFQRrn7lyerwzNc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 199,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2021,
       "management_company": "Griffis",
@@ -16933,7 +17329,10 @@
         "listing_address": "201 W Harrison St, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=H2O+Apartments%2C+201+W+Harrison+Street%2C+Seattle%2C+WA+98119&query_place_id=ChIJAy93WUMVkFQRPveob634ls4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 13,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2013,
       "management_company": "Pacific Crest Real Estate",
@@ -17031,7 +17430,10 @@
         "listing_address": "101 6th Ave S, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=Hana%2C+101+6th+Avenue+S%2C+Seattle%2C+WA+98104&query_place_id=ChIJI-yyMjBrkFQR7dXdbb1cZTs",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 140,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2019,
       "management_company": "Apartment Management Consultants",
@@ -17135,7 +17537,10 @@
         "listing_address": "1221 1st Ave Ste 101, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=Harbor+Steps+Apartments%2C+1221+First+Avenue%2C+Seattle%2C+WA+98101&query_place_id=ChIJ95aNjrFqkFQR7PXS1AXMEP8",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 544,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 1998,
       "management_company": "Vivmark",
@@ -17271,7 +17676,10 @@
         "listing_address": "1600 2nd Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=Helios%2C+1600+2nd+Avenue%2C+Seattle%2C+WA+98101&query_place_id=ChIJE08lPbNqkFQRLwQmPMf5jjk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 220,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2017,
       "management_company": "Vivmark",
@@ -17425,7 +17833,10 @@
         "listing_address": "602 Terry Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Helm%2C+602+Terry+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJ-dRHk6IVkFQRP-slrZ45nQ8",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 59,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2019,
       "management_company": "Thrive",
@@ -17554,7 +17965,10 @@
         "listing_address": "622 Rainier Ave S, Seattle, WA 98144",
         "url": "https://www.google.com/maps/search/?api=1&query=Hilite%2C+622+Rainier+Avenue+South%2C+Seattle%2C+WA+98144&query_place_id=ChIJ3cGs-XNrkFQRTYzGPw_epng",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.7,
+        "review_count": 105,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2024,
       "management_company": "Blanton Turner",
@@ -17763,7 +18177,10 @@
         "listing_address": "400 S Jackson St, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=Icon+Apartments%2C+400+S+Jackson+St%2C+Seattle%2C+WA+98104&query_place_id=ChIJgQQmcLtqkFQRsM5Ou47Vu6w",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 74,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2016,
       "management_company": "GRE Management",
@@ -17868,7 +18285,10 @@
         "listing_address": "219 E Garfield St, Seattle, WA 98102",
         "url": "https://www.google.com/maps/search/?api=1&query=Illumina+Apartment+Homes%2C+219+E+Garfield+St%2C+Seattle%2C+WA+98102&query_place_id=ChIJLUPMPSEVkFQRkpgVUD2ijyU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 55,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2005,
       "management_company": "Epic Asset Management",
@@ -17992,7 +18412,10 @@
         "listing_address": "1414 10th Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Infinity+Capitol+Hill+Apartments%2C+1414+10th+Avenue%2C+Seattle%2C+WA+98122&query_place_id=ChIJrxbFFsxqkFQRWFbYSgeY2os",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 144,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2015,
       "management_company": "Fairfield",
@@ -18153,7 +18576,10 @@
         "listing_address": "2222 15th Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=ION+Queen+Anne%2C+2222+15th+Avenue+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJAcuzDqMVkFQR3Z9cWxIrpAU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 18,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2025,
       "management_company": "Avenue5",
@@ -18371,7 +18797,10 @@
         "listing_address": "2758 78th Ave SE, Mercer Island, WA 98040",
         "url": "https://www.google.com/maps/search/?api=1&query=Island+Square%2C+2758+78th+Ave+SE%2C+Mercer+Island%2C+WA+98040&query_place_id=ChIJ1zLGybtrkFQRmi5fpx6OpdI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 163,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2007,
       "management_company": "Greystar",
@@ -18485,7 +18914,10 @@
         "listing_address": "3008 16th Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Ivy+at+Interbay%2C+3008+16th+Avenue+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJXZI5rpwVkFQRpkUTqy0rPd8",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 57,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2021,
       "management_company": "Thrive",
@@ -18641,7 +19073,10 @@
         "listing_address": "1427 11th Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Jack+Apartments%2C+1427+11th+Avenue%2C+Seattle%2C+WA+98122&query_place_id=ChIJCfT5JMxqkFQRLUis5HomdbE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 82,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2016,
       "management_company": "Thrive",
@@ -18821,7 +19256,10 @@
         "listing_address": "62 Cedar St, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Joseph+Arnold+Lofts%2C+62+Cedar+St%2C+Seattle%2C+WA+98121&query_place_id=ChIJnVl03FEVkFQR3LaQaUtEky4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 102,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2013,
       "management_company": "Thrive",
@@ -18961,7 +19399,10 @@
         "listing_address": "4715 42nd Ave SW, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=Junction+47%2C+4715+42nd+Avenue+SW%2C+Seattle%2C+WA+98116&query_place_id=ChIJ698QbvlAkFQRGRTrpL9Y9u8",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.8,
+        "review_count": 111,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2015,
       "management_company": "Vivmark",
@@ -19072,7 +19513,10 @@
         "listing_address": "4508 California Ave SW, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=Junction+Central%2C+4508+California+Avenue+SW%2C+Seattle%2C+WA+98116&query_place_id=ChIJk7hlAQJBkFQRSyodDbVKNaI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": null,
+        "review_count": null,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2024,
       "management_company": "CRL Property Management",
@@ -19154,7 +19598,10 @@
         "listing_address": "4433 42nd Ave SW, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=Junction+Flats+and+Landing%2C+4433+42nd+Avenue+SW%2C+Seattle%2C+WA+98116&query_place_id=ChIJ9fhgLPhAkFQRmFQQgawoMRE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 29,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2016,
       "management_company": "Avenue5",
@@ -19243,7 +19690,10 @@
         "listing_address": "810 Dexter Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Juxt%2C+810+Dexter+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJH17aKzkVkFQRYLQzCbDajHk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 266,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2016,
       "management_company": "Holland",
@@ -19393,7 +19843,10 @@
         "listing_address": "2208 4th Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Kaye%2C+2208+4th+Avenue%2C+Seattle%2C+WA+98121&query_place_id=ChIJL6F95isVkFQRtRazn2cNcb4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.9,
+        "review_count": 40,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2025,
       "management_company": "Greystar",
@@ -19615,7 +20068,10 @@
         "listing_address": "111 Terry Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Kiara%2C+111+Terry+Avenue+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJn9E-AbtrkFQRn5S3pAggUEU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 233,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2018,
       "management_company": "Holland",
@@ -19777,7 +20233,10 @@
         "listing_address": "1823 Minor Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=Kinects+Tower%2C+1823+Minor+Ave%2C+Seattle%2C+WA+98101&query_place_id=ChIJQ7XNrjUVkFQRt_9l19QnXGk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 346,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2017,
       "management_company": "Bozzuto",
@@ -19878,7 +20337,10 @@
         "listing_address": "10715 NE 37th Ct, Kirkland, WA 98033",
         "url": "https://www.google.com/maps/search/?api=1&query=Kirkland+Crossing%2C+10715+NE+37th+Court%2C+Kirkland%2C+WA+98033&query_place_id=ChIJUcyIxNpskFQRUgXO1zY0icg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 160,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2015,
       "management_company": "Cascadian Property Management",
@@ -20016,7 +20478,10 @@
         "listing_address": "3803 S Warsaw St, Seattle, WA 98118",
         "url": "https://www.google.com/maps/search/?api=1&query=Koz+at+Othello+Station%2C+3803+South+Warsaw+Street%2C+Seattle%2C+WA+98118&query_place_id=ChIJjTVhSkVBkFQR4mCQv6HbWSk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 42,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2025,
       "management_company": "Koz Properties",
@@ -20100,7 +20565,10 @@
         "listing_address": "538 Lakeside Ave S, Seattle, WA 98144",
         "url": "https://www.google.com/maps/search/?api=1&query=Lakefront+on+Washington%2C+538+Lakeside+Ave+S%2C+Seattle%2C+WA+98144&query_place_id=ChIJ8xkBGOVqkFQRubsihXemt4I",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 58,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 1961,
       "management_company": "Apartment Management Consultants",
@@ -20218,7 +20686,10 @@
         "listing_address": "2227 Yale Ave. E., Seattle, WA 98102",
         "url": "https://www.google.com/maps/search/?api=1&query=Lakeview+Eastlake%2C+2227+Yale+Avenue+East%2C+Seattle%2C+WA+98102&query_place_id=ChIJv2LFqfsVkFQR1ZqWPqN8kII",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 4,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2020,
       "management_company": "Brink Property Management",
@@ -20353,7 +20824,10 @@
         "listing_address": "10720 5th Ave NE, Seattle, WA 98125",
         "url": "https://www.google.com/maps/search/?api=1&query=Lane+Apartments%2C+10720+5th+Ave+NE%2C+Seattle%2C+WA+98125&query_place_id=ChIJe3MHf9sRkFQRSiruwLi_35s",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 92,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2019,
       "management_company": "Vivmark",
@@ -20449,7 +20923,10 @@
         "listing_address": "609 W Nickerson St, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Lanterman+Apartments%2C+609+W+Nickerson+Street%2C+Seattle%2C+WA+98119&query_place_id=ChIJf5Mvfc0VkFQR2U5GX-tTT5g",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 25,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2022,
       "management_company": "Bonavista",
@@ -20584,7 +21061,10 @@
         "listing_address": "229 Queen Anne Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=LaVie+at+Queen+Anne%2C+229+Queen+Anne+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJvdJ7xEQVkFQRM-iv5pUhLQw",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 35,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2004,
       "management_company": "Avenue5",
@@ -20688,7 +21168,10 @@
         "listing_address": "1305 Dexter Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Leeward%2C+1305+Dexter+Avenue+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJM4ua0D0VkFQRPA402ajQpH4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.7,
+        "review_count": 323,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2017,
       "management_company": "Shea",
@@ -20831,7 +21314,10 @@
         "listing_address": "4545 8th Ave NE, Seattle, WA 98105",
         "url": "https://www.google.com/maps/search/?api=1&query=Lightbox%2C+4545+8th+Ave+NE%2C+Seattle%2C+WA+98105&query_place_id=ChIJJ76aYvUUkFQR7Ra6C9SXkvM",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 2.5,
+        "review_count": 73,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2014,
       "management_company": "UDR",
@@ -20947,7 +21433,10 @@
         "listing_address": "4550 38th Ave SW, Seattle, WA 98126",
         "url": "https://www.google.com/maps/search/?api=1&query=Link+Apartments%2C+4550+38th+Avenue+SW%2C+Seattle%2C+WA+98126&query_place_id=ChIJi-e5uvhAkFQRCR7YJOVuWhE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 102,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2011,
       "management_company": "North Coast Living",
@@ -21071,7 +21560,10 @@
         "listing_address": "1711 12th Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Ludwig+Apartments%2C+1711+12th+Ave+E%2C+Seattle%2C+WA+98122&query_place_id=ChIJa0RBZc1qkFQRD5nslxDMkFc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 16,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2013,
       "management_company": "Bonavista",
@@ -21180,7 +21672,10 @@
         "listing_address": "7750 SE 29th St, Mercer Island, WA 98040",
         "url": "https://www.google.com/maps/search/?api=1&query=Lunara%2C+7750+SE+29th+St%2C+Mercer+Island%2C+WA+98040&query_place_id=ChIJ8UM_F41rkFQR8og0NlXDxVc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 21,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2026,
       "management_company": "Indigo Real Estate",
@@ -21361,7 +21856,10 @@
         "listing_address": "910 8th Ave, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=M+Street%2C+910+8th+Avenue%2C+Seattle%2C+WA+98104&query_place_id=ChIJRXejV7ZqkFQRcAlmS3gCFaU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 173,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2007,
       "management_company": "Avenue5",
@@ -21462,7 +21960,10 @@
         "listing_address": "114 24th Ave E, Seattle, WA 98112",
         "url": "https://www.google.com/maps/search/?api=1&query=Madison+View+Apartments%2C+114+24th+Avenue+East%2C+Seattle%2C+WA+98112&query_place_id=ChIJK8GR89VqkFQRGgdI267O_A0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 2.5,
+        "review_count": 23,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 1910,
       "management_company": "Arboreal Management",
@@ -21556,7 +22057,10 @@
         "listing_address": "10575 Main St, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Main+Street+Flats%2C+10575+Main+Street%2C+Bellevue%2C+WA+98004&query_place_id=ChIJCcYTun1skFQRtXeEWfG4yJ4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 175,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2015,
       "management_company": "Avenue5",
@@ -21653,7 +22157,10 @@
         "listing_address": "4722 Fauntleroy Wy SW, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=Maris%2C+4722+Fauntleroy+Way+SW%2C+Seattle%2C+WA+98116&query_place_id=ChIJQxBnf_5BkFQRZ9F7vKJrWWo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 76,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2021,
       "management_company": "Legacy Partners",
@@ -21854,7 +22361,10 @@
         "listing_address": "285 8th Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Mark+on+8th+Apartments%2C+285+8th+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJfTKeIkgVkFQRiGsFqjLhVSo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 157,
+        "ratings_checked_at": "2026-10-09T11:15:23-07:00"
       },
       "year_built": 2016,
       "management_company": "Vivmark",
@@ -21969,7 +22479,10 @@
         "listing_address": "1146 Harrison St, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Marlowe%2C+1146+Harrison+St%2C+Seattle%2C+WA+98109&query_place_id=ChIJJZTwIjcVkFQRQFQ6maepEvk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 148,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2019,
       "management_company": "Greystar",
@@ -22084,7 +22597,10 @@
         "listing_address": "211 Lenora St, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Marq+211%2C+211+Lenora+St%2C+Seattle%2C+WA+98121&query_place_id=ChIJ44ng7kwVkFQRQKJXDh_lcWE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 103,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1999,
       "management_company": "CWS",
@@ -22200,7 +22716,10 @@
         "listing_address": "3261 SW Avalon Way, Seattle, WA 98126",
         "url": "https://www.google.com/maps/search/?api=1&query=Marq+West+Seattle%2C+3261+SW+Avalon+Way%2C+Seattle%2C+WA+98126&query_place_id=ChIJm4do6lZAkFQRUVYMUOrmIt8",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 90,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2014,
       "management_company": "CWS",
@@ -22323,7 +22842,10 @@
         "listing_address": "209 12th Ave S, Seattle, WA 98144",
         "url": "https://www.google.com/maps/search/?api=1&query=Mason+%26+Main%2C+209+12th+Avenue+South%2C+Seattle%2C+WA+98144&query_place_id=ChIJ4_GHxedrkFQR0JlzvLfnAm8",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3,
+        "review_count": 149,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2022,
       "management_company": "Greystar",
@@ -22573,7 +23095,10 @@
         "listing_address": "2202 8th Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=McKenzie%2C+2202+Eighth+Ave%2C+Seattle%2C+WA+98121&query_place_id=ChIJ9y1yiEkVkFQRyIsoxM9M2DU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.7,
+        "review_count": 593,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2018,
       "management_company": "Greystar",
@@ -22733,7 +23258,10 @@
         "listing_address": "1942 Westlake Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=Met+Tower%2C+1942+Westlake+Ave%2C+Seattle%2C+WA+98101&query_place_id=ChIJt-Z1_UoVkFQRA0Upg97PqcU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 158,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2001,
       "management_company": "Avenue5",
@@ -22876,7 +23404,10 @@
         "listing_address": "317 112th Ave NE, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Metro+112%2C+317+112th+Ave+NE%2C+Bellevue%2C+WA+98004&query_place_id=ChIJt1jNEmJskFQR0r5cj8DSLWc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 226,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2010,
       "management_company": "Simpson",
@@ -23005,7 +23536,10 @@
         "listing_address": "215 1st Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Metro+on+First%2C+215+1st+Ave+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJmUE300QVkFQRlETsVhmSy2A",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 57,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2001,
       "management_company": "GRE Management",
@@ -23119,7 +23653,10 @@
         "listing_address": "601 S Washington St, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=Metropolitan+Park+Apartments%2C+601+South+Washington+Street%2C+Seattle%2C+WA+98104&query_place_id=ChIJGwLA6btqkFQRXcwmXL4C6-0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 110,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1991,
       "management_company": "Apartment Management Consultants",
@@ -23233,7 +23770,10 @@
         "listing_address": "2301 E Union St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Midtown+Square%2C+2301+East+Union+Street%2C+Seattle%2C+WA+98122&query_place_id=ChIJozFbaOtrkFQRIdBH-enwWjs",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 206,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2022,
       "management_company": "Forge Property Management",
@@ -23422,7 +23962,10 @@
         "listing_address": "2312 3rd Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Moda%2C+2312+3rd+Ave%2C+Seattle%2C+WA+98121&query_place_id=ChIJa40MIEwVkFQRo50XIMnDqLI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 131,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2009,
       "management_company": "Vivmark",
@@ -23531,7 +24074,10 @@
         "listing_address": "1812 Broadway, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Modera+Broadway%2C+1812+Broadway%2C+Seattle%2C+WA+98122&query_place_id=ChIJi6QPXc4VkFQR98eSTIcpBuk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 101,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2021,
       "management_company": "Mill Creek",
@@ -23771,7 +24317,10 @@
         "listing_address": "10631 8th Ave NE, Seattle, WA 98125",
         "url": "https://www.google.com/maps/search/?api=1&query=Modera+Northgate%2C+10631+8th+Ave+NE%2C+Seattle%2C+WA+98125&query_place_id=ChIJFcRUKgARkFQR7KYniuon_vc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 101,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2023,
       "management_company": "Mill Creek",
@@ -24081,7 +24630,10 @@
         "listing_address": "15350 NE Bel Red Rd, Redmond, WA 98052",
         "url": "https://www.google.com/maps/search/?api=1&query=Modera+Overlake%2C+15350+Bel+Red+Road%2C+Redmond%2C+WA+98052&query_place_id=ChIJ1TcBSIdtkFQRxu4zDFj8iWc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 125,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2022,
       "management_company": "Mill Creek",
@@ -24347,7 +24899,10 @@
         "listing_address": "17888 Linden Ave N, Shoreline, WA 98133",
         "url": "https://www.google.com/maps/search/?api=1&query=Modera+Shoreline%2C+17888+Linden+Ave+N%2C+Shoreline%2C+WA+98133&query_place_id=ChIJB1rOagARkFQRE8cvQ59yJyQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 59,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2025,
       "management_company": "Mill Creek",
@@ -24585,7 +25140,10 @@
         "listing_address": "435 Dexter Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Modera+South+Lake+Union%2C+435+Dexter+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJR2sRCzgVkFQRo8RGZhDYaMY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 150,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2017,
       "management_company": "Mill Creek",
@@ -24700,7 +25258,10 @@
         "listing_address": "3710 S Angeline St, Seattle, WA 98118",
         "url": "https://www.google.com/maps/search/?api=1&query=Monarch+Apartments%2C+3710+South+Angeline+Street%2C+Seattle%2C+WA+98118&query_place_id=ChIJC5IgQlxrkFQRoEnHbzMHlbY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 12,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2024,
       "management_company": "Cyzner Properties West",
@@ -24835,7 +25396,10 @@
         "listing_address": "4727 42nd Ave SW, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=Mural%2C+4727+42nd+Avenue+SW%2C+Seattle%2C+WA+98116&query_place_id=ChIJxdpzf8BBkFQRs_g3-RCMK5w",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 38,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2008,
       "management_company": "North Coast Living",
@@ -24939,7 +25503,10 @@
         "listing_address": "906 Dexter Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Neptune+SLU%2C+912+Dexter+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJaVC-0j4VkFQRiaOI7_r85Rg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 91,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2006,
       "management_company": "Simpson",
@@ -25069,7 +25636,10 @@
         "listing_address": "513 1st Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Niwa+Apartments%2C+513+1st+Avenue+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJ4aT3q74VkFQR5ti6jDVHDdU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 38,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2024,
       "management_company": "AGM",
@@ -25209,7 +25779,10 @@
         "listing_address": "5860 Southcenter Blvd E202 #E202, Tukwila, WA 98188",
         "url": "https://www.google.com/maps/search/?api=1&query=North+Hill%2C+5860+Southcenter+Boulevard%2C+Tukwila%2C+WA+98188&query_place_id=ChIJk-NK2SpDkFQRpXXyKMp7ajY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 27,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1989,
       "management_company": "Allied Residential",
@@ -25313,7 +25886,10 @@
         "listing_address": "4600 36th Ave SW, Seattle, WA 98126",
         "url": "https://www.google.com/maps/search/?api=1&query=Nova%2C+4600+36th+Avenue+SW%2C+Seattle%2C+WA+98126&query_place_id=ChIJ3S0PElZAkFQRflLOrMaSMYg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 23,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2013,
       "management_company": "Redstone",
@@ -25412,7 +25988,10 @@
         "listing_address": "312 2nd Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Novi+at+Queen+Anne%2C+312+2nd+Ave+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJQdX0qEQVkFQRi835-UUd_yo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 100,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1994,
       "management_company": "Greystar",
@@ -25516,7 +26095,10 @@
         "listing_address": "2401 3rd Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=O2%2C+2401+3rd+Avenue%2C+Seattle%2C+WA+98121&query_place_id=ChIJCXVdVcsVkFQRJ0yt1knBaS0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 34,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2019,
       "management_company": "Avenue5",
@@ -25648,7 +26230,10 @@
         "listing_address": "2300 Elliott Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Oceana%2C+2300+Elliott+Ave%2C+Seattle%2C+WA+98121&query_place_id=ChIJPx1KdlIVkFQRX8FLyCD7ttc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 92,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1992,
       "management_company": "Apartment Management Consultants",
@@ -25759,7 +26344,10 @@
         "listing_address": "5398 Russell Ave NW, Seattle, WA 98107",
         "url": "https://www.google.com/maps/search/?api=1&query=Odin+Apartments%2C+5398+Russell+Ave+NW%2C+Seattle%2C+WA+98107&query_place_id=ChIJZwy_IMYVkFQR_wnPVzrYI_w",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.8,
+        "review_count": 199,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2015,
       "management_company": "Vivmark",
@@ -25866,7 +26454,10 @@
         "listing_address": "2801 Western Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Olympus+Apartments%2C+2801+Western+Ave%2C+Seattle%2C+WA+98121&query_place_id=ChIJzZJsKlAVkFQRwCR0maxOhak",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 178,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2002,
       "management_company": "Vivmark",
@@ -25991,7 +26582,10 @@
         "listing_address": "1287 Westlake Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=One+Lakefront%2C+1287+Westlake+Avenue+North%2C+Seattle%2C+WA+98109&query_place_id=ChIJ-3jKlj0VkFQRqPftEq3QAnA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 191,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2017,
       "management_company": "Holland",
@@ -26181,7 +26775,10 @@
         "listing_address": "112 Boren Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Onni+South+Lake+Union%2C+112+Boren+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJuXPbLZQVkFQRj8UrkTP6yRY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 804,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2022,
       "management_company": "Onni",
@@ -26520,7 +27117,10 @@
         "listing_address": "4502 42nd Ave SW, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=Oregon+42%2C+4502+42nd+Avenue+SW%2C+Seattle%2C+WA+98116&query_place_id=ChIJva69tPlAkFQR_LrMo8mS-9g",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 47,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2014,
       "management_company": "CONAM",
@@ -26671,7 +27271,10 @@
         "listing_address": "910 John St, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Orion%2C+910+John+St%2C+Seattle%2C+WA+98109&query_place_id=ChIJBU0wppVrkFQR6eaxqOxEVA8",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 108,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2018,
       "management_company": "Greystar",
@@ -26801,7 +27404,10 @@
         "listing_address": "11201 Roosevelt Way NE, Seattle, WA 98125",
         "url": "https://www.google.com/maps/search/?api=1&query=OWL+Northgate%2C+11201+Roosevelt+Way+NE%2C+Seattle%2C+WA+98125&query_place_id=ChIJz6gEt5ARkFQR7HZHq1W3wHY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.5,
+        "review_count": 80,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2024,
       "management_company": "Avenue5",
@@ -26995,7 +27601,10 @@
         "listing_address": "1530 12th Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Packard+Building+Apartments%2C+1530+12th+Ave%2C+Seattle%2C+WA+98122&query_place_id=ChIJP5wYv81qkFQRwjRvcksjb3k",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 27,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2010,
       "management_company": "Vivmark",
@@ -27111,7 +27720,10 @@
         "listing_address": "1100 University St, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=Panorama+Apartments%2C+1100+University+Street%2C+Seattle%2C+WA+98101&query_place_id=ChIJhVHaXMpqkFQR3kOhw9xkmCo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.1,
+        "review_count": 153,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1962,
       "management_company": "Asset Living",
@@ -27265,7 +27877,10 @@
         "listing_address": "1515 Bellevue Way NE, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Park+Bellevue%2C+1515+Bellevue+Way+NE%2C+Bellevue%2C+WA+98004&query_place_id=ChIJpzAf65FskFQROWpVWctUIiY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 254,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1985,
       "management_company": "Avenue5",
@@ -27387,7 +28002,10 @@
         "listing_address": "88 102nd Ave NE, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Park88+Residences%2C+88+102nd+Ave+NE%2C+Bellevue%2C+WA+98004&query_place_id=ChIJAbCQUYdskFQRRFFRKJrb_sg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 66,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2016,
       "management_company": "Pacific Crest Real Estate",
@@ -27521,7 +28139,10 @@
         "listing_address": "15551 NE Turing St, Redmond, WA 98052",
         "url": "https://www.google.com/maps/search/?api=1&query=Parkside+Esterra+Park%2C+15551+NE+Turing+St%2C+Redmond%2C+WA+98052&query_place_id=ChIJozN3HPltkFQRErFi-N1hDDA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 380,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2019,
       "management_company": "Greystar",
@@ -27625,7 +28246,10 @@
         "listing_address": "312 Central Way, Kirkland, WA 98033",
         "url": "https://www.google.com/maps/search/?api=1&query=Parque+Kirkland%2C+312+Central+Way%2C+Kirkland%2C+WA+98033&query_place_id=ChIJ0zfa4XgTkFQRxdzJ4KsZodg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.8,
+        "review_count": 94,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2021,
       "management_company": "Aspire Properties Northwest",
@@ -27836,7 +28460,10 @@
         "listing_address": "523 Broadway E, Seattle, WA 98102",
         "url": "https://www.google.com/maps/search/?api=1&query=Patent+523%2C+523+Broadway+E%2C+Seattle%2C+WA+98102&query_place_id=ChIJlwYTby4VkFQRyggiUYwQHZ4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 2.6,
+        "review_count": 114,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2010,
       "management_company": "Essex",
@@ -27965,7 +28592,10 @@
         "listing_address": "715 E Pine St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Pike+Motorworks%2C+715+E+Pine+St%2C+Seattle%2C+WA+98122&query_place_id=ChIJk9myf8tqkFQRjSS4c11ja98",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 112,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2016,
       "management_company": "Greystar",
@@ -28104,7 +28734,10 @@
         "listing_address": "1551 Minor Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=Pine+%2B+Minor%2C+1551+Minor+Ave%2C+Seattle%2C+WA+98101&query_place_id=ChIJhe3B0cpqkFQRWnf4fqTAqCI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 51,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2013,
       "management_company": "Blanton Turner",
@@ -28213,7 +28846,10 @@
         "listing_address": "4734 31st Ave S, Seattle, WA 98108",
         "url": "https://www.google.com/maps/search/?api=1&query=Platform+31%2C+4734+31st+Avenue+South%2C+Seattle%2C+WA+98108&query_place_id=ChIJAQ03655rkFQRKaia_Hj7LyQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 5,
+        "review_count": 11,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2026,
       "management_company": "Guide Property Services",
@@ -28331,7 +28967,10 @@
         "listing_address": "1408 Western Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=Post+Alley+Court%2C+1408+Western+Avenue%2C+Seattle%2C+WA+98101&query_place_id=ChIJE1gqaLJqkFQRkbTJ8HBF--g",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 2.8,
+        "review_count": 28,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1989,
       "management_company": "Redside",
@@ -28448,7 +29087,10 @@
         "listing_address": "1800 S Jackson St, Seattle, WA 98144",
         "url": "https://www.google.com/maps/search/?api=1&query=Pratt+Park%2C+1800+S+Jackson+Street%2C+Seattle%2C+WA+98144&query_place_id=ChIJMx3sYmNrkFQROrnxHSBN08Q",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 245,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2008,
       "management_company": "Greystar",
@@ -28580,7 +29222,10 @@
         "listing_address": "1525 9th Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=Premiere+on+Pine%2C+1525+9th+Ave%2C+Seattle%2C+WA+98101&query_place_id=ChIJbTfNRbVqkFQRx5LR-7EUkLU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 303,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2015,
       "management_company": "Bozzuto",
@@ -28736,7 +29381,10 @@
         "listing_address": "3920 Stone Way N, Seattle, WA 98103",
         "url": "https://www.google.com/maps/search/?api=1&query=Prescott+Wallingford+Apartments%2C+3920+Stone+Way+N%2C+Seattle%2C+WA+98103&query_place_id=ChIJl4UZi_8UkFQRJKiDG8mTBwY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 95,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2012,
       "management_company": "Greystar",
@@ -28846,7 +29494,10 @@
         "listing_address": "3215 NE 143rd St, Seattle, WA 98125",
         "url": "https://www.google.com/maps/search/?api=1&query=Promenade+at+the+Park%2C+3215+NE+143rd+St%2C+Seattle%2C+WA+98125&query_place_id=ChIJpxO16nURkFQRTz7Bg8sbAMQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 45,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2003,
       "management_company": "Epic Asset Management",
@@ -28933,7 +29584,10 @@
         "listing_address": "4710 212th St SW, Mountlake Terrace, WA 98043",
         "url": "https://www.google.com/maps/search/?api=1&query=Quartz+Creek%2C+4710+212th+St+SW%2C+Mountlake+Terrace%2C+WA+98043&query_place_id=ChIJx1NkzlYFkFQRYWtICRj3PTU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 61,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1988,
       "management_company": "11Residential",
@@ -29052,7 +29706,10 @@
         "listing_address": "1920 Queen Anne Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Queen+Anne+Collection%2C+1920+Queen+Anne+Avenue+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJaxNB8BIVkFQR2apKsePD05Y",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 55,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2014,
       "management_company": "Avenue5",
@@ -29135,7 +29792,10 @@
         "listing_address": "521 2nd Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Queen+Anne+Flats%2C+521+2nd+Ave+West%2C+Seattle%2C+WA+98119&query_place_id=ChIJn6YvG0MVkFQRWw0EjShQOoA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 11,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2015,
       "management_company": "Precision Management",
@@ -29239,7 +29899,10 @@
         "listing_address": "400 Boren Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Radius+Apartments%2C+400+Boren+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJk9m0crhqkFQRPaMhr64jyd4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 204,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2014,
       "management_company": "Greystar",
@@ -29342,7 +30005,10 @@
         "listing_address": "3636 Stone Way N, Seattle, WA 98103",
         "url": "https://www.google.com/maps/search/?api=1&query=Ray+Apartments%2C+3636+Stone+Way+N%2C+Seattle%2C+WA+98103&query_place_id=ChIJL2YhTAAVkFQRO90Ouen1OEE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.5,
+        "review_count": 108,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2015,
       "management_company": "Essex",
@@ -29475,7 +30141,10 @@
         "listing_address": "201 Queen Anne Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Rejuvenate+Apartments%2C+201+Queen+Anne+Avenue+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJn7bzZOwVkFQRVv5R9zVL59w",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 5,
+        "review_count": 6,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1985,
       "management_company": "ORI on the AVE",
@@ -29591,7 +30260,10 @@
         "listing_address": "2014 Fairview Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=REN%2C+2014+Fairview+Ave%2C+Seattle%2C+WA+98121&query_place_id=ChIJud-C1zkVkFQRTdOmHN5edho",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 308,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2022,
       "management_company": "Greystar",
@@ -29875,7 +30547,10 @@
         "listing_address": "1525 14th Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=REO+Flats%2C+1525+14th+Ave%2C+Seattle%2C+WA+98122&query_place_id=ChIJXbR18c1qkFQR19zceb41wFs",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 31,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2014,
       "management_company": "Avenue5",
@@ -29973,7 +30648,10 @@
         "listing_address": "1023 E Alder St Apt 114 Suite 1A, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Reverb+on+11th%2C+1023+E+Alder+St%2C+Seattle%2C+WA+98122&query_place_id=ChIJYfWlfsdqkFQRJJK1tl6gfqg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.4,
+        "review_count": 45,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2016,
       "management_company": "Pillar Communities",
@@ -30078,7 +30756,10 @@
         "listing_address": "810 12th Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Rianna+Apartments%2C+810+12th+Avenue%2C+Seattle%2C+WA+98122&query_place_id=ChIJ5ySQychqkFQR47KutUHPhH4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 67,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2000,
       "management_company": "Vivmark",
@@ -30190,7 +30871,10 @@
         "listing_address": "1201 Mercer St, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Rivet+Apartments%2C+1201+Mercer+St%2C+Seattle%2C+WA+98109&query_place_id=ChIJocjqvDAVkFQRjich8T3Oc-c",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.5,
+        "review_count": 72,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2014,
       "management_company": "First Pointe",
@@ -30300,7 +30984,10 @@
         "listing_address": "900 NE 65th St, Seattle, WA 98115",
         "url": "https://www.google.com/maps/search/?api=1&query=Rooster+Apartments%2C+900+NE+65th+St%2C+Seattle%2C+WA+98115&query_place_id=ChIJOZKatG8UkFQRKFEce2wtTyo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 112,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2015,
       "management_company": "Thrive",
@@ -30403,7 +31090,10 @@
         "listing_address": "123 18th Ave E, Seattle, WA 98112",
         "url": "https://www.google.com/maps/search/?api=1&query=Ruth+Court+Apartments%2C+123+18th+Ave+E%2C+Seattle%2C+WA+98112&query_place_id=ChIJvfaWnNRqkFQRbsPj4ISpdEU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 11,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2016,
       "management_company": "Edison47",
@@ -30517,7 +31207,10 @@
         "listing_address": "520 Terry Ave, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=Saxton+Apartments%2C+520+Terry+Avenue%2C+Seattle%2C+WA+98104&query_place_id=ChIJU_lHSjVrkFQRLXmqVdCeD-0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 129,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2019,
       "management_company": "Vivmark",
@@ -30651,7 +31344,10 @@
         "listing_address": "2230 8th Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Seattle+House%2C+2340+6th+Avenue%2C+Seattle%2C+WA+98121&query_place_id=ChIJAWZIq9sVkFQRgTjWANQsCxY",
         "source": "Google Places API (New); user-confirmed Maps listing",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.8,
+        "review_count": 4,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2026,
       "management_company": "Avenue5",
@@ -30881,7 +31577,10 @@
         "listing_address": "1900 1st Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=Sequel%2C+1900+1st+Ave%2C+Seattle%2C+WA+98101&query_place_id=ChIJo22M17JqkFQRTSdV0zcP980",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 62,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2016,
       "management_company": "Greystar",
@@ -31010,7 +31709,10 @@
         "listing_address": "1717 22nd Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Session%2C+1717+22nd+Ave%2C+Seattle%2C+WA+98122&query_place_id=ChIJHzAxndZqkFQRvT1lJToUzhk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 85,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2016,
       "management_company": "Thrive",
@@ -31097,7 +31799,10 @@
         "listing_address": "3209 Shorewood Dr, Mercer Island, WA 98040",
         "url": "https://www.google.com/maps/search/?api=1&query=Shorewood%2C+3209+Shorewood+Drive%2C+Mercer+Island%2C+WA+98040&query_place_id=ChIJlVL0_MBrkFQREM7JvYQJaB8",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.5,
+        "review_count": 348,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1949,
       "management_company": "Greystar",
@@ -31188,7 +31893,10 @@
         "listing_address": "500 Wall St, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Skye+Apartments%2C+500+Wall+St%2C+Seattle%2C+WA+98121&query_place_id=ChIJIy1oKEkVkFQR3Z1ZumXCdl4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 183,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1949,
       "management_company": "Waterton",
@@ -31285,7 +31993,10 @@
         "listing_address": "757 Thomas St, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Skyglass%2C+757+Thomas+St%2C+Seattle%2C+WA+98109&query_place_id=ChIJ0zSvIPAVkFQRsplK-sIc6cE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 127,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2024,
       "management_company": "Greystar",
@@ -31482,7 +32193,10 @@
         "listing_address": "3040 17th Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Slate+Apartments%2C+3040+17th+Avenue+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJxSqwJZ8VkFQRi9GOI-5-zMA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 96,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2013,
       "management_company": "Greystar",
@@ -31604,7 +32318,10 @@
         "listing_address": "13180 SE Newport Way, Bellevue, WA 98006",
         "url": "https://www.google.com/maps/search/?api=1&query=Sofi+at+Somerset%2C+13180+SE+Newport+Way%2C+Bellevue%2C+WA+98006&query_place_id=ChIJc2eJ3FJpkFQRG5r9FjwNKWs",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 124,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1986,
       "management_company": "Asset Living",
@@ -31735,7 +32452,10 @@
         "listing_address": "310 17th Ave S, Seattle, WA 98144",
         "url": "https://www.google.com/maps/search/?api=1&query=Solana%2C+310+17th+Avenue+South%2C+Seattle%2C+WA+98144&query_place_id=ChIJzfUQO8BqkFQRxZdwZ_b_TCo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.7,
+        "review_count": 9,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2011,
       "management_company": "Arboreal Management",
@@ -31844,7 +32564,10 @@
         "listing_address": "288 106th Ave NE, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Soma+Towers%2C+288+106th+Ave+NE%2C+Bellevue%2C+WA+98004&query_place_id=ChIJ2bEV8IdskFQR2124fKd7kbY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.2,
+        "review_count": 272,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2014,
       "management_company": "Greystar",
@@ -31991,7 +32714,10 @@
         "listing_address": "3000 S Alaska St Ste B, Seattle, WA 98108",
         "url": "https://www.google.com/maps/search/?api=1&query=Sonata+at+Columbia+Station%2C+3000+S+Alaska+Street%2C+Seattle%2C+WA+98108&query_place_id=ChIJCfT38SdrkFQRiNsuCkThnxc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 30,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2019,
       "management_company": "Indigo Real Estate",
@@ -32118,7 +32844,10 @@
         "listing_address": "3220 California Ave SW, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=Springline+Apartments%2C+3220+California+Ave+SW%2C+Seattle%2C+WA+98116&query_place_id=ChIJS9glAF5AkFQR-nCSuI9j8iA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 84,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2017,
       "management_company": "Vivmark",
@@ -32228,7 +32957,10 @@
         "listing_address": "820 Lenora St, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Stratus%2C+820+Lenora+St%2C+Seattle%2C+WA+98121&query_place_id=ChIJwXgfPEoVkFQRlNAJvoe43lE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 195,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2018,
       "management_company": "Windsor",
@@ -32381,7 +33113,10 @@
         "listing_address": "1819 23rd Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Summit+at+Madison+Park%2C+1819+23rd+Avenue%2C+Seattle%2C+WA+98122&query_place_id=ChIJg5J_2tVqkFQR2xn43uuacYk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 236,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 2004,
       "management_company": "Thrive",
@@ -32500,7 +33235,10 @@
         "listing_address": "15805 40th Pl S, Tukwila, WA 98188",
         "url": "https://www.google.com/maps/search/?api=1&query=Sunnydale+Apartments%2C+15805+40th+Place+S%2C+Tukwila%2C+WA+98188&query_place_id=ChIJ40EZACdDkFQRPrQK592B5bE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 55,
+        "ratings_checked_at": "2026-10-09T11:15:24-07:00"
       },
       "year_built": 1989,
       "management_company": "Apartment Management Consultants",
@@ -32618,7 +33356,10 @@
         "listing_address": "1111 E Pine St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Sunset+Electric%2C+1111+E+Pine+St%2C+Seattle%2C+WA+98122&query_place_id=ChIJ0zMmr81qkFQRBrhOho8f7Lc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 32,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2014,
       "management_company": "Avenue5",
@@ -32725,7 +33466,10 @@
         "listing_address": "10777 Main St, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Surrey+on+Main%2C+10777+Main+Street%2C+Bellevue%2C+WA+98004&query_place_id=ChIJCUjz4XxskFQR1Nz4Gbf3_bo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.7,
+        "review_count": 101,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2022,
       "management_company": "Thrive",
@@ -32876,7 +33620,10 @@
         "listing_address": "10701 Main St, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Sylva+on+Main%2C+10701+Main+St%2C+Bellevue%2C+WA+98004&query_place_id=ChIJjy6fAX1skFQRBXa90ifipGA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 87,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2011,
       "management_company": "Thrive",
@@ -32981,7 +33728,10 @@
         "listing_address": "4208 236th St SW, Mountlake Terrace, WA 98043",
         "url": "https://www.google.com/maps/search/?api=1&query=Taluswood%2C+4208+236th+St+SW%2C+Mountlake+Terrace%2C+WA+98043&query_place_id=ChIJUwqh5R4QkFQR8WgnWVSX2_U",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 266,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 1987,
       "management_company": "Bozzuto",
@@ -33061,7 +33811,10 @@
         "listing_address": "6214 S 153rd St, Tukwila, WA 98188",
         "url": "https://www.google.com/maps/search/?api=1&query=Tanager+Grove%2C+6214+S+153rd+Street%2C+Tukwila%2C+WA+98188&query_place_id=ChIJGf_yftVCkFQR8HJ0jtYLiTs",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.2,
+        "review_count": 23,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 1966,
       "management_company": "Olympic Management",
@@ -33172,7 +33925,10 @@
         "listing_address": "100 Taylor Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Taylor+28%2C+100+Taylor+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJLwhdlEgVkFQRJ5L82Rzrb1s",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 103,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2008,
       "management_company": "Essex",
@@ -33253,7 +34009,10 @@
         "listing_address": "10710 NE 10th St, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=TEN20%2C+1020+108th+Ave+NE%2C+Bellevue%2C+WA+98004&query_place_id=ChIJZ8PSpo5skFQRGW6tLET0bTI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.5,
+        "review_count": 75,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2009,
       "management_company": "UDR",
@@ -33369,7 +34128,10 @@
         "listing_address": "24000 Van Ry Blvd, Mountlake Terrace, WA 98043",
         "url": "https://www.google.com/maps/search/?api=1&query=Terrace+Station+Apartments%2C+24000+Van+Ry+Blvd%2C+Mountlake+Terrace%2C+WA+98043&query_place_id=ChIJIUCOv4sRkFQRraOqFny0vlQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 241,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2019,
       "management_company": "Forge Property Management",
@@ -33524,7 +34286,10 @@
         "listing_address": "1615 Belmont Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Terravita+Luxury+Residences%2C+1615+Belmont+Ave%2C+Seattle%2C+WA+98122&query_place_id=ChIJScicV8tqkFQRAZmc0bRmx6U",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.2,
+        "review_count": 33,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2012,
       "management_company": "Pacific Crest Real Estate",
@@ -33653,7 +34418,10 @@
         "listing_address": "20221 Aurora Ave N, Shoreline, WA 98133",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Artiste%2C+20221+Aurora+Ave+N%2C+Shoreline%2C+WA+98133&query_place_id=ChIJ06JXen0QkFQR_JYiOV1kVv0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 93,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2012,
       "management_company": "Weidner",
@@ -33749,7 +34517,10 @@
         "listing_address": "2922 Western Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Audrey+at+Belltown%2C+2922+Western+Ave%2C+Seattle%2C+WA+98121&query_place_id=ChIJ6w2X4E8VkFQR-_BwwQj0Iw4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.5,
+        "review_count": 69,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 1992,
       "management_company": "Essex",
@@ -33883,7 +34654,10 @@
         "listing_address": "2010 Terry Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Ayer%2C+2010+Terry+Avenue%2C+Seattle%2C+WA+98121&query_place_id=ChIJRze0XlIVkFQRBoDgU50fLX0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 114,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2023,
       "management_company": "Holland",
@@ -34083,7 +34857,10 @@
         "listing_address": "115 Warren Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Bernard%2C+115+Warren+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJi7TQFEUVkFQRd2z50O8NI9I",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 18,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2008,
       "management_company": "Essex",
@@ -34169,7 +34946,10 @@
         "listing_address": "5020 California Ave SW, Seattle, WA 98136",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Blake+Apartments%2C+5020+California+Avenue+SW%2C+Seattle%2C+WA+98136&query_place_id=ChIJSXDIXvxAkFQRxZq4RPsBg8M",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 41,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2014,
       "management_company": "Palladium",
@@ -34265,7 +35045,10 @@
         "listing_address": "688 110th Ave NE, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Bravern%2C+688+110th+Avenue+NE%2C+Bellevue%2C+WA+98004&query_place_id=ChIJtXlBnYlskFQRbqET-UjxD3g",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 318,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2010,
       "management_company": "Windsor",
@@ -34391,7 +35174,10 @@
         "listing_address": "1641 Nagle Pl, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Broadway+Building%2C+1641+Nagle+Place%2C+Seattle%2C+WA+98122&query_place_id=ChIJXx5J4cxqkFQR3OPVqqg9bCg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 71,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2010,
       "management_company": "Hunters Capital",
@@ -34483,7 +35269,10 @@
         "listing_address": "422 Yale Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Cairns%2C+422+Yale+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJaQLDGDEVkFQRvPm29l5ByPA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 36,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2005,
       "management_company": "Essex",
@@ -34608,7 +35397,10 @@
         "listing_address": "2203 E Union St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Central%2C+2203+East+Union+Street%2C+Seattle%2C+WA+98122&query_place_id=ChIJkRSWpNBqkFQRHwGvC1U-_xE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 81,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2016,
       "management_company": "Thrive",
@@ -34738,7 +35530,10 @@
         "listing_address": "101 Taylor Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Century%2C+101+Taylor+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJHW4sykgVkFQRclp90jLq7zI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 116,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2014,
       "management_company": "Pillar Properties",
@@ -34834,7 +35629,10 @@
         "listing_address": "5621 22nd Ave NW, Seattle, WA 98107",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Commons+at+Ballard%2C+5621+22nd+Ave+NW%2C+Seattle%2C+WA+98107&query_place_id=ChIJvXkZk8UVkFQRlF-2p2NbOtY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 39,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2016,
       "management_company": "Blanton Turner",
@@ -34953,7 +35751,10 @@
         "listing_address": "1525 Harvard Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Cue%2C+1525+Harvard+Ave%2C+Seattle%2C+WA+98122&query_place_id=ChIJw6-dgMxqkFQReTNyLWChsrc",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 54,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2015,
       "management_company": "Greystar",
@@ -35085,7 +35886,10 @@
         "listing_address": "1425 Spring St, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Danforth%2C+1425+Spring+St%2C+Seattle%2C+WA+98104&query_place_id=ChIJEdryP6ZrkFQRpmVvr3cwL5A",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 193,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2018,
       "management_company": "Greystar",
@@ -35206,7 +36010,10 @@
         "listing_address": "525 NE Northgate Way, Seattle, WA 98125",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Enclave+at+Northgate%2C+525+NE+Northgate+Way%2C+Seattle%2C+WA+98125&query_place_id=ChIJZTxxD1cRkFQRpkfm_6fifHI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3,
+        "review_count": 239,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2014,
       "management_company": "Thrive",
@@ -35297,7 +36104,10 @@
         "listing_address": "605 15th Ave E, Seattle, WA 98112",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Fifteen%2C+605+15th+Ave+E%2C+Seattle%2C+WA+98112&query_place_id=ChIJWVQ-xisVkFQRT7OI4obXVbA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 2.9,
+        "review_count": 8,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2015,
       "management_company": "Pacific Crest Real Estate",
@@ -35400,7 +36210,10 @@
         "listing_address": "2233 1st Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Goodwin%2C+2233+1st+Avenue%2C+Seattle%2C+WA+98121&query_place_id=ChIJlTOSUM8VkFQR0k4-Nk1ZZQA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 15,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2010,
       "management_company": "Greystar",
@@ -35538,7 +36351,10 @@
         "listing_address": "2601 76th Ave SE, Mercer Island, WA 98040",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Hadley+Apartments%2C+2601+76th+Ave+SE%2C+Mercer+Island%2C+WA+98040&query_place_id=ChIJezXOwrprkFQRDRWZsnEd1-c",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.7,
+        "review_count": 167,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2016,
       "management_company": "SyRES Properties",
@@ -35663,7 +36479,10 @@
         "listing_address": "3627 Stone Way N, Seattle, WA 98103",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Hayes+on+Stone+Way%2C+3627+Stone+Way+N%2C+Seattle%2C+WA+98103&query_place_id=ChIJFf-nywEVkFQR2b463uBNwZw",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.5,
+        "review_count": 51,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2016,
       "management_company": "Bozzuto",
@@ -35780,7 +36599,10 @@
         "listing_address": "130 Harvard Ave E, Seattle, WA 98102",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Heights+on+Capitol+Hill%2C+130+Harvard+Avenue+East%2C+Seattle%2C+WA+98102&query_place_id=ChIJ8RA37jIVkFQRDp017q6OM1k",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 40,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2006,
       "management_company": "Vivmark",
@@ -35866,7 +36688,10 @@
         "listing_address": "4754 Fauntleroy Wy SW, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Huxley%2C+4754+Fauntleroy+Way+SW%2C+Seattle%2C+WA+98116&query_place_id=ChIJEzt5LptBkFQRTwcEsxD9kB0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 111,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2019,
       "management_company": "Holland",
@@ -35982,7 +36807,10 @@
         "listing_address": "2019 Boren Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Ivey+on+Boren%2C+2019+Boren+Avenue%2C+Seattle%2C+WA+98121&query_place_id=ChIJbwgFtvgVkFQRwsRFC0k12Ck",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 153,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2022,
       "management_company": "Holland",
@@ -36246,7 +37074,10 @@
         "listing_address": "907 NE 45th St, Seattle, WA 98105",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Kennedy+Building%2C+903+NE+45th+St%2C+Seattle%2C+WA+98105&query_place_id=ChIJv1JGb_UUkFQR-_uYtqneJJg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3,
+        "review_count": 90,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2005,
       "management_company": "UDR",
@@ -36358,7 +37189,10 @@
         "listing_address": "701 5th Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=The+LeeAnn%2C+701+5th+Avenue+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJMSfwGh0VkFQRIGzOeNOPbyk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 46,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2020,
       "management_company": "Palladium",
@@ -36562,7 +37396,10 @@
         "listing_address": "132 NE 145th St, Shoreline, WA 98155",
         "url": "https://www.google.com/maps/search/?api=1&query=The+LINE%2C+132+NE+145th+St%2C+Shoreline%2C+WA+98155&query_place_id=ChIJ2WEl9EgRkFQRYItyAk3-Rvo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 57,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2025,
       "management_company": "Greystar",
@@ -36780,7 +37617,10 @@
         "listing_address": "9049 20th Ave SW, Seattle, WA 98106",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Livingstone%2C+9049+20th+Avenue+SW%2C+Seattle%2C+WA+98106&query_place_id=ChIJHWAeEy9BkFQR4STQdXv75w0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 22,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2020,
       "management_company": "Bonavista",
@@ -36876,7 +37716,10 @@
         "listing_address": "4535 44th Ave SW, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Lofts+at+the+Junction%2C+4535+44th+Avenue+SW%2C+Seattle%2C+WA+98116&query_place_id=ChIJwfdhivlAkFQRdw9yhaGbUFM",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 14,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2015,
       "management_company": "Wilshire Residential",
@@ -36979,7 +37822,10 @@
         "listing_address": "407 NE 73rd St, Seattle, WA 98115",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Loop+at+Green+Lake%2C+407+NE+73rd+St%2C+Seattle%2C+WA+98115&query_place_id=ChIJQcM_zqIVkFQRHPEhnOmId-g",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 36,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2021,
       "management_company": "11Residential",
@@ -37116,7 +37962,10 @@
         "listing_address": "3520 28th Ave W, Seattle, WA 98199",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Magnolia+Collection%2C+3520+28th+Avenue+W%2C+Seattle%2C+WA+98199&query_place_id=ChIJAQAQ55AVkFQR4rWukO8RIP4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": null,
+        "review_count": null,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 1959,
       "management_company": "Fathom Property Management",
@@ -37281,7 +38130,10 @@
         "listing_address": "75 102nd Ave NE, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Margot%2C+75+102nd+Ave+NE%2C+Bellevue%2C+WA+98004&query_place_id=ChIJoRMvHSBtkFQReV9iG2jLMw4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 105,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2020,
       "management_company": "North Coast Living",
@@ -37463,7 +38315,10 @@
         "listing_address": "1220 Boren Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Marlborough%2C+1220+Boren+Avenue%2C+Seattle%2C+WA+98101&query_place_id=ChIJTawHEspqkFQRyIbCOVMxKMU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.8,
+        "review_count": 26,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 1927,
       "management_company": "Precision Management",
@@ -37599,7 +38454,10 @@
         "listing_address": "7650 SE 27th St, Mercer Island, WA 98040",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Mercer+Apartment+Homes%2C+7650+SE+27th+Street%2C+Mercer+Island%2C+WA+98040&query_place_id=ChIJ9dAVArtrkFQRN4dMuHE6v1c",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 59,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2007,
       "management_company": "Avenue5",
@@ -37743,7 +38601,10 @@
         "listing_address": "10333 Main St, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Meyden%2C+10333+Main+St%2C+Bellevue%2C+WA+98004&query_place_id=ChIJFYpw5X1skFQRoaY-NjojH60",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 75,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2016,
       "management_company": "Pillar Properties",
@@ -37865,7 +38726,10 @@
         "listing_address": "2955 4th Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Millwright%2C+2955+4th+Avenue+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJ0UFiLvMVkFQRhQ5kkuNkel4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 16,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2025,
       "management_company": "Precision Management",
@@ -38018,7 +38882,10 @@
         "listing_address": "255 Lenora St, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Modern%2C+255+Lenora+St%2C+Seattle%2C+WA+98121&query_place_id=ChIJNwYkbZgVkFQRtXcnyhCmxns",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 89,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2022,
       "management_company": "Avenue5",
@@ -38205,7 +39072,10 @@
         "listing_address": "520 Occidental Ave S, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Nolo+at+Stadium+Place%2C+520+S+Occidental+Avenue%2C+Seattle%2C+WA+98104&query_place_id=ChIJYW23lqRqkFQRCyFqtBUyXNU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 32,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2013,
       "management_company": "Pillar Properties",
@@ -38348,7 +39218,10 @@
         "listing_address": "809 Olive Wy, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Olivian%2C+809+Olive+Way%2C+Seattle%2C+WA+98101&query_place_id=ChIJG8KPt0oVkFQRmGgSmWC1hPQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.8,
+        "review_count": 196,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2009,
       "management_company": "Greystar",
@@ -38493,7 +39366,10 @@
         "listing_address": "10735 Roosevelt Way NE, Seattle, WA 98125",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Park+at+Northgate%2C+10735+Roosevelt+Way+NE%2C+Seattle%2C+WA+98125&query_place_id=ChIJt8WB81cRkFQRG0hmxHKgOv8",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 98,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 1967,
       "management_company": "Thrive",
@@ -38587,7 +39463,10 @@
         "listing_address": "504 5th Ave S, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Publix%2C+504+Fifth+Avenue+South%2C+Seattle%2C+WA+98104&query_place_id=ChIJa3Unl7xqkFQR9v-UchngWaQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 89,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2016,
       "management_company": "Blanton Turner",
@@ -38706,7 +39585,10 @@
         "listing_address": "3295 SW Avalon Way, Seattle, WA 98126",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Residences+at+3295%2C+3295+SW+Avalon+Way%2C+Seattle%2C+WA+98126&query_place_id=ChIJz0498FZAkFQRjVCXlY3UCWA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 26,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2012,
       "management_company": "Asset Living",
@@ -38853,7 +39735,10 @@
         "listing_address": "1340 4th Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Residences+at+Rainier+Square%2C+1340+4th+Avenue%2C+Seattle%2C+WA+98101&query_place_id=ChIJrXWuE79rkFQR_f017mM1T2Q",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 91,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2021,
       "management_company": "Greystar",
@@ -39134,7 +40019,10 @@
         "listing_address": "2201 4th Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Shelby%2C+2201+4th+Ave%2C+Seattle%2C+WA+98121&query_place_id=ChIJQ91QDUwVkFQRKua--3FnxG4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 92,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2001,
       "management_company": "Allied Residential",
@@ -39251,7 +40139,10 @@
         "listing_address": "400 Wall St, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Sidney%2C+400+Wall+St%2C+Seattle%2C+WA+98121&query_place_id=ChIJFZGy2k4VkFQRsOZzyWBC8jQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 43,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2000,
       "management_company": "Precision Management",
@@ -39345,7 +40236,10 @@
         "listing_address": "4219 S Othello St, Seattle, WA 98118",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Station+at+Othello+Park%2C+4219+South+Othello+Street%2C+Seattle%2C+WA+98118&query_place_id=ChIJ76gJpgZCkFQRyz9hkb9ipps",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 160,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2011,
       "management_company": "Greystar",
@@ -39466,7 +40360,10 @@
         "listing_address": "1100 Boylston Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Victor%2C+1100+Boylston+Avenue%2C+Seattle%2C+WA+98101&query_place_id=ChIJ9U6Z21lrkFQR4Lf5xv5rByA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 72,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2024,
       "management_company": "Greystar",
@@ -39761,7 +40658,10 @@
         "listing_address": "521 Stadium Pl S, Seattle, WA 98104",
         "url": "https://www.google.com/maps/search/?api=1&query=Stadium+Place%2C+521+Stadium+Place+S%2C+Seattle%2C+WA+98104&query_place_id=ChIJURZNoKRqkFQRKlWgQVHkBCs",
         "source": "Google Places API (New); user-confirmed Maps listing",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 109,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2014,
       "management_company": "Pillar Properties",
@@ -39905,7 +40805,10 @@
         "listing_address": "210 8th Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Waverly%2C+210+8th+Avenue+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJVwOiYnoVkFQRmT-tmmbpzG8",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 203,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2022,
       "management_company": "Greystar",
@@ -40118,7 +41021,10 @@
         "listing_address": "1501 NW 56th St, Seattle, WA 98107",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Waymark%2C+1501+NW+56th+St%2C+Seattle%2C+WA+98107&query_place_id=ChIJuQxTcMkVkFQREN6MxzTbdNo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.1,
+        "review_count": 22,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2014,
       "management_company": "Greystar",
@@ -40220,7 +41126,10 @@
         "listing_address": "1321 E John St, Seattle, WA 98102",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Weatherford%2C+1321+E+John+Street%2C+Seattle%2C+WA+98102&query_place_id=ChIJpUYA1CwVkFQR7HuZNgi6uzY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 26,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2014,
       "management_company": "Pacific Crest Real Estate",
@@ -40332,7 +41241,10 @@
         "listing_address": "4755 Fauntleroy Wy SW, Seattle, WA 98116",
         "url": "https://www.google.com/maps/search/?api=1&query=The+Whittaker%2C+4755+Fauntleroy+Way+SW%2C+Seattle%2C+WA+98116&query_place_id=ChIJEZHM0_5AkFQREKpvdwYYI_k",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 223,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2016,
       "management_company": "Windsor",
@@ -40467,7 +41379,10 @@
         "listing_address": "1202 E Thomas St, Seattle, WA 98102",
         "url": "https://www.google.com/maps/search/?api=1&query=Thomas+Street+Lofts%2C+1202+East+Thomas+Street%2C+Seattle%2C+WA+98102&query_place_id=ChIJt298TNsVkFQRlRXdPkkuJmI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 11,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2018,
       "management_company": "Cornell & Associates",
@@ -40563,7 +41478,10 @@
         "listing_address": "337 NE 103rd St, Seattle, WA 98125",
         "url": "https://www.google.com/maps/search/?api=1&query=Thornton+Place%2C+337+NE+103rd+St%2C+Seattle%2C+WA+98125&query_place_id=ChIJu8SndP4TkFQRlK1dxduxoPY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 925,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2009,
       "management_company": "Greystar",
@@ -40651,7 +41569,10 @@
         "listing_address": "320 E Pine St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Three20+Apartments%2C+320+East+Pine+Street%2C+Seattle%2C+WA+98122&query_place_id=ChIJsaflMstqkFQRXHmwmfOfnBk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 84,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2014,
       "management_company": "Vivmark",
@@ -40748,7 +41669,10 @@
         "listing_address": "2015 2nd Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Tower+12%2C+2015+2nd+Avenue%2C+Seattle%2C+WA+98121&query_place_id=ChIJAfgPqUwVkFQRUYUqP4hIWvU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.7,
+        "review_count": 268,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2017,
       "management_company": "Weidner",
@@ -40905,7 +41829,10 @@
         "listing_address": "23905 Van Ry Blvd, Mountlake Terrace, WA 98043",
         "url": "https://www.google.com/maps/search/?api=1&query=Traxx+Apartments%2C+23905+Van+Ry+Blvd%2C+Mountlake+Terrace%2C+WA+98043&query_place_id=ChIJlUPsXgARkFQRoAvoH8tR_sU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 65,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2024,
       "management_company": "Coast Real Estate",
@@ -41107,7 +42034,10 @@
         "listing_address": "801 Dexter Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=True+North%2C+801+Dexter+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJpXh81zgVkFQRnBVH3Ima5nI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 161,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2014,
       "management_company": "Holland",
@@ -41318,7 +42248,10 @@
         "listing_address": "2020 E Madison St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Twenty20+Mad%2C+2020+East+Madison+Street%2C+Seattle%2C+WA+98122&query_place_id=ChIJzQLUaclqkFQRRb1axrVKrTs",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 63,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2017,
       "management_company": "MG Properties",
@@ -41407,7 +42340,10 @@
         "listing_address": "604 E Union St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Union+Arms%2C+604+East+Union+Street%2C+Seattle%2C+WA+98122&query_place_id=ChIJ1XgC80q_kVQRrXslzbApTag",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 34,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 1925,
       "management_company": "GRE Management",
@@ -41495,7 +42431,10 @@
         "listing_address": "526 Yale Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Union+Bay+Apartments%2C+526+Yale+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJ9fpY9DAVkFQR7DOB2wYEyBU",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 39,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 1994,
       "management_company": "Willow Bridge",
@@ -41591,7 +42530,10 @@
         "listing_address": "905 Dexter Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Union+SLU%2C+905+Dexter+Ave+N%2C+Seattle%2C+WA+98109&query_place_id=ChIJq1me0j4VkFQRXbfz7C9-q5c",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.1,
+        "review_count": 183,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2013,
       "management_company": "Cushman & Wakefield",
@@ -41698,7 +42640,10 @@
         "listing_address": "3490 SW Graham St, Seattle, WA 98126",
         "url": "https://www.google.com/maps/search/?api=1&query=Upton+Flats%2C+3490+SW+Graham+Street%2C+Seattle%2C+WA+98126&query_place_id=ChIJDxXvQTpBkFQRxCRP1GAhv8s",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.7,
+        "review_count": 83,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2018,
       "management_company": "Cascadian Property Management",
@@ -41824,7 +42769,10 @@
         "listing_address": "11 W Mercer St, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Uptown+11%2C+11+W+Mercer+St%2C+Seattle%2C+WA+98119&query_place_id=ChIJvYyFuUMVkFQRiewY2FXwF0s",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 14,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2016,
       "management_company": "NAREIG",
@@ -41938,7 +42886,10 @@
         "listing_address": "550 Uptown Ct, Kirkland, WA 98033",
         "url": "https://www.google.com/maps/search/?api=1&query=Uptown+at+Kirkland+Urban%2C+550+Uptown+Ct%2C+Kirkland%2C+WA+98033&query_place_id=ChIJCzPbcx8TkFQRAq5_3h609dg",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 135,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2019,
       "management_company": "Weidner",
@@ -42041,7 +42992,10 @@
         "listing_address": "140 Lake St S, Kirkland, WA 98033",
         "url": "https://www.google.com/maps/search/?api=1&query=Vela%2C+140+Lake+Street+South%2C+Kirkland%2C+WA+98033&query_place_id=ChIJ29gr4YkTkFQRhb2-kyhl98w",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.7,
+        "review_count": 37,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2023,
       "management_company": "Avenue5",
@@ -42304,7 +43258,10 @@
         "listing_address": "3635 Woodland Park Ave N Unit 322, Seattle, WA 98103, USA",
         "url": "https://www.google.com/maps/search/?api=1&query=Velo+Fremont+Apartments%2C+3625+Woodland+Park+Ave+N%2C+Seattle%2C+WA+98103&query_place_id=ChIJi9MtlE4VkFQRYNe9TjBGYyo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 12,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2014,
       "management_company": "Essex",
@@ -42421,7 +43378,10 @@
         "listing_address": "10333 NE 1st St, Bellevue, WA 98004",
         "url": "https://www.google.com/maps/search/?api=1&query=Venn+at+Main%2C+10333+NE+1st+St%2C+Bellevue%2C+WA+98004&query_place_id=ChIJC74bXodskFQRIj-vUdEo8i4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 241,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2016,
       "management_company": "Vivmark",
@@ -42552,7 +43512,10 @@
         "listing_address": "2720 4th Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Verve%2C+2720+Fourth+Avenue%2C+Seattle%2C+WA+98121&query_place_id=ChIJbUoMPU8VkFQRnlUwDUUKY7s",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 60,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2014,
       "management_company": "Thrive",
@@ -42697,7 +43660,10 @@
         "listing_address": "2121 6th Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Via6%2C+2121+6th+Ave%2C+Seattle%2C+WA+98121&query_place_id=ChIJ_QAalksVkFQRW4He3EDgWRM",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 483,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2013,
       "management_company": "Weidner",
@@ -42799,7 +43765,10 @@
         "listing_address": "3601 Greenwood Ave N, Seattle, WA 98103",
         "url": "https://www.google.com/maps/search/?api=1&query=Vibe+Fremont%2C+3601+Greenwood+Avenue+N%2C+Seattle%2C+WA+98103&query_place_id=ChIJyWlapqkVkFQRkS_6G24qX5o",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.2,
+        "review_count": 35,
+        "ratings_checked_at": "2026-10-09T11:15:25-07:00"
       },
       "year_built": 2015,
       "management_company": "Bonavista",
@@ -42916,7 +43885,10 @@
         "listing_address": "1915 2nd Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=Viktoria%2C+1915+2nd+Avenue%2C+Seattle%2C+WA+98101&query_place_id=ChIJE2bbLLNqkFQRVituCzqs8vk",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.6,
+        "review_count": 352,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2014,
       "management_company": "Greystar",
@@ -43070,7 +44042,10 @@
         "listing_address": "1111 E Union St, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=VIVA%2C+1111+E+Union+St%2C+Seattle%2C+WA+98122&query_place_id=ChIJnX4pns5qkFQRmyPl9LaufLQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.5,
+        "review_count": 53,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2014,
       "management_company": "Bonavista",
@@ -43185,7 +44160,10 @@
         "listing_address": "207 Park Ln, Kirkland, WA 98033",
         "url": "https://www.google.com/maps/search/?api=1&query=Voda%2C+207+Park+Lane%2C+Kirkland%2C+WA+98033&query_place_id=ChIJrcpBjOcSkFQRhCLjW3TkA94",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.8,
+        "review_count": 44,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2018,
       "management_company": "Avenue5",
@@ -43283,7 +44261,10 @@
         "listing_address": "1527 15th Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Vox+Apartments%2C+1527+15th+Ave%2C+Seattle%2C+WA+98122&query_place_id=ChIJReSVBdJqkFQRv8oL34rAuwA",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.3,
+        "review_count": 16,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2013,
       "management_company": "Essex",
@@ -43396,7 +44377,10 @@
         "listing_address": "2170 NE Bel Red Rd, Bellevue, WA 98007",
         "url": "https://www.google.com/maps/search/?api=1&query=Vue+22+Apartments%2C+2170+Bel-Red+Road%2C+Bellevue%2C+WA+98007&query_place_id=ChIJNU2nKqdtkFQRS6R8KiA4e0M",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 407,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2015,
       "management_company": "MG Properties",
@@ -43521,7 +44505,10 @@
         "listing_address": "75 Vine St, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Walton+Lofts%2C+75+Vine+St%2C+Seattle%2C+WA+98121&query_place_id=ChIJkzmB_VEVkFQRCz_m8AjGAO0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.5,
+        "review_count": 62,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2015,
       "management_company": "Berkshire Communities",
@@ -43645,7 +44632,10 @@
         "listing_address": "14812 Bothell Way NE, Lake Forest Park, WA 98155",
         "url": "https://www.google.com/maps/search/?api=1&query=Watercrest+Apartment+Homes%2C+14812+Bothell+Way+NE%2C+Lake+Forest+Park%2C+WA+98155&query_place_id=ChIJzfG94KERkFQRVPp_AlZFUVM",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 127,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 1968,
       "management_company": "Weidner",
@@ -43738,7 +44728,10 @@
         "listing_address": "1430 2nd Ave, Seattle, WA 98101",
         "url": "https://www.google.com/maps/search/?api=1&query=West+Edge%2C+1430+2nd+Avenue%2C+Seattle%2C+WA+98101&query_place_id=ChIJ7abIp7NqkFQRvre-fOpmORE",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 192,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2018,
       "management_company": "Greystar",
@@ -43886,7 +44879,10 @@
         "listing_address": "1209 Westlake Ave N, Seattle, WA 98109",
         "url": "https://www.google.com/maps/search/?api=1&query=Westlake+Steps%2C+1209+Westlake+Avenue+North%2C+Seattle%2C+WA+98109&query_place_id=ChIJG2JKRjwVkFQRrWl2dqHrcDI",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 282,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2017,
       "management_company": "Holland",
@@ -44008,7 +45004,10 @@
         "listing_address": "3827 14th Ave W Ste 1, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Wharfside+Pointe%2C+3814+14th+Ave+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJq38_UaMVkFQR6zx-qMU7xzo",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 67,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 1990,
       "management_company": "Essex",
@@ -44110,7 +45109,10 @@
         "listing_address": "5555 14th Ave NW, Seattle, WA 98107",
         "url": "https://www.google.com/maps/search/?api=1&query=Windsor+Ballard%2C+5555+14th+Ave+NW%2C+Seattle%2C+WA+98107&query_place_id=ChIJLbvog8kVkFQRGHK6ydv4VpQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 278,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2013,
       "management_company": "Windsor",
@@ -44233,7 +45235,10 @@
         "listing_address": "2030 8th Ave, Seattle, WA 98121",
         "url": "https://www.google.com/maps/search/?api=1&query=Windsor+Cirrus%2C+2030+8th+Ave%2C+Seattle%2C+WA+98121&query_place_id=ChIJiVl_5RkVkFQRl7eJqTgn1p4",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4,
+        "review_count": 175,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2015,
       "management_company": "Windsor",
@@ -44348,7 +45353,10 @@
         "listing_address": "300 1st Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Windsor+Queen+Anne%2C+300+1st+Ave+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJVZVAuEQVkFQRzRlH2C_q3jQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.3,
+        "review_count": 98,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2018,
       "management_company": "Windsor",
@@ -44476,7 +45484,10 @@
         "listing_address": "1225 10th Ave, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Woodworth%2C+1225+10th+Avenue%2C+Seattle%2C+WA+98122&query_place_id=ChIJC_KelYdrkFQRr-wUu-b2xj0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.6,
+        "review_count": 36,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2020,
       "management_company": "Brink Property Management",
@@ -44620,7 +45631,10 @@
         "listing_address": "4040 26th Ave SW, Seattle, WA 98106",
         "url": "https://www.google.com/maps/search/?api=1&query=Youngstown+Flats%2C+4040+26th+Avenue+SW%2C+Seattle%2C+WA+98106&query_place_id=ChIJFb7bO05AkFQRRL_nUtz9TRQ",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.9,
+        "review_count": 135,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2013,
       "management_company": "Avenue5",
@@ -44734,7 +45748,10 @@
         "listing_address": "429 2nd Ave W, Seattle, WA 98119",
         "url": "https://www.google.com/maps/search/?api=1&query=Zella+Apartments%2C+429+2nd+Ave+W%2C+Seattle%2C+WA+98119&query_place_id=ChIJn1exZ04VkFQRMnuIT3eqKyY",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.5,
+        "review_count": 48,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2019,
       "management_company": "Blanton Turner",
@@ -44863,7 +45880,10 @@
         "listing_address": "200 Belmont Ave E, Seattle, WA 98102",
         "url": "https://www.google.com/maps/search/?api=1&query=Zephyr+Apartments%2C+200+Belmont+Avenue+East%2C+Seattle%2C+WA+98102&query_place_id=ChIJF7fgUzIVkFQRf5P1eSlGalM",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.1,
+        "review_count": 16,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2014,
       "management_company": "Pacific Crest Real Estate",
@@ -44987,7 +46007,10 @@
         "listing_address": "550 Broadway, Seattle, WA 98122",
         "url": "https://www.google.com/maps/search/?api=1&query=Zig%2C+550+Broadway%2C+Seattle%2C+WA+98122&query_place_id=ChIJ9aOuDchqkFQReKfyBxZIXZw",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 3.7,
+        "review_count": 81,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2017,
       "management_company": "Greystar",
@@ -45129,7 +46152,10 @@
         "listing_address": "2380 N 147th St, Shoreline, WA 98133, USA",
         "url": "https://www.google.com/maps/search/?api=1&query=Zinnia%2C+2318+N+147th+St%2C+Shoreline%2C+WA+98133&query_place_id=ChIJH6304vYRkFQR1h8404bh_w0",
         "source": "Google Places API (New)",
-        "checked_at": "2026-10-09"
+        "checked_at": "2026-10-09",
+        "rating": 4.4,
+        "review_count": 92,
+        "ratings_checked_at": "2026-10-09T11:15:26-07:00"
       },
       "year_built": 2024,
       "management_company": "Asset Living",

@@ -8,7 +8,7 @@
 |---|---|
 | `name`, `address`, `location` | Building name, address and coordinates |
 | `website`, `availability_url` | Property website and availability page |
-| `google_maps` | Verified Google Maps listing and link |
+| `google_maps` | Verified Google Maps listing and link, current rating, review count and rating check date |
 | `year_built`, `management_company` | Construction year and property manager |
 | `amenities`, `amenity_details` | Amenities and supporting details |
 | `approx_1br_monthly_usd` | Approximate effective monthly one-bedroom cost in USD |
