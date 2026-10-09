@@ -1,6 +1,0 @@
-theme: jekyll-theme-hacker
-relative_links:
-  enabled: true
-  collections: true
-include:
-  - README.md
