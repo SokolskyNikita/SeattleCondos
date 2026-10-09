@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "metadata": {
+    "created_at": "2026-10-09",
+    "purpose": "Persistent exclusions for the 18 buildings removed on 2026-10-09 from the latest committed apartment list.",
+    "scope": "Exactly the building IDs present in the baseline commit and absent from the working directory. Older exclusions already absent from that commit are outside this file’s initial scope.",
+    "baseline_commit": "ce940cbc9d19432b397b123d35c912642c18a61c",
+    "baseline_file": "apartments.json",
+    "counts": {
+      "baseline_buildings": 355,
+      "active_buildings": 337,
+      "excluded_buildings": 18,
+      "no_usable_current_pricing": 10,
+      "single_non_fitness_amenity": 8
+    },
+    "readdition_policy": "Before adding or merging any building into apartments.json, check generation-rules/excluded-apartments.json by id, current or previous name, address and property website. Do not automatically re-add a matching building, including under a new name or ID. Reinstatement requires an explicit user decision and a documented update to this registry; newly found prices or amenities alone do not override the exclusion.",
+    "reason_date_note": "Reasons describe the evidence and user decisions on the exclusion date, not newly researched current availability.",
+    "decision_sources": {
+      "pricing_removal": {
+        "chat_title": "Add monthly 1BR prices",
+        "thread_id": "01a120e0-ab06-7ba0-a8ea-1e51b95263ea",
+        "turn_id": "01a1210c-6485-71e1-aa63-9cd29b7d6598",
+        "user_instruction": "ok lets remove the N/A buildings",
+        "reason_details_turn_id": "01a1210b-b42c-77b2-97ef-0e8d3453fb5d",
+        "audit_section": "pricing_exclusion_audit"
+      },
+      "single_amenity_removal": {
+        "chat_title": "Audit amenity names",
+        "thread_id": "01a1210c-8820-7fb1-9311-66e0f16561ff",
+        "turn_id": "01a12122-2381-7042-9a96-dcb969fb66ce",
+        "user_instruction": "remove those with just 1 amenity, except for those where its 'fitness center/gym'",
+        "reason_details_turn_id": "01a12120-0030-76d1-b3e2-1b8c41cf536d",
+        "audit_section": "single_amenity_exclusion_audit"
+      }
+    }
+  },
+  "excluded": [
+    {
+      "id": "altamira-apartments",
+      "name": "Altamira Apartments",
+      "previous_names": [
+        "Altamira"
+      ],
+      "address": "4540 42nd Avenue SW, Seattle, WA 98116",
+      "website": "https://www.altamiraapartments.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "no_usable_current_pricing",
+      "reason": "No current usable rent was found on the official site or approved backup sources (Zillow/Redfin).",
+      "decision_source": "pricing_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/53",
+        "id": "altamira-apartments"
+      },
+      "pricing_research_notes": [
+        "A targeted Zillow/Redfin search did not locate a current priced listing for this property. Excluded nonapproved third-party listings; no price is available from allowed sources."
+      ]
+    },
+    {
+      "id": "brooklyn-65",
+      "name": "Brooklyn 65",
+      "previous_names": [
+        "1222 Ne 65Th St Project"
+      ],
+      "address": "1222 NE 65th St, Seattle, WA 98115",
+      "website": "https://www.redsidepartners.com/property/brooklyn-65/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "no_usable_current_pricing",
+      "reason": "The only priced available studio was income-restricted; no unrestricted market-rate rent was available.",
+      "decision_source": "pricing_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/54",
+        "id": "brooklyn-65"
+      },
+      "pricing_research_notes": [
+        "Only priced available studio is income-restricted. No unrestricted market-rate price is available to estimate a 1BR or derive a same-list ratio."
+      ]
+    },
+    {
+      "id": "capri-apartments",
+      "name": "Capri Apartments",
+      "previous_names": [],
+      "address": "21416 52nd Ave W, Mountlake Terrace, WA 98043",
+      "website": "https://www.liveatcapriapts.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "single_non_fitness_amenity",
+      "reason": "Only one normalized amenity remained: Swimming pool. The user requested removal of single-amenity buildings except those whose sole amenity is a fitness center/gym.",
+      "decision_source": "single_amenity_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/63",
+        "id": "capri-apartments"
+      },
+      "normalized_amenities_at_exclusion": [
+        "Swimming pool"
+      ]
+    },
+    {
+      "id": "city-watch-apartments",
+      "name": "City Watch Apartments",
+      "previous_names": [],
+      "address": "4744 41st Avenue SW, Seattle, WA 98116",
+      "website": "https://www.citywatchapts.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "single_non_fitness_amenity",
+      "reason": "Only one normalized amenity remained: Rooftop garden. The user requested removal of single-amenity buildings except those whose sole amenity is a fitness center/gym.",
+      "decision_source": "single_amenity_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/64",
+        "id": "city-watch-apartments"
+      },
+      "normalized_amenities_at_exclusion": [
+        "Rooftop garden"
+      ]
+    },
+    {
+      "id": "elliott-bayview-apartment-homes",
+      "name": "Elliott Bayview Apartment Homes",
+      "previous_names": [],
+      "address": "151 John Street, Seattle, WA 98109",
+      "website": "https://www.elliottbayviewapts.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "no_usable_current_pricing",
+      "reason": "The general rent range could not be tied to a bedroom type, so it could not support a one-bedroom estimate.",
+      "decision_source": "pricing_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/55",
+        "id": "elliott-bayview-apartment-homes"
+      },
+      "pricing_research_notes": [
+        "Overall range does not identify a one-bedroom price, so it cannot support a monthly estimate."
+      ]
+    },
+    {
+      "id": "lakeside-apartments",
+      "name": "Lakeside Apartments",
+      "previous_names": [],
+      "address": "6102 St Albion Way, Mountlake Terrace, WA 98043",
+      "website": "https://www.apartmenthomesatlakeside.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "single_non_fitness_amenity",
+      "reason": "Only one normalized amenity remained: Resident lounge / clubhouse. The user requested removal of single-amenity buildings except those whose sole amenity is a fitness center/gym.",
+      "decision_source": "single_amenity_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/65",
+        "id": "lakeside-apartments"
+      },
+      "normalized_amenities_at_exclusion": [
+        "Resident lounge / clubhouse"
+      ]
+    },
+    {
+      "id": "lime-studios",
+      "name": "Lime Studios",
+      "previous_names": [
+        "3639 Linden"
+      ],
+      "address": "3639 Linden Avenue N, Seattle, WA 98103",
+      "website": "http://www.limefremont.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "no_usable_current_pricing",
+      "reason": "The priced studio units were marked unavailable; no current available rent could be used for extrapolation.",
+      "decision_source": "pricing_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/56",
+        "id": "lime-studios"
+      },
+      "pricing_research_notes": [
+        "Lime Studios is studio-only, but the current Zillow page marks both priced units as unavailable; no current available rent can be used for extrapolation. Return N/A."
+      ]
+    },
+    {
+      "id": "rubix",
+      "name": "Rubix",
+      "previous_names": [],
+      "address": "515 Harvard Ave E, Seattle, WA 98102",
+      "website": "https://www.rubixapartments.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "no_usable_current_pricing",
+      "reason": "Only income-restricted MFTE pricing was available; no unrestricted studio, one-bedroom or two-bedroom rent could be verified.",
+      "decision_source": "pricing_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/57",
+        "id": "rubix"
+      },
+      "pricing_research_notes": [
+        "No unrestricted studio/1-bedroom/2-bedroom rent could be verified; excluded MFTE studio price and unrelated nearby listings."
+      ]
+    },
+    {
+      "id": "solara",
+      "name": "Solara",
+      "previous_names": [],
+      "address": "12736 Lake City Way NE, Seattle, WA 98125",
+      "website": "https://www.solaraapts.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "single_non_fitness_amenity",
+      "reason": "Only one normalized amenity remained: Movie theater. The user requested removal of single-amenity buildings except those whose sole amenity is a fitness center/gym.",
+      "decision_source": "single_amenity_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/66",
+        "id": "solara"
+      },
+      "normalized_amenities_at_exclusion": [
+        "Movie theater"
+      ]
+    },
+    {
+      "id": "stencil",
+      "name": "Stencil",
+      "previous_names": [],
+      "address": "2407 East Union Street, Seattle, WA 98122",
+      "website": "https://www.stencilapartments.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "single_non_fitness_amenity",
+      "reason": "Only one normalized amenity remained: Rooftop deck. The user requested removal of single-amenity buildings except those whose sole amenity is a fitness center/gym.",
+      "decision_source": "single_amenity_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/67",
+        "id": "stencil"
+      },
+      "normalized_amenities_at_exclusion": [
+        "Rooftop deck"
+      ]
+    },
+    {
+      "id": "stream-403",
+      "name": "Stream 403",
+      "previous_names": [
+        "Stream Belmont"
+      ],
+      "address": "403 Belmont Ave E, Seattle, WA 98102",
+      "website": "https://stream403.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "no_usable_current_pricing",
+      "reason": "Priced units were stale or marked unavailable; no current available studio, one-bedroom or two-bedroom rent was found.",
+      "decision_source": "pricing_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/58",
+        "id": "stream-403"
+      },
+      "pricing_research_notes": [
+        "No currently available studio, 1BR, or 2BR price found; report N/A despite stale/unavailable rent rows."
+      ]
+    },
+    {
+      "id": "the-accolade-u-district",
+      "name": "The Accolade U District",
+      "previous_names": [],
+      "address": "4126 12th Ave NE, Seattle, WA 98105",
+      "website": "https://www.theaccoladeudistrict.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "no_usable_current_pricing",
+      "reason": "Available pricing was per resident/installment for shared student layouts, not a verified whole-apartment rent; the Zillow room listing was historical/off-market.",
+      "decision_source": "pricing_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/59",
+        "id": "the-accolade-u-district"
+      },
+      "pricing_research_notes": [
+        "No eligible current whole-apartment rent found: official student prices are per resident/installment for shared layouts, and the Zillow room listing is historical/off-market. Report N/A; do not feed a per-bed figure into building bedroom ratios."
+      ]
+    },
+    {
+      "id": "the-local-418",
+      "name": "The Local 418",
+      "previous_names": [
+        "The Local"
+      ],
+      "address": "418 Bellevue Ave E, Seattle, WA 98102",
+      "website": "https://www.thelocalapartments.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "no_usable_current_pricing",
+      "reason": "The only currently priced unit was an income-restricted IZ studio; no eligible current market-rate rent was available.",
+      "decision_source": "pricing_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/60",
+        "id": "the-local-418"
+      },
+      "pricing_research_notes": [
+        "The only currently priced unit found is an income-restricted IZ studio, which is excluded from the market-rate estimate. Current official availability shows 0 listings, and current Redfin shows no 1BR; with no eligible current market-rate studio/1BR/2BR price, no within-list ratio can be applied, so report N/A.",
+        "The current one-month-free offer is limited to select units and the only priced current unit is IZ; its eligibility is not established."
+      ]
+    },
+    {
+      "id": "the-local-422",
+      "name": "The Local 422",
+      "previous_names": [],
+      "address": "422 Summit Ave E, Seattle, WA 98102",
+      "website": "https://www.thelocalapartments.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "no_usable_current_pricing",
+      "reason": "Current official, Zillow and Redfin listings did not disclose a price; the older quote could not be verified as current.",
+      "decision_source": "pricing_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/61",
+        "id": "the-local-422"
+      },
+      "pricing_research_notes": [
+        "No current price is displayed on the official page, Zillow, or Redfin. An older $1,535 quote is not present in the current listings and was excluded.",
+        "Since there are available 1BR floorplans but no disclosed prices, this is no_pricing rather than a rate anchor or extrapolation case."
+      ]
+    },
+    {
+      "id": "the-lofts-at-325-westlake",
+      "name": "The Lofts at 325 Westlake",
+      "previous_names": [
+        "325 Westlake"
+      ],
+      "address": "325 Westlake Ave N, Seattle, WA 98109",
+      "website": "https://325westlake.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "no_usable_current_pricing",
+      "reason": "No confirmed currently available priced unit was found; a broad Zillow result was not confirmed by the building page or official availability.",
+      "decision_source": "pricing_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/62",
+        "id": "the-lofts-at-325-westlake"
+      },
+      "pricing_research_notes": [
+        "A broad Zillow result showed an unverified $3,250 listing but the building page and live official availability do not confirm it as current/available; no price used."
+      ]
+    },
+    {
+      "id": "the-ridge-at-bellevue",
+      "name": "The Ridge at Bellevue",
+      "previous_names": [],
+      "address": "13831 NE 8th St, Bellevue, WA 98005",
+      "website": "https://www.theridgeatbellevue.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "single_non_fitness_amenity",
+      "reason": "Only one normalized amenity remained: Courtyard. The user requested removal of single-amenity buildings except those whose sole amenity is a fitness center/gym.",
+      "decision_source": "single_amenity_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/68",
+        "id": "the-ridge-at-bellevue"
+      },
+      "normalized_amenities_at_exclusion": [
+        "Courtyard"
+      ]
+    },
+    {
+      "id": "uwajimaya-village-apartments",
+      "name": "Uwajimaya Village Apartments",
+      "previous_names": [],
+      "address": "521 S Weller Street, Seattle, WA 98104",
+      "website": "https://www.equityapartments.com/seattle/international-district/uwajimaya-village-apartments",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "single_non_fitness_amenity",
+      "reason": "Only one normalized amenity remained: Courtyard. The user requested removal of single-amenity buildings except those whose sole amenity is a fitness center/gym.",
+      "decision_source": "single_amenity_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/69",
+        "id": "uwajimaya-village-apartments"
+      },
+      "normalized_amenities_at_exclusion": [
+        "Courtyard"
+      ]
+    },
+    {
+      "id": "val-anne",
+      "name": "Val Anne",
+      "previous_names": [],
+      "address": "800 Queen Anne Avenue N, Seattle, WA 98109",
+      "website": "https://www.val-anne.com/",
+      "excluded_at": "2026-10-09",
+      "do_not_readd": true,
+      "reason_code": "single_non_fitness_amenity",
+      "reason": "Only one normalized amenity remained: Rooftop deck. The user requested removal of single-amenity buildings except those whose sole amenity is a fitness center/gym.",
+      "decision_source": "single_amenity_removal",
+      "audit_reference": {
+        "file": "generation-rules/research-audit.json",
+        "json_pointer": "/excluded/70",
+        "id": "val-anne"
+      },
+      "normalized_amenities_at_exclusion": [
+        "Rooftop deck"
+      ]
+    }
+  ]
+}

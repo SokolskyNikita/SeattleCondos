@@ -1,0 +1,4747 @@
+{
+  "schema_version": 1,
+  "rules_version": "1.1.1",
+  "updated_at": "2026-10-09",
+  "scope": "Reusable rules for names-only normalization of shared amenities and the separately applied, user-approved building eligibility filter for the Seattle apartment directory. Exact mappings implement consolidation, renaming, splitting and component exclusions; the documented eligibility policy governs a subsequent membership decision. Neither stage establishes new researched property facts.",
+  "execution": {
+    "processor": "generation-rules/process_amenities.py",
+    "mode": "exact_reviewed_mappings",
+    "mapping_semantics": "Each normalized source name maps to zero or more canonical feature labels. An empty array excludes that source from the main list. review_notes document unresolved name ambiguity. Policies explain how to review future additions; mappings are the executable decisions.",
+    "unknown_names": "error_before_writes",
+    "source_field": "amenities_original (created from amenities on the first run)",
+    "output_field": "amenities",
+    "detail_field": "amenity_details.<canonical name>.source_descriptions; optional related_details for conditional, non-establishing context",
+    "review_field": "amenity_review_notes",
+    "report_file": "generation-rules/amenity-processing-report.json",
+    "dry_run": "python3 generation-rules/process_amenities.py",
+    "apply": "python3 generation-rules/process_amenities.py --write",
+    "verify": "python3 generation-rules/process_amenities.py --check",
+    "detail_attachments": "Exact normalized source keys with attach_to_if_present and a note; attachments are evaluated after facility mappings and never create labels.",
+    "building_eligibility": "The building_eligibility section documents the separate directory-filtering stage. generation-rules/process_amenities.py normalizes labels and preserves building membership; it does not automatically execute this eligibility filter."
+  },
+  "normalization": [
+    "trim",
+    "remove_trailing_periods",
+    "collapse_whitespace",
+    "casefold"
+  ],
+  "rule_precedence": {
+    "executable_name_decisions": [
+      "mappings",
+      "detail_attachments",
+      "review_notes"
+    ],
+    "review_guidance_order": [
+      "Explicit approved decisions in rare_amenity_review",
+      "General policies and excluded_components"
+    ],
+    "specific_over_general": "Specific approved omissions, folds and renames take precedence over broad guidance to retain creative spaces, services, games or fitness programs. Reflect approved changes in the exact mappings before running the processor.",
+    "unknown_input": "An unrecognized source name stops processing before writes; general guidance is not an automatic keyword or fuzzy-matching fallback.",
+    "eligibility_stage": "Apply building_eligibility only after splitting, exclusions, canonical naming and per-building deduplication are complete."
+  },
+  "policies": [
+    {
+      "id": "order",
+      "rule": "Normalize case, whitespace and trailing periods; identify distinct explicitly named functions before removing components; canonicalize functions; exclude low-value components; deduplicate canonical labels within each building. Exact reviewed mappings implement these decisions."
+    },
+    {
+      "id": "compound_removal",
+      "rule": "Never discard an entire compound because it includes an excluded component. Preserve the lounge, kitchen, parking, charging, games, etc. surrounding Wi-Fi, ordinary TVs, furniture, or access-control language."
+    },
+    {
+      "id": "functions_and_rooms",
+      "rule": "Labels describe useful functions, not a count of separate rooms. Preserve shared-space relationships through each label's original source description. A shared yoga/spin studio stays one shared studio label. Never sum label counts as an amenity score."
+    },
+    {
+      "id": "synonyms",
+      "rule": "Consolidate clear synonyms and spelling/plural variants. Slashes or the word and do not automatically imply multiple functions: hot tub/spa, barbecue/grill, and clubhouse/community lounge are single functions."
+    },
+    {
+      "id": "conservative_inference",
+      "rule": "Never infer an outdoor rooftop from sky lounge, a full gym from fitness studio, a full kitchen from kitchenette/appliances, a spin studio from exercise bikes, a theater from a TV, charging from EV-ready parking, gardening plots from decorative gardens, secure bike storage from racks, or an on-site facility from an external partnership."
+    },
+    {
+      "id": "meaningful_splits",
+      "rule": "Separately name explicit useful functions such as lounge/kitchen/games; terrace/grills/fire pit/pizza oven; coworking/meeting/private workspace; gym/studios/sauna; pool/hot tub/cold plunge; dog run/wash; bike storage/repair/wash; garage/guest parking/EV charging; package lockers/room/refrigeration; kayaks/paddleboards/shared bikes; sports court/climbing wall; dining/catering kitchen. The approved rare_amenity_review keeps minor components, equipment and programs as details instead of separate labels."
+    },
+    {
+      "id": "ordinary_equipment",
+      "rule": "Do not create facility labels for ordinary equipment, furniture or incidental appliances. Free weights, exercise bikes, TRX equipment, ordinary TVs, chairs, mini-fridges, hydration dispensers and incidental coffee machines are details. DJ booths, stages, locker rooms and the other approved rare-review components also remain details. Explicit coffee bars and distinctive games remain amenities; Skee-Ball is included under Arcade games."
+    },
+    {
+      "id": "location_and_subtypes",
+      "rule": "Preserve rooftop vs ground-level outdoor space, indoor lounge vs outdoor deck, pet relief vs dog run vs indoor play, bike parking vs storage, kitchen vs kitchenette, and media lounge vs theater. EV readiness is a Parking detail, never installed EV charging. Indoor/outdoor, heated, seasonal, rooftop pool and similar qualifiers remain attached in source descriptions. Do not add generic parent and specialized labels for the same facility."
+    },
+    {
+      "id": "practical_and_distinctive",
+      "rule": "Retain parking, EV charging, storage, bike facilities, package facilities, laundry, concierge and guest suites, even if paid. Retain explicitly named distinctive recreation, watercraft, kitchens, wellness facilities, gardens, workspaces and creative rooms with an explicit resident use/function, games and sports. Vague Creative studio and Workspace (unspecified) labels remain withheld under the specific rare-amenity decisions. Retain Fitness classes; Personal training, Cooking events and Nutrition consultations remain source/program details under the approved rare_amenity_review. Keep Doorman and Dry cleaning service. Tools to borrow are Tool lending."
+    },
+    {
+      "id": "qualifiers",
+      "rule": "Preserve all original descriptions verbatim. Paid, seasonal, 24/7, reservable, off-site/shared-property access, availability, quantities, brands, sizes, views and restrictions stay with the original source. amenity_details.source_descriptions supports the label; optional related_details preserves associated context without establishing the parent or transferring qualifiers such as lobby-staffing hours to concierge service."
+    },
+    {
+      "id": "ambiguity",
+      "rule": "Preserve source wording and add a review note without research or unsupported upgrades. Spa and pet spa without stated functions remain unspecified labels. Sky lounge becomes a resident lounge with no rooftop inference; a bare kitchen has unspecified equipment. Withhold the vague studios, workspaces, repair/access claims explicitly listed in rare_amenity_review from main facility labels; their original descriptions and caveats remain."
+    },
+    {
+      "id": "deduplication",
+      "rule": "Deduplicate canonical names across all source entries per building. Retain all distinct source descriptions supporting the label. Multiple lounges or grills do not create repeated labels; explicitly stated quantities stay in their descriptions."
+    },
+    {
+      "id": "inclusion",
+      "rule": "Keep normalization and membership filtering separate. After canonicalization and deduplication, apply building_eligibility: normally require at least two distinct retained labels; retain a single Fitness center (including source gym synonyms), and archive singletons with any other label. Zero-label results are flagged for separate inclusion review. generation-rules/process_amenities.py itself preserves every building and all unrelated data."
+    },
+    {
+      "id": "future_inputs",
+      "rule": "Use exact reviewed normalized-name mappings. Unknown inputs stop processing before writes; they are not guessed, silently omitted, or accepted as a new canonical category. Extend mappings and, only when needed, canonical_amenities; then rerun the processor."
+    },
+    {
+      "id": "rare_label_details",
+      "rule": "Follow rare_amenity_review for approved omissions, folds and renames. A minor detail may attach only to an independently established parent amenity. Never infer a fitness center from a locker room, a sauna from a plunge shower, a lounge from a stage, or concierge service from a staffed lobby."
+    }
+  ],
+  "building_eligibility": {
+    "approved_at": "2026-10-09",
+    "evaluation_stage": "After amenity normalization and per-building deduplication",
+    "amenity_field": "amenities",
+    "count_basis": "Number of distinct retained canonical feature labels, excluding original descriptions, related details and withheld labels. This eligibility threshold is not an amenity score or count of physical rooms.",
+    "minimum_shared_amenities": 2,
+    "single_amenity_exception_labels": [
+      "Fitness center"
+    ],
+    "single_amenity_exception_source_aliases": [
+      "gym",
+      "fitness center"
+    ],
+    "exception_matching": "Evaluate the canonical label Fitness center after mapping source synonyms. Do not extend the exception to Fitness studio, ambiguous gym access or external partnerships.",
+    "decisions": [
+      {
+        "condition": "Two or more distinct retained canonical amenities",
+        "action": "Retain, subject to the other directory eligibility criteria"
+      },
+      {
+        "condition": "Exactly one retained canonical amenity, and it is Fitness center",
+        "action": "Retain under the fitness-center/gym exception"
+      },
+      {
+        "condition": "Exactly one retained canonical amenity, and it is not Fitness center",
+        "action": "Exclude from the active directory and archive its full record"
+      },
+      {
+        "condition": "Zero retained canonical amenities",
+        "action": "Flag for a separate inclusion review; the names-only processor does not delete it automatically"
+      }
+    ],
+    "implementation": "This policy is explicitly separate from generation-rules/process_amenities.py. The approved eight-building filter has already been applied and recorded in generation-rules/research-audit.json.single_amenity_exclusion_audit.",
+    "archive_requirements": [
+      "Preserve the complete removed building record, including amenities_original, amenity_details and source evidence, in generation-rules/research-audit.json.excluded.",
+      "Record the exclusion reason, date, removed IDs, before/after active counts and retained singleton exceptions.",
+      "Update the corresponding decision record while preserving its previous decision and reason.",
+      "Keep the active directory and active pricing-record IDs/counts aligned; archive removed pricing evidence with the building.",
+      "Preserve historical pricing ratio cohorts and existing estimates; amenity filtering alone does not reprice the remaining buildings.",
+      "Refresh the amenity processing report and relevant directory metadata after the membership change."
+    ],
+    "previously_excluded_buildings": "Before adding or merging any building into apartments.json, check generation-rules/excluded-apartments.json by id, current or previous name, address and property website. Do not automatically re-add a matching building, including under a new name or ID. Reinstatement requires an explicit user decision and a documented update to this registry; newly found prices or amenities alone do not override the exclusion.",
+    "applied_filter_snapshot": {
+      "checked_at": "2026-10-09",
+      "counts": {
+        "removed": 8,
+        "active_buildings_before": 345,
+        "active_buildings_after": 337
+      },
+      "removed_ids": [
+        "capri-apartments",
+        "city-watch-apartments",
+        "lakeside-apartments",
+        "solara",
+        "stencil",
+        "the-ridge-at-bellevue",
+        "uwajimaya-village-apartments",
+        "val-anne"
+      ],
+      "retained_single_amenity_ids": [
+        "tanager-grove",
+        "taylor-28"
+      ],
+      "audit_reference": "generation-rules/research-audit.json.single_amenity_exclusion_audit"
+    },
+    "exclusion_registry": "generation-rules/excluded-apartments.json"
+  },
+  "excluded_components": [
+    {
+      "category": "common_area_internet",
+      "examples": [
+        "community Wi-Fi",
+        "lobby Wi-Fi",
+        "complimentary Wi-Fi",
+        "common-area internet speed claims"
+      ],
+      "note": "Remove these even when bundled. Do not infer included in-unit internet from a building-wide marketing claim; explicitly included in-unit service would be a different feature."
+    },
+    {
+      "category": "basic_infrastructure",
+      "examples": [
+        "elevator",
+        "controlled access",
+        "courtesy patrol",
+        "ordinary lobby",
+        "mail room",
+        "compost/recycling room"
+      ],
+      "note": "Preserve independently named lounges, concierge, package storage, garages, and similar features within the same source."
+    },
+    {
+      "category": "ordinary_equipment_and_minor_conveniences",
+      "examples": [
+        "TV",
+        "seating",
+        "lounge furniture",
+        "free weights",
+        "exercise bikes",
+        "Peloton equipment",
+        "TRX equipment",
+        "printing",
+        "hydration stations"
+      ],
+      "note": "An explicitly named media lounge, outdoor movie screen, coffee bar or specialized game is still retained."
+    },
+    {
+      "category": "decorative_only",
+      "examples": [
+        "koi pond",
+        "water feature",
+        "green roof",
+        "landscaped grounds"
+      ],
+      "note": "Keep usable resident gardens, courtyards and explicit gardening plots. A green roof alone does not establish resident access."
+    },
+    {
+      "category": "vague_marketing",
+      "examples": [
+        "gathering spots",
+        "social spaces",
+        "dog amenities",
+        "pet-friendly spaces",
+        "shared amenities across residences"
+      ],
+      "note": "Retain useful, explicit facilities in the same description."
+    },
+    {
+      "category": "generic_programming",
+      "examples": [
+        "resident events",
+        "planned social activities",
+        "monthly gatherings"
+      ],
+      "note": "Fitness classes may remain; Cooking events, Nutrition consultations and Personal training are omitted as standalone labels under rare_amenity_review, with source/program details retained."
+    },
+    {
+      "category": "unit_private_features",
+      "examples": [
+        "private balconies",
+        "private decks/patios"
+      ],
+      "note": "Outside shared-amenity scope; original descriptions remain available for future unit information."
+    },
+    {
+      "category": "public_or_commercial_surroundings",
+      "examples": [
+        "on-site retail",
+        "on-site grocery store",
+        "public plaza",
+        "public courtyard"
+      ],
+      "note": "Outside resident-amenity scope; retain original descriptions for location/building notes."
+    },
+    {
+      "category": "qualifiers_as_standalone_names",
+      "examples": [
+        "views",
+        "floor number",
+        "square footage",
+        "luxury/executive branding",
+        "equipment/vendor brand"
+      ],
+      "note": "Remove from feature names while preserving full source descriptions. Do not remove useful associated facilities."
+    },
+    {
+      "category": "approved_rare_label_cleanup",
+      "examples": [
+        "Cooking events",
+        "Creative studio",
+        "External gym access",
+        "External spa access",
+        "Gym access (location unspecified)",
+        "Movement space",
+        "Nutrition consultations",
+        "Personal training",
+        "Repair station (unspecified)",
+        "Workspace (unspecified)"
+      ],
+      "note": "These specific labels are omitted from the main list; source descriptions and appropriate review notes are preserved. This is not a blanket ban on rare amenities or all resident services."
+    }
+  ],
+  "rare_amenity_review": {
+    "reviewed_at": "2026-10-09",
+    "based_on_rules_version": "1.0.0",
+    "scope": "User-approved names-only review of the 45 labels used by one active building each. Rarity alone is not an exclusion rule. Apply these explicit semantic decisions to all future reviewed mappings.",
+    "removed_standalone_labels": {
+      "Cooking events": "Low-priority resident programming; retain source text rather than a separate amenity label.",
+      "Creative studio": "Too vague to establish an art, music or workshop facility.",
+      "External gym access": "A fitness partnership does not by itself establish the access benefit.",
+      "External spa access": "Keep the service/access statement in source notes; location and included benefit are not established.",
+      "Gym access (location unspecified)": "Withhold from facility filters until the access arrangement and location are clear.",
+      "Movement space": "No identifiable facility or activity is established.",
+      "Nutrition consultations": "Low-priority service/program information belongs in source details.",
+      "Personal training": "Keep in fitness-program details rather than a separate facility label.",
+      "Repair station (unspecified)": "The source does not establish whether the tire-related repair station serves bikes or vehicles.",
+      "Workspace (unspecified)": "Bare office space does not establish resident coworking or private offices."
+    },
+    "folded_standalone_labels": {
+      "DJ booth": {
+        "replacement": [],
+        "detail_parent": [
+          "Resident lounge / clubhouse",
+          "Rooftop lounge"
+        ],
+        "reason": "Equipment detail of the lounge; keep explicit karaoke separately."
+      },
+      "EV-ready parking": {
+        "replacement": [
+          "Parking"
+        ],
+        "detail_parent": [
+          "Parking"
+        ],
+        "reason": "Parking with EV readiness in its description; installed charging is not established."
+      },
+      "Greenhouse": {
+        "replacement": [],
+        "detail_parent": [
+          "Rooftop lounge"
+        ],
+        "reason": "The source describes a greenhouse-style lounge, not a functional resident gardening greenhouse."
+      },
+      "Locker room": {
+        "replacement": [],
+        "detail_parent": [
+          "Fitness center"
+        ],
+        "reason": "Fitness-center detail; keep independently named sauna."
+      },
+      "Meditation space": {
+        "replacement": [],
+        "detail_parent": [
+          "Yoga studio"
+        ],
+        "reason": "Yoga-studio detail; preserve the outdoor location."
+      },
+      "Outdoor equipment repair station": {
+        "replacement": [],
+        "detail_parent": [
+          "Bike repair station"
+        ],
+        "reason": "Keep other outdoor-equipment repair capabilities in the existing repair-facility description."
+      },
+      "Oversized-package storage": {
+        "replacement": [],
+        "detail_parent": [
+          "Package room"
+        ],
+        "reason": "A capacity/detail of the independently named package room; keep package lockers separately."
+      },
+      "Plunge shower": {
+        "replacement": [],
+        "detail_parent": [
+          "Sauna"
+        ],
+        "reason": "Sauna detail; do not equate a shower to a cold-plunge tub."
+      },
+      "Skee-Ball": {
+        "replacement": [
+          "Arcade games"
+        ],
+        "detail_parent": [
+          "Game room / area"
+        ],
+        "reason": "Consolidate the game into Arcade games and preserve its specific name in the description."
+      },
+      "Staffed lobby": {
+        "replacement": [],
+        "detail_parent": [
+          "Concierge"
+        ],
+        "reason": "Keep lobby staffing as related service detail only when Concierge is independently established; 24/7 staffing does not establish concierge hours."
+      },
+      "Stage": {
+        "replacement": [],
+        "detail_parent": [
+          "Resident lounge / clubhouse",
+          "Rooftop lounge"
+        ],
+        "reason": "Entertainment-lounge detail; no separate performance venue is established."
+      },
+      "Wellness lounge": {
+        "replacement": [
+          "Resident lounge / clubhouse"
+        ],
+        "detail_parent": [
+          "Resident lounge / clubhouse"
+        ],
+        "reason": "Wellness does not establish a distinct function beyond the lounge."
+      },
+      "Wine lounge": {
+        "replacement": [
+          "Resident lounge / clubhouse"
+        ],
+        "detail_parent": [
+          "Resident lounge / clubhouse"
+        ],
+        "reason": "Keep the reservable wine-cellar setting as lounge detail and preserve Wine storage separately."
+      }
+    },
+    "renamed_labels": {
+      "Equipment lending": "Tool lending"
+    },
+    "retained_rare_labels": [
+      "Art studio",
+      "Barre / stretch studio",
+      "Beach club",
+      "Bowling alley",
+      "Cold plunge",
+      "Doorman",
+      "Dry cleaning service",
+      "Tool lending",
+      "Green screen studio",
+      "Lakefront access",
+      "Motorcycle parking",
+      "Movie screening area",
+      "Outdoor fitness area",
+      "Pilates studio",
+      "Playground",
+      "Rehearsal room",
+      "Shared park",
+      "Swimming pier",
+      "Tepidarium",
+      "Virtual reality room",
+      "Wine storage",
+      "Yoga / Pilates studio"
+    ],
+    "inventory_change": {
+      "before": 147,
+      "after": 124,
+      "standalone_labels_removed": 23,
+      "labels_renamed": 1,
+      "rare_labels_reviewed": 45,
+      "labels_omitted": 10,
+      "labels_folded_into_existing_features_or_details": 13,
+      "rare_labels_retained": 22,
+      "count_semantics": "The 23 retired standalone labels comprise 10 omissions and 13 folds. Equipment lending to Tool lending is a same-count rename. These counts describe the historical review, not a frequency-based exclusion threshold."
+    },
+    "preservation": "Original descriptions stay verbatim. Compound entries retain all surviving features. Details can attach to an independently established parent through detail_attachments; an attachment never creates that parent or implies its operating hours."
+  },
+  "change_history": [
+    {
+      "version": "1.0.0",
+      "date": "2026-10-09",
+      "changes": [
+        "Initial reviewed name consolidation, splitting and exclusions, including common-area Wi-Fi removal.",
+        "Preserved original descriptions, material qualifiers and source relationships; unknown names fail before writes."
+      ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-10-09",
+      "changes": [
+        "Applied the approved review of all 45 labels used by one building each: 10 omitted, 13 folded, 22 retained.",
+        "Renamed Equipment lending to Tool lending.",
+        "Added conditional related details without creating parent facilities or transferring hours.",
+        "Reduced the in-use inventory from 147 to 124 labels across the 337 retained buildings."
+      ]
+    },
+    {
+      "version": "1.1.1",
+      "date": "2026-10-09",
+      "changes": [
+        "Recorded the already-applied building eligibility rule and its fitness-center/gym exception in this reusable rules file.",
+        "Recorded archival and count-update requirements for separate membership filtering.",
+        "Clarified specific-rule precedence, explicit resident use for retained spaces, and the omitted-versus-folded review counts.",
+        "No changes to canonical labels, exact mappings, detail attachments, review notes or active building membership."
+      ]
+    }
+  ],
+  "canonical_amenities": [
+    "Arcade games",
+    "Art studio",
+    "Bar / wet bar",
+    "Barre / stretch studio",
+    "Basketball court",
+    "BBQ grills",
+    "Beach club",
+    "Bike parking",
+    "Bike repair station",
+    "Bike storage",
+    "Bike wash",
+    "Bocce court",
+    "Bouldering wall",
+    "Bowling alley",
+    "Business center",
+    "Cabanas",
+    "Catering kitchen",
+    "Climbing wall",
+    "Coffee bar",
+    "Cold plunge",
+    "Concierge",
+    "Courtyard",
+    "Covered parking",
+    "Coworking space",
+    "Demonstration kitchen",
+    "Dog park / run",
+    "Doorman",
+    "Dry cleaning service",
+    "EV car share",
+    "EV charging",
+    "EV parking (unspecified)",
+    "Event space",
+    "Fire pit",
+    "Fireplace",
+    "Fitness center",
+    "Fitness classes",
+    "Fitness studio",
+    "Foosball",
+    "Game room / area",
+    "Garage parking",
+    "Garden",
+    "Gardening plots",
+    "Golf simulator",
+    "Green screen studio",
+    "Guest parking",
+    "Guest suite",
+    "HIIT studio",
+    "Hot tub",
+    "Indoor pet play area",
+    "Karaoke",
+    "Kayak access",
+    "Kitchenette",
+    "Lakefront access",
+    "Library",
+    "Media lounge",
+    "Meeting room",
+    "Motorcycle parking",
+    "Movie screening area",
+    "Movie theater",
+    "Music room",
+    "Outdoor dining area",
+    "Outdoor fireplace",
+    "Outdoor fitness area",
+    "Outdoor games",
+    "Outdoor kitchen",
+    "Outdoor movie screen",
+    "Outdoor terrace / patio",
+    "Package lockers",
+    "Package room",
+    "Package service",
+    "Paddleboard access",
+    "Parking",
+    "Pavilion",
+    "Pet area (unspecified)",
+    "Pet grooming station",
+    "Pet relief area",
+    "Pet spa (unspecified)",
+    "Pet wash station",
+    "Picnic area",
+    "Pilates studio",
+    "Pizza oven",
+    "Playground",
+    "Playroom",
+    "Podcast room",
+    "Poker tables",
+    "Pool table",
+    "Private dining room",
+    "Private workspace",
+    "Putting green",
+    "Recreation room",
+    "Refrigerated package storage",
+    "Rehearsal room",
+    "Resident lounge / clubhouse",
+    "Resident storage",
+    "Rooftop deck",
+    "Rooftop garden",
+    "Rooftop lounge",
+    "Sauna",
+    "Shared bikes",
+    "Shared dining area",
+    "Shared kitchen",
+    "Shared laundry",
+    "Shared park",
+    "Shuffleboard",
+    "Solarium",
+    "Spa (unspecified)",
+    "Spin studio",
+    "Sports court",
+    "Steam room",
+    "Swimming pier",
+    "Swimming pool",
+    "Table tennis",
+    "Tepidarium",
+    "Tool lending",
+    "Treatment room",
+    "Valet trash service",
+    "Virtual reality room",
+    "Walking trails",
+    "Wellness studio",
+    "Wine storage",
+    "Workshop / makerspace",
+    "Yoga / Pilates studio",
+    "Yoga / spin studio",
+    "Yoga studio"
+  ],
+  "mappings": {
+    "1 gb internet in common areas": [],
+    "12th-floor north and east terraces with outdoor dining, fire pits, grills, and lounge seating": [
+      "BBQ grills",
+      "Fire pit",
+      "Outdoor dining area",
+      "Outdoor terrace / patio"
+    ],
+    "19th-floor rooftop terrace with outdoor kitchen, grill, and fire pit": [
+      "BBQ grills",
+      "Fire pit",
+      "Outdoor kitchen",
+      "Rooftop deck"
+    ],
+    "24-hour concierge": [
+      "Concierge"
+    ],
+    "24-hour concierge service": [
+      "Concierge"
+    ],
+    "24-hour concierge with package and delivery handling": [
+      "Concierge",
+      "Package service"
+    ],
+    "24-hour contactless package lockers": [
+      "Package lockers"
+    ],
+    "24-hour coworking space with private workstations and covered terrace": [
+      "Coworking space",
+      "Outdoor terrace / patio",
+      "Private workspace"
+    ],
+    "24-hour fitness center": [
+      "Fitness center"
+    ],
+    "24-hour fitness center and wellness studio": [
+      "Fitness center",
+      "Wellness studio"
+    ],
+    "24-hour fitness center and yoga room": [
+      "Fitness center",
+      "Yoga studio"
+    ],
+    "24-hour fitness center with spin bikes and personal workout pods": [
+      "Fitness center"
+    ],
+    "24-hour fitness center with trx system and tvs": [
+      "Fitness center"
+    ],
+    "24-hour fitness room": [
+      "Fitness center"
+    ],
+    "24-hour fitness studio": [
+      "Fitness studio"
+    ],
+    "24-hour package locker system": [
+      "Package lockers"
+    ],
+    "24-hour package lockers": [
+      "Package lockers"
+    ],
+    "24-hour package room with text notifications": [
+      "Package room"
+    ],
+    "24-hour package service": [
+      "Package service"
+    ],
+    "24/7 amazon package lockers in first-floor lobby package room": [
+      "Package lockers",
+      "Package room"
+    ],
+    "24/7 amazon package lockers with refrigerated storage": [
+      "Package lockers",
+      "Refrigerated package storage"
+    ],
+    "24/7 attended lobby with mail room": [],
+    "24/7 community gym": [
+      "Fitness center"
+    ],
+    "24/7 concierge": [
+      "Concierge"
+    ],
+    "24/7 concierge service": [
+      "Concierge"
+    ],
+    "24/7 dog run": [
+      "Dog park / run"
+    ],
+    "24/7 fitness center": [
+      "Fitness center"
+    ],
+    "24/7 fitness, yoga and hiit studios": [
+      "Fitness studio",
+      "HIIT studio",
+      "Yoga studio"
+    ],
+    "24/7 front desk with concierge support": [
+      "Concierge"
+    ],
+    "24/7 package lockers": [
+      "Package lockers"
+    ],
+    "24/7 package room": [
+      "Package room"
+    ],
+    "24/7 yoga room": [
+      "Yoga studio"
+    ],
+    "24th-floor sky lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "3,500-square-foot rooftop sky deck with bbqs and fire pit": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "35th-floor lounge and bar with tvs": [
+      "Bar / wet bar",
+      "Resident lounge / clubhouse"
+    ],
+    "360-degree rooftop deck with bbq grills": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "39th-floor fitness center": [
+      "Fitness center"
+    ],
+    "39th-floor lounge and wraparound terrace": [
+      "Outdoor terrace / patio",
+      "Resident lounge / clubhouse"
+    ],
+    "400-foot rooftop deck": [
+      "Rooftop deck"
+    ],
+    "40th-floor rooftop terrace": [
+      "Rooftop deck"
+    ],
+    "40th-floor wraparound deck": [
+      "Outdoor terrace / patio"
+    ],
+    "46th-floor sky lounge with kitchen, dining and catering kitchen": [
+      "Catering kitchen",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "60 ev charging stations": [
+      "EV charging"
+    ],
+    "6th-floor and 46th-floor terraces": [
+      "Outdoor terrace / patio"
+    ],
+    "6th-floor lounge with catering and demonstration kitchen, private dining areas, and outdoor terrace": [
+      "Catering kitchen",
+      "Demonstration kitchen",
+      "Outdoor terrace / patio",
+      "Private dining room",
+      "Resident lounge / clubhouse"
+    ],
+    "7th-floor resident lounge and workspace": [
+      "Coworking space",
+      "Resident lounge / clubhouse"
+    ],
+    "8th-floor clubhouse with billiards and demonstration kitchen, open until 10 pm daily": [
+      "Demonstration kitchen",
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "9,000 sq. ft. fitness center with towel service": [
+      "Fitness center"
+    ],
+    "access-controlled package room": [
+      "Package room"
+    ],
+    "additional resident storage": [
+      "Resident storage"
+    ],
+    "additional storage": [
+      "Resident storage"
+    ],
+    "additional storage available": [
+      "Resident storage"
+    ],
+    "additional storage space": [
+      "Resident storage"
+    ],
+    "aerobics studio": [
+      "Fitness studio"
+    ],
+    "amazon hub package lockers": [
+      "Package lockers"
+    ],
+    "amazon hub secure package delivery": [
+      "Package service"
+    ],
+    "amp lounge with wet bar, private karaoke room, arcade games and stage": [
+      "Arcade games",
+      "Bar / wet bar",
+      "Karaoke",
+      "Resident lounge / clubhouse"
+    ],
+    "app-controlled automatic car stacker parking": [
+      "Parking"
+    ],
+    "arcade and billiards": [
+      "Arcade games",
+      "Pool table"
+    ],
+    "arcade games": [
+      "Arcade games"
+    ],
+    "arcade lounge": [
+      "Arcade games",
+      "Resident lounge / clubhouse"
+    ],
+    "art studio": [
+      "Art studio"
+    ],
+    "assigned garage parking available for rent": [
+      "Garage parking"
+    ],
+    "assigned parking": [
+      "Parking"
+    ],
+    "automated package storage with cold storage": [
+      "Refrigerated package storage"
+    ],
+    "available extra storage units": [
+      "Resident storage"
+    ],
+    "backyard courtyard with ping pong and chess": [
+      "Courtyard",
+      "Table tennis"
+    ],
+    "bar": [
+      "Bar / wet bar"
+    ],
+    "bar / wet bar": [
+      "Bar / wet bar"
+    ],
+    "barbecue and picnic area": [
+      "BBQ grills",
+      "Picnic area"
+    ],
+    "barbecue area": [
+      "BBQ grills"
+    ],
+    "barbecue grills": [
+      "BBQ grills"
+    ],
+    "barbecue stations": [
+      "BBQ grills"
+    ],
+    "barbecue/grill area": [
+      "BBQ grills"
+    ],
+    "bark park and pet grooming station": [
+      "Dog park / run",
+      "Pet grooming station"
+    ],
+    "bark park and pet spa": [
+      "Dog park / run",
+      "Pet spa (unspecified)"
+    ],
+    "barre / stretch studio": [
+      "Barre / stretch studio"
+    ],
+    "barre and stretch studio": [
+      "Barre / stretch studio"
+    ],
+    "basketball court": [
+      "Basketball court"
+    ],
+    "bbq": [
+      "BBQ grills"
+    ],
+    "bbq and outdoor dining with outdoor kitchens and large tables": [
+      "BBQ grills",
+      "Outdoor dining area",
+      "Outdoor kitchen"
+    ],
+    "bbq and picnic area": [
+      "BBQ grills",
+      "Picnic area"
+    ],
+    "bbq area": [
+      "BBQ grills"
+    ],
+    "bbq areas": [
+      "BBQ grills"
+    ],
+    "bbq grill": [
+      "BBQ grills"
+    ],
+    "bbq grill station": [
+      "BBQ grills"
+    ],
+    "bbq grilling stations": [
+      "BBQ grills"
+    ],
+    "bbq grills": [
+      "BBQ grills"
+    ],
+    "bbq grills and outdoor dining": [
+      "BBQ grills",
+      "Outdoor dining area"
+    ],
+    "bbq terrace": [
+      "BBQ grills",
+      "Outdoor terrace / patio"
+    ],
+    "bbq/dining deck": [
+      "BBQ grills",
+      "Outdoor dining area",
+      "Outdoor terrace / patio"
+    ],
+    "bbq/grill area": [
+      "BBQ grills"
+    ],
+    "bbq/picnic area": [
+      "BBQ grills",
+      "Picnic area"
+    ],
+    "beach club": [
+      "Beach club"
+    ],
+    "bicycle repair and storage areas": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bicycle storage": [
+      "Bike storage"
+    ],
+    "bicycle storage and maintenance area": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bicycle storage and repair": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bicycle storage on every floor": [
+      "Bike storage"
+    ],
+    "bicycle wash room": [
+      "Bike wash"
+    ],
+    "bike and gear storage lockers": [
+      "Bike storage"
+    ],
+    "bike and storage space available": [
+      "Bike storage",
+      "Resident storage"
+    ],
+    "bike maintenance area": [
+      "Bike repair station"
+    ],
+    "bike parking": [
+      "Bike parking"
+    ],
+    "bike parking and maintenance repair room": [
+      "Bike parking",
+      "Bike repair station"
+    ],
+    "bike parking with on-site repair station": [
+      "Bike parking",
+      "Bike repair station"
+    ],
+    "bike racks": [
+      "Bike parking"
+    ],
+    "bike repair facility": [
+      "Bike repair station"
+    ],
+    "bike repair station": [
+      "Bike repair station"
+    ],
+    "bike room": [
+      "Bike storage"
+    ],
+    "bike room with repair area and individual bike lockers": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bike room with repair station": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bike shop": [],
+    "bike storage": [
+      "Bike storage"
+    ],
+    "bike storage and bike wash": [
+      "Bike storage",
+      "Bike wash"
+    ],
+    "bike storage and maintenance station": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bike storage and repair": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bike storage and repair area": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bike storage and repair shop": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bike storage and repair station": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bike storage and work room": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bike storage and workshop": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bike storage available for rent": [
+      "Bike storage"
+    ],
+    "bike storage on almost every floor with repair station": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bike storage with maintenance station": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bike storage with repair station": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "bike wash": [
+      "Bike wash"
+    ],
+    "bike wash and storage": [
+      "Bike storage",
+      "Bike wash"
+    ],
+    "billiards": [
+      "Pool table"
+    ],
+    "billiards and card lounge": [
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "billiards lounge": [
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "billiards room": [
+      "Pool table"
+    ],
+    "billiards table": [
+      "Pool table"
+    ],
+    "board room": [
+      "Meeting room"
+    ],
+    "boardroom with pool table": [
+      "Pool table"
+    ],
+    "bocce and shuffleboard courts": [
+      "Bocce court",
+      "Shuffleboard"
+    ],
+    "bocce ball": [
+      "Bocce court"
+    ],
+    "bocce ball court": [
+      "Bocce court"
+    ],
+    "bocce court": [
+      "Bocce court"
+    ],
+    "bouldering wall": [
+      "Bouldering wall"
+    ],
+    "bowling alley": [
+      "Bowling alley"
+    ],
+    "brevvie kiosks and dry cleaning service": [
+      "Dry cleaning service"
+    ],
+    "business center": [
+      "Business center"
+    ],
+    "business center and conference room": [
+      "Business center",
+      "Meeting room"
+    ],
+    "business center with conference room": [
+      "Business center",
+      "Meeting room"
+    ],
+    "business center with coworking lounge and conference room": [
+      "Business center",
+      "Coworking space",
+      "Meeting room"
+    ],
+    "business lobby": [],
+    "business lobby with coffee bar": [
+      "Coffee bar"
+    ],
+    "cabana": [
+      "Cabanas"
+    ],
+    "cabanas": [
+      "Cabanas"
+    ],
+    "café/coffee bar": [
+      "Coffee bar"
+    ],
+    "car charging stations": [
+      "EV charging"
+    ],
+    "cardio center": [
+      "Fitness center"
+    ],
+    "carport": [
+      "Covered parking"
+    ],
+    "cascade event space": [
+      "Event space"
+    ],
+    "catering kitchen": [
+      "Catering kitchen"
+    ],
+    "children's play studio": [
+      "Playroom"
+    ],
+    "climbing wall": [
+      "Climbing wall"
+    ],
+    "club and game room": [
+      "Game room / area",
+      "Resident lounge / clubhouse"
+    ],
+    "club lounge with pool table": [
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "club room": [
+      "Resident lounge / clubhouse"
+    ],
+    "club room with billiards, gaming area, kitchen and dining space": [
+      "Game room / area",
+      "Pool table",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "club room with entertaining island, lounge seating, outdoor terrace, and bbq": [
+      "BBQ grills",
+      "Outdoor terrace / patio",
+      "Resident lounge / clubhouse"
+    ],
+    "club room with kitchen, tv and entertainment area": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "club room with televisions, kitchen, and coworking spaces": [
+      "Coworking space",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "club room with tv and coffee bar": [
+      "Coffee bar",
+      "Resident lounge / clubhouse"
+    ],
+    "clubhouse": [
+      "Resident lounge / clubhouse"
+    ],
+    "clubhouse / community lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "clubhouse with attached rooftop deck": [
+      "Resident lounge / clubhouse",
+      "Rooftop deck"
+    ],
+    "clubhouse with big-screen tv and foosball table": [
+      "Foosball",
+      "Resident lounge / clubhouse"
+    ],
+    "clubroom": [
+      "Resident lounge / clubhouse"
+    ],
+    "clubroom with billiards": [
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "clubroom with demonstration kitchen": [
+      "Demonstration kitchen",
+      "Resident lounge / clubhouse"
+    ],
+    "clubroom with event kitchen": [
+      "Catering kitchen",
+      "Resident lounge / clubhouse"
+    ],
+    "clubroom with kitchen": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "clubroom with kitchen and lounge seating": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "clubroom with tv, kitchen, lounge seating and coworking, plus private workspaces on each floor": [
+      "Coworking space",
+      "Private workspace",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "co-working conference lounge": [
+      "Coworking space",
+      "Meeting room"
+    ],
+    "co-working lounge": [
+      "Coworking space"
+    ],
+    "co-working lounge with private conference room": [
+      "Coworking space",
+      "Meeting room"
+    ],
+    "co-working space": [
+      "Coworking space"
+    ],
+    "co-working space with meeting rooms and an acoustic podcasting room": [
+      "Coworking space",
+      "Meeting room",
+      "Podcast room"
+    ],
+    "co-working spaces": [
+      "Coworking space"
+    ],
+    "coffee bar": [
+      "Coffee bar"
+    ],
+    "coffee lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "coffee station": [
+      "Coffee bar"
+    ],
+    "cold plunge": [
+      "Cold plunge"
+    ],
+    "common areas with wi-fi": [],
+    "common-area laundry": [
+      "Shared laundry"
+    ],
+    "common-area wi-fi": [],
+    "common-area wifi": [],
+    "communal dining room and entertaining kitchen with indoor grill": [
+      "Shared dining area",
+      "Shared kitchen"
+    ],
+    "community bbq areas": [
+      "BBQ grills"
+    ],
+    "community bbq deck": [
+      "BBQ grills",
+      "Outdoor terrace / patio"
+    ],
+    "community bbq with pergola": [
+      "BBQ grills"
+    ],
+    "community bbqs": [
+      "BBQ grills"
+    ],
+    "community clubhouse": [
+      "Resident lounge / clubhouse"
+    ],
+    "community courtyard": [
+      "Courtyard"
+    ],
+    "community events": [],
+    "community garden": [
+      "Garden"
+    ],
+    "community gathering room with mezzanine": [
+      "Resident lounge / clubhouse"
+    ],
+    "community grill": [
+      "BBQ grills"
+    ],
+    "community grilling station": [
+      "BBQ grills"
+    ],
+    "community kitchen": [
+      "Shared kitchen"
+    ],
+    "community kitchen and dining area": [
+      "Shared dining area",
+      "Shared kitchen"
+    ],
+    "community kitchen and lounge": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "community kitchens and dining lounge": [
+      "Resident lounge / clubhouse",
+      "Shared dining area",
+      "Shared kitchen"
+    ],
+    "community laundry": [
+      "Shared laundry"
+    ],
+    "community lobbies": [],
+    "community lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "community lounge with fireplace, kitchen, and workstation": [
+      "Coworking space",
+      "Fireplace",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "community lounge with full kitchen, fireplace and games": [
+      "Fireplace",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "community lounge with kitchen, theater area and outdoor deck": [
+      "Movie theater",
+      "Outdoor terrace / patio",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "community mini market": [],
+    "community ping-pong area": [
+      "Table tennis"
+    ],
+    "community pool": [
+      "Swimming pool"
+    ],
+    "community room": [
+      "Resident lounge / clubhouse"
+    ],
+    "community room and co-working lounge with meeting and conference space": [
+      "Coworking space",
+      "Meeting room",
+      "Resident lounge / clubhouse"
+    ],
+    "community veggie and herb garden": [
+      "Gardening plots"
+    ],
+    "community wi-fi": [],
+    "community workspace": [
+      "Coworking space"
+    ],
+    "community-wide wifi": [],
+    "complimentary coffee and tea bar": [
+      "Coffee bar"
+    ],
+    "complimentary coffee bar": [
+      "Coffee bar"
+    ],
+    "complimentary wi-fi in common areas": [],
+    "complimentary wi-fi in social spaces": [],
+    "compost and recycling room": [],
+    "concierge": [
+      "Concierge"
+    ],
+    "concierge service": [
+      "Concierge"
+    ],
+    "concierge staffed full time": [
+      "Concierge"
+    ],
+    "conference and meeting rooms": [
+      "Meeting room"
+    ],
+    "conference center": [
+      "Meeting room"
+    ],
+    "conference room": [
+      "Meeting room"
+    ],
+    "conference rooms": [
+      "Meeting room"
+    ],
+    "conference space": [
+      "Meeting room"
+    ],
+    "controlled access": [],
+    "controlled access garage with guest parking and ev charging": [
+      "EV charging",
+      "Garage parking",
+      "Guest parking"
+    ],
+    "controlled access parking garage": [
+      "Garage parking"
+    ],
+    "controlled-access bicycle storage": [
+      "Bike storage"
+    ],
+    "controlled-access bike storage": [
+      "Bike storage"
+    ],
+    "controlled-access bike storage with repair and wash station": [
+      "Bike repair station",
+      "Bike storage",
+      "Bike wash"
+    ],
+    "controlled-access garage": [
+      "Garage parking"
+    ],
+    "controlled-access garage with reserved parking": [
+      "Garage parking"
+    ],
+    "controlled-access package room with 24/7 resident pickup": [
+      "Package room"
+    ],
+    "controlled-access parking": [
+      "Parking"
+    ],
+    "controlled-access parking garage": [
+      "Garage parking"
+    ],
+    "controlled-access parking garage with compact spaces available": [
+      "Garage parking"
+    ],
+    "controlled-access parking garage with ev charging, available for rent": [
+      "EV charging",
+      "Garage parking"
+    ],
+    "controlled-access underground parking": [
+      "Garage parking"
+    ],
+    "cooking events": [],
+    "cornhole game": [
+      "Outdoor games"
+    ],
+    "courtesy patrol": [],
+    "courtyard": [
+      "Courtyard"
+    ],
+    "courtyard fireplaces": [
+      "Courtyard",
+      "Outdoor fireplace"
+    ],
+    "courtyard grills": [
+      "BBQ grills",
+      "Courtyard"
+    ],
+    "courtyard lounge": [
+      "Courtyard",
+      "Resident lounge / clubhouse"
+    ],
+    "courtyard outdoor dining area": [
+      "Courtyard",
+      "Outdoor dining area"
+    ],
+    "courtyard patios": [
+      "Courtyard"
+    ],
+    "courtyard pavilion": [
+      "Courtyard",
+      "Pavilion"
+    ],
+    "courtyard with barbecue, dining nooks and fireplace": [
+      "BBQ grills",
+      "Courtyard",
+      "Outdoor dining area",
+      "Outdoor fireplace"
+    ],
+    "courtyard with bbqs and ping pong": [
+      "BBQ grills",
+      "Courtyard",
+      "Table tennis"
+    ],
+    "courtyard with fire pit": [
+      "Courtyard",
+      "Fire pit"
+    ],
+    "courtyard with firepit and lounge seating": [
+      "Courtyard",
+      "Fire pit"
+    ],
+    "courtyard with fireplace": [
+      "Courtyard",
+      "Outdoor fireplace"
+    ],
+    "courtyard with gathering and bbq areas": [
+      "BBQ grills",
+      "Courtyard"
+    ],
+    "courtyard with outdoor seating": [
+      "Courtyard"
+    ],
+    "courtyard with pergola and outdoor kitchen": [
+      "Courtyard",
+      "Outdoor kitchen"
+    ],
+    "courtyard with seating": [
+      "Courtyard"
+    ],
+    "courtyards": [
+      "Courtyard"
+    ],
+    "covered courtyard with seating": [
+      "Courtyard"
+    ],
+    "covered outdoor lounge with grilling and outdoor dining": [
+      "BBQ grills",
+      "Outdoor dining area",
+      "Resident lounge / clubhouse"
+    ],
+    "covered parking": [
+      "Covered parking"
+    ],
+    "coworking and conference spaces": [
+      "Coworking space",
+      "Meeting room"
+    ],
+    "coworking and meeting rooms": [
+      "Coworking space",
+      "Meeting room"
+    ],
+    "coworking area and meeting room": [
+      "Coworking space",
+      "Meeting room"
+    ],
+    "coworking desks": [
+      "Coworking space"
+    ],
+    "coworking lounge": [
+      "Coworking space"
+    ],
+    "coworking lounge and meeting rooms": [
+      "Coworking space",
+      "Meeting room"
+    ],
+    "coworking lounge and private study rooms": [
+      "Coworking space",
+      "Private workspace"
+    ],
+    "coworking lounge with reservable private micro-offices": [
+      "Coworking space",
+      "Private workspace"
+    ],
+    "coworking room with conference areas, booth seating, and private work pods": [
+      "Coworking space",
+      "Meeting room",
+      "Private workspace"
+    ],
+    "coworking rooms and dividable boardrooms with printing and scanning": [
+      "Coworking space",
+      "Meeting room"
+    ],
+    "coworking space": [
+      "Coworking space"
+    ],
+    "coworking space in the clubhouse, open until 10 pm": [
+      "Coworking space",
+      "Resident lounge / clubhouse"
+    ],
+    "coworking space with private offices": [
+      "Coworking space",
+      "Private workspace"
+    ],
+    "coworking space with wi-fi, open 9 am–10 pm": [
+      "Coworking space"
+    ],
+    "coworking spaces": [
+      "Coworking space"
+    ],
+    "coworking spaces open 24/7": [
+      "Coworking space"
+    ],
+    "coworking spaces with booth seating, wi-fi and tvs": [
+      "Coworking space"
+    ],
+    "coworking spaces, business lounge, boardroom and focus rooms": [
+      "Coworking space",
+      "Meeting room",
+      "Private workspace"
+    ],
+    "coworking/business center": [
+      "Coworking space"
+    ],
+    "coworking/business lounge": [
+      "Coworking space"
+    ],
+    "creative studio": [],
+    "crossfit/trx and cardio fitness rooms": [
+      "Fitness center"
+    ],
+    "cycling studio": [
+      "Spin studio"
+    ],
+    "dedicated bike storage": [
+      "Bike storage"
+    ],
+    "dedicated bike storage with bike fix-it station": [
+      "Bike repair station",
+      "Bike storage"
+    ],
+    "dedicated ev charging parking spaces available for rent": [
+      "EV charging",
+      "Parking"
+    ],
+    "demonstration kitchen": [
+      "Demonstration kitchen"
+    ],
+    "designated rooftop pet area": [
+      "Pet area (unspecified)"
+    ],
+    "diy project room with music system": [
+      "Workshop / makerspace"
+    ],
+    "diy workshop": [
+      "Workshop / makerspace"
+    ],
+    "dj booth": [],
+    "dog amenities": [],
+    "dog lounge and outdoor dog run": [
+      "Dog park / run",
+      "Pet area (unspecified)"
+    ],
+    "dog lounge and play area": [
+      "Pet area (unspecified)"
+    ],
+    "dog park": [
+      "Dog park / run"
+    ],
+    "dog park / run": [
+      "Dog park / run"
+    ],
+    "dog park and paw wash": [
+      "Dog park / run",
+      "Pet wash station"
+    ],
+    "dog park and pet spa": [
+      "Dog park / run",
+      "Pet spa (unspecified)"
+    ],
+    "dog park with pet spa": [
+      "Dog park / run",
+      "Pet spa (unspecified)"
+    ],
+    "dog relief area": [
+      "Pet relief area"
+    ],
+    "dog run": [
+      "Dog park / run"
+    ],
+    "dog run and dog wash station": [
+      "Dog park / run",
+      "Pet wash station"
+    ],
+    "dog run and pet-washing station": [
+      "Dog park / run",
+      "Pet wash station"
+    ],
+    "dog run and wash": [
+      "Dog park / run",
+      "Pet wash station"
+    ],
+    "dog run and washing station": [
+      "Dog park / run",
+      "Pet wash station"
+    ],
+    "dog run, pet wash, and drying stations": [
+      "Dog park / run",
+      "Pet wash station"
+    ],
+    "dog spa": [
+      "Pet spa (unspecified)"
+    ],
+    "dog spa and play area": [
+      "Pet area (unspecified)",
+      "Pet spa (unspecified)"
+    ],
+    "dog spa with grooming stations, indoor play area and covered outdoor dog park with agility stations": [
+      "Dog park / run",
+      "Indoor pet play area",
+      "Pet grooming station"
+    ],
+    "dog wash": [
+      "Pet wash station"
+    ],
+    "dog wash and grooming station": [
+      "Pet grooming station",
+      "Pet wash station"
+    ],
+    "dog wash and rooftop dog run": [
+      "Dog park / run",
+      "Pet wash station"
+    ],
+    "dog wash room": [
+      "Pet wash station"
+    ],
+    "dog wash rooms": [
+      "Pet wash station"
+    ],
+    "doorman": [
+      "Doorman"
+    ],
+    "dry cleaning service": [
+      "Dry cleaning service"
+    ],
+    "dry sauna with plunge shower": [
+      "Sauna"
+    ],
+    "dual-level fitness center": [
+      "Fitness center"
+    ],
+    "electric car charging stations": [
+      "EV charging"
+    ],
+    "electric vehicle charging": [
+      "EV charging"
+    ],
+    "electric vehicle charging stations": [
+      "EV charging"
+    ],
+    "electric-vehicle charging": [
+      "EV charging"
+    ],
+    "elevated park with walking paths and firepits": [
+      "Fire pit",
+      "Shared park",
+      "Walking trails"
+    ],
+    "elevator": [],
+    "enclosed dog park": [
+      "Dog park / run"
+    ],
+    "entertainment and billiards lounges": [
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "entertainment kitchen": [
+      "Shared kitchen"
+    ],
+    "entertainment lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "entertainment room with 7-by-12-foot tv wall and game lounge with billiards": [
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "entertainment suite": [
+      "Event space"
+    ],
+    "entertainment suites": [
+      "Event space"
+    ],
+    "entry courtyard with seating": [
+      "Courtyard"
+    ],
+    "envoy tesla rentals": [
+      "EV car share"
+    ],
+    "equipment lending": [
+      "Tool lending"
+    ],
+    "ev car share": [
+      "EV car share"
+    ],
+    "ev car sharing via envoy": [
+      "EV car share"
+    ],
+    "ev charging": [
+      "EV charging"
+    ],
+    "ev charging stations": [
+      "EV charging"
+    ],
+    "ev charging stations in parking stalls": [
+      "EV charging"
+    ],
+    "ev parking": [
+      "EV parking (unspecified)"
+    ],
+    "ev parking (optional paid spaces)": [
+      "EV parking (unspecified)"
+    ],
+    "ev parking (unspecified)": [
+      "EV parking (unspecified)"
+    ],
+    "ev-ready and ev-capable parking stalls": [
+      "Parking"
+    ],
+    "ev-ready parking": [
+      "Parking"
+    ],
+    "event space": [
+      "Event space"
+    ],
+    "event space with outdoor terrace": [
+      "Event space",
+      "Outdoor terrace / patio"
+    ],
+    "executive lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "executive party room": [
+      "Event space"
+    ],
+    "external gym access": [],
+    "external spa access": [],
+    "extra storage": [
+      "Resident storage"
+    ],
+    "extra storage space available for rent": [
+      "Resident storage"
+    ],
+    "family outdoor recreation space": [],
+    "fee-based controlled-access garage": [
+      "Garage parking"
+    ],
+    "fenced dog park": [
+      "Dog park / run"
+    ],
+    "fenced dog run": [
+      "Dog park / run"
+    ],
+    "fire feature": [
+      "Fire pit"
+    ],
+    "fire pit": [
+      "Fire pit"
+    ],
+    "fire pit and lounge seating": [
+      "Fire pit"
+    ],
+    "fire pit and outdoor seating": [
+      "Fire pit"
+    ],
+    "fire pit areas": [
+      "Fire pit"
+    ],
+    "fire pit lounge": [
+      "Fire pit",
+      "Resident lounge / clubhouse"
+    ],
+    "fire pits": [
+      "Fire pit"
+    ],
+    "fire table": [
+      "Fire pit"
+    ],
+    "firepit": [
+      "Fire pit"
+    ],
+    "firepit and grilling area": [
+      "BBQ grills",
+      "Fire pit"
+    ],
+    "firepits": [
+      "Fire pit"
+    ],
+    "firepits and bbq grills": [
+      "BBQ grills",
+      "Fire pit"
+    ],
+    "firepits and grilling stations": [
+      "BBQ grills",
+      "Fire pit"
+    ],
+    "fireplace": [
+      "Fireplace"
+    ],
+    "fireplace lounge": [
+      "Fireplace",
+      "Resident lounge / clubhouse"
+    ],
+    "fireplace lounge with full kitchen": [
+      "Fireplace",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "fireplaces": [
+      "Fireplace"
+    ],
+    "fireside lobby with free wifi": [
+      "Fireplace"
+    ],
+    "fireside lounge": [
+      "Fireplace",
+      "Resident lounge / clubhouse"
+    ],
+    "fireside work lounge": [
+      "Coworking space",
+      "Resident lounge / clubhouse"
+    ],
+    "first-floor bike room with bike storage": [
+      "Bike storage"
+    ],
+    "fitness center": [
+      "Fitness center"
+    ],
+    "fitness center (1,000 sq. ft.)": [
+      "Fitness center"
+    ],
+    "fitness center and flex studio": [
+      "Fitness center",
+      "Fitness studio"
+    ],
+    "fitness center and yoga studio": [
+      "Fitness center",
+      "Yoga studio"
+    ],
+    "fitness center with dedicated spin and yoga studio": [
+      "Fitness center",
+      "Yoga / spin studio"
+    ],
+    "fitness center with free weights": [
+      "Fitness center"
+    ],
+    "fitness center with locker room and sauna": [
+      "Fitness center",
+      "Sauna"
+    ],
+    "fitness center with on-demand workouts": [
+      "Fitness center"
+    ],
+    "fitness center with peloton classes and daily towel service": [
+      "Fitness center",
+      "Fitness classes"
+    ],
+    "fitness center with yoga studio": [
+      "Fitness center",
+      "Yoga studio"
+    ],
+    "fitness center, yoga studio and spin studio": [
+      "Fitness center",
+      "Spin studio",
+      "Yoga studio"
+    ],
+    "fitness classes": [
+      "Fitness classes"
+    ],
+    "fitness facility": [
+      "Fitness center"
+    ],
+    "fitness room": [
+      "Fitness center"
+    ],
+    "fitness room with yoga facilities": [
+      "Fitness center"
+    ],
+    "fitness studio": [
+      "Fitness studio"
+    ],
+    "fitness suite": [
+      "Fitness center"
+    ],
+    "flex fitness space": [
+      "Fitness studio"
+    ],
+    "foosball": [
+      "Foosball"
+    ],
+    "four rooftop decks": [
+      "Rooftop deck"
+    ],
+    "four rooftop patios/decks": [
+      "Rooftop deck"
+    ],
+    "four rooftop terraces with outdoor kitchens and fire pits": [
+      "Fire pit",
+      "Outdoor kitchen",
+      "Rooftop deck"
+    ],
+    "free internet throughout the building and parking garage": [],
+    "free weights": [],
+    "free wi-fi in amenity spaces": [],
+    "free wi-fi in common areas": [],
+    "free wifi in all common areas": [],
+    "full kitchen": [
+      "Shared kitchen"
+    ],
+    "game area": [
+      "Game room / area"
+    ],
+    "game loft": [
+      "Game room / area"
+    ],
+    "game lounge": [
+      "Game room / area"
+    ],
+    "game lounge with pool table and tvs": [
+      "Game room / area",
+      "Pool table"
+    ],
+    "game room": [
+      "Game room / area"
+    ],
+    "game room / area": [
+      "Game room / area"
+    ],
+    "game room with arcade games, pool table and shuffleboard": [
+      "Arcade games",
+      "Game room / area",
+      "Pool table",
+      "Shuffleboard"
+    ],
+    "game room with billiards": [
+      "Game room / area",
+      "Pool table"
+    ],
+    "game room with billiards, shuffleboard and game tables": [
+      "Game room / area",
+      "Pool table",
+      "Shuffleboard"
+    ],
+    "game room with cocktail-style lounge, outdoor cabana seating, and hibachi grill": [
+      "BBQ grills",
+      "Cabanas",
+      "Game room / area",
+      "Resident lounge / clubhouse"
+    ],
+    "game room with pool table": [
+      "Game room / area",
+      "Pool table"
+    ],
+    "games room": [
+      "Game room / area"
+    ],
+    "gaming lounge": [
+      "Game room / area"
+    ],
+    "garage": [
+      "Garage parking"
+    ],
+    "garage parking": [
+      "Garage parking"
+    ],
+    "garage parking available subject to availability": [
+      "Garage parking"
+    ],
+    "garage with dedicated ev charging spaces": [
+      "EV charging",
+      "Garage parking"
+    ],
+    "garden": [
+      "Garden"
+    ],
+    "garden courtyard lounge": [
+      "Courtyard",
+      "Resident lounge / clubhouse"
+    ],
+    "garden courtyards": [
+      "Courtyard"
+    ],
+    "garden patio and zen patio": [
+      "Garden",
+      "Outdoor terrace / patio"
+    ],
+    "garden terrace with grill and fire pit": [
+      "BBQ grills",
+      "Fire pit",
+      "Garden",
+      "Outdoor terrace / patio"
+    ],
+    "garden terrace with grilling stations": [
+      "BBQ grills",
+      "Garden",
+      "Outdoor terrace / patio"
+    ],
+    "gardening plots": [
+      "Gardening plots"
+    ],
+    "gas bbqs": [
+      "BBQ grills"
+    ],
+    "gas bbqs and outdoor seating": [
+      "BBQ grills"
+    ],
+    "gas firepit": [
+      "Fire pit"
+    ],
+    "gas grills": [
+      "BBQ grills"
+    ],
+    "gated bike storage": [
+      "Bike storage"
+    ],
+    "gated car parking": [
+      "Parking"
+    ],
+    "gated dog run": [
+      "Dog park / run"
+    ],
+    "gated garage parking": [
+      "Garage parking"
+    ],
+    "gated garage, ev parking spaces and surface parking available for rent": [
+      "EV parking (unspecified)",
+      "Garage parking",
+      "Parking"
+    ],
+    "gated multi-level parking garage": [
+      "Garage parking"
+    ],
+    "gated resident parking with ev charging stations": [
+      "EV charging",
+      "Parking"
+    ],
+    "gated underground parking": [
+      "Garage parking"
+    ],
+    "gathering spots": [],
+    "gear room with shared repair tools for bikes and outdoor equipment": [
+      "Bike repair station"
+    ],
+    "golf simulator": [
+      "Golf simulator"
+    ],
+    "golf simulator available for private reservation": [
+      "Golf simulator"
+    ],
+    "great room": [
+      "Resident lounge / clubhouse"
+    ],
+    "great room with fireplace": [
+      "Fireplace",
+      "Resident lounge / clubhouse"
+    ],
+    "green roof": [],
+    "green roof gardens": [],
+    "green screen studio": [
+      "Green screen studio"
+    ],
+    "greenhouse": [],
+    "grill stations": [
+      "BBQ grills"
+    ],
+    "grilling and outdoor dining areas": [
+      "BBQ grills",
+      "Outdoor dining area"
+    ],
+    "grilling area": [
+      "BBQ grills"
+    ],
+    "grilling stations": [
+      "BBQ grills"
+    ],
+    "grilling stations and outdoor dining areas": [
+      "BBQ grills",
+      "Outdoor dining area"
+    ],
+    "grills": [
+      "BBQ grills"
+    ],
+    "grills and fireplaces": [
+      "BBQ grills",
+      "Fireplace"
+    ],
+    "ground-floor plazas with outdoor seating": [
+      "Outdoor terrace / patio"
+    ],
+    "ground-level outdoor plaza": [
+      "Outdoor terrace / patio"
+    ],
+    "group fitness studio": [
+      "Fitness studio"
+    ],
+    "guest parking": [
+      "Guest parking"
+    ],
+    "guest parking in designated future-resident spaces after office hours": [
+      "Guest parking"
+    ],
+    "guest suite": [
+      "Guest suite"
+    ],
+    "guided fitness classes": [
+      "Fitness classes"
+    ],
+    "guided virtual fitness classes with a live coach": [
+      "Fitness classes"
+    ],
+    "gym": [
+      "Fitness center"
+    ],
+    "gym access": [],
+    "gym access (location unspecified)": [],
+    "heated bike storage": [
+      "Bike storage"
+    ],
+    "heated courtyard pavilion with grill station, fire pit, and outdoor dining": [
+      "BBQ grills",
+      "Courtyard",
+      "Fire pit",
+      "Outdoor dining area",
+      "Pavilion"
+    ],
+    "heated outdoor pool": [
+      "Swimming pool"
+    ],
+    "heated seasonal pool": [
+      "Swimming pool"
+    ],
+    "high-intensity training room": [
+      "HIIT studio"
+    ],
+    "high-intensity training studio": [
+      "HIIT studio"
+    ],
+    "hiit studio": [
+      "HIIT studio"
+    ],
+    "hot tub": [
+      "Hot tub"
+    ],
+    "hot tub/spa": [
+      "Hot tub"
+    ],
+    "hydration and beverage stations in lobby and wellness area": [],
+    "indoor and outdoor family lounge with outdoor playground": [
+      "Playground",
+      "Resident lounge / clubhouse"
+    ],
+    "indoor bicycle parking": [
+      "Bike parking"
+    ],
+    "indoor bouldering wall": [
+      "Bouldering wall"
+    ],
+    "indoor children’s playroom with kitchenette, reading nooks and chalkboard room": [
+      "Kitchenette",
+      "Playroom"
+    ],
+    "indoor clubroom with chef's kitchen": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "indoor cycling studio": [
+      "Spin studio"
+    ],
+    "indoor lap pool": [
+      "Swimming pool"
+    ],
+    "indoor lounge with fireplace and tv": [
+      "Fireplace",
+      "Resident lounge / clubhouse"
+    ],
+    "indoor movie theater": [
+      "Movie theater"
+    ],
+    "indoor pavilion with fireplace": [
+      "Fireplace",
+      "Pavilion"
+    ],
+    "indoor pet play area": [
+      "Indoor pet play area"
+    ],
+    "indoor pet retreat and spa with separate play space and bathing and grooming stations": [
+      "Indoor pet play area",
+      "Pet grooming station",
+      "Pet wash station"
+    ],
+    "indoor pool": [
+      "Swimming pool"
+    ],
+    "indoor pool and spa": [
+      "Spa (unspecified)",
+      "Swimming pool"
+    ],
+    "indoor pool and two outdoor pools with hot tubs, cold tub, cabanas and lounge chairs": [
+      "Cabanas",
+      "Cold plunge",
+      "Hot tub",
+      "Swimming pool"
+    ],
+    "indoor sky lounge with kitchen, fireplace and tv": [
+      "Fireplace",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "indoor sport court with climbing wall and adjacent sport court lounge": [
+      "Climbing wall",
+      "Resident lounge / clubhouse",
+      "Sports court"
+    ],
+    "indoor swimming pool": [
+      "Swimming pool"
+    ],
+    "indoor/outdoor bar and lounge with fireplace": [
+      "Bar / wet bar",
+      "Fireplace",
+      "Resident lounge / clubhouse"
+    ],
+    "indoor/outdoor kitchen": [
+      "Outdoor kitchen"
+    ],
+    "indoor/outdoor lobby": [],
+    "indoor/outdoor lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "indoor/outdoor lounge with fireplace, tvs and full kitchen": [
+      "Fireplace",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "indoor/outdoor lounge with pool table and shared kitchen appliances": [
+      "Kitchenette",
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "indoor/outdoor resident lounges": [
+      "Resident lounge / clubhouse"
+    ],
+    "indoor/outdoor sky lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "infrared sauna": [
+      "Sauna"
+    ],
+    "interior bike storage": [
+      "Bike storage"
+    ],
+    "interior courtyard": [
+      "Courtyard"
+    ],
+    "java café": [
+      "Coffee bar"
+    ],
+    "karaoke": [
+      "Karaoke"
+    ],
+    "karaoke corner": [
+      "Karaoke"
+    ],
+    "karaoke room": [
+      "Karaoke"
+    ],
+    "kayak access": [
+      "Kayak access"
+    ],
+    "kayaks": [
+      "Kayak access"
+    ],
+    "kitchen": [
+      "Shared kitchen"
+    ],
+    "kitchenette": [
+      "Kitchenette"
+    ],
+    "koi pond": [],
+    "lakefront access": [
+      "Lakefront access"
+    ],
+    "landscaped courtyard": [
+      "Courtyard"
+    ],
+    "landscaped courtyard and indoor/outdoor zen room": [
+      "Courtyard",
+      "Wellness studio"
+    ],
+    "landscaped grounds": [],
+    "landscaped terraces": [
+      "Outdoor terrace / patio"
+    ],
+    "large-format video wall for game days and entertainment": [],
+    "level 2 courtyard with bbqs and firepit": [
+      "BBQ grills",
+      "Courtyard",
+      "Fire pit"
+    ],
+    "level ii ev charging stations": [
+      "EV charging"
+    ],
+    "library": [
+      "Library"
+    ],
+    "living wall lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "lobby": [],
+    "lobby and lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "lobby bar": [
+      "Bar / wet bar"
+    ],
+    "lobby coffee bar": [
+      "Coffee bar"
+    ],
+    "lobby coffee station": [
+      "Coffee bar"
+    ],
+    "lobby lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "lobby lounge with concierge and coffee bar": [
+      "Coffee bar",
+      "Concierge",
+      "Resident lounge / clubhouse"
+    ],
+    "lobby lounge with fireplace": [
+      "Fireplace",
+      "Resident lounge / clubhouse"
+    ],
+    "locker room": [],
+    "lodge lounge and game room with wet bar, board games, billiards, shuffleboard and foosball": [
+      "Bar / wet bar",
+      "Foosball",
+      "Game room / area",
+      "Pool table",
+      "Resident lounge / clubhouse",
+      "Shuffleboard"
+    ],
+    "lounge and bar": [
+      "Bar / wet bar",
+      "Resident lounge / clubhouse"
+    ],
+    "lounge spaces": [
+      "Resident lounge / clubhouse"
+    ],
+    "lounge with a fire pit": [
+      "Fire pit",
+      "Resident lounge / clubhouse"
+    ],
+    "luxer one package lockers": [
+      "Package lockers"
+    ],
+    "luxer one package management system": [
+      "Package service"
+    ],
+    "luxerone package room with refrigeration": [
+      "Package room",
+      "Refrigerated package storage"
+    ],
+    "mail and package room": [
+      "Package room"
+    ],
+    "mail room with secure parcel lockers": [
+      "Package lockers"
+    ],
+    "mailroom with package storage": [
+      "Package room"
+    ],
+    "maker lab": [
+      "Workshop / makerspace"
+    ],
+    "maker space": [
+      "Workshop / makerspace"
+    ],
+    "makers studio": [
+      "Workshop / makerspace"
+    ],
+    "media and gaming room": [
+      "Game room / area",
+      "Media lounge"
+    ],
+    "media center": [
+      "Media lounge"
+    ],
+    "media lounge": [
+      "Media lounge"
+    ],
+    "media lounge with wet bar": [
+      "Bar / wet bar",
+      "Media lounge"
+    ],
+    "media room": [
+      "Media lounge"
+    ],
+    "meditation space": [],
+    "meeting room": [
+      "Meeting room"
+    ],
+    "monthly resident events": [],
+    "monthly resident events and group fitness classes": [
+      "Fitness classes"
+    ],
+    "monthly resident events including a lobby breakfast bar": [],
+    "motorcycle parking": [
+      "Motorcycle parking"
+    ],
+    "movement space": [],
+    "movie screening area": [
+      "Movie screening area"
+    ],
+    "movie theater": [
+      "Movie theater"
+    ],
+    "multi-level controlled-access parking garage": [
+      "Garage parking"
+    ],
+    "multi-level fitness center": [
+      "Fitness center"
+    ],
+    "multiple courtyards with seating": [
+      "Courtyard"
+    ],
+    "multiple rooftop decks with grills and firepits": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "music room": [
+      "Music room"
+    ],
+    "music studio": [
+      "Music room"
+    ],
+    "network room / coworking space": [
+      "Coworking space"
+    ],
+    "nutrition consultations": [],
+    "off-leash dog run": [
+      "Dog park / run"
+    ],
+    "off-leash pet area": [
+      "Dog park / run"
+    ],
+    "off-leash pet run": [
+      "Dog park / run"
+    ],
+    "off-street parking": [
+      "Parking"
+    ],
+    "office space": [],
+    "on-demand fitness": [
+      "Fitness classes"
+    ],
+    "on-site bike storage": [
+      "Bike storage"
+    ],
+    "on-site bike wash": [
+      "Bike wash"
+    ],
+    "on-site ev charging": [
+      "EV charging"
+    ],
+    "on-site ev charging stations": [
+      "EV charging"
+    ],
+    "on-site grocery store": [],
+    "on-site laundry": [
+      "Shared laundry"
+    ],
+    "on-site parking": [
+      "Parking"
+    ],
+    "on-site parking and extra storage options": [
+      "Parking",
+      "Resident storage"
+    ],
+    "on-site parking, availability varies": [
+      "Parking"
+    ],
+    "on-site retail": [],
+    "on-site theater room": [
+      "Movie theater"
+    ],
+    "onsite dog walk": [
+      "Pet area (unspecified)"
+    ],
+    "open-air courtyard": [
+      "Courtyard"
+    ],
+    "optional storage units for rent": [
+      "Resident storage"
+    ],
+    "outdoor amenity deck": [
+      "Outdoor terrace / patio"
+    ],
+    "outdoor bbq area": [
+      "BBQ grills"
+    ],
+    "outdoor bbq stations": [
+      "BBQ grills"
+    ],
+    "outdoor bbqs": [
+      "BBQ grills"
+    ],
+    "outdoor cinema": [
+      "Outdoor movie screen"
+    ],
+    "outdoor community courtyard/patio": [
+      "Courtyard"
+    ],
+    "outdoor courtyard": [
+      "Courtyard"
+    ],
+    "outdoor courtyard with bbq and lounge seating": [
+      "BBQ grills",
+      "Courtyard"
+    ],
+    "outdoor courtyards": [
+      "Courtyard"
+    ],
+    "outdoor courtyards and bbq grills": [
+      "BBQ grills",
+      "Courtyard"
+    ],
+    "outdoor deck with grilling stations": [
+      "BBQ grills",
+      "Outdoor terrace / patio"
+    ],
+    "outdoor dining area": [
+      "Outdoor dining area"
+    ],
+    "outdoor entertainment spaces": [],
+    "outdoor entertainment spaces with fireplace and barbecue grills": [
+      "BBQ grills",
+      "Outdoor fireplace"
+    ],
+    "outdoor equipment repair station": [],
+    "outdoor fire pit": [
+      "Fire pit"
+    ],
+    "outdoor fire pits and seating": [
+      "Fire pit"
+    ],
+    "outdoor fireplace": [
+      "Outdoor fireplace"
+    ],
+    "outdoor fireplaces": [
+      "Outdoor fireplace"
+    ],
+    "outdoor fitness area": [
+      "Outdoor fitness area"
+    ],
+    "outdoor games": [
+      "Outdoor games"
+    ],
+    "outdoor gathering spaces": [],
+    "outdoor green spaces": [],
+    "outdoor grill and lounge": [
+      "BBQ grills",
+      "Resident lounge / clubhouse"
+    ],
+    "outdoor grill station": [
+      "BBQ grills"
+    ],
+    "outdoor grilling and firepit": [
+      "BBQ grills",
+      "Fire pit"
+    ],
+    "outdoor grilling area": [
+      "BBQ grills"
+    ],
+    "outdoor grilling areas": [
+      "BBQ grills"
+    ],
+    "outdoor kitchen": [
+      "Outdoor kitchen"
+    ],
+    "outdoor kitchen and grilling station": [
+      "BBQ grills",
+      "Outdoor kitchen"
+    ],
+    "outdoor kitchen with grill": [
+      "BBQ grills",
+      "Outdoor kitchen"
+    ],
+    "outdoor kitchen/bbq": [
+      "BBQ grills",
+      "Outdoor kitchen"
+    ],
+    "outdoor kitchens": [
+      "Outdoor kitchen"
+    ],
+    "outdoor kitchens with bbq grills in the backyard and on the rooftop terrace": [
+      "BBQ grills",
+      "Outdoor kitchen",
+      "Rooftop deck"
+    ],
+    "outdoor lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "outdoor lounge furniture": [],
+    "outdoor lounge with bbq, dining area and fire pit": [
+      "BBQ grills",
+      "Fire pit",
+      "Outdoor dining area",
+      "Resident lounge / clubhouse"
+    ],
+    "outdoor movie screen": [
+      "Outdoor movie screen"
+    ],
+    "outdoor patio": [
+      "Outdoor terrace / patio"
+    ],
+    "outdoor patio and grill": [
+      "BBQ grills",
+      "Outdoor terrace / patio"
+    ],
+    "outdoor plaza": [
+      "Outdoor terrace / patio"
+    ],
+    "outdoor pool": [
+      "Swimming pool"
+    ],
+    "outdoor resident patio and plaza seating": [
+      "Outdoor terrace / patio"
+    ],
+    "outdoor seating": [],
+    "outdoor seating and firepits": [
+      "Fire pit"
+    ],
+    "outdoor semi-private dining area": [
+      "Outdoor dining area"
+    ],
+    "outdoor sport court": [
+      "Sports court"
+    ],
+    "outdoor sports pavilion": [
+      "Pavilion"
+    ],
+    "outdoor swimming pool": [
+      "Swimming pool"
+    ],
+    "outdoor terrace / patio": [
+      "Outdoor terrace / patio"
+    ],
+    "outdoor terrace with bbq": [
+      "BBQ grills",
+      "Outdoor terrace / patio"
+    ],
+    "outdoor terrace with bbq and fireplace": [
+      "BBQ grills",
+      "Outdoor fireplace",
+      "Outdoor terrace / patio"
+    ],
+    "outdoor terrace with fire pit and grills": [
+      "BBQ grills",
+      "Fire pit",
+      "Outdoor terrace / patio"
+    ],
+    "outdoor terrace with firepits and bbqs": [
+      "BBQ grills",
+      "Fire pit",
+      "Outdoor terrace / patio"
+    ],
+    "outdoor terrace with fireplace": [
+      "Outdoor fireplace",
+      "Outdoor terrace / patio"
+    ],
+    "outdoor terraces": [
+      "Outdoor terrace / patio"
+    ],
+    "outdoor tv lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "outdoor/indoor rooftop deck": [
+      "Rooftop deck"
+    ],
+    "over 80 secured garage parking spaces": [
+      "Garage parking"
+    ],
+    "oversized-package storage": [],
+    "package acceptance with delivery alerts": [
+      "Package service"
+    ],
+    "package concierge delivery system": [
+      "Package service"
+    ],
+    "package handling and in-home delivery services": [
+      "Package service"
+    ],
+    "package locker room": [
+      "Package lockers",
+      "Package room"
+    ],
+    "package lockers": [
+      "Package lockers"
+    ],
+    "package lockers and oversized package storage room": [
+      "Package lockers",
+      "Package room"
+    ],
+    "package management service": [
+      "Package service"
+    ],
+    "package receiving": [
+      "Package service"
+    ],
+    "package room": [
+      "Package room"
+    ],
+    "package room with cold storage": [
+      "Package room",
+      "Refrigerated package storage"
+    ],
+    "package room with intercom-based package access": [
+      "Package room"
+    ],
+    "package service": [
+      "Package service"
+    ],
+    "paddleboard access": [
+      "Paddleboard access"
+    ],
+    "paid on-site laundry": [
+      "Shared laundry"
+    ],
+    "parcel delivery system with refrigeration": [
+      "Package service",
+      "Refrigerated package storage"
+    ],
+    "parcel lockers": [
+      "Package lockers"
+    ],
+    "parcel room": [
+      "Package room"
+    ],
+    "parking": [
+      "Parking"
+    ],
+    "parking garage": [
+      "Garage parking"
+    ],
+    "parking garage and off-street parking": [
+      "Garage parking",
+      "Parking"
+    ],
+    "parking garage with spaces available for rent": [
+      "Garage parking"
+    ],
+    "parking options": [
+      "Parking"
+    ],
+    "parking with ev charging": [
+      "EV charging",
+      "Parking"
+    ],
+    "parking with ev charging stations": [
+      "EV charging",
+      "Parking"
+    ],
+    "patio": [
+      "Outdoor terrace / patio"
+    ],
+    "patio space with fireplace": [
+      "Outdoor fireplace",
+      "Outdoor terrace / patio"
+    ],
+    "pavilion": [
+      "Pavilion"
+    ],
+    "peloton": [],
+    "peloton cycling studio": [
+      "Spin studio"
+    ],
+    "penthouse lounge with fireplaces and pool table": [
+      "Fireplace",
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "personal fitness studio with yoga zone and smart fitness mirror": [
+      "Fitness studio"
+    ],
+    "personal training": [],
+    "pet and bike wash station": [
+      "Bike wash",
+      "Pet wash station"
+    ],
+    "pet area": [
+      "Pet area (unspecified)"
+    ],
+    "pet area (unspecified)": [
+      "Pet area (unspecified)"
+    ],
+    "pet decks": [
+      "Pet area (unspecified)"
+    ],
+    "pet grooming room": [
+      "Pet grooming station"
+    ],
+    "pet grooming station": [
+      "Pet grooming station"
+    ],
+    "pet lounge and outdoor pet terrace": [
+      "Pet area (unspecified)"
+    ],
+    "pet park": [
+      "Dog park / run"
+    ],
+    "pet park and pet spa open 24/7": [
+      "Dog park / run",
+      "Pet spa (unspecified)"
+    ],
+    "pet park with relief area": [
+      "Dog park / run",
+      "Pet relief area"
+    ],
+    "pet parks": [
+      "Dog park / run"
+    ],
+    "pet patio": [
+      "Pet area (unspecified)"
+    ],
+    "pet play area with a pet washing station": [
+      "Pet area (unspecified)",
+      "Pet wash station"
+    ],
+    "pet relief area": [
+      "Pet relief area"
+    ],
+    "pet run and pet spas": [
+      "Dog park / run",
+      "Pet spa (unspecified)"
+    ],
+    "pet spa": [
+      "Pet spa (unspecified)"
+    ],
+    "pet spa (unspecified)": [
+      "Pet spa (unspecified)"
+    ],
+    "pet spa and dog run": [
+      "Dog park / run",
+      "Pet spa (unspecified)"
+    ],
+    "pet spa and outdoor pet deck": [
+      "Pet area (unspecified)",
+      "Pet spa (unspecified)"
+    ],
+    "pet spa and outdoor run": [
+      "Dog park / run",
+      "Pet spa (unspecified)"
+    ],
+    "pet spa open 24/7": [
+      "Pet spa (unspecified)"
+    ],
+    "pet spa open 8 a.m.–10 p.m. and 24-hour off-leash pet area": [
+      "Dog park / run",
+      "Pet spa (unspecified)"
+    ],
+    "pet spa with dog wash stations": [
+      "Pet wash station"
+    ],
+    "pet spa with self-serve grooming and wash stations, indoor dog play area and 200 sq ft outdoor off-leash park": [
+      "Dog park / run",
+      "Indoor pet play area",
+      "Pet grooming station",
+      "Pet wash station"
+    ],
+    "pet spa with washing and grooming station": [
+      "Pet grooming station",
+      "Pet wash station"
+    ],
+    "pet wash": [
+      "Pet wash station"
+    ],
+    "pet wash and grooming room": [
+      "Pet grooming station",
+      "Pet wash station"
+    ],
+    "pet wash and grooming station with blow dryer and towel service": [
+      "Pet grooming station",
+      "Pet wash station"
+    ],
+    "pet wash room": [
+      "Pet wash station"
+    ],
+    "pet wash station": [
+      "Pet wash station"
+    ],
+    "pet wash with two stalls": [
+      "Pet wash station"
+    ],
+    "pet washing station": [
+      "Pet wash station"
+    ],
+    "pet-friendly spaces": [],
+    "pet-grooming area": [
+      "Pet grooming station"
+    ],
+    "pet-wash station": [
+      "Pet wash station"
+    ],
+    "pet-washing station": [
+      "Pet wash station"
+    ],
+    "picnic area": [
+      "Picnic area"
+    ],
+    "picnic area with barbecue": [
+      "BBQ grills",
+      "Picnic area"
+    ],
+    "picnic/bbq area": [
+      "BBQ grills",
+      "Picnic area"
+    ],
+    "pilates studio": [
+      "Pilates studio"
+    ],
+    "ping-pong table": [
+      "Table tennis"
+    ],
+    "ping-pong tables": [
+      "Table tennis"
+    ],
+    "pizza oven": [
+      "Pizza oven"
+    ],
+    "planned social activities": [],
+    "playground": [
+      "Playground"
+    ],
+    "playroom": [
+      "Playroom"
+    ],
+    "plunge shower": [],
+    "podcast room": [
+      "Podcast room"
+    ],
+    "poker tables": [
+      "Poker tables"
+    ],
+    "pool": [
+      "Swimming pool"
+    ],
+    "pool and cabana": [
+      "Cabanas",
+      "Swimming pool"
+    ],
+    "pool and spa": [
+      "Spa (unspecified)",
+      "Swimming pool"
+    ],
+    "pool table": [
+      "Pool table"
+    ],
+    "pool table in the lobby": [
+      "Pool table"
+    ],
+    "pool with sundeck": [
+      "Outdoor terrace / patio",
+      "Swimming pool"
+    ],
+    "poolside kitchen": [
+      "Shared kitchen"
+    ],
+    "prefunction suite with library and wet bar": [
+      "Bar / wet bar",
+      "Event space",
+      "Library"
+    ],
+    "presentation kitchen and dining room": [
+      "Demonstration kitchen",
+      "Shared dining area"
+    ],
+    "printer service": [],
+    "private balconies": [],
+    "private co-working offices": [
+      "Coworking space",
+      "Private workspace"
+    ],
+    "private conference room": [
+      "Meeting room"
+    ],
+    "private conference room with airplay tv and wi-fi": [
+      "Meeting room"
+    ],
+    "private conference rooms": [
+      "Meeting room"
+    ],
+    "private courtyard": [
+      "Courtyard"
+    ],
+    "private decks/patios": [],
+    "private dining": [
+      "Private dining room"
+    ],
+    "private dining kitchen": [
+      "Shared kitchen"
+    ],
+    "private dining room": [
+      "Private dining room"
+    ],
+    "private dining room with professional kitchen": [
+      "Private dining room",
+      "Shared kitchen"
+    ],
+    "private dining suite and catering kitchen available for private reservations": [
+      "Catering kitchen",
+      "Private dining room"
+    ],
+    "private event spaces with caterer's kitchen": [
+      "Catering kitchen",
+      "Event space"
+    ],
+    "private garages available": [
+      "Garage parking"
+    ],
+    "private lakeside beach club with lounge, lockers, paddle boards, beach cruisers and yard games": [
+      "Beach club",
+      "Outdoor games",
+      "Paddleboard access",
+      "Resident lounge / clubhouse",
+      "Shared bikes"
+    ],
+    "private outdoor lounge with tv": [
+      "Resident lounge / clubhouse"
+    ],
+    "private resident theater": [
+      "Movie theater"
+    ],
+    "private rooftop garden": [
+      "Rooftop garden"
+    ],
+    "private screening theater": [
+      "Movie theater"
+    ],
+    "private treatment rooms": [
+      "Treatment room"
+    ],
+    "private work offices": [
+      "Private workspace"
+    ],
+    "private work pods and conference rooms": [
+      "Meeting room",
+      "Private workspace"
+    ],
+    "private workspace": [
+      "Private workspace"
+    ],
+    "private workstations": [
+      "Private workspace"
+    ],
+    "public courtyard and plaza": [],
+    "public square with outdoor seating": [],
+    "putting green": [
+      "Putting green"
+    ],
+    "reading lounge with record listening corner": [
+      "Resident lounge / clubhouse"
+    ],
+    "recreation room": [
+      "Recreation room"
+    ],
+    "refrigerated package storage": [
+      "Refrigerated package storage"
+    ],
+    "rehearsal room": [
+      "Rehearsal room"
+    ],
+    "rentable resident storage": [
+      "Resident storage"
+    ],
+    "rentable storage lockers": [
+      "Resident storage"
+    ],
+    "rentable storage space": [
+      "Resident storage"
+    ],
+    "rentable storage space, subject to availability": [
+      "Resident storage"
+    ],
+    "rentable storage units in varying sizes": [
+      "Resident storage"
+    ],
+    "repair station (unspecified)": [],
+    "reservable clubhouse": [
+      "Resident lounge / clubhouse"
+    ],
+    "reservable entertainment/tasting room": [
+      "Event space"
+    ],
+    "reservable guest suite": [
+      "Guest suite"
+    ],
+    "reservable party room with full kitchen": [
+      "Event space",
+      "Shared kitchen"
+    ],
+    "reservable private conference room": [
+      "Meeting room"
+    ],
+    "reservable resident event space": [
+      "Event space"
+    ],
+    "reservable sky lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "reservable wine cellar lounge with wine storage lockers": [
+      "Resident lounge / clubhouse",
+      "Wine storage"
+    ],
+    "reservation-only kayaks and paddle boards": [
+      "Kayak access",
+      "Paddleboard access"
+    ],
+    "reserved automated garage parking": [
+      "Garage parking"
+    ],
+    "reserved garage parking, motorcycle parking, and ev chargers on roughly 20% of spaces": [
+      "EV charging",
+      "Garage parking",
+      "Motorcycle parking"
+    ],
+    "reserved resident parking and automated parking system": [
+      "Parking"
+    ],
+    "resident access to penelope spa and the beauty bar": [],
+    "resident and entertainment lounges": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident bike room": [
+      "Bike storage"
+    ],
+    "resident café with coffee and specialty beverage machine": [
+      "Coffee bar"
+    ],
+    "resident club rooms and lounges with a pool table and lobby fireplace": [
+      "Fireplace",
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "resident clubhouse": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident clubhouse lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident clubhouse with entertaining kitchen, tv lounge and social game zone": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "resident clubhouse/lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident clubroom": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident clubrooms": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident cocktail lounge and patio": [
+      "Outdoor terrace / patio",
+      "Resident lounge / clubhouse"
+    ],
+    "resident community events": [],
+    "resident cooking events and nutritionist appointments": [],
+    "resident courtyards": [
+      "Courtyard"
+    ],
+    "resident entertaining areas": [],
+    "resident events": [],
+    "resident game room and lounge": [
+      "Game room / area",
+      "Resident lounge / clubhouse"
+    ],
+    "resident game room with pool table and lounge": [
+      "Game room / area",
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "resident game room with pool table, television, games and lounge area": [
+      "Game room / area",
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "resident gardening plots": [
+      "Gardening plots"
+    ],
+    "resident gathering lounge/library": [
+      "Library",
+      "Resident lounge / clubhouse"
+    ],
+    "resident library": [
+      "Library"
+    ],
+    "resident lobby lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounge / clubhouse": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounge and entertainment space with full kitchen, dining and sitting areas": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "resident lounge and kitchen": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "resident lounge and workstations": [
+      "Coworking space",
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounge with bevi beverage service": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounge with billiards and foosball": [
+      "Foosball",
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounge with coffee bar": [
+      "Coffee bar",
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounge with community kitchen and bar seating": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "resident lounge with community kitchen, tv, and games": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "resident lounge with complimentary coffee bar": [
+      "Coffee bar",
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounge with kitchen": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "resident lounge with kitchen and bar seating, media room and fireside lobby seating": [
+      "Fireplace",
+      "Media lounge",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "resident lounge with kitchen, dining and tv seating": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "resident lounge with kitchenette, coffee machine, mini-fridge, dining table and tv seating": [
+      "Kitchenette",
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounge with pool table, television, and private workspaces": [
+      "Pool table",
+      "Private workspace",
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounge with presentation kitchen": [
+      "Demonstration kitchen",
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounge with presentation kitchen, pool table and shuffleboard": [
+      "Demonstration kitchen",
+      "Pool table",
+      "Resident lounge / clubhouse",
+      "Shuffleboard"
+    ],
+    "resident lounge with shuffleboard": [
+      "Resident lounge / clubhouse",
+      "Shuffleboard"
+    ],
+    "resident lounge with tv viewing area": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounges": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounges with games": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident lounges with kitchen and terrace access, poker tables, tv wall and billiards": [
+      "Outdoor terrace / patio",
+      "Poker tables",
+      "Pool table",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "resident lounges with televisions and full kitchens, including billiards": [
+      "Pool table",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "resident paddleboards": [
+      "Paddleboard access"
+    ],
+    "resident parking": [
+      "Parking"
+    ],
+    "resident pea patch garden": [
+      "Gardening plots"
+    ],
+    "resident sky lounge with pool table, kitchen and bar": [
+      "Bar / wet bar",
+      "Pool table",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "resident social events": [],
+    "resident social lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "resident social spaces": [],
+    "resident spa": [
+      "Spa (unspecified)"
+    ],
+    "resident storage": [
+      "Resident storage"
+    ],
+    "resident storage available": [
+      "Resident storage"
+    ],
+    "resident storage available for rent": [
+      "Resident storage"
+    ],
+    "resident storage rooms": [
+      "Resident storage"
+    ],
+    "resident wellness program with personal training and weekly classes": [
+      "Fitness classes"
+    ],
+    "resident wine bar": [
+      "Bar / wet bar"
+    ],
+    "roof deck": [
+      "Rooftop deck"
+    ],
+    "roof deck with elliott bay views": [
+      "Rooftop deck"
+    ],
+    "rooftop": [],
+    "rooftop bbq": [
+      "BBQ grills"
+    ],
+    "rooftop bbq and fire pit": [
+      "BBQ grills",
+      "Fire pit"
+    ],
+    "rooftop bbq area": [
+      "BBQ grills"
+    ],
+    "rooftop bbqs": [
+      "BBQ grills"
+    ],
+    "rooftop bbqs and lounges": [
+      "BBQ grills",
+      "Rooftop lounge"
+    ],
+    "rooftop club room": [
+      "Resident lounge / clubhouse"
+    ],
+    "rooftop clubroom and deck": [
+      "Resident lounge / clubhouse",
+      "Rooftop deck"
+    ],
+    "rooftop community space": [],
+    "rooftop courtyard": [
+      "Courtyard"
+    ],
+    "rooftop courtyard with bbq grills, lounge seating, and outdoor games": [
+      "BBQ grills",
+      "Courtyard",
+      "Outdoor games"
+    ],
+    "rooftop deck": [
+      "Rooftop deck"
+    ],
+    "rooftop deck and clubhouse": [
+      "Resident lounge / clubhouse",
+      "Rooftop deck"
+    ],
+    "rooftop deck and garden": [
+      "Rooftop deck",
+      "Rooftop garden"
+    ],
+    "rooftop deck and garden with fire pit": [
+      "Fire pit",
+      "Rooftop deck",
+      "Rooftop garden"
+    ],
+    "rooftop deck and gardens": [
+      "Rooftop deck",
+      "Rooftop garden"
+    ],
+    "rooftop deck and lounge": [
+      "Rooftop deck",
+      "Rooftop lounge"
+    ],
+    "rooftop deck and outdoor terrace": [
+      "Rooftop deck"
+    ],
+    "rooftop deck and terrace with grills": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop deck and terraces": [
+      "Rooftop deck"
+    ],
+    "rooftop deck with 360-degree views": [
+      "Rooftop deck"
+    ],
+    "rooftop deck with bar seating, bbq grills, fire pit and two tvs": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop deck with barbecue and city views": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop deck with barbecue and seating": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop deck with barbecue, dining area, lounge chairs and firepit": [
+      "BBQ grills",
+      "Fire pit",
+      "Outdoor dining area",
+      "Rooftop deck"
+    ],
+    "rooftop deck with bbq": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop deck with bbq and fire pit": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop deck with bbq and outdoor lounge": [
+      "BBQ grills",
+      "Rooftop deck",
+      "Rooftop lounge"
+    ],
+    "rooftop deck with bbq area and fire pit": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop deck with bbq grills": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop deck with fire pits and grills": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop deck with fire pits, grilling stations and seating areas": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop deck with fire pits, outdoor seating, grills and games": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop deck with firepits and bbqs": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop deck with fireplace, grills and outdoor dining": [
+      "BBQ grills",
+      "Outdoor dining area",
+      "Outdoor fireplace",
+      "Rooftop deck"
+    ],
+    "rooftop deck with grill, fireplaces and seating": [
+      "BBQ grills",
+      "Outdoor fireplace",
+      "Rooftop deck"
+    ],
+    "rooftop deck with grills": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop deck with grills and fire pits": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop deck with grills and outdoor tv": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop deck with grills, fire pits and seating": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop deck with lake, mountain and city views": [
+      "Rooftop deck"
+    ],
+    "rooftop deck with outdoor fire pit and grilling stations": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop deck with outdoor kitchen and fireplaces": [
+      "Outdoor fireplace",
+      "Outdoor kitchen",
+      "Rooftop deck"
+    ],
+    "rooftop deck/lounge": [
+      "Rooftop deck",
+      "Rooftop lounge"
+    ],
+    "rooftop decks": [
+      "Rooftop deck"
+    ],
+    "rooftop decks and lounges": [
+      "Rooftop deck",
+      "Rooftop lounge"
+    ],
+    "rooftop decks with bbq stations, fire pits and seating": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop decks with fire feature and grills": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop dog lounge": [
+      "Pet area (unspecified)"
+    ],
+    "rooftop dog park": [
+      "Dog park / run"
+    ],
+    "rooftop dog park and dog wash": [
+      "Dog park / run",
+      "Pet wash station"
+    ],
+    "rooftop dog run": [
+      "Dog park / run"
+    ],
+    "rooftop dog run and wash station": [
+      "Dog park / run",
+      "Pet wash station"
+    ],
+    "rooftop dog walk": [
+      "Pet area (unspecified)"
+    ],
+    "rooftop entertainment lounge with tv": [
+      "Rooftop lounge"
+    ],
+    "rooftop fire pit": [
+      "Fire pit"
+    ],
+    "rooftop fire pit and bbqs": [
+      "BBQ grills",
+      "Fire pit"
+    ],
+    "rooftop fire pits": [
+      "Fire pit"
+    ],
+    "rooftop fire pits and lounge seating": [
+      "Fire pit"
+    ],
+    "rooftop firepit seating": [
+      "Fire pit"
+    ],
+    "rooftop fitness center": [
+      "Fitness center"
+    ],
+    "rooftop garden": [
+      "Rooftop garden"
+    ],
+    "rooftop garden terrace": [
+      "Rooftop deck",
+      "Rooftop garden"
+    ],
+    "rooftop greenhouse lounge and resident garden": [
+      "Rooftop garden",
+      "Rooftop lounge"
+    ],
+    "rooftop grilling": [
+      "BBQ grills"
+    ],
+    "rooftop grilling area": [
+      "BBQ grills"
+    ],
+    "rooftop grilling station": [
+      "BBQ grills"
+    ],
+    "rooftop grilling stations and dining area": [
+      "BBQ grills",
+      "Outdoor dining area"
+    ],
+    "rooftop gym": [
+      "Fitness center"
+    ],
+    "rooftop lounge": [
+      "Rooftop lounge"
+    ],
+    "rooftop lounge and bbq grills": [
+      "BBQ grills",
+      "Rooftop lounge"
+    ],
+    "rooftop lounge and grill": [
+      "BBQ grills",
+      "Rooftop lounge"
+    ],
+    "rooftop lounge and outdoor terrace": [
+      "Rooftop deck",
+      "Rooftop lounge"
+    ],
+    "rooftop lounge area": [
+      "Rooftop lounge"
+    ],
+    "rooftop lounge seating": [
+      "Rooftop lounge"
+    ],
+    "rooftop lounge with bbqs": [
+      "BBQ grills",
+      "Rooftop lounge"
+    ],
+    "rooftop lounge with built-in grill, communal dining tables, fire pit, and outdoor screen": [
+      "BBQ grills",
+      "Fire pit",
+      "Outdoor dining area",
+      "Rooftop lounge"
+    ],
+    "rooftop lounge with fireplace and skyline views": [
+      "Fireplace",
+      "Rooftop lounge"
+    ],
+    "rooftop lounge with game tables and movie screening area": [
+      "Movie screening area",
+      "Rooftop lounge"
+    ],
+    "rooftop lounges": [
+      "Rooftop lounge"
+    ],
+    "rooftop lounges and gardens": [
+      "Rooftop garden",
+      "Rooftop lounge"
+    ],
+    "rooftop media lounge": [
+      "Media lounge"
+    ],
+    "rooftop off-leash dog area": [
+      "Dog park / run"
+    ],
+    "rooftop patio": [
+      "Rooftop deck"
+    ],
+    "rooftop patio with barbecue": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop patio with lounge seating, picnic table and grill": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop patio with waterfront and city views": [
+      "Rooftop deck"
+    ],
+    "rooftop pet area": [
+      "Pet area (unspecified)"
+    ],
+    "rooftop pet park": [
+      "Dog park / run"
+    ],
+    "rooftop pet relief area": [
+      "Pet relief area"
+    ],
+    "rooftop pet relief area and self-service pet wash": [
+      "Pet relief area",
+      "Pet wash station"
+    ],
+    "rooftop pet-relief area": [
+      "Pet relief area"
+    ],
+    "rooftop plaza with 360-degree views": [
+      "Rooftop deck"
+    ],
+    "rooftop pool": [
+      "Swimming pool"
+    ],
+    "rooftop pool and terrace": [
+      "Rooftop deck",
+      "Swimming pool"
+    ],
+    "rooftop pub with bbq grills, fire pits, awning and outdoor tv lounge": [
+      "Bar / wet bar",
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop lounge"
+    ],
+    "rooftop putting green": [
+      "Putting green"
+    ],
+    "rooftop resident garden and deck": [
+      "Rooftop deck",
+      "Rooftop garden"
+    ],
+    "rooftop resident lounge": [
+      "Rooftop lounge"
+    ],
+    "rooftop resident lounge/clubhouse": [
+      "Rooftop lounge"
+    ],
+    "rooftop sky deck": [
+      "Rooftop deck"
+    ],
+    "rooftop sky lounge and sundeck": [
+      "Rooftop deck",
+      "Rooftop lounge"
+    ],
+    "rooftop sky lounge with fireplace and bar": [
+      "Bar / wet bar",
+      "Fireplace",
+      "Rooftop lounge"
+    ],
+    "rooftop skydeck with lounge seating, bbqs and firepits": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop solarium": [
+      "Solarium"
+    ],
+    "rooftop spa": [
+      "Spa (unspecified)"
+    ],
+    "rooftop speakeasy and lounge": [
+      "Bar / wet bar",
+      "Rooftop lounge"
+    ],
+    "rooftop sports lounge": [
+      "Rooftop lounge"
+    ],
+    "rooftop sun deck": [
+      "Outdoor terrace / patio"
+    ],
+    "rooftop sundeck and grill area": [
+      "BBQ grills",
+      "Outdoor terrace / patio"
+    ],
+    "rooftop sundeck with bay views": [
+      "Outdoor terrace / patio"
+    ],
+    "rooftop sundeck with city and mount rainier views": [
+      "Outdoor terrace / patio"
+    ],
+    "rooftop sundeck with city views": [
+      "Outdoor terrace / patio"
+    ],
+    "rooftop terrace": [
+      "Rooftop deck"
+    ],
+    "rooftop terrace and garden with bbq grills": [
+      "BBQ grills",
+      "Rooftop deck",
+      "Rooftop garden"
+    ],
+    "rooftop terrace and panoramic views": [
+      "Rooftop deck"
+    ],
+    "rooftop terrace lounge": [
+      "Rooftop deck",
+      "Rooftop lounge"
+    ],
+    "rooftop terrace with barbecue": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with bbq": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with bbq and fire feature": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with bbqs": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with clubroom, patio grill, and seating": [
+      "BBQ grills",
+      "Resident lounge / clubhouse",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with fire pit and grills": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with fire pit, grills and outdoor dining": [
+      "BBQ grills",
+      "Fire pit",
+      "Outdoor dining area",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with firepit, lounge seating and gazebo": [
+      "Fire pit",
+      "Pavilion",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with firepits and bbqs": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with fireplace": [
+      "Outdoor fireplace",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with fireplace, outdoor tv, grills and outdoor dining": [
+      "BBQ grills",
+      "Outdoor dining area",
+      "Outdoor fireplace",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with fireplace, pizza oven and bbq grills": [
+      "BBQ grills",
+      "Outdoor fireplace",
+      "Pizza oven",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with grilling stations": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with grills": [
+      "BBQ grills",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with grills, pizza oven, fireplace and seating": [
+      "BBQ grills",
+      "Outdoor fireplace",
+      "Pizza oven",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with lounge seating, firepits and bbq": [
+      "BBQ grills",
+      "Fire pit",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with outdoor kitchen, bbq grills, tv screen, firepits and lounge seating": [
+      "BBQ grills",
+      "Fire pit",
+      "Outdoor kitchen",
+      "Rooftop deck"
+    ],
+    "rooftop terrace with puget sound views": [
+      "Rooftop deck"
+    ],
+    "rooftop terraces": [
+      "Rooftop deck"
+    ],
+    "rooftop view deck": [
+      "Rooftop deck"
+    ],
+    "rpm training room": [
+      "Fitness studio"
+    ],
+    "sauna": [
+      "Sauna"
+    ],
+    "sauna, steam room and tepidarium": [
+      "Sauna",
+      "Steam room",
+      "Tepidarium"
+    ],
+    "scheduled package delivery to apartment door": [
+      "Package service"
+    ],
+    "screening room": [
+      "Movie theater"
+    ],
+    "seasonal outdoor pool at arrive magnolia west": [
+      "Swimming pool"
+    ],
+    "seasonal outdoor swimming pool": [
+      "Swimming pool"
+    ],
+    "seasonal pool": [
+      "Swimming pool"
+    ],
+    "seating areas": [],
+    "secure 24/7 package lockers": [
+      "Package lockers"
+    ],
+    "secure bicycle parking": [
+      "Bike parking"
+    ],
+    "secure bicycle room": [
+      "Bike storage"
+    ],
+    "secure bicycle storage": [
+      "Bike storage"
+    ],
+    "secure bike storage": [
+      "Bike storage"
+    ],
+    "secure common-area printing service": [],
+    "secure controlled-access bike room and storage": [
+      "Bike storage"
+    ],
+    "secure garage parking": [
+      "Garage parking"
+    ],
+    "secure garage parking with ev charging ports": [
+      "EV charging",
+      "Garage parking"
+    ],
+    "secure package locker": [
+      "Package lockers"
+    ],
+    "secure package lockers": [
+      "Package lockers"
+    ],
+    "secure package lockers and access-controlled package room": [
+      "Package lockers",
+      "Package room"
+    ],
+    "secure package lockers with refrigerated delivery space": [
+      "Package lockers",
+      "Refrigerated package storage"
+    ],
+    "secure package room": [
+      "Package room"
+    ],
+    "secure parking garage": [
+      "Garage parking"
+    ],
+    "secure underground car and bicycle parking": [
+      "Bike parking",
+      "Garage parking"
+    ],
+    "secure underground parking": [
+      "Garage parking"
+    ],
+    "secured access package lockers": [
+      "Package lockers"
+    ],
+    "secured bike storage": [
+      "Bike storage"
+    ],
+    "secured package room": [
+      "Package room"
+    ],
+    "secured underground parking garage": [
+      "Garage parking"
+    ],
+    "self-service dog wash": [
+      "Pet wash station"
+    ],
+    "self-service package lockers with text notifications": [
+      "Package lockers"
+    ],
+    "self-service pet wash": [
+      "Pet wash station"
+    ],
+    "shared amenities across four residences": [],
+    "shared bikes": [
+      "Shared bikes"
+    ],
+    "shared community bikes": [
+      "Shared bikes"
+    ],
+    "shared courtyards": [
+      "Courtyard"
+    ],
+    "shared dining area": [
+      "Shared dining area"
+    ],
+    "shared indoor amenity spaces and outdoor patio": [
+      "Outdoor terrace / patio"
+    ],
+    "shared kitchen": [
+      "Shared kitchen"
+    ],
+    "shared laundry": [
+      "Shared laundry"
+    ],
+    "shared laundry facility": [
+      "Shared laundry"
+    ],
+    "shared park": [
+      "Shared park"
+    ],
+    "shared rooftop deck": [
+      "Rooftop deck"
+    ],
+    "shared rooftop decks": [
+      "Rooftop deck"
+    ],
+    "shared workspace": [
+      "Coworking space"
+    ],
+    "shuffleboard": [
+      "Shuffleboard"
+    ],
+    "shuffleboard court": [
+      "Shuffleboard"
+    ],
+    "skee-ball": [
+      "Arcade games"
+    ],
+    "skee-ball game room": [
+      "Arcade games",
+      "Game room / area"
+    ],
+    "sky club": [
+      "Resident lounge / clubhouse"
+    ],
+    "sky deck": [
+      "Outdoor terrace / patio"
+    ],
+    "sky garden rooftop": [
+      "Rooftop garden"
+    ],
+    "sky lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "sky lounge and deck": [
+      "Outdoor terrace / patio",
+      "Resident lounge / clubhouse"
+    ],
+    "sky lounge and rooftop terrace": [
+      "Resident lounge / clubhouse",
+      "Rooftop deck"
+    ],
+    "sky lounge with billiards": [
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "sky lounge with fire pits and bbqs": [
+      "BBQ grills",
+      "Fire pit",
+      "Resident lounge / clubhouse"
+    ],
+    "sky lounge with kitchen and indoor/outdoor seating": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "sky lounge with two-sided fireplace, kitchenette, dining nooks and big-screen media room": [
+      "Fireplace",
+      "Kitchenette",
+      "Media lounge",
+      "Resident lounge / clubhouse"
+    ],
+    "sky lounge with workspaces": [
+      "Coworking space",
+      "Resident lounge / clubhouse"
+    ],
+    "sky terrace rooftop lounge": [
+      "Rooftop deck",
+      "Rooftop lounge"
+    ],
+    "skylounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "smart mirror workout room": [
+      "Fitness center"
+    ],
+    "social clubhouse": [
+      "Resident lounge / clubhouse"
+    ],
+    "social lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "social lounge with dj booth, karaoke and tv": [
+      "Karaoke",
+      "Resident lounge / clubhouse"
+    ],
+    "social lounge with kitchen and seating": [
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "social parlor with cocktail kitchen, lounge seating and bar seating": [
+      "Kitchenette",
+      "Resident lounge / clubhouse"
+    ],
+    "social spaces": [],
+    "solarium": [
+      "Solarium"
+    ],
+    "soul fitness partnership": [],
+    "spa": [
+      "Spa (unspecified)"
+    ],
+    "spa (unspecified)": [
+      "Spa (unspecified)"
+    ],
+    "spa tub": [
+      "Hot tub"
+    ],
+    "spa/hot tub": [
+      "Hot tub"
+    ],
+    "spin room": [
+      "Spin studio"
+    ],
+    "spin studio": [
+      "Spin studio"
+    ],
+    "sports court": [
+      "Sports court"
+    ],
+    "sports lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "staffed lobby": [],
+    "stage": [],
+    "station lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "steam room": [
+      "Steam room"
+    ],
+    "steam room and sauna": [
+      "Sauna",
+      "Steam room"
+    ],
+    "storage": [
+      "Resident storage"
+    ],
+    "storage lockers": [
+      "Resident storage"
+    ],
+    "storage lockers and storage rooms": [
+      "Resident storage"
+    ],
+    "storage lockers, subject to availability": [
+      "Resident storage"
+    ],
+    "storage room": [
+      "Resident storage"
+    ],
+    "storage space rentals": [
+      "Resident storage"
+    ],
+    "storage spaces": [
+      "Resident storage"
+    ],
+    "storage units": [
+      "Resident storage"
+    ],
+    "study lounge": [
+      "Coworking space"
+    ],
+    "subgrade parking": [
+      "Garage parking"
+    ],
+    "subterranean garage parking": [
+      "Garage parking"
+    ],
+    "sun deck": [
+      "Outdoor terrace / patio"
+    ],
+    "sun deck and terrace with fire pits and grills": [
+      "BBQ grills",
+      "Fire pit",
+      "Outdoor terrace / patio"
+    ],
+    "sun deck with bbq and skyline views": [
+      "BBQ grills",
+      "Outdoor terrace / patio"
+    ],
+    "sundeck": [
+      "Outdoor terrace / patio"
+    ],
+    "sundeck terrace": [
+      "Outdoor terrace / patio"
+    ],
+    "sunset deck with fire pits": [
+      "Fire pit",
+      "Outdoor terrace / patio"
+    ],
+    "surface lot and controlled-access garage parking available for rent": [
+      "Garage parking",
+      "Parking"
+    ],
+    "swimming pier": [
+      "Swimming pier"
+    ],
+    "swimming pool": [
+      "Swimming pool"
+    ],
+    "swimming pool and hot tub": [
+      "Hot tub",
+      "Swimming pool"
+    ],
+    "swimming pool and sundeck": [
+      "Outdoor terrace / patio",
+      "Swimming pool"
+    ],
+    "table tennis": [
+      "Table tennis"
+    ],
+    "table tennis lounge": [
+      "Resident lounge / clubhouse",
+      "Table tennis"
+    ],
+    "tepidarium": [
+      "Tepidarium"
+    ],
+    "terrace lounge": [
+      "Outdoor terrace / patio",
+      "Resident lounge / clubhouse"
+    ],
+    "terrace with bbq and firepit": [
+      "BBQ grills",
+      "Fire pit",
+      "Outdoor terrace / patio"
+    ],
+    "the blend wi-fi lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "theater": [
+      "Movie theater"
+    ],
+    "theater and game room": [
+      "Game room / area",
+      "Movie theater"
+    ],
+    "theater room": [
+      "Movie theater"
+    ],
+    "theater room with hdtvs, lounge seating and micro kitchen": [
+      "Kitchenette",
+      "Movie theater"
+    ],
+    "tire air pump and repair station": [],
+    "tool lending": [
+      "Tool lending"
+    ],
+    "top floor resident lounge with a pool table, kitchen bar, tv, seating, and wifi": [
+      "Pool table",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "top-floor co-working space with private meeting rooms and work pods": [
+      "Coworking space",
+      "Meeting room",
+      "Private workspace"
+    ],
+    "top-floor lounge with wet bar and games room with billiards, foosball, card tables, pinball and tvs": [
+      "Arcade games",
+      "Bar / wet bar",
+      "Foosball",
+      "Game room / area",
+      "Pool table",
+      "Resident lounge / clubhouse"
+    ],
+    "top-floor resident lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "trailhead room with books and maps": [],
+    "treatment room": [
+      "Treatment room"
+    ],
+    "trx training": [],
+    "tv lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "two 24-hour fitness centers": [
+      "Fitness center"
+    ],
+    "two clubrooms, one with a kitchen and one with a terrace": [
+      "Outdoor terrace / patio",
+      "Resident lounge / clubhouse",
+      "Shared kitchen"
+    ],
+    "two controlled-access parking garages": [
+      "Garage parking"
+    ],
+    "two fitness centers": [
+      "Fitness center"
+    ],
+    "two lobby social spaces, second-floor and rooftop lounges, and a resident lounge with workspaces and dining areas": [
+      "Coworking space",
+      "Resident lounge / clubhouse",
+      "Rooftop lounge"
+    ],
+    "two outdoor terraces with lounge seating": [
+      "Outdoor terrace / patio"
+    ],
+    "two rooftop amenity spaces": [],
+    "two rooftop decks": [
+      "Rooftop deck"
+    ],
+    "two rooftop decks with wi-fi, grills and outdoor dining": [
+      "BBQ grills",
+      "Outdoor dining area",
+      "Rooftop deck"
+    ],
+    "two rooftop lounges/decks": [
+      "Rooftop deck",
+      "Rooftop lounge"
+    ],
+    "two rooftop terraces with outdoor kitchens, grills, dining/lounge areas, tvs and a fire pit": [
+      "BBQ grills",
+      "Fire pit",
+      "Outdoor dining area",
+      "Outdoor kitchen",
+      "Rooftop deck"
+    ],
+    "two skyline lounges with wi-fi, a full kitchen, tvs, a fireplace and shuffleboard": [
+      "Fireplace",
+      "Resident lounge / clubhouse",
+      "Shared kitchen",
+      "Shuffleboard"
+    ],
+    "two-story climbing wall": [
+      "Climbing wall"
+    ],
+    "two-story fitness center": [
+      "Fitness center"
+    ],
+    "two-story rooftop lounge with fireplaces and outdoor grilling area": [
+      "BBQ grills",
+      "Fireplace",
+      "Rooftop lounge"
+    ],
+    "underground garage": [
+      "Garage parking"
+    ],
+    "underground gated parking with reservable spaces": [
+      "Garage parking"
+    ],
+    "underground parking": [
+      "Garage parking"
+    ],
+    "underground parking garage": [
+      "Garage parking"
+    ],
+    "underground parking with designated electric vehicle spaces": [
+      "EV parking (unspecified)",
+      "Garage parking"
+    ],
+    "urban garden with bocce ball and seating": [
+      "Bocce court",
+      "Garden"
+    ],
+    "valet trash and recycling service": [
+      "Valet trash service"
+    ],
+    "valet trash pickup and recycling room": [
+      "Valet trash service"
+    ],
+    "valet trash service": [
+      "Valet trash service"
+    ],
+    "vault bar speakeasy with poker tables": [
+      "Bar / wet bar",
+      "Poker tables"
+    ],
+    "vehicle charging stations in the parking garage": [
+      "EV charging",
+      "Garage parking"
+    ],
+    "virtual reality room": [
+      "Virtual reality room"
+    ],
+    "vista lounge and deck": [
+      "Outdoor terrace / patio",
+      "Resident lounge / clubhouse"
+    ],
+    "walking trails": [
+      "Walking trails"
+    ],
+    "water feature": [],
+    "waterfront sky lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "weight room": [
+      "Fitness center"
+    ],
+    "wellness and circuit studio with lululemon studio mirrors": [
+      "Fitness studio",
+      "Wellness studio"
+    ],
+    "wellness lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "wellness studio": [
+      "Wellness studio"
+    ],
+    "wellness/yoga room": [
+      "Yoga studio"
+    ],
+    "whirlpool": [
+      "Hot tub"
+    ],
+    "wi-fi in common areas": [],
+    "wi-fi in several common areas": [],
+    "wifi in all community areas": [],
+    "wifi throughout the building": [],
+    "wine lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "wine storage": [
+      "Wine storage"
+    ],
+    "work lounges": [
+      "Coworking space"
+    ],
+    "work pods and shared/private workspaces": [
+      "Coworking space",
+      "Private workspace"
+    ],
+    "work-from-home lounge": [
+      "Coworking space"
+    ],
+    "work-from-home lounge with conference room and study nooks": [
+      "Coworking space",
+      "Meeting room"
+    ],
+    "work-from-home spaces": [
+      "Coworking space"
+    ],
+    "workout room": [
+      "Fitness center"
+    ],
+    "workshop / makerspace": [
+      "Workshop / makerspace"
+    ],
+    "workshop/hobby locker with bike repair and tools to borrow": [
+      "Bike repair station",
+      "Tool lending",
+      "Workshop / makerspace"
+    ],
+    "workspace (unspecified)": [],
+    "workspace pods and conference room": [
+      "Meeting room",
+      "Private workspace"
+    ],
+    "year-round pool and spa": [
+      "Spa (unspecified)",
+      "Swimming pool"
+    ],
+    "yesler resident lounge": [
+      "Resident lounge / clubhouse"
+    ],
+    "yoga / pilates studio": [
+      "Yoga / Pilates studio"
+    ],
+    "yoga / spin studio": [
+      "Yoga / spin studio"
+    ],
+    "yoga and pilates studio": [
+      "Yoga / Pilates studio"
+    ],
+    "yoga and spin studio": [
+      "Yoga / spin studio"
+    ],
+    "yoga and spin studio with five stationary bikes": [
+      "Yoga / spin studio"
+    ],
+    "yoga and wellness studio": [
+      "Yoga studio"
+    ],
+    "yoga room": [
+      "Yoga studio"
+    ],
+    "yoga studio": [
+      "Yoga studio"
+    ],
+    "yoga studio with interactive fitness": [
+      "Yoga studio"
+    ],
+    "yoga studio with on-demand fitness": [
+      "Yoga studio"
+    ],
+    "yoga studio with outdoor meditation space": [
+      "Yoga studio"
+    ],
+    "yoga studio with spin bikes, barre, and trx": [
+      "Yoga studio"
+    ],
+    "yoga studios": [
+      "Yoga studio"
+    ]
+  },
+  "review_notes": {
+    "24th-floor sky lounge": "The name does not establish whether the lounge is indoors or outdoors; no rooftop deck inferred.",
+    "46th-floor sky lounge with kitchen, dining and catering kitchen": "The source lists kitchen and catering-kitchen functions without establishing separate rooms; sky lounge does not establish outdoor rooftop access.",
+    "bark park and pet spa": "Pet spa does not specify washing or grooming; retained as unspecified.",
+    "bike and storage space available": "The wording does not clarify whether “storage space” is bike storage, separate resident storage, or both.",
+    "bike shop": "Could mean retail or repair; neither function is explicit enough to map.",
+    "bike storage and work room": "Bike-related work room retained as bike repair; equipment and setup are unspecified.",
+    "bike storage and workshop": "Bike-specific workshop retained as bike repair; equipment and setup are unspecified.",
+    "boardroom with pool table": "Pool table is explicit, but the name does not establish ordinary meeting-room use.",
+    "bocce ball": "Bocce is named, but a dedicated court is not explicit.",
+    "coffee lounge": "A coffee-themed lounge is explicit; a separate coffee service/bar is not established.",
+    "community lounge with kitchen, theater area and outdoor deck": "“Theater area” is treated as a movie theater; exact screening setup is unspecified.",
+    "creative studio": "Withheld from the main list: the type of creative activity or equipment is unspecified.",
+    "designated rooftop pet area": "Pet area does not establish a dog run, relief area, or indoor play room.",
+    "dog lounge and outdoor dog run": "Dog lounge is not specific enough to classify as an indoor pet play room.",
+    "dog lounge and play area": "“Play area” does not establish an indoor pet play room or dog run.",
+    "dog park and pet spa": "Pet spa does not specify washing or grooming.",
+    "dog park with pet spa": "Pet spa does not specify washing or grooming.",
+    "dog spa": "Dog spa does not specify washing or grooming.",
+    "dog spa and play area": "Dog spa/play area does not specify washing, grooming, or indoor location.",
+    "entertainment suite": "Entertainment suite is treated as event space; exact use is unspecified.",
+    "entertainment suites": "Entertainment suites are treated as event space; exact use is unspecified.",
+    "ev parking": "EV parking does not establish charging or EV-ready infrastructure.",
+    "ev parking (optional paid spaces)": "EV parking does not establish charging or EV-ready infrastructure.",
+    "family outdoor recreation space": "Outdoor recreation space is too vague to identify a specific facility or activity.",
+    "fitness center and flex studio": "Flex studio purpose is unspecified; retained as a fitness studio.",
+    "fitness room with yoga facilities": "Yoga equipment or a dedicated yoga studio is unclear.",
+    "flex fitness space": "Exact facility type is unclear; mapped conservatively as Fitness studio.",
+    "green roof gardens": "The name may describe a decorative green roof; usable resident garden access is not established.",
+    "gym access": "Gym access remains in source notes pending clarification of location and access arrangement; no on-site Fitness center inferred.",
+    "gym access (location unspecified)": "Withheld from main facility labels pending clarification of location and access arrangement.",
+    "indoor/outdoor lounge with pool table and shared kitchen appliances": "Appliances do not confirm a distinct shared kitchen; Kitchenette is a conservative interpretation.",
+    "indoor/outdoor sky lounge": "Sky lounge does not establish a rooftop facility.",
+    "landscaped courtyard and indoor/outdoor zen room": "The function of the zen room is unclear.",
+    "movement space": "Withheld from main labels because the activity and facility type are unspecified.",
+    "office space": "Withheld from main labels: resident coworking/private office use is not established.",
+    "onsite dog walk": "Could mean a designated dog walking path or a dog run; mapped to the closest usable pet area label.",
+    "pet area": "Does not specify a dog run, relief area, or indoor play space.",
+    "pet decks": "Does not specify whether the deck is a relief area or play space.",
+    "pet lounge and outdoor pet terrace": "Pet-specific spaces are named, but their use is not specified.",
+    "pet patio": "Does not specify a relief area or play space.",
+    "pet play area with a pet washing station": "Play area is not identified as indoor, off-leash, or a relief area.",
+    "pet spa": "Does not specify washing or grooming services.",
+    "pet spa and dog run": "“Pet spa” does not specify washing or grooming services.",
+    "pet spa and outdoor pet deck": "Spa services and the deck’s use are unspecified.",
+    "pet spa and outdoor run": "“Pet spa” does not specify washing or grooming services.",
+    "pet spa open 24/7": "Does not specify washing or grooming services.",
+    "pet spa open 8 a.m.–10 p.m. and 24-hour off-leash pet area": "“Pet spa” does not specify washing or grooming services.",
+    "pool and spa": "“Spa” may refer to a hot tub or a broader spa facility.",
+    "poolside kitchen": "Kitchen retained; poolside does not establish indoor versus outdoor location.",
+    "private dining kitchen": "Unclear whether this is a shared kitchen, a catering kitchen, or a dedicated dining room.",
+    "private dining room with professional kitchen": "Kitchen is described as professional, but catering use is not specified.",
+    "repair station (unspecified)": "Withheld from main labels because its purpose and supported equipment are unspecified.",
+    "reservable entertainment/tasting room": "“Tasting room” does not specify wine service or a bar.",
+    "reservable sky lounge": "“Sky lounge” does not establish whether the lounge is outdoors or on a rooftop deck.",
+    "reserved resident parking and automated parking system": "Automated parking system does not specify whether spaces are in a garage.",
+    "resident access to penelope spa and the beauty bar": "Spa/beauty-service access is retained in source notes. The name does not establish an external location, included service or access terms.",
+    "resident sky lounge with pool table, kitchen and bar": "Sky lounge does not establish whether the lounge is indoors or outdoors; no deck inferred.",
+    "resident spa": "“Spa” does not specify whether this is a hot tub or a treatment/wellness facility.",
+    "resident wellness program with personal training and weekly classes": "The class subject is unspecified; Fitness classes is provisional from the fitness program context.",
+    "rooftop": "A rooftop is named, but no usable amenity or facility is specified.",
+    "rooftop dog lounge": "A dog lounge does not establish a dog park/run or relief area.",
+    "rooftop dog walk": "A dog walking area does not establish a park/run or relief area.",
+    "rooftop lounge with fireplace and skyline views": "Lounge and fireplace are explicit; rooftop lounge does not establish that the fireplace is outdoors.",
+    "rooftop lounge with game tables and movie screening area": "Movie screening is explicit; a dedicated theater or outdoor location is not established.",
+    "rooftop pet area": "The type and purpose of the pet area are unspecified.",
+    "rooftop plaza with 360-degree views": "The name does not establish whether this is a resident amenity or a public plaza.",
+    "rooftop spa": "“Spa” does not specify whether this is a hot tub or a treatment/wellness facility.",
+    "rpm training room": "Fitness/training room retained; a particular equipment type or cycling format is not inferred from the name.",
+    "sky deck": "A deck is explicit but its rooftop location is not established by the word sky.",
+    "sky lounge": "The name does not establish whether this is rooftop or indoor; mapped as a lounge.",
+    "sky lounge and deck": "Lounge and deck functions are explicit; rooftop location is unspecified.",
+    "sky lounge and rooftop terrace": "Sky lounge may be indoor; only the terrace establishes rooftop access.",
+    "sky lounge with billiards": "“Sky lounge” does not establish whether the lounge is indoor or rooftop.",
+    "sky lounge with fire pits and bbqs": "“Sky lounge” does not establish roof/deck access; outdoor features are retained.",
+    "sky lounge with kitchen and indoor/outdoor seating": "“Sky lounge” does not establish rooftop access; kitchen retained as shared kitchen.",
+    "sky lounge with two-sided fireplace, kitchenette, dining nooks and big-screen media room": "“Sky lounge” location is uncertain; two-sided fireplace does not establish outdoor fireplace.",
+    "sky lounge with workspaces": "“Sky lounge” does not establish rooftop access; workspaces retained.",
+    "skylounge": "The name does not establish whether this is rooftop or indoor; mapped as a lounge.",
+    "social parlor with cocktail kitchen, lounge seating and bar seating": "Cocktail kitchen is mapped conservatively as a kitchenette; bar seating alone does not establish a bar.",
+    "soul fitness partnership": "Partnership retained in source notes; actual gym-entry benefit, fees and access arrangement are not established.",
+    "spa": "“Spa” does not identify a specific facility such as a hot tub or treatment room.",
+    "tire air pump and repair station": "Repair/pump description retained in source notes; bike versus vehicle use is not established, so no repair-facility label is assigned.",
+    "trailhead room with books and maps": "The name does not establish a library or other canonical facility.",
+    "two rooftop lounges/decks": "Slash wording may refer to one combined type or separate lounge and deck features.",
+    "underground parking with designated electric vehicle spaces": "EV spaces are named, but installed chargers are not established.",
+    "workspace (unspecified)": "Withheld from main labels until resident-use workspace type is established.",
+    "year-round pool and spa": "“Spa” does not identify a specific facility such as a hot tub or treatment room."
+  },
+  "detail_attachments": {
+    "24/7 attended lobby with mail room": {
+      "attach_to_if_present": [
+        "Concierge"
+      ],
+      "note": "Lobby staffing is retained as a related service detail. It does not establish concierge service or 24/7 concierge availability; any hours here apply only to lobby staffing."
+    },
+    "staffed lobby": {
+      "attach_to_if_present": [
+        "Concierge"
+      ],
+      "note": "Lobby staffing is retained as a related service detail. It does not establish concierge service or 24/7 concierge availability; any hours here apply only to lobby staffing."
+    },
+    "personal training": {
+      "attach_to_if_present": [
+        "Fitness center",
+        "Fitness studio"
+      ],
+      "note": "Fitness-program detail, not a separate facility. The source does not establish fees, booking conditions or guaranteed availability."
+    },
+    "resident wellness program with personal training and weekly classes": {
+      "attach_to_if_present": [
+        "Fitness center",
+        "Fitness studio"
+      ],
+      "note": "Fitness-program detail, not a separate facility. The source does not establish fees, booking conditions or guaranteed availability."
+    },
+    "dj booth": {
+      "attach_to_if_present": [
+        "Resident lounge / clubhouse",
+        "Rooftop lounge"
+      ],
+      "note": "Equipment detail of the lounge; keep explicit karaoke separately. This related detail does not establish a separate parent facility."
+    },
+    "greenhouse": {
+      "attach_to_if_present": [
+        "Rooftop lounge"
+      ],
+      "note": "The source describes a greenhouse-style lounge, not a functional resident gardening greenhouse. This related detail does not establish a separate parent facility."
+    },
+    "locker room": {
+      "attach_to_if_present": [
+        "Fitness center"
+      ],
+      "note": "Fitness-center detail; keep independently named sauna. This related detail does not establish a separate parent facility."
+    },
+    "meditation space": {
+      "attach_to_if_present": [
+        "Yoga studio"
+      ],
+      "note": "Yoga-studio detail; preserve the outdoor location. This related detail does not establish a separate parent facility."
+    },
+    "outdoor equipment repair station": {
+      "attach_to_if_present": [
+        "Bike repair station"
+      ],
+      "note": "Keep other outdoor-equipment repair capabilities in the existing repair-facility description. This related detail does not establish a separate parent facility."
+    },
+    "oversized-package storage": {
+      "attach_to_if_present": [
+        "Package room"
+      ],
+      "note": "A capacity/detail of the independently named package room; keep package lockers separately. This related detail does not establish a separate parent facility."
+    },
+    "plunge shower": {
+      "attach_to_if_present": [
+        "Sauna"
+      ],
+      "note": "Sauna detail; do not equate a shower to a cold-plunge tub. This related detail does not establish a separate parent facility."
+    },
+    "stage": {
+      "attach_to_if_present": [
+        "Resident lounge / clubhouse",
+        "Rooftop lounge"
+      ],
+      "note": "Entertainment-lounge detail; no separate performance venue is established. This related detail does not establish a separate parent facility."
+    },
+    "rooftop greenhouse lounge and resident garden": {
+      "attach_to_if_present": [
+        "Rooftop lounge"
+      ],
+      "note": "Greenhouse describes the lounge setting; this is not evidence of a separate resident gardening greenhouse."
+    }
+  }
+}
