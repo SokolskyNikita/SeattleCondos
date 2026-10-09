@@ -26,30 +26,30 @@ class AmenityProcessingTests(unittest.TestCase):
 
     def test_extract_before_excluding_wifi_and_tv(self):
         self.assertEqual(self.labels("two skyline lounges with Wi-Fi, a full kitchen, TVs, a fireplace and shuffleboard"),
-                         {"Resident lounge / clubhouse", "Shared kitchen", "Fireplace", "Shuffleboard"})
+                         {"Resident lounge", "Shared kitchen", "Fireplace", "Shuffleboard"})
         self.assertEqual(self.labels("community Wi-Fi"), set())
 
     def test_no_substring_spa_or_coffee_bar_inferences(self):
         self.assertEqual(self.labels("resident lounge with pool table, television, and private workspaces"),
-                         {"Resident lounge / clubhouse", "Pool table", "Private workspace"})
+                         {"Resident lounge", "Pool table", "Private workspace"})
         self.assertEqual(self.labels("resident lounge with kitchenette, coffee machine, mini-fridge, dining table and tv seating"),
-                         {"Resident lounge / clubhouse", "Kitchenette"})
+                         {"Resident lounge", "Kitchenette"})
 
     def test_distinct_watercraft_and_shared_studio(self):
         self.assertEqual(self.labels("reservation-only kayaks and paddle boards"), {"Kayak access", "Paddleboard access"})
-        self.assertEqual(self.labels("yoga and spin studio with five stationary bikes"), {"Yoga / spin studio"})
-        self.assertEqual(self.labels("fitness center with free weights"), {"Fitness center"})
+        self.assertEqual(self.labels("yoga and spin studio with five stationary bikes"), {"Yoga/spin studio"})
+        self.assertEqual(self.labels("fitness center with free weights"), {"Gym"})
 
     def test_meaningful_subtype_distinctions(self):
         for source, expected in {
             "EV-ready parking": {"Parking"},
-            "EV parking": {"EV parking (unspecified)"},
+            "EV parking": {"EV parking"},
             "bike racks": {"Bike parking"},
             "bike storage": {"Bike storage"},
             "rooftop pet relief area and self-service pet wash": {"Pet relief area", "Pet wash station"},
-            "sky lounge": {"Resident lounge / clubhouse"},
-            "spa": {"Spa (unspecified)"},
-            "pet spa": {"Pet spa (unspecified)"},
+            "sky lounge": {"Resident lounge"},
+            "spa": {"Spa"},
+            "pet spa": {"Pet spa"},
             "private rooftop garden": {"Rooftop garden"},
         }.items():
             with self.subTest(source=source):
@@ -61,14 +61,14 @@ class AmenityProcessingTests(unittest.TestCase):
 
     def test_rare_components_fold_without_losing_parent_features(self):
         for source, expected in {
-            "Social lounge with DJ booth, karaoke and TV.": {"Resident lounge / clubhouse", "Karaoke"},
+            "Social lounge with DJ booth, karaoke and TV.": {"Resident lounge", "Karaoke"},
             "rooftop greenhouse lounge and resident garden": {"Rooftop lounge", "Rooftop garden"},
-            "Fitness center with locker room and sauna": {"Fitness center", "Sauna"},
+            "Fitness center with locker room and sauna": {"Gym", "Sauna"},
             "dry sauna with plunge shower": {"Sauna"},
             "package lockers and oversized package storage room": {"Package lockers", "Package room"},
-            "reservable wine cellar lounge with wine storage lockers": {"Resident lounge / clubhouse", "Wine storage"},
-            "Skee-Ball game room": {"Arcade games", "Game room / area"},
-            "workshop/hobby locker with bike repair and tools to borrow": {"Workshop / makerspace", "Bike repair station", "Tool lending"},
+            "reservable wine cellar lounge with wine storage lockers": {"Resident lounge", "Wine storage"},
+            "Skee-Ball game room": {"Arcade games", "Game room"},
+            "workshop/hobby locker with bike repair and tools to borrow": {"Makerspace", "Bike repair", "Tool lending"},
             "resident wellness program with personal training and weekly classes": {"Fitness classes"},
         }.items():
             with self.subTest(source=source):
@@ -110,11 +110,11 @@ class AmenityProcessingTests(unittest.TestCase):
         original = self.fixture(sources)
         result, report = processor.process(original, self.rules)
         building = result["buildings"][0]
-        self.assertEqual(building["amenities"].count("BBQ grills"), 1)
-        self.assertEqual(building["amenity_details"]["BBQ grills"]["source_descriptions"], sources[:2])
+        self.assertEqual(building["amenities"].count("BBQs"), 1)
+        self.assertEqual(building["amenity_details"]["BBQs"]["source_descriptions"], sources[:2])
         self.assertEqual(building["amenities_original"], sources)
-        self.assertEqual(building["amenity_details"]["Swimming pool"]["source_descriptions"], [sources[2]])
-        self.assertEqual(building["amenity_details"]["Garage parking"]["source_descriptions"], [sources[3]])
+        self.assertEqual(building["amenity_details"]["Pool"]["source_descriptions"], [sources[2]])
+        self.assertEqual(building["amenity_details"]["Parking"]["source_descriptions"], [sources[3]])
         self.assertEqual(building["amenity_details"]["Kayak access"]["source_descriptions"], [sources[4]])
         self.assertEqual(original, self.fixture(sources))
         for key in ("id", "name", "approx_1br_monthly_usd", "sources"):

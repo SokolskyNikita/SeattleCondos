@@ -1,0 +1,1119 @@
+{
+  "schema_version": 1,
+  "processed_at": "2026-10-09",
+  "rules_version": "1.4.2",
+  "rules_sha256": "670d1fc1496b5c2707fe16f78b45bb35c3fbb4f1c8b28004268a9832f3a114b4",
+  "original_names_sha256": "b8d13c673abcde3f06037dda0bcfcd30e3f231b1c8a63cf7cc7f126601d1638a",
+  "summary": {
+    "buildings_processed": 337,
+    "original_amenity_entries": 2146,
+    "unique_original_source_names": 1167,
+    "unique_normalized_source_names": 1119,
+    "processed_amenity_entries": 2522,
+    "unique_canonical_amenities_in_use": 112,
+    "fully_excluded_source_entries": 98,
+    "fully_excluded_unique_source_names": 77,
+    "expanded_feature_mentions_before_deduplication": 2618,
+    "duplicate_feature_mentions_removed": 96,
+    "buildings_with_ambiguous_names": 82,
+    "buildings_without_retained_amenities": 0,
+    "buildings_removed": 0,
+    "unmapped_source_names": 0
+  },
+  "fully_excluded_source_names": {
+    "1 gb internet in common areas": 1,
+    "24/7 attended lobby with mail room": 1,
+    "bike shop": 1,
+    "business lobby": 1,
+    "common areas with wi-fi": 1,
+    "common-area wi-fi": 5,
+    "common-area wifi": 1,
+    "community events": 1,
+    "community lobbies": 1,
+    "community mini market": 1,
+    "community wi-fi": 1,
+    "community-wide wifi": 1,
+    "complimentary wi-fi in common areas": 3,
+    "complimentary wi-fi in social spaces": 1,
+    "compost and recycling room": 1,
+    "controlled access": 5,
+    "courtesy patrol": 1,
+    "creative studio": 1,
+    "dog amenities": 1,
+    "elevator": 1,
+    "family outdoor recreation space": 1,
+    "free internet throughout the building and parking garage": 1,
+    "free weights": 1,
+    "free wi-fi in amenity spaces": 1,
+    "free wi-fi in common areas": 1,
+    "free wifi in all common areas": 1,
+    "gathering spots": 1,
+    "green roof": 1,
+    "green roof gardens": 1,
+    "gym access": 1,
+    "hydration and beverage stations in lobby and wellness area": 1,
+    "indoor/outdoor lobby": 1,
+    "landscaped grounds": 2,
+    "large-format video wall for game days and entertainment": 1,
+    "lobby": 1,
+    "monthly resident events": 3,
+    "monthly resident events including a lobby breakfast bar": 1,
+    "movement space": 1,
+    "office space": 1,
+    "on-site grocery store": 1,
+    "on-site retail": 1,
+    "outdoor entertainment spaces": 2,
+    "outdoor gathering spaces": 1,
+    "outdoor green spaces": 1,
+    "outdoor lounge furniture": 1,
+    "outdoor seating": 1,
+    "outdoor semi-private dining area": 1,
+    "peloton": 1,
+    "pet-friendly spaces": 2,
+    "planned social activities": 1,
+    "printer service": 1,
+    "private balconies": 1,
+    "private decks/patios": 1,
+    "public courtyard and plaza": 1,
+    "public square with outdoor seating": 1,
+    "resident access to penelope spa and the beauty bar": 1,
+    "resident community events": 1,
+    "resident cooking events and nutritionist appointments": 1,
+    "resident entertaining areas": 1,
+    "resident events": 5,
+    "resident social spaces": 1,
+    "rooftop": 1,
+    "rooftop community space": 1,
+    "seating areas": 1,
+    "secure common-area printing service": 1,
+    "shared amenities across four residences": 1,
+    "social spaces": 1,
+    "soul fitness partnership": 1,
+    "tire air pump and repair station": 1,
+    "trailhead room with books and maps": 1,
+    "trx training": 1,
+    "two rooftop amenity spaces": 1,
+    "water feature": 1,
+    "wi-fi in common areas": 3,
+    "wi-fi in several common areas": 1,
+    "wifi in all community areas": 1,
+    "wifi throughout the building": 1
+  },
+  "canonical_amenity_building_counts": {
+    "Arcade games": 7,
+    "Art studio": 1,
+    "Bar": 14,
+    "Barre/stretch studio": 1,
+    "Basketball court": 3,
+    "BBQs": 191,
+    "Beach club": 1,
+    "Bike parking": 8,
+    "Bike repair": 33,
+    "Bike storage": 103,
+    "Bike wash": 6,
+    "Bocce court": 5,
+    "Bowling alley": 1,
+    "Cabanas": 5,
+    "Climbing wall": 4,
+    "Coffee bar": 28,
+    "Cold plunge": 1,
+    "Concierge": 21,
+    "Courtyard": 73,
+    "Coworking": 77,
+    "Dog park / run": 86,
+    "Doorman": 1,
+    "Dry cleaning service": 1,
+    "EV car share": 2,
+    "EV charging": 55,
+    "EV parking": 4,
+    "Event space": 9,
+    "Fire pit": 91,
+    "Fireplace": 28,
+    "Fitness classes": 6,
+    "Foosball": 4,
+    "Game room": 33,
+    "Garden": 11,
+    "Gardening plots": 3,
+    "Golf simulator": 2,
+    "Green screen studio": 1,
+    "Guest parking": 2,
+    "Guest suite": 11,
+    "Gym": 272,
+    "HIIT studio": 3,
+    "Hot tub": 8,
+    "Indoor pet play area": 3,
+    "Karaoke": 6,
+    "Kayak access": 2,
+    "Kitchenette": 6,
+    "Lakefront access": 1,
+    "Library": 8,
+    "Makerspace": 6,
+    "Meeting room": 45,
+    "Motorcycle parking": 1,
+    "Movie theater": 44,
+    "Music room": 3,
+    "Outdoor fireplace": 15,
+    "Outdoor fitness area": 1,
+    "Outdoor games": 3,
+    "Outdoor kitchen": 13,
+    "Outdoor movie screen": 2,
+    "Package lockers": 34,
+    "Package room": 23,
+    "Package service": 20,
+    "Paddleboard access": 3,
+    "Parking": 73,
+    "Pavilion": 6,
+    "Pet area": 17,
+    "Pet grooming station": 12,
+    "Pet relief area": 5,
+    "Pet spa": 19,
+    "Pet wash station": 50,
+    "Picnic area": 15,
+    "Pilates studio": 1,
+    "Pizza oven": 2,
+    "Playground": 1,
+    "Playroom": 2,
+    "Podcast room": 3,
+    "Poker tables": 2,
+    "Pool": 34,
+    "Pool table": 41,
+    "Private dining room": 4,
+    "Private workspace": 15,
+    "Putting green": 2,
+    "Recreation room": 2,
+    "Refrigerated package storage": 6,
+    "Rehearsal room": 1,
+    "Resident lounge": 224,
+    "Rooftop deck": 198,
+    "Rooftop garden": 14,
+    "Rooftop lounge": 54,
+    "Sauna": 12,
+    "Shared bikes": 2,
+    "Shared kitchen": 55,
+    "Shared laundry": 6,
+    "Shared park": 1,
+    "Shuffleboard": 10,
+    "Solarium": 3,
+    "Spa": 11,
+    "Spin studio": 8,
+    "Sports court": 5,
+    "Storage": 33,
+    "Swimming pier": 1,
+    "Table tennis": 6,
+    "Tepidarium": 1,
+    "Terrace / patio": 56,
+    "Tool lending": 1,
+    "Treatment room": 2,
+    "Valet trash service": 2,
+    "VR room": 1,
+    "Walking trails": 2,
+    "Wellness studio": 3,
+    "Wine storage": 1,
+    "Yoga studio": 38,
+    "Yoga/Pilates studio": 1,
+    "Yoga/spin studio": 3
+  },
+  "inclusion_review": [],
+  "ambiguous_name_review": [
+    {
+      "id": "4730-california",
+      "name": "4730 California",
+      "notes": [
+        {
+          "source": "rooftop pet area",
+          "reason": "The type and purpose of the pet area are unspecified."
+        }
+      ]
+    },
+    {
+      "id": "77-central",
+      "name": "77 Central",
+      "notes": [
+        {
+          "source": "Spa",
+          "reason": "“Spa” does not identify a specific facility such as a hot tub or treatment room."
+        }
+      ]
+    },
+    {
+      "id": "888-bellevue",
+      "name": "888 Bellevue",
+      "notes": [
+        {
+          "source": "dog spa",
+          "reason": "Dog spa does not specify washing or grooming."
+        }
+      ]
+    },
+    {
+      "id": "amli-535",
+      "name": "AMLI 535",
+      "notes": [
+        {
+          "source": "sky deck",
+          "reason": "A deck is explicit but its rooftop location is not established by the word sky."
+        }
+      ]
+    },
+    {
+      "id": "amli-bellevue-park",
+      "name": "AMLI Bellevue Park",
+      "notes": [
+        {
+          "source": "sky lounge",
+          "reason": "The name does not establish whether this is rooftop or indoor; mapped as a lounge."
+        }
+      ]
+    },
+    {
+      "id": "aperture-on-fifth",
+      "name": "Aperture on Fifth",
+      "notes": [
+        {
+          "source": "bocce ball",
+          "reason": "Bocce is named, but a dedicated court is not explicit."
+        }
+      ]
+    },
+    {
+      "id": "arthouse",
+      "name": "ArtHouse",
+      "notes": [
+        {
+          "source": "indoor/outdoor sky lounge",
+          "reason": "Sky lounge does not establish a rooftop facility."
+        },
+        {
+          "source": "pet patio",
+          "reason": "Does not specify a relief area or play space."
+        }
+      ]
+    },
+    {
+      "id": "artix",
+      "name": "Artix",
+      "notes": [
+        {
+          "source": "designated rooftop pet area",
+          "reason": "Pet area does not establish a dog run, relief area, or indoor play room."
+        }
+      ]
+    },
+    {
+      "id": "ascent-south-lake-union",
+      "name": "Ascent South Lake Union",
+      "notes": [
+        {
+          "source": "rooftop spa",
+          "reason": "“Spa” does not specify whether this is a hot tub or a treatment/wellness facility."
+        }
+      ]
+    },
+    {
+      "id": "aspira",
+      "name": "Aspira",
+      "notes": [
+        {
+          "source": "pet decks",
+          "reason": "Does not specify whether the deck is a relief area or play space."
+        }
+      ]
+    },
+    {
+      "id": "astro",
+      "name": "Astro",
+      "notes": [
+        {
+          "source": "resident sky lounge with pool table, kitchen and bar",
+          "reason": "Sky lounge does not establish whether the lounge is indoors or outdoors; no deck inferred."
+        }
+      ]
+    },
+    {
+      "id": "avalon-belltown-towers",
+      "name": "Avalon Belltown Towers",
+      "notes": [
+        {
+          "source": "24th-floor Sky Lounge",
+          "reason": "The name does not establish whether the lounge is indoors or outdoors; no rooftop deck inferred."
+        },
+        {
+          "source": "pet spa",
+          "reason": "Does not specify washing or grooming services."
+        },
+        {
+          "source": "private dining kitchen",
+          "reason": "Unclear whether this is a shared kitchen, a catering kitchen, or a dedicated dining room."
+        }
+      ]
+    },
+    {
+      "id": "axle-apartments",
+      "name": "Axle Apartments",
+      "notes": [
+        {
+          "source": "Sky lounge with billiards",
+          "reason": "“Sky lounge” does not establish whether the lounge is indoor or rooftop."
+        }
+      ]
+    },
+    {
+      "id": "baldwyn",
+      "name": "Baldwyn",
+      "notes": [
+        {
+          "source": "social parlor with cocktail kitchen, lounge seating and bar seating",
+          "reason": "Cocktail kitchen is mapped conservatively as a kitchenette; bar seating alone does not establish a bar."
+        }
+      ]
+    },
+    {
+      "id": "ballard-on-the-park",
+      "name": "Ballard on the Park",
+      "notes": [
+        {
+          "source": "spa",
+          "reason": "“Spa” does not identify a specific facility such as a hot tub or treatment room."
+        }
+      ]
+    },
+    {
+      "id": "barclay-broadway",
+      "name": "Barclay Broadway",
+      "notes": [
+        {
+          "source": "bike storage and work room",
+          "reason": "Bike-related work room retained as bike repair; equipment and setup are unspecified."
+        }
+      ]
+    },
+    {
+      "id": "basalt-west-seattle",
+      "name": "Basalt West Seattle",
+      "notes": [
+        {
+          "source": "Bike storage and workshop",
+          "reason": "Bike-specific workshop retained as bike repair; equipment and setup are unspecified."
+        }
+      ]
+    },
+    {
+      "id": "beam",
+      "name": "BEAM",
+      "notes": [
+        {
+          "source": "landscaped courtyard and indoor/outdoor zen room",
+          "reason": "The function of the zen room is unclear."
+        },
+        {
+          "source": "sky lounge with two-sided fireplace, kitchenette, dining nooks and big-screen media room",
+          "reason": "“Sky lounge” location is uncertain; two-sided fireplace does not establish outdoor fireplace."
+        }
+      ]
+    },
+    {
+      "id": "bell-overlake",
+      "name": "Bell Overlake",
+      "notes": [
+        {
+          "source": "movement space",
+          "reason": "Withheld from main labels because the activity and facility type are unspecified."
+        }
+      ]
+    },
+    {
+      "id": "boardwalk-kirkland",
+      "name": "Boardwalk Kirkland",
+      "notes": [
+        {
+          "source": "indoor/outdoor lounge with pool table and shared kitchen appliances",
+          "reason": "Appliances do not confirm a distinct shared kitchen; Kitchenette is a conservative interpretation."
+        }
+      ]
+    },
+    {
+      "id": "boxcar-south-lake-union",
+      "name": "Boxcar South Lake Union",
+      "notes": [
+        {
+          "source": "rooftop",
+          "reason": "A rooftop is named, but no usable amenity or facility is specified."
+        }
+      ]
+    },
+    {
+      "id": "canopy",
+      "name": "Canopy",
+      "notes": [
+        {
+          "source": "dog park with pet spa",
+          "reason": "Pet spa does not specify washing or grooming."
+        },
+        {
+          "source": "rooftop lounge with game tables and movie screening area",
+          "reason": "Movie screening is explicit; a dedicated theater or outdoor location is not established."
+        }
+      ]
+    },
+    {
+      "id": "cielo",
+      "name": "Cielo",
+      "notes": [
+        {
+          "source": "pet spa",
+          "reason": "Does not specify washing or grooming services."
+        }
+      ]
+    },
+    {
+      "id": "colina-apartments",
+      "name": "Colina Apartments",
+      "notes": [
+        {
+          "source": "fitness room with yoga facilities",
+          "reason": "Yoga equipment or a dedicated yoga studio is unclear."
+        }
+      ]
+    },
+    {
+      "id": "corner-63",
+      "name": "Corner 63",
+      "notes": [
+        {
+          "source": "designated rooftop pet area",
+          "reason": "Pet area does not establish a dog run, relief area, or indoor play room."
+        },
+        {
+          "source": "pet spa",
+          "reason": "Does not specify washing or grooming services."
+        }
+      ]
+    },
+    {
+      "id": "crane-at-interbay",
+      "name": "Crane at Interbay",
+      "notes": [
+        {
+          "source": "Green roof gardens",
+          "reason": "The name may describe a decorative green roof; usable resident garden access is not established."
+        },
+        {
+          "source": "Rooftop dog walk",
+          "reason": "A dog walking area does not establish a park/run or relief area."
+        }
+      ]
+    },
+    {
+      "id": "ellinor-ballard",
+      "name": "Ellinor Ballard",
+      "notes": [
+        {
+          "source": "rooftop plaza with 360-degree views",
+          "reason": "The name does not establish whether this is a resident amenity or a public plaza."
+        }
+      ]
+    },
+    {
+      "id": "excelsior-seattle",
+      "name": "Excelsior Seattle",
+      "notes": [
+        {
+          "source": "sky lounge and rooftop terrace",
+          "reason": "Sky lounge may be indoor; only the terrace establishes rooftop access."
+        }
+      ]
+    },
+    {
+      "id": "foothill-commons",
+      "name": "Foothill Commons",
+      "notes": [
+        {
+          "source": "spa",
+          "reason": "“Spa” does not identify a specific facility such as a hot tub or treatment room."
+        }
+      ]
+    },
+    {
+      "id": "gables-queen-anne",
+      "name": "Gables Queen Anne",
+      "notes": [
+        {
+          "source": "ev parking (optional paid spaces)",
+          "reason": "EV parking does not establish charging or EV-ready infrastructure."
+        }
+      ]
+    },
+    {
+      "id": "griffis-belltown",
+      "name": "Griffis Belltown",
+      "notes": [
+        {
+          "source": "year-round pool and spa",
+          "reason": "“Spa” does not identify a specific facility such as a hot tub or treatment room."
+        }
+      ]
+    },
+    {
+      "id": "griffis-seattle-waterfront",
+      "name": "Griffis Seattle Waterfront",
+      "notes": [
+        {
+          "source": "Sky Lounge",
+          "reason": "The name does not establish whether this is rooftop or indoor; mapped as a lounge."
+        }
+      ]
+    },
+    {
+      "id": "helios",
+      "name": "Helios",
+      "notes": [
+        {
+          "source": "dog lounge and outdoor dog run",
+          "reason": "Dog lounge is not specific enough to classify as an indoor pet play room."
+        }
+      ]
+    },
+    {
+      "id": "hilite",
+      "name": "Hilite",
+      "notes": [
+        {
+          "source": "community lounge with kitchen, theater area and outdoor deck",
+          "reason": "“Theater area” is treated as a movie theater; exact screening setup is unspecified."
+        }
+      ]
+    },
+    {
+      "id": "infinity-capitol-hill-apartments",
+      "name": "Infinity Capitol Hill Apartments",
+      "notes": [
+        {
+          "source": "rooftop lounge with fireplace and skyline views",
+          "reason": "Lounge and fireplace are explicit; rooftop lounge does not establish that the fireplace is outdoors."
+        }
+      ]
+    },
+    {
+      "id": "ion-queen-anne",
+      "name": "ION Queen Anne",
+      "notes": [
+        {
+          "source": "pet spa",
+          "reason": "Does not specify washing or grooming services."
+        },
+        {
+          "source": "reserved resident parking and automated parking system",
+          "reason": "Automated parking system does not specify whether spaces are in a garage."
+        }
+      ]
+    },
+    {
+      "id": "ivy-at-interbay",
+      "name": "Ivy at Interbay",
+      "notes": [
+        {
+          "source": "sky lounge with kitchen and indoor/outdoor seating",
+          "reason": "“Sky lounge” does not establish rooftop access; kitchen retained as shared kitchen."
+        }
+      ]
+    },
+    {
+      "id": "jack-apartments",
+      "name": "Jack Apartments",
+      "notes": [
+        {
+          "source": "bike shop",
+          "reason": "Could mean retail or repair; neither function is explicit enough to map."
+        }
+      ]
+    },
+    {
+      "id": "joseph-arnold-lofts",
+      "name": "Joseph Arnold Lofts",
+      "notes": [
+        {
+          "source": "rooftop dog walk",
+          "reason": "A dog walking area does not establish a park/run or relief area."
+        }
+      ]
+    },
+    {
+      "id": "juxt",
+      "name": "Juxt",
+      "notes": [
+        {
+          "source": "sky lounge",
+          "reason": "The name does not establish whether this is rooftop or indoor; mapped as a lounge."
+        }
+      ]
+    },
+    {
+      "id": "kaye",
+      "name": "Kaye",
+      "notes": [
+        {
+          "source": "bark park and pet spa",
+          "reason": "Pet spa does not specify washing or grooming; retained as unspecified."
+        },
+        {
+          "source": "family outdoor recreation space",
+          "reason": "Outdoor recreation space is too vague to identify a specific facility or activity."
+        }
+      ]
+    },
+    {
+      "id": "kiara",
+      "name": "Kiara",
+      "notes": [
+        {
+          "source": "dog lounge and play area",
+          "reason": "“Play area” does not establish an indoor pet play room or dog run."
+        }
+      ]
+    },
+    {
+      "id": "mason-main",
+      "name": "Mason & Main",
+      "notes": [
+        {
+          "source": "sky lounge and deck",
+          "reason": "Lounge and deck functions are explicit; rooftop location is unspecified."
+        }
+      ]
+    },
+    {
+      "id": "mckenzie",
+      "name": "McKenzie",
+      "notes": [
+        {
+          "source": "pet spa and outdoor run",
+          "reason": "“Pet spa” does not specify washing or grooming services."
+        }
+      ]
+    },
+    {
+      "id": "metro-112",
+      "name": "Metro 112",
+      "notes": [
+        {
+          "source": "entertainment suite",
+          "reason": "Entertainment suite is treated as event space; exact use is unspecified."
+        }
+      ]
+    },
+    {
+      "id": "midtown-square",
+      "name": "Midtown Square",
+      "notes": [
+        {
+          "source": "pet play area with a pet washing station",
+          "reason": "Play area is not identified as indoor, off-leash, or a relief area."
+        }
+      ]
+    },
+    {
+      "id": "modera-overlake",
+      "name": "Modera Overlake",
+      "notes": [
+        {
+          "source": "pet spa open 24/7",
+          "reason": "Does not specify washing or grooming services."
+        }
+      ]
+    },
+    {
+      "id": "modera-shoreline",
+      "name": "Modera Shoreline",
+      "notes": [
+        {
+          "source": "pet spa open 8 a.m.–10 p.m. and 24-hour off-leash pet area",
+          "reason": "“Pet spa” does not specify washing or grooming services."
+        }
+      ]
+    },
+    {
+      "id": "monarch-apartments",
+      "name": "Monarch Apartments",
+      "notes": [
+        {
+          "source": "gym access",
+          "reason": "Gym access remains in source notes pending clarification of location and access arrangement; no on-site Gym inferred."
+        }
+      ]
+    },
+    {
+      "id": "o2",
+      "name": "O2",
+      "notes": [
+        {
+          "source": "sky lounge",
+          "reason": "The name does not establish whether this is rooftop or indoor; mapped as a lounge."
+        }
+      ]
+    },
+    {
+      "id": "one-lakefront",
+      "name": "One Lakefront",
+      "notes": [
+        {
+          "source": "boardroom with pool table",
+          "reason": "Pool table is explicit, but the name does not establish ordinary meeting-room use."
+        }
+      ]
+    },
+    {
+      "id": "onni-south-lake-union",
+      "name": "Onni South Lake Union",
+      "notes": [
+        {
+          "source": "private dining room with professional kitchen",
+          "reason": "Kitchen is described as professional, but catering use is not specified."
+        },
+        {
+          "source": "underground parking with designated electric vehicle spaces",
+          "reason": "EV spaces are named, but installed chargers are not established."
+        }
+      ]
+    },
+    {
+      "id": "owl-northgate",
+      "name": "OWL Northgate",
+      "notes": [
+        {
+          "source": "pet area",
+          "reason": "Does not specify a dog run, relief area, or indoor play space."
+        }
+      ]
+    },
+    {
+      "id": "panorama-apartments",
+      "name": "Panorama Apartments",
+      "notes": [
+        {
+          "source": "poolside kitchen",
+          "reason": "Kitchen retained; poolside does not establish indoor versus outdoor location."
+        }
+      ]
+    },
+    {
+      "id": "parque-kirkland",
+      "name": "Parque Kirkland",
+      "notes": [
+        {
+          "source": "tire air pump and repair station",
+          "reason": "Repair/pump description retained in source notes; bike versus vehicle use is not established, so no repair-facility label is assigned."
+        }
+      ]
+    },
+    {
+      "id": "pike-motorworks",
+      "name": "Pike Motorworks",
+      "notes": [
+        {
+          "source": "RPM training room",
+          "reason": "Fitness/training room retained; a particular equipment type or cycling format is not inferred from the name."
+        }
+      ]
+    },
+    {
+      "id": "premiere-on-pine",
+      "name": "Premiere on Pine",
+      "notes": [
+        {
+          "source": "flex fitness space",
+          "reason": "Exact facility type is unclear; included in the approved broad Gym category without promising equipment."
+        }
+      ]
+    },
+    {
+      "id": "skyglass",
+      "name": "Skyglass",
+      "notes": [
+        {
+          "source": "dog park and pet spa",
+          "reason": "Pet spa does not specify washing or grooming."
+        },
+        {
+          "source": "rooftop spa",
+          "reason": "“Spa” does not specify whether this is a hot tub or a treatment/wellness facility."
+        }
+      ]
+    },
+    {
+      "id": "sonata-at-columbia-station",
+      "name": "Sonata at Columbia Station",
+      "notes": [
+        {
+          "source": "sky lounge with fire pits and BBQs",
+          "reason": "“Sky lounge” does not establish roof/deck access; outdoor features are retained."
+        }
+      ]
+    },
+    {
+      "id": "the-audrey-at-belltown",
+      "name": "The Audrey at Belltown",
+      "notes": [
+        {
+          "source": "pool and spa",
+          "reason": "“Spa” may refer to a hot tub or a broader spa facility."
+        }
+      ]
+    },
+    {
+      "id": "the-ayer",
+      "name": "The Ayer",
+      "notes": [
+        {
+          "source": "46th-floor sky lounge with kitchen, dining and catering kitchen",
+          "reason": "The source lists kitchen and catering-kitchen functions without establishing separate rooms; sky lounge does not establish outdoor rooftop access."
+        },
+        {
+          "source": "dog park and pet spa",
+          "reason": "Pet spa does not specify washing or grooming."
+        },
+        {
+          "source": "fitness center and flex studio",
+          "reason": "Flex studio purpose is unspecified; consolidated under Gym without promising equipment or a separate facility."
+        }
+      ]
+    },
+    {
+      "id": "the-bravern",
+      "name": "The Bravern",
+      "notes": [
+        {
+          "source": "resident spa",
+          "reason": "“Spa” does not specify whether this is a hot tub or a treatment/wellness facility."
+        }
+      ]
+    },
+    {
+      "id": "the-hadley-apartments",
+      "name": "The Hadley Apartments",
+      "notes": [
+        {
+          "source": "Coffee lounge",
+          "reason": "A coffee-themed lounge is explicit; a separate coffee service/bar is not established."
+        }
+      ]
+    },
+    {
+      "id": "the-ivey-on-boren",
+      "name": "The Ivey on Boren",
+      "notes": [
+        {
+          "source": "dog spa and play area",
+          "reason": "Dog spa/play area does not specify washing, grooming, or indoor location."
+        },
+        {
+          "source": "resident wellness program with personal training and weekly classes",
+          "reason": "The class subject is unspecified; Fitness classes is provisional from the fitness program context."
+        }
+      ]
+    },
+    {
+      "id": "the-mercer-apartment-homes",
+      "name": "The Mercer Apartment Homes",
+      "notes": [
+        {
+          "source": "Spa",
+          "reason": "“Spa” does not identify a specific facility such as a hot tub or treatment room."
+        }
+      ]
+    },
+    {
+      "id": "the-meyden",
+      "name": "The Meyden",
+      "notes": [
+        {
+          "source": "pet spa",
+          "reason": "Does not specify washing or grooming services."
+        }
+      ]
+    },
+    {
+      "id": "the-modern",
+      "name": "The Modern",
+      "notes": [
+        {
+          "source": "pet spa and outdoor pet deck",
+          "reason": "Spa services and the deck’s use are unspecified."
+        }
+      ]
+    },
+    {
+      "id": "the-olivian",
+      "name": "The Olivian",
+      "notes": [
+        {
+          "source": "sky lounge",
+          "reason": "The name does not establish whether this is rooftop or indoor; mapped as a lounge."
+        }
+      ]
+    },
+    {
+      "id": "the-residences-at-rainier-square",
+      "name": "The Residences at Rainier Square",
+      "notes": [
+        {
+          "source": "creative studio",
+          "reason": "Withheld from the main list: the type of creative activity or equipment is unspecified."
+        },
+        {
+          "source": "resident access to penelope spa and the beauty bar",
+          "reason": "Spa/beauty-service access is retained in source notes. The name does not establish an external location, included service or access terms."
+        },
+        {
+          "source": "sky lounge with workspaces",
+          "reason": "“Sky lounge” does not establish rooftop access; workspaces retained."
+        }
+      ]
+    },
+    {
+      "id": "the-waverly",
+      "name": "The Waverly",
+      "notes": [
+        {
+          "source": "pet spa and dog run",
+          "reason": "“Pet spa” does not specify washing or grooming services."
+        },
+        {
+          "source": "reservable entertainment/tasting room",
+          "reason": "“Tasting room” does not specify wine service or a bar."
+        }
+      ]
+    },
+    {
+      "id": "the-waymark",
+      "name": "The Waymark",
+      "notes": [
+        {
+          "source": "EV parking",
+          "reason": "EV parking does not establish charging or EV-ready infrastructure."
+        }
+      ]
+    },
+    {
+      "id": "tower-12",
+      "name": "Tower 12",
+      "notes": [
+        {
+          "source": "reservable sky lounge",
+          "reason": "“Sky lounge” does not establish whether the lounge is outdoors or on a rooftop deck."
+        }
+      ]
+    },
+    {
+      "id": "true-north",
+      "name": "True North",
+      "notes": [
+        {
+          "source": "trailhead room with books and maps",
+          "reason": "The name does not establish a library or other canonical facility."
+        }
+      ]
+    },
+    {
+      "id": "uptown-11",
+      "name": "Uptown 11",
+      "notes": [
+        {
+          "source": "Soul Fitness partnership",
+          "reason": "Partnership retained in source notes; actual gym-entry benefit, fees and access arrangement are not established."
+        }
+      ]
+    },
+    {
+      "id": "vela",
+      "name": "Vela",
+      "notes": [
+        {
+          "source": "bike and storage space available",
+          "reason": "The wording does not clarify whether “storage space” is bike storage, separate resident storage, or both."
+        },
+        {
+          "source": "designated rooftop pet area",
+          "reason": "Pet area does not establish a dog run, relief area, or indoor play room."
+        }
+      ]
+    },
+    {
+      "id": "verve",
+      "name": "Verve",
+      "notes": [
+        {
+          "source": "rooftop dog lounge",
+          "reason": "A dog lounge does not establish a dog park/run or relief area."
+        },
+        {
+          "source": "sky lounge",
+          "reason": "The name does not establish whether this is rooftop or indoor; mapped as a lounge."
+        }
+      ]
+    },
+    {
+      "id": "west-edge",
+      "name": "West Edge",
+      "notes": [
+        {
+          "source": "entertainment suites",
+          "reason": "Entertainment suites are treated as event space; exact use is unspecified."
+        },
+        {
+          "source": "pet lounge and outdoor pet terrace",
+          "reason": "Pet-specific spaces are named, but their use is not specified."
+        }
+      ]
+    },
+    {
+      "id": "windsor-queen-anne",
+      "name": "Windsor Queen Anne",
+      "notes": [
+        {
+          "source": "two rooftop lounges/decks",
+          "reason": "Slash wording may refer to one combined type or separate lounge and deck features."
+        }
+      ]
+    },
+    {
+      "id": "zella-apartments",
+      "name": "Zella Apartments",
+      "notes": [
+        {
+          "source": "skylounge",
+          "reason": "The name does not establish whether this is rooftop or indoor; mapped as a lounge."
+        }
+      ]
+    },
+    {
+      "id": "zephyr-apartments",
+      "name": "Zephyr Apartments",
+      "notes": [
+        {
+          "source": "onsite dog walk",
+          "reason": "Could mean a designated dog walking path or a dog run; mapped to the closest usable pet area label."
+        }
+      ]
+    },
+    {
+      "id": "zig",
+      "name": "Zig",
+      "notes": [
+        {
+          "source": "office space",
+          "reason": "Withheld from main labels: resident coworking/private office use is not established."
+        }
+      ]
+    },
+    {
+      "id": "zinnia",
+      "name": "Zinnia",
+      "notes": [
+        {
+          "source": "pet spa",
+          "reason": "Does not specify washing or grooming services."
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "rules_version": "1.1.1",
+  "rules_version": "1.4.2",
   "updated_at": "2026-10-09",
   "scope": "Reusable rules for names-only normalization of shared amenities and the separately applied, user-approved building eligibility filter for the Seattle apartment directory. Exact mappings implement consolidation, renaming, splitting and component exclusions; the documented eligibility policy governs a subsequent membership decision. Neither stage establishes new researched property facts.",
   "execution": {
@@ -32,6 +32,7 @@
       "review_notes"
     ],
     "review_guidance_order": [
+      "Explicit approved renames and merges in compact_label_review",
       "Explicit approved decisions in rare_amenity_review",
       "General policies and excluded_components"
     ],
@@ -58,7 +59,7 @@
     },
     {
       "id": "conservative_inference",
-      "rule": "Never infer an outdoor rooftop from sky lounge, a full gym from fitness studio, a full kitchen from kitchenette/appliances, a spin studio from exercise bikes, a theater from a TV, charging from EV-ready parking, gardening plots from decorative gardens, secure bike storage from racks, or an on-site facility from an external partnership."
+      "rule": "Never infer an outdoor rooftop from sky lounge, a full kitchen from kitchenette/appliances, a spin studio from exercise bikes, a theater from a TV, charging from EV-ready parking, gardening plots from decorative gardens, secure bike storage from racks, or an on-site facility from an external partnership."
     },
     {
       "id": "meaningful_splits",
@@ -70,7 +71,7 @@
     },
     {
       "id": "location_and_subtypes",
-      "rule": "Preserve rooftop vs ground-level outdoor space, indoor lounge vs outdoor deck, pet relief vs dog run vs indoor play, bike parking vs storage, kitchen vs kitchenette, and media lounge vs theater. EV readiness is a Parking detail, never installed EV charging. Indoor/outdoor, heated, seasonal, rooftop pool and similar qualifiers remain attached in source descriptions. Do not add generic parent and specialized labels for the same facility."
+      "rule": "Preserve rooftop vs ground-level outdoor space, indoor lounge vs outdoor deck, pet relief vs dog run vs indoor play, bike parking vs storage, kitchen vs kitchenette. EV readiness is a Parking detail, never installed EV charging. Indoor/outdoor, heated, seasonal, rooftop pool and similar qualifiers remain attached in source descriptions. Do not add generic parent and specialized labels for the same facility."
     },
     {
       "id": "practical_and_distinctive",
@@ -82,7 +83,7 @@
     },
     {
       "id": "ambiguity",
-      "rule": "Preserve source wording and add a review note without research or unsupported upgrades. Spa and pet spa without stated functions remain unspecified labels. Sky lounge becomes a resident lounge with no rooftop inference; a bare kitchen has unspecified equipment. Withhold the vague studios, workspaces, repair/access claims explicitly listed in rare_amenity_review from main facility labels; their original descriptions and caveats remain."
+      "rule": "Preserve source wording and add a review note without research or unsupported upgrades. Use the plain labels Spa, Pet spa, Pet area and EV parking without appending (unspecified). Preserve uncertainty in review notes and original descriptions; EV parking does not establish EV charging. Sky lounge becomes a resident lounge with no rooftop inference; a bare kitchen has unspecified equipment. Withhold the vague studios, workspaces, repair/access claims explicitly listed in rare_amenity_review from main facility labels; their original descriptions and caveats remain."
     },
     {
       "id": "deduplication",
@@ -90,7 +91,7 @@
     },
     {
       "id": "inclusion",
-      "rule": "Keep normalization and membership filtering separate. After canonicalization and deduplication, apply building_eligibility: normally require at least two distinct retained labels; retain a single Fitness center (including source gym synonyms), and archive singletons with any other label. Zero-label results are flagged for separate inclusion review. generation-rules/process_amenities.py itself preserves every building and all unrelated data."
+      "rule": "Keep normalization and membership filtering separate. After canonicalization and deduplication, apply building_eligibility: normally require at least two distinct retained labels; retain a single Gym (including source gym synonyms), and archive singletons with any other label. Zero-label results are flagged for separate inclusion review. generation-rules/process_amenities.py itself preserves every building and all unrelated data."
     },
     {
       "id": "future_inputs",
@@ -99,6 +100,10 @@
     {
       "id": "rare_label_details",
       "rule": "Follow rare_amenity_review for approved omissions, folds and renames. A minor detail may attach only to an independently established parent amenity. Never infer a fitness center from a locker room, a sauna from a plunge shower, a lounge from a stage, or concierge service from a staffed lobby."
+    },
+    {
+      "id": "compact_labels",
+      "rule": "Use the approved compact_label_review renames and category merges. Gym covers general fitness centers and fitness studios without promising particular equipment; activity-specific studios remain separate. Movie theater combines theaters, media lounges and screening areas without promising a dedicated room or cinema equipment; Outdoor movie screen remains separate. Parking includes garage parking; retain garage type, equipment, shared-space relationships and service arrangements in original descriptions. Bike repair is a facility category, not a promise of staffed repair service. Pet wash station, Dry cleaning service and Valet trash service retain their names. Outdoor dining area is folded into BBQ details. Retain explicit grills as BBQs; attach dining-only descriptions to independently established BBQs without inferring grills from seating. Shared dining area is folded into independently established Shared kitchen details; never infer a kitchen from dining seating alone. Shared kitchen includes catering and demonstration kitchens; preserve equipment, kitchen type, booking and access restrictions in source descriptions. Parking includes covered parking and carports. Climbing wall includes bouldering walls. Coworking includes business centers without promising particular equipment, meeting rooms or private offices. Sauna includes steam rooms; retain dry-heat versus steam facilities in original descriptions, without implying both are available."
     }
   ],
   "building_eligibility": {
@@ -108,24 +113,25 @@
     "count_basis": "Number of distinct retained canonical feature labels, excluding original descriptions, related details and withheld labels. This eligibility threshold is not an amenity score or count of physical rooms.",
     "minimum_shared_amenities": 2,
     "single_amenity_exception_labels": [
-      "Fitness center"
+      "Gym"
     ],
     "single_amenity_exception_source_aliases": [
       "gym",
-      "fitness center"
+      "fitness center",
+      "fitness studio"
     ],
-    "exception_matching": "Evaluate the canonical label Fitness center after mapping source synonyms. Do not extend the exception to Fitness studio, ambiguous gym access or external partnerships.",
+    "exception_matching": "Evaluate canonical Gym after the approved merger of general fitness centers and fitness studios. Activity-specific studios, ambiguous gym access and external partnerships do not establish Gym. This rename does not reapply membership filtering or reinstate archived buildings.",
     "decisions": [
       {
         "condition": "Two or more distinct retained canonical amenities",
         "action": "Retain, subject to the other directory eligibility criteria"
       },
       {
-        "condition": "Exactly one retained canonical amenity, and it is Fitness center",
+        "condition": "Exactly one retained canonical amenity, and it is Gym",
         "action": "Retain under the fitness-center/gym exception"
       },
       {
-        "condition": "Exactly one retained canonical amenity, and it is not Fitness center",
+        "condition": "Exactly one retained canonical amenity, and it is not Gym",
         "action": "Exclude from the active directory and archive its full record"
       },
       {
@@ -285,7 +291,7 @@
   "rare_amenity_review": {
     "reviewed_at": "2026-10-09",
     "based_on_rules_version": "1.0.0",
-    "scope": "User-approved names-only review of the 45 labels used by one active building each. Rarity alone is not an exclusion rule. Apply these explicit semantic decisions to all future reviewed mappings.",
+    "scope": "User-approved names-only review of the 45 labels used by one active building each. Rarity alone is not an exclusion rule. Apply these explicit semantic decisions to all future reviewed mappings. Current label references reflect subsequent approved renames and merges; inventory_change remains the historical review count.",
     "removed_standalone_labels": {
       "Cooking events": "Low-priority resident programming; retain source text rather than a separate amenity label.",
       "Creative studio": "Too vague to establish an art, music or workshop facility.",
@@ -302,7 +308,7 @@
       "DJ booth": {
         "replacement": [],
         "detail_parent": [
-          "Resident lounge / clubhouse",
+          "Resident lounge",
           "Rooftop lounge"
         ],
         "reason": "Equipment detail of the lounge; keep explicit karaoke separately."
@@ -326,7 +332,7 @@
       "Locker room": {
         "replacement": [],
         "detail_parent": [
-          "Fitness center"
+          "Gym"
         ],
         "reason": "Fitness-center detail; keep independently named sauna."
       },
@@ -340,7 +346,7 @@
       "Outdoor equipment repair station": {
         "replacement": [],
         "detail_parent": [
-          "Bike repair station"
+          "Bike repair"
         ],
         "reason": "Keep other outdoor-equipment repair capabilities in the existing repair-facility description."
       },
@@ -363,7 +369,7 @@
           "Arcade games"
         ],
         "detail_parent": [
-          "Game room / area"
+          "Game room"
         ],
         "reason": "Consolidate the game into Arcade games and preserve its specific name in the description."
       },
@@ -377,26 +383,26 @@
       "Stage": {
         "replacement": [],
         "detail_parent": [
-          "Resident lounge / clubhouse",
+          "Resident lounge",
           "Rooftop lounge"
         ],
         "reason": "Entertainment-lounge detail; no separate performance venue is established."
       },
       "Wellness lounge": {
         "replacement": [
-          "Resident lounge / clubhouse"
+          "Resident lounge"
         ],
         "detail_parent": [
-          "Resident lounge / clubhouse"
+          "Resident lounge"
         ],
         "reason": "Wellness does not establish a distinct function beyond the lounge."
       },
       "Wine lounge": {
         "replacement": [
-          "Resident lounge / clubhouse"
+          "Resident lounge"
         ],
         "detail_parent": [
-          "Resident lounge / clubhouse"
+          "Resident lounge"
         ],
         "reason": "Keep the reservable wine-cellar setting as lounge detail and preserve Wine storage separately."
       }
@@ -406,7 +412,7 @@
     },
     "retained_rare_labels": [
       "Art studio",
-      "Barre / stretch studio",
+      "Barre/stretch studio",
       "Beach club",
       "Bowling alley",
       "Cold plunge",
@@ -416,7 +422,7 @@
       "Green screen studio",
       "Lakefront access",
       "Motorcycle parking",
-      "Movie screening area",
+      "Movie theater",
       "Outdoor fitness area",
       "Pilates studio",
       "Playground",
@@ -424,9 +430,9 @@
       "Shared park",
       "Swimming pier",
       "Tepidarium",
-      "Virtual reality room",
+      "VR room",
       "Wine storage",
-      "Yoga / Pilates studio"
+      "Yoga/Pilates studio"
     ],
     "inventory_change": {
       "before": 147,
@@ -469,55 +475,98 @@
         "Clarified specific-rule precedence, explicit resident use for retained spaces, and the omitted-versus-folded review counts.",
         "No changes to canonical labels, exact mappings, detail attachments, review notes or active building membership."
       ]
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-10-09",
+      "changes": [
+        "Applied approved compact names and merged general fitness studios into Gym, garage parking into Parking, and media lounges and movie screening areas into Movie theater.",
+        "Renamed Bike repair station to Bike repair and Game room / area to Game room.",
+        "Kept Pet wash station, Dry cleaning service and Valet trash service; dining labels remain pending further decision.",
+        "Preserved original evidence and building membership; updated current rule references and Gym eligibility label."
+      ]
+    },
+    {
+      "version": "1.2.1",
+      "date": "2026-10-09",
+      "changes": [
+        "Removed (unspecified) from EV parking, Pet area, Pet spa and Spa labels; preserved original descriptions, review notes and category distinctions."
+      ]
+    },
+    {
+      "version": "1.3.0",
+      "date": "2026-10-09",
+      "changes": [
+        "Folded Outdoor dining area into BBQ details for all 20 affected buildings; all already have independently established BBQs.",
+        "Dining-only source entries attach conditionally to BBQs and never create unsupported grills. Preserved original descriptions and building membership."
+      ]
+    },
+    {
+      "version": "1.4.0",
+      "date": "2026-10-09",
+      "changes": [
+        "Folded Shared dining area into kitchen details.",
+        "Merged Covered parking into Parking, Bouldering wall into Climbing wall, Catering kitchen and Demonstration kitchen into Shared kitchen, and Business center into Coworking.",
+        "Preserved original descriptions, facility subtypes, access restrictions and all 337 buildings."
+      ]
+    },
+    {
+      "version": "1.4.1",
+      "date": "2026-10-09",
+      "changes": [
+        "Merged Steam room into Sauna; preserved steam-room descriptions and all building records."
+      ]
+    },
+    {
+      "version": "1.4.2",
+      "date": "2026-10-09",
+      "changes": [
+        "Aligned current documentation and review-note terminology with the completed compact-label review: 112 amenity types across 337 buildings.",
+        "Documented regeneration and versioning of the processing report; retained historical research and exclusion snapshots unchanged.",
+        "No changes to amenity mappings or building membership."
+      ]
     }
   ],
   "canonical_amenities": [
     "Arcade games",
     "Art studio",
-    "Bar / wet bar",
-    "Barre / stretch studio",
+    "Bar",
+    "Barre/stretch studio",
     "Basketball court",
-    "BBQ grills",
+    "BBQs",
     "Beach club",
     "Bike parking",
-    "Bike repair station",
+    "Bike repair",
     "Bike storage",
     "Bike wash",
     "Bocce court",
-    "Bouldering wall",
     "Bowling alley",
-    "Business center",
     "Cabanas",
-    "Catering kitchen",
     "Climbing wall",
     "Coffee bar",
     "Cold plunge",
     "Concierge",
     "Courtyard",
-    "Covered parking",
-    "Coworking space",
-    "Demonstration kitchen",
+    "Coworking",
     "Dog park / run",
     "Doorman",
     "Dry cleaning service",
     "EV car share",
     "EV charging",
-    "EV parking (unspecified)",
+    "EV parking",
     "Event space",
     "Fire pit",
     "Fireplace",
-    "Fitness center",
     "Fitness classes",
-    "Fitness studio",
     "Foosball",
-    "Game room / area",
-    "Garage parking",
+    "Game room",
     "Garden",
     "Gardening plots",
     "Golf simulator",
     "Green screen studio",
     "Guest parking",
     "Guest suite",
+    "Gym",
     "HIIT studio",
     "Hot tub",
     "Indoor pet play area",
@@ -526,29 +575,26 @@
     "Kitchenette",
     "Lakefront access",
     "Library",
-    "Media lounge",
+    "Makerspace",
     "Meeting room",
     "Motorcycle parking",
-    "Movie screening area",
     "Movie theater",
     "Music room",
-    "Outdoor dining area",
     "Outdoor fireplace",
     "Outdoor fitness area",
     "Outdoor games",
     "Outdoor kitchen",
     "Outdoor movie screen",
-    "Outdoor terrace / patio",
     "Package lockers",
     "Package room",
     "Package service",
     "Paddleboard access",
     "Parking",
     "Pavilion",
-    "Pet area (unspecified)",
+    "Pet area",
     "Pet grooming station",
     "Pet relief area",
-    "Pet spa (unspecified)",
+    "Pet spa",
     "Pet wash station",
     "Picnic area",
     "Pilates studio",
@@ -557,6 +603,7 @@
     "Playroom",
     "Podcast room",
     "Poker tables",
+    "Pool",
     "Pool table",
     "Private dining room",
     "Private workspace",
@@ -564,49 +611,45 @@
     "Recreation room",
     "Refrigerated package storage",
     "Rehearsal room",
-    "Resident lounge / clubhouse",
-    "Resident storage",
+    "Resident lounge",
     "Rooftop deck",
     "Rooftop garden",
     "Rooftop lounge",
     "Sauna",
     "Shared bikes",
-    "Shared dining area",
     "Shared kitchen",
     "Shared laundry",
     "Shared park",
     "Shuffleboard",
     "Solarium",
-    "Spa (unspecified)",
+    "Spa",
     "Spin studio",
     "Sports court",
-    "Steam room",
+    "Storage",
     "Swimming pier",
-    "Swimming pool",
     "Table tennis",
     "Tepidarium",
+    "Terrace / patio",
     "Tool lending",
     "Treatment room",
     "Valet trash service",
-    "Virtual reality room",
+    "VR room",
     "Walking trails",
     "Wellness studio",
     "Wine storage",
-    "Workshop / makerspace",
-    "Yoga / Pilates studio",
-    "Yoga / spin studio",
-    "Yoga studio"
+    "Yoga studio",
+    "Yoga/Pilates studio",
+    "Yoga/spin studio"
   ],
   "mappings": {
     "1 gb internet in common areas": [],
     "12th-floor north and east terraces with outdoor dining, fire pits, grills, and lounge seating": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
-      "Outdoor dining area",
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "19th-floor rooftop terrace with outdoor kitchen, grill, and fire pit": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Outdoor kitchen",
       "Rooftop deck"
@@ -625,32 +668,32 @@
       "Package lockers"
     ],
     "24-hour coworking space with private workstations and covered terrace": [
-      "Coworking space",
-      "Outdoor terrace / patio",
+      "Coworking",
+      "Terrace / patio",
       "Private workspace"
     ],
     "24-hour fitness center": [
-      "Fitness center"
+      "Gym"
     ],
     "24-hour fitness center and wellness studio": [
-      "Fitness center",
+      "Gym",
       "Wellness studio"
     ],
     "24-hour fitness center and yoga room": [
-      "Fitness center",
+      "Gym",
       "Yoga studio"
     ],
     "24-hour fitness center with spin bikes and personal workout pods": [
-      "Fitness center"
+      "Gym"
     ],
     "24-hour fitness center with trx system and tvs": [
-      "Fitness center"
+      "Gym"
     ],
     "24-hour fitness room": [
-      "Fitness center"
+      "Gym"
     ],
     "24-hour fitness studio": [
-      "Fitness studio"
+      "Gym"
     ],
     "24-hour package locker system": [
       "Package lockers"
@@ -674,7 +717,7 @@
     ],
     "24/7 attended lobby with mail room": [],
     "24/7 community gym": [
-      "Fitness center"
+      "Gym"
     ],
     "24/7 concierge": [
       "Concierge"
@@ -686,10 +729,10 @@
       "Dog park / run"
     ],
     "24/7 fitness center": [
-      "Fitness center"
+      "Gym"
     ],
     "24/7 fitness, yoga and hiit studios": [
-      "Fitness studio",
+      "Gym",
       "HIIT studio",
       "Yoga studio"
     ],
@@ -706,27 +749,27 @@
       "Yoga studio"
     ],
     "24th-floor sky lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "3,500-square-foot rooftop sky deck with bbqs and fire pit": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "35th-floor lounge and bar with tvs": [
-      "Bar / wet bar",
-      "Resident lounge / clubhouse"
+      "Bar",
+      "Resident lounge"
     ],
     "360-degree rooftop deck with bbq grills": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "39th-floor fitness center": [
-      "Fitness center"
+      "Gym"
     ],
     "39th-floor lounge and wraparound terrace": [
-      "Outdoor terrace / patio",
-      "Resident lounge / clubhouse"
+      "Terrace / patio",
+      "Resident lounge"
     ],
     "400-foot rooftop deck": [
       "Rooftop deck"
@@ -735,55 +778,53 @@
       "Rooftop deck"
     ],
     "40th-floor wraparound deck": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "46th-floor sky lounge with kitchen, dining and catering kitchen": [
-      "Catering kitchen",
-      "Resident lounge / clubhouse",
-      "Shared kitchen"
+      "Shared kitchen",
+      "Resident lounge"
     ],
     "60 ev charging stations": [
       "EV charging"
     ],
     "6th-floor and 46th-floor terraces": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "6th-floor lounge with catering and demonstration kitchen, private dining areas, and outdoor terrace": [
-      "Catering kitchen",
-      "Demonstration kitchen",
-      "Outdoor terrace / patio",
+      "Shared kitchen",
+      "Terrace / patio",
       "Private dining room",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "7th-floor resident lounge and workspace": [
-      "Coworking space",
-      "Resident lounge / clubhouse"
+      "Coworking",
+      "Resident lounge"
     ],
     "8th-floor clubhouse with billiards and demonstration kitchen, open until 10 pm daily": [
-      "Demonstration kitchen",
+      "Shared kitchen",
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "9,000 sq. ft. fitness center with towel service": [
-      "Fitness center"
+      "Gym"
     ],
     "access-controlled package room": [
       "Package room"
     ],
     "additional resident storage": [
-      "Resident storage"
+      "Storage"
     ],
     "additional storage": [
-      "Resident storage"
+      "Storage"
     ],
     "additional storage available": [
-      "Resident storage"
+      "Storage"
     ],
     "additional storage space": [
-      "Resident storage"
+      "Storage"
     ],
     "aerobics studio": [
-      "Fitness studio"
+      "Gym"
     ],
     "amazon hub package lockers": [
       "Package lockers"
@@ -793,9 +834,9 @@
     ],
     "amp lounge with wet bar, private karaoke room, arcade games and stage": [
       "Arcade games",
-      "Bar / wet bar",
+      "Bar",
       "Karaoke",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "app-controlled automatic car stacker parking": [
       "Parking"
@@ -809,13 +850,13 @@
     ],
     "arcade lounge": [
       "Arcade games",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "art studio": [
       "Art studio"
     ],
     "assigned garage parking available for rent": [
-      "Garage parking"
+      "Parking"
     ],
     "assigned parking": [
       "Parking"
@@ -824,33 +865,33 @@
       "Refrigerated package storage"
     ],
     "available extra storage units": [
-      "Resident storage"
+      "Storage"
     ],
     "backyard courtyard with ping pong and chess": [
       "Courtyard",
       "Table tennis"
     ],
     "bar": [
-      "Bar / wet bar"
+      "Bar"
     ],
     "bar / wet bar": [
-      "Bar / wet bar"
+      "Bar"
     ],
     "barbecue and picnic area": [
-      "BBQ grills",
+      "BBQs",
       "Picnic area"
     ],
     "barbecue area": [
-      "BBQ grills"
+      "BBQs"
     ],
     "barbecue grills": [
-      "BBQ grills"
+      "BBQs"
     ],
     "barbecue stations": [
-      "BBQ grills"
+      "BBQs"
     ],
     "barbecue/grill area": [
-      "BBQ grills"
+      "BBQs"
     ],
     "bark park and pet grooming station": [
       "Dog park / run",
@@ -858,83 +899,80 @@
     ],
     "bark park and pet spa": [
       "Dog park / run",
-      "Pet spa (unspecified)"
+      "Pet spa"
     ],
     "barre / stretch studio": [
-      "Barre / stretch studio"
+      "Barre/stretch studio"
     ],
     "barre and stretch studio": [
-      "Barre / stretch studio"
+      "Barre/stretch studio"
     ],
     "basketball court": [
       "Basketball court"
     ],
     "bbq": [
-      "BBQ grills"
+      "BBQs"
     ],
     "bbq and outdoor dining with outdoor kitchens and large tables": [
-      "BBQ grills",
-      "Outdoor dining area",
+      "BBQs",
       "Outdoor kitchen"
     ],
     "bbq and picnic area": [
-      "BBQ grills",
+      "BBQs",
       "Picnic area"
     ],
     "bbq area": [
-      "BBQ grills"
+      "BBQs"
     ],
     "bbq areas": [
-      "BBQ grills"
+      "BBQs"
     ],
     "bbq grill": [
-      "BBQ grills"
+      "BBQs"
     ],
     "bbq grill station": [
-      "BBQ grills"
+      "BBQs"
     ],
     "bbq grilling stations": [
-      "BBQ grills"
+      "BBQs"
     ],
     "bbq grills": [
-      "BBQ grills"
+      "BBQs"
     ],
     "bbq grills and outdoor dining": [
-      "BBQ grills",
-      "Outdoor dining area"
+      "BBQs"
     ],
     "bbq terrace": [
-      "BBQ grills",
-      "Outdoor terrace / patio"
+      "BBQs",
+      "Terrace / patio"
     ],
     "bbq/dining deck": [
-      "BBQ grills",
-      "Outdoor dining area",
-      "Outdoor terrace / patio"
+      "BBQs",
+      "Terrace / patio"
     ],
     "bbq/grill area": [
-      "BBQ grills"
+      "BBQs"
     ],
     "bbq/picnic area": [
-      "BBQ grills",
+      "BBQs",
       "Picnic area"
     ],
     "beach club": [
       "Beach club"
     ],
     "bicycle repair and storage areas": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bicycle storage": [
       "Bike storage"
     ],
     "bicycle storage and maintenance area": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bicycle storage and repair": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bicycle storage on every floor": [
@@ -948,40 +986,40 @@
     ],
     "bike and storage space available": [
       "Bike storage",
-      "Resident storage"
+      "Storage"
     ],
     "bike maintenance area": [
-      "Bike repair station"
+      "Bike repair"
     ],
     "bike parking": [
       "Bike parking"
     ],
     "bike parking and maintenance repair room": [
       "Bike parking",
-      "Bike repair station"
+      "Bike repair"
     ],
     "bike parking with on-site repair station": [
       "Bike parking",
-      "Bike repair station"
+      "Bike repair"
     ],
     "bike racks": [
       "Bike parking"
     ],
     "bike repair facility": [
-      "Bike repair station"
+      "Bike repair"
     ],
     "bike repair station": [
-      "Bike repair station"
+      "Bike repair"
     ],
     "bike room": [
       "Bike storage"
     ],
     "bike room with repair area and individual bike lockers": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bike room with repair station": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bike shop": [],
@@ -993,46 +1031,46 @@
       "Bike wash"
     ],
     "bike storage and maintenance station": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bike storage and repair": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bike storage and repair area": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bike storage and repair shop": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bike storage and repair station": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bike storage and work room": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bike storage and workshop": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bike storage available for rent": [
       "Bike storage"
     ],
     "bike storage on almost every floor with repair station": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bike storage with maintenance station": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bike storage with repair station": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "bike wash": [
@@ -1047,11 +1085,11 @@
     ],
     "billiards and card lounge": [
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "billiards lounge": [
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "billiards room": [
       "Pool table"
@@ -1079,7 +1117,7 @@
       "Bocce court"
     ],
     "bouldering wall": [
-      "Bouldering wall"
+      "Climbing wall"
     ],
     "bowling alley": [
       "Bowling alley"
@@ -1088,19 +1126,18 @@
       "Dry cleaning service"
     ],
     "business center": [
-      "Business center"
+      "Coworking"
     ],
     "business center and conference room": [
-      "Business center",
+      "Coworking",
       "Meeting room"
     ],
     "business center with conference room": [
-      "Business center",
+      "Coworking",
       "Meeting room"
     ],
     "business center with coworking lounge and conference room": [
-      "Business center",
-      "Coworking space",
+      "Coworking",
       "Meeting room"
     ],
     "business lobby": [],
@@ -1120,16 +1157,16 @@
       "EV charging"
     ],
     "cardio center": [
-      "Fitness center"
+      "Gym"
     ],
     "carport": [
-      "Covered parking"
+      "Parking"
     ],
     "cascade event space": [
       "Event space"
     ],
     "catering kitchen": [
-      "Catering kitchen"
+      "Shared kitchen"
     ],
     "children's play studio": [
       "Playroom"
@@ -1138,110 +1175,110 @@
       "Climbing wall"
     ],
     "club and game room": [
-      "Game room / area",
-      "Resident lounge / clubhouse"
+      "Game room",
+      "Resident lounge"
     ],
     "club lounge with pool table": [
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "club room": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "club room with billiards, gaming area, kitchen and dining space": [
-      "Game room / area",
+      "Game room",
       "Pool table",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "club room with entertaining island, lounge seating, outdoor terrace, and bbq": [
-      "BBQ grills",
-      "Outdoor terrace / patio",
-      "Resident lounge / clubhouse"
+      "BBQs",
+      "Terrace / patio",
+      "Resident lounge"
     ],
     "club room with kitchen, tv and entertainment area": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "club room with televisions, kitchen, and coworking spaces": [
-      "Coworking space",
-      "Resident lounge / clubhouse",
+      "Coworking",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "club room with tv and coffee bar": [
       "Coffee bar",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "clubhouse": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "clubhouse / community lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "clubhouse with attached rooftop deck": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Rooftop deck"
     ],
     "clubhouse with big-screen tv and foosball table": [
       "Foosball",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "clubroom": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "clubroom with billiards": [
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "clubroom with demonstration kitchen": [
-      "Demonstration kitchen",
-      "Resident lounge / clubhouse"
+      "Shared kitchen",
+      "Resident lounge"
     ],
     "clubroom with event kitchen": [
-      "Catering kitchen",
-      "Resident lounge / clubhouse"
+      "Shared kitchen",
+      "Resident lounge"
     ],
     "clubroom with kitchen": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "clubroom with kitchen and lounge seating": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "clubroom with tv, kitchen, lounge seating and coworking, plus private workspaces on each floor": [
-      "Coworking space",
+      "Coworking",
       "Private workspace",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "co-working conference lounge": [
-      "Coworking space",
+      "Coworking",
       "Meeting room"
     ],
     "co-working lounge": [
-      "Coworking space"
+      "Coworking"
     ],
     "co-working lounge with private conference room": [
-      "Coworking space",
+      "Coworking",
       "Meeting room"
     ],
     "co-working space": [
-      "Coworking space"
+      "Coworking"
     ],
     "co-working space with meeting rooms and an acoustic podcasting room": [
-      "Coworking space",
+      "Coworking",
       "Meeting room",
       "Podcast room"
     ],
     "co-working spaces": [
-      "Coworking space"
+      "Coworking"
     ],
     "coffee bar": [
       "Coffee bar"
     ],
     "coffee lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "coffee station": [
       "Coffee bar"
@@ -1256,24 +1293,23 @@
     "common-area wi-fi": [],
     "common-area wifi": [],
     "communal dining room and entertaining kitchen with indoor grill": [
-      "Shared dining area",
       "Shared kitchen"
     ],
     "community bbq areas": [
-      "BBQ grills"
+      "BBQs"
     ],
     "community bbq deck": [
-      "BBQ grills",
-      "Outdoor terrace / patio"
+      "BBQs",
+      "Terrace / patio"
     ],
     "community bbq with pergola": [
-      "BBQ grills"
+      "BBQs"
     ],
     "community bbqs": [
-      "BBQ grills"
+      "BBQs"
     ],
     "community clubhouse": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "community courtyard": [
       "Courtyard"
@@ -1283,28 +1319,26 @@
       "Garden"
     ],
     "community gathering room with mezzanine": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "community grill": [
-      "BBQ grills"
+      "BBQs"
     ],
     "community grilling station": [
-      "BBQ grills"
+      "BBQs"
     ],
     "community kitchen": [
       "Shared kitchen"
     ],
     "community kitchen and dining area": [
-      "Shared dining area",
       "Shared kitchen"
     ],
     "community kitchen and lounge": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "community kitchens and dining lounge": [
-      "Resident lounge / clubhouse",
-      "Shared dining area",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "community laundry": [
@@ -1312,23 +1346,23 @@
     ],
     "community lobbies": [],
     "community lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "community lounge with fireplace, kitchen, and workstation": [
-      "Coworking space",
+      "Coworking",
       "Fireplace",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "community lounge with full kitchen, fireplace and games": [
       "Fireplace",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "community lounge with kitchen, theater area and outdoor deck": [
       "Movie theater",
-      "Outdoor terrace / patio",
-      "Resident lounge / clubhouse",
+      "Terrace / patio",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "community mini market": [],
@@ -1336,22 +1370,22 @@
       "Table tennis"
     ],
     "community pool": [
-      "Swimming pool"
+      "Pool"
     ],
     "community room": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "community room and co-working lounge with meeting and conference space": [
-      "Coworking space",
+      "Coworking",
       "Meeting room",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "community veggie and herb garden": [
       "Gardening plots"
     ],
     "community wi-fi": [],
     "community workspace": [
-      "Coworking space"
+      "Coworking"
     ],
     "community-wide wifi": [],
     "complimentary coffee and tea bar": [
@@ -1390,11 +1424,11 @@
     "controlled access": [],
     "controlled access garage with guest parking and ev charging": [
       "EV charging",
-      "Garage parking",
+      "Parking",
       "Guest parking"
     ],
     "controlled access parking garage": [
-      "Garage parking"
+      "Parking"
     ],
     "controlled-access bicycle storage": [
       "Bike storage"
@@ -1403,15 +1437,15 @@
       "Bike storage"
     ],
     "controlled-access bike storage with repair and wash station": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage",
       "Bike wash"
     ],
     "controlled-access garage": [
-      "Garage parking"
+      "Parking"
     ],
     "controlled-access garage with reserved parking": [
-      "Garage parking"
+      "Parking"
     ],
     "controlled-access package room with 24/7 resident pickup": [
       "Package room"
@@ -1420,17 +1454,17 @@
       "Parking"
     ],
     "controlled-access parking garage": [
-      "Garage parking"
+      "Parking"
     ],
     "controlled-access parking garage with compact spaces available": [
-      "Garage parking"
+      "Parking"
     ],
     "controlled-access parking garage with ev charging, available for rent": [
       "EV charging",
-      "Garage parking"
+      "Parking"
     ],
     "controlled-access underground parking": [
-      "Garage parking"
+      "Parking"
     ],
     "cooking events": [],
     "cornhole game": [
@@ -1445,16 +1479,15 @@
       "Outdoor fireplace"
     ],
     "courtyard grills": [
-      "BBQ grills",
+      "BBQs",
       "Courtyard"
     ],
     "courtyard lounge": [
       "Courtyard",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "courtyard outdoor dining area": [
-      "Courtyard",
-      "Outdoor dining area"
+      "Courtyard"
     ],
     "courtyard patios": [
       "Courtyard"
@@ -1464,13 +1497,12 @@
       "Pavilion"
     ],
     "courtyard with barbecue, dining nooks and fireplace": [
-      "BBQ grills",
+      "BBQs",
       "Courtyard",
-      "Outdoor dining area",
       "Outdoor fireplace"
     ],
     "courtyard with bbqs and ping pong": [
-      "BBQ grills",
+      "BBQs",
       "Courtyard",
       "Table tennis"
     ],
@@ -1487,7 +1519,7 @@
       "Outdoor fireplace"
     ],
     "courtyard with gathering and bbq areas": [
-      "BBQ grills",
+      "BBQs",
       "Courtyard"
     ],
     "courtyard with outdoor seating": [
@@ -1507,89 +1539,88 @@
       "Courtyard"
     ],
     "covered outdoor lounge with grilling and outdoor dining": [
-      "BBQ grills",
-      "Outdoor dining area",
-      "Resident lounge / clubhouse"
+      "BBQs",
+      "Resident lounge"
     ],
     "covered parking": [
-      "Covered parking"
+      "Parking"
     ],
     "coworking and conference spaces": [
-      "Coworking space",
+      "Coworking",
       "Meeting room"
     ],
     "coworking and meeting rooms": [
-      "Coworking space",
+      "Coworking",
       "Meeting room"
     ],
     "coworking area and meeting room": [
-      "Coworking space",
+      "Coworking",
       "Meeting room"
     ],
     "coworking desks": [
-      "Coworking space"
+      "Coworking"
     ],
     "coworking lounge": [
-      "Coworking space"
+      "Coworking"
     ],
     "coworking lounge and meeting rooms": [
-      "Coworking space",
+      "Coworking",
       "Meeting room"
     ],
     "coworking lounge and private study rooms": [
-      "Coworking space",
+      "Coworking",
       "Private workspace"
     ],
     "coworking lounge with reservable private micro-offices": [
-      "Coworking space",
+      "Coworking",
       "Private workspace"
     ],
     "coworking room with conference areas, booth seating, and private work pods": [
-      "Coworking space",
+      "Coworking",
       "Meeting room",
       "Private workspace"
     ],
     "coworking rooms and dividable boardrooms with printing and scanning": [
-      "Coworking space",
+      "Coworking",
       "Meeting room"
     ],
     "coworking space": [
-      "Coworking space"
+      "Coworking"
     ],
     "coworking space in the clubhouse, open until 10 pm": [
-      "Coworking space",
-      "Resident lounge / clubhouse"
+      "Coworking",
+      "Resident lounge"
     ],
     "coworking space with private offices": [
-      "Coworking space",
+      "Coworking",
       "Private workspace"
     ],
     "coworking space with wi-fi, open 9 am–10 pm": [
-      "Coworking space"
+      "Coworking"
     ],
     "coworking spaces": [
-      "Coworking space"
+      "Coworking"
     ],
     "coworking spaces open 24/7": [
-      "Coworking space"
+      "Coworking"
     ],
     "coworking spaces with booth seating, wi-fi and tvs": [
-      "Coworking space"
+      "Coworking"
     ],
     "coworking spaces, business lounge, boardroom and focus rooms": [
-      "Coworking space",
+      "Coworking",
       "Meeting room",
       "Private workspace"
     ],
     "coworking/business center": [
-      "Coworking space"
+      "Coworking"
     ],
     "coworking/business lounge": [
-      "Coworking space"
+      "Coworking"
     ],
     "creative studio": [],
     "crossfit/trx and cardio fitness rooms": [
-      "Fitness center"
+      "Gym"
     ],
     "cycling studio": [
       "Spin studio"
@@ -1598,7 +1629,7 @@
       "Bike storage"
     ],
     "dedicated bike storage with bike fix-it station": [
-      "Bike repair station",
+      "Bike repair",
       "Bike storage"
     ],
     "dedicated ev charging parking spaces available for rent": [
@@ -1606,25 +1637,25 @@
       "Parking"
     ],
     "demonstration kitchen": [
-      "Demonstration kitchen"
+      "Shared kitchen"
     ],
     "designated rooftop pet area": [
-      "Pet area (unspecified)"
+      "Pet area"
     ],
     "diy project room with music system": [
-      "Workshop / makerspace"
+      "Makerspace"
     ],
     "diy workshop": [
-      "Workshop / makerspace"
+      "Makerspace"
     ],
     "dj booth": [],
     "dog amenities": [],
     "dog lounge and outdoor dog run": [
       "Dog park / run",
-      "Pet area (unspecified)"
+      "Pet area"
     ],
     "dog lounge and play area": [
-      "Pet area (unspecified)"
+      "Pet area"
     ],
     "dog park": [
       "Dog park / run"
@@ -1638,11 +1669,11 @@
     ],
     "dog park and pet spa": [
       "Dog park / run",
-      "Pet spa (unspecified)"
+      "Pet spa"
     ],
     "dog park with pet spa": [
       "Dog park / run",
-      "Pet spa (unspecified)"
+      "Pet spa"
     ],
     "dog relief area": [
       "Pet relief area"
@@ -1671,11 +1702,11 @@
       "Pet wash station"
     ],
     "dog spa": [
-      "Pet spa (unspecified)"
+      "Pet spa"
     ],
     "dog spa and play area": [
-      "Pet area (unspecified)",
-      "Pet spa (unspecified)"
+      "Pet area",
+      "Pet spa"
     ],
     "dog spa with grooming stations, indoor play area and covered outdoor dog park with agility stations": [
       "Dog park / run",
@@ -1709,7 +1740,7 @@
       "Sauna"
     ],
     "dual-level fitness center": [
-      "Fitness center"
+      "Gym"
     ],
     "electric car charging stations": [
       "EV charging"
@@ -1734,17 +1765,17 @@
     ],
     "entertainment and billiards lounges": [
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "entertainment kitchen": [
       "Shared kitchen"
     ],
     "entertainment lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "entertainment room with 7-by-12-foot tv wall and game lounge with billiards": [
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "entertainment suite": [
       "Event space"
@@ -1777,13 +1808,13 @@
       "EV charging"
     ],
     "ev parking": [
-      "EV parking (unspecified)"
+      "EV parking"
     ],
     "ev parking (optional paid spaces)": [
-      "EV parking (unspecified)"
+      "EV parking"
     ],
     "ev parking (unspecified)": [
-      "EV parking (unspecified)"
+      "EV parking"
     ],
     "ev-ready and ev-capable parking stalls": [
       "Parking"
@@ -1796,10 +1827,10 @@
     ],
     "event space with outdoor terrace": [
       "Event space",
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "executive lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "executive party room": [
       "Event space"
@@ -1807,14 +1838,14 @@
     "external gym access": [],
     "external spa access": [],
     "extra storage": [
-      "Resident storage"
+      "Storage"
     ],
     "extra storage space available for rent": [
-      "Resident storage"
+      "Storage"
     ],
     "family outdoor recreation space": [],
     "fee-based controlled-access garage": [
-      "Garage parking"
+      "Parking"
     ],
     "fenced dog park": [
       "Dog park / run"
@@ -1839,7 +1870,7 @@
     ],
     "fire pit lounge": [
       "Fire pit",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "fire pits": [
       "Fire pit"
@@ -1851,18 +1882,18 @@
       "Fire pit"
     ],
     "firepit and grilling area": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit"
     ],
     "firepits": [
       "Fire pit"
     ],
     "firepits and bbq grills": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit"
     ],
     "firepits and grilling stations": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit"
     ],
     "fireplace": [
@@ -1870,11 +1901,11 @@
     ],
     "fireplace lounge": [
       "Fireplace",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "fireplace lounge with full kitchen": [
       "Fireplace",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "fireplaces": [
@@ -1885,53 +1916,52 @@
     ],
     "fireside lounge": [
       "Fireplace",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "fireside work lounge": [
-      "Coworking space",
-      "Resident lounge / clubhouse"
+      "Coworking",
+      "Resident lounge"
     ],
     "first-floor bike room with bike storage": [
       "Bike storage"
     ],
     "fitness center": [
-      "Fitness center"
+      "Gym"
     ],
     "fitness center (1,000 sq. ft.)": [
-      "Fitness center"
+      "Gym"
     ],
     "fitness center and flex studio": [
-      "Fitness center",
-      "Fitness studio"
+      "Gym"
     ],
     "fitness center and yoga studio": [
-      "Fitness center",
+      "Gym",
       "Yoga studio"
     ],
     "fitness center with dedicated spin and yoga studio": [
-      "Fitness center",
-      "Yoga / spin studio"
+      "Gym",
+      "Yoga/spin studio"
     ],
     "fitness center with free weights": [
-      "Fitness center"
+      "Gym"
     ],
     "fitness center with locker room and sauna": [
-      "Fitness center",
+      "Gym",
       "Sauna"
     ],
     "fitness center with on-demand workouts": [
-      "Fitness center"
+      "Gym"
     ],
     "fitness center with peloton classes and daily towel service": [
-      "Fitness center",
+      "Gym",
       "Fitness classes"
     ],
     "fitness center with yoga studio": [
-      "Fitness center",
+      "Gym",
       "Yoga studio"
     ],
     "fitness center, yoga studio and spin studio": [
-      "Fitness center",
+      "Gym",
       "Spin studio",
       "Yoga studio"
     ],
@@ -1939,22 +1969,22 @@
       "Fitness classes"
     ],
     "fitness facility": [
-      "Fitness center"
+      "Gym"
     ],
     "fitness room": [
-      "Fitness center"
+      "Gym"
     ],
     "fitness room with yoga facilities": [
-      "Fitness center"
+      "Gym"
     ],
     "fitness studio": [
-      "Fitness studio"
+      "Gym"
     ],
     "fitness suite": [
-      "Fitness center"
+      "Gym"
     ],
     "flex fitness space": [
-      "Fitness studio"
+      "Gym"
     ],
     "foosball": [
       "Foosball"
@@ -1979,107 +2009,107 @@
       "Shared kitchen"
     ],
     "game area": [
-      "Game room / area"
+      "Game room"
     ],
     "game loft": [
-      "Game room / area"
+      "Game room"
     ],
     "game lounge": [
-      "Game room / area"
+      "Game room"
     ],
     "game lounge with pool table and tvs": [
-      "Game room / area",
+      "Game room",
       "Pool table"
     ],
     "game room": [
-      "Game room / area"
+      "Game room"
     ],
     "game room / area": [
-      "Game room / area"
+      "Game room"
     ],
     "game room with arcade games, pool table and shuffleboard": [
       "Arcade games",
-      "Game room / area",
+      "Game room",
       "Pool table",
       "Shuffleboard"
     ],
     "game room with billiards": [
-      "Game room / area",
+      "Game room",
       "Pool table"
     ],
     "game room with billiards, shuffleboard and game tables": [
-      "Game room / area",
+      "Game room",
       "Pool table",
       "Shuffleboard"
     ],
     "game room with cocktail-style lounge, outdoor cabana seating, and hibachi grill": [
-      "BBQ grills",
+      "BBQs",
       "Cabanas",
-      "Game room / area",
-      "Resident lounge / clubhouse"
+      "Game room",
+      "Resident lounge"
     ],
     "game room with pool table": [
-      "Game room / area",
+      "Game room",
       "Pool table"
     ],
     "games room": [
-      "Game room / area"
+      "Game room"
     ],
     "gaming lounge": [
-      "Game room / area"
+      "Game room"
     ],
     "garage": [
-      "Garage parking"
+      "Parking"
     ],
     "garage parking": [
-      "Garage parking"
+      "Parking"
     ],
     "garage parking available subject to availability": [
-      "Garage parking"
+      "Parking"
     ],
     "garage with dedicated ev charging spaces": [
       "EV charging",
-      "Garage parking"
+      "Parking"
     ],
     "garden": [
       "Garden"
     ],
     "garden courtyard lounge": [
       "Courtyard",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "garden courtyards": [
       "Courtyard"
     ],
     "garden patio and zen patio": [
       "Garden",
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "garden terrace with grill and fire pit": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Garden",
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "garden terrace with grilling stations": [
-      "BBQ grills",
+      "BBQs",
       "Garden",
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "gardening plots": [
       "Gardening plots"
     ],
     "gas bbqs": [
-      "BBQ grills"
+      "BBQs"
     ],
     "gas bbqs and outdoor seating": [
-      "BBQ grills"
+      "BBQs"
     ],
     "gas firepit": [
       "Fire pit"
     ],
     "gas grills": [
-      "BBQ grills"
+      "BBQs"
     ],
     "gated bike storage": [
       "Bike storage"
@@ -2091,26 +2121,25 @@
       "Dog park / run"
     ],
     "gated garage parking": [
-      "Garage parking"
+      "Parking"
     ],
     "gated garage, ev parking spaces and surface parking available for rent": [
-      "EV parking (unspecified)",
-      "Garage parking",
+      "EV parking",
       "Parking"
     ],
     "gated multi-level parking garage": [
-      "Garage parking"
+      "Parking"
     ],
     "gated resident parking with ev charging stations": [
       "EV charging",
       "Parking"
     ],
     "gated underground parking": [
-      "Garage parking"
+      "Parking"
     ],
     "gathering spots": [],
     "gear room with shared repair tools for bikes and outdoor equipment": [
-      "Bike repair station"
+      "Bike repair"
     ],
     "golf simulator": [
       "Golf simulator"
@@ -2119,11 +2148,11 @@
       "Golf simulator"
     ],
     "great room": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "great room with fireplace": [
       "Fireplace",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "green roof": [],
     "green roof gardens": [],
@@ -2132,37 +2161,35 @@
     ],
     "greenhouse": [],
     "grill stations": [
-      "BBQ grills"
+      "BBQs"
     ],
     "grilling and outdoor dining areas": [
-      "BBQ grills",
-      "Outdoor dining area"
+      "BBQs"
     ],
     "grilling area": [
-      "BBQ grills"
+      "BBQs"
     ],
     "grilling stations": [
-      "BBQ grills"
+      "BBQs"
     ],
     "grilling stations and outdoor dining areas": [
-      "BBQ grills",
-      "Outdoor dining area"
+      "BBQs"
     ],
     "grills": [
-      "BBQ grills"
+      "BBQs"
     ],
     "grills and fireplaces": [
-      "BBQ grills",
+      "BBQs",
       "Fireplace"
     ],
     "ground-floor plazas with outdoor seating": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "ground-level outdoor plaza": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "group fitness studio": [
-      "Fitness studio"
+      "Gym"
     ],
     "guest parking": [
       "Guest parking"
@@ -2180,7 +2207,7 @@
       "Fitness classes"
     ],
     "gym": [
-      "Fitness center"
+      "Gym"
     ],
     "gym access": [],
     "gym access (location unspecified)": [],
@@ -2188,17 +2215,16 @@
       "Bike storage"
     ],
     "heated courtyard pavilion with grill station, fire pit, and outdoor dining": [
-      "BBQ grills",
+      "BBQs",
       "Courtyard",
       "Fire pit",
-      "Outdoor dining area",
       "Pavilion"
     ],
     "heated outdoor pool": [
-      "Swimming pool"
+      "Pool"
     ],
     "heated seasonal pool": [
-      "Swimming pool"
+      "Pool"
     ],
     "high-intensity training room": [
       "HIIT studio"
@@ -2218,31 +2244,31 @@
     "hydration and beverage stations in lobby and wellness area": [],
     "indoor and outdoor family lounge with outdoor playground": [
       "Playground",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "indoor bicycle parking": [
       "Bike parking"
     ],
     "indoor bouldering wall": [
-      "Bouldering wall"
+      "Climbing wall"
     ],
     "indoor children’s playroom with kitchenette, reading nooks and chalkboard room": [
       "Kitchenette",
       "Playroom"
     ],
     "indoor clubroom with chef's kitchen": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "indoor cycling studio": [
       "Spin studio"
     ],
     "indoor lap pool": [
-      "Swimming pool"
+      "Pool"
     ],
     "indoor lounge with fireplace and tv": [
       "Fireplace",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "indoor movie theater": [
       "Movie theater"
@@ -2260,58 +2286,58 @@
       "Pet wash station"
     ],
     "indoor pool": [
-      "Swimming pool"
+      "Pool"
     ],
     "indoor pool and spa": [
-      "Spa (unspecified)",
-      "Swimming pool"
+      "Spa",
+      "Pool"
     ],
     "indoor pool and two outdoor pools with hot tubs, cold tub, cabanas and lounge chairs": [
       "Cabanas",
       "Cold plunge",
       "Hot tub",
-      "Swimming pool"
+      "Pool"
     ],
     "indoor sky lounge with kitchen, fireplace and tv": [
       "Fireplace",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "indoor sport court with climbing wall and adjacent sport court lounge": [
       "Climbing wall",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Sports court"
     ],
     "indoor swimming pool": [
-      "Swimming pool"
+      "Pool"
     ],
     "indoor/outdoor bar and lounge with fireplace": [
-      "Bar / wet bar",
+      "Bar",
       "Fireplace",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "indoor/outdoor kitchen": [
       "Outdoor kitchen"
     ],
     "indoor/outdoor lobby": [],
     "indoor/outdoor lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "indoor/outdoor lounge with fireplace, tvs and full kitchen": [
       "Fireplace",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "indoor/outdoor lounge with pool table and shared kitchen appliances": [
       "Kitchenette",
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "indoor/outdoor resident lounges": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "indoor/outdoor sky lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "infrared sauna": [
       "Sauna"
@@ -2359,11 +2385,11 @@
     ],
     "landscaped grounds": [],
     "landscaped terraces": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "large-format video wall for game days and entertainment": [],
     "level 2 courtyard with bbqs and firepit": [
-      "BBQ grills",
+      "BBQs",
       "Courtyard",
       "Fire pit"
     ],
@@ -2374,14 +2400,14 @@
       "Library"
     ],
     "living wall lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "lobby": [],
     "lobby and lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "lobby bar": [
-      "Bar / wet bar"
+      "Bar"
     ],
     "lobby coffee bar": [
       "Coffee bar"
@@ -2390,36 +2416,36 @@
       "Coffee bar"
     ],
     "lobby lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "lobby lounge with concierge and coffee bar": [
       "Coffee bar",
       "Concierge",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "lobby lounge with fireplace": [
       "Fireplace",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "locker room": [],
     "lodge lounge and game room with wet bar, board games, billiards, shuffleboard and foosball": [
-      "Bar / wet bar",
+      "Bar",
       "Foosball",
-      "Game room / area",
+      "Game room",
       "Pool table",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shuffleboard"
     ],
     "lounge and bar": [
-      "Bar / wet bar",
-      "Resident lounge / clubhouse"
+      "Bar",
+      "Resident lounge"
     ],
     "lounge spaces": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "lounge with a fire pit": [
       "Fire pit",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "luxer one package lockers": [
       "Package lockers"
@@ -2441,30 +2467,30 @@
       "Package room"
     ],
     "maker lab": [
-      "Workshop / makerspace"
+      "Makerspace"
     ],
     "maker space": [
-      "Workshop / makerspace"
+      "Makerspace"
     ],
     "makers studio": [
-      "Workshop / makerspace"
+      "Makerspace"
     ],
     "media and gaming room": [
-      "Game room / area",
-      "Media lounge"
+      "Game room",
+      "Movie theater"
     ],
     "media center": [
-      "Media lounge"
+      "Movie theater"
     ],
     "media lounge": [
-      "Media lounge"
+      "Movie theater"
     ],
     "media lounge with wet bar": [
-      "Bar / wet bar",
-      "Media lounge"
+      "Bar",
+      "Movie theater"
     ],
     "media room": [
-      "Media lounge"
+      "Movie theater"
     ],
     "meditation space": [],
     "meeting room": [
@@ -2480,22 +2506,22 @@
     ],
     "movement space": [],
     "movie screening area": [
-      "Movie screening area"
+      "Movie theater"
     ],
     "movie theater": [
       "Movie theater"
     ],
     "multi-level controlled-access parking garage": [
-      "Garage parking"
+      "Parking"
     ],
     "multi-level fitness center": [
-      "Fitness center"
+      "Gym"
     ],
     "multiple courtyards with seating": [
       "Courtyard"
     ],
     "multiple rooftop decks with grills and firepits": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
@@ -2506,7 +2532,7 @@
       "Music room"
     ],
     "network room / coworking space": [
-      "Coworking space"
+      "Coworking"
     ],
     "nutrition consultations": [],
     "off-leash dog run": [
@@ -2546,7 +2572,7 @@
     ],
     "on-site parking and extra storage options": [
       "Parking",
-      "Resident storage"
+      "Storage"
     ],
     "on-site parking, availability varies": [
       "Parking"
@@ -2556,25 +2582,25 @@
       "Movie theater"
     ],
     "onsite dog walk": [
-      "Pet area (unspecified)"
+      "Pet area"
     ],
     "open-air courtyard": [
       "Courtyard"
     ],
     "optional storage units for rent": [
-      "Resident storage"
+      "Storage"
     ],
     "outdoor amenity deck": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "outdoor bbq area": [
-      "BBQ grills"
+      "BBQs"
     ],
     "outdoor bbq stations": [
-      "BBQ grills"
+      "BBQs"
     ],
     "outdoor bbqs": [
-      "BBQ grills"
+      "BBQs"
     ],
     "outdoor cinema": [
       "Outdoor movie screen"
@@ -2586,26 +2612,24 @@
       "Courtyard"
     ],
     "outdoor courtyard with bbq and lounge seating": [
-      "BBQ grills",
+      "BBQs",
       "Courtyard"
     ],
     "outdoor courtyards": [
       "Courtyard"
     ],
     "outdoor courtyards and bbq grills": [
-      "BBQ grills",
+      "BBQs",
       "Courtyard"
     ],
     "outdoor deck with grilling stations": [
-      "BBQ grills",
-      "Outdoor terrace / patio"
+      "BBQs",
+      "Terrace / patio"
     ],
-    "outdoor dining area": [
-      "Outdoor dining area"
-    ],
+    "outdoor dining area": [],
     "outdoor entertainment spaces": [],
     "outdoor entertainment spaces with fireplace and barbecue grills": [
-      "BBQ grills",
+      "BBQs",
       "Outdoor fireplace"
     ],
     "outdoor equipment repair station": [],
@@ -2630,81 +2654,78 @@
     "outdoor gathering spaces": [],
     "outdoor green spaces": [],
     "outdoor grill and lounge": [
-      "BBQ grills",
-      "Resident lounge / clubhouse"
+      "BBQs",
+      "Resident lounge"
     ],
     "outdoor grill station": [
-      "BBQ grills"
+      "BBQs"
     ],
     "outdoor grilling and firepit": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit"
     ],
     "outdoor grilling area": [
-      "BBQ grills"
+      "BBQs"
     ],
     "outdoor grilling areas": [
-      "BBQ grills"
+      "BBQs"
     ],
     "outdoor kitchen": [
       "Outdoor kitchen"
     ],
     "outdoor kitchen and grilling station": [
-      "BBQ grills",
+      "BBQs",
       "Outdoor kitchen"
     ],
     "outdoor kitchen with grill": [
-      "BBQ grills",
+      "BBQs",
       "Outdoor kitchen"
     ],
     "outdoor kitchen/bbq": [
-      "BBQ grills",
+      "BBQs",
       "Outdoor kitchen"
     ],
     "outdoor kitchens": [
       "Outdoor kitchen"
     ],
     "outdoor kitchens with bbq grills in the backyard and on the rooftop terrace": [
-      "BBQ grills",
+      "BBQs",
       "Outdoor kitchen",
       "Rooftop deck"
     ],
     "outdoor lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "outdoor lounge furniture": [],
     "outdoor lounge with bbq, dining area and fire pit": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
-      "Outdoor dining area",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "outdoor movie screen": [
       "Outdoor movie screen"
     ],
     "outdoor patio": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "outdoor patio and grill": [
-      "BBQ grills",
-      "Outdoor terrace / patio"
+      "BBQs",
+      "Terrace / patio"
     ],
     "outdoor plaza": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "outdoor pool": [
-      "Swimming pool"
+      "Pool"
     ],
     "outdoor resident patio and plaza seating": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "outdoor seating": [],
     "outdoor seating and firepits": [
       "Fire pit"
     ],
-    "outdoor semi-private dining area": [
-      "Outdoor dining area"
-    ],
+    "outdoor semi-private dining area": [],
     "outdoor sport court": [
       "Sports court"
     ],
@@ -2712,45 +2733,45 @@
       "Pavilion"
     ],
     "outdoor swimming pool": [
-      "Swimming pool"
+      "Pool"
     ],
     "outdoor terrace / patio": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "outdoor terrace with bbq": [
-      "BBQ grills",
-      "Outdoor terrace / patio"
+      "BBQs",
+      "Terrace / patio"
     ],
     "outdoor terrace with bbq and fireplace": [
-      "BBQ grills",
+      "BBQs",
       "Outdoor fireplace",
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "outdoor terrace with fire pit and grills": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "outdoor terrace with firepits and bbqs": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "outdoor terrace with fireplace": [
       "Outdoor fireplace",
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "outdoor terraces": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "outdoor tv lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "outdoor/indoor rooftop deck": [
       "Rooftop deck"
     ],
     "over 80 secured garage parking spaces": [
-      "Garage parking"
+      "Parking"
     ],
     "oversized-package storage": [],
     "package acceptance with delivery alerts": [
@@ -2812,14 +2833,13 @@
       "Parking"
     ],
     "parking garage": [
-      "Garage parking"
+      "Parking"
     ],
     "parking garage and off-street parking": [
-      "Garage parking",
       "Parking"
     ],
     "parking garage with spaces available for rent": [
-      "Garage parking"
+      "Parking"
     ],
     "parking options": [
       "Parking"
@@ -2833,11 +2853,11 @@
       "Parking"
     ],
     "patio": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "patio space with fireplace": [
       "Outdoor fireplace",
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "pavilion": [
       "Pavilion"
@@ -2849,10 +2869,10 @@
     "penthouse lounge with fireplaces and pool table": [
       "Fireplace",
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "personal fitness studio with yoga zone and smart fitness mirror": [
-      "Fitness studio"
+      "Gym"
     ],
     "personal training": [],
     "pet and bike wash station": [
@@ -2860,13 +2880,13 @@
       "Pet wash station"
     ],
     "pet area": [
-      "Pet area (unspecified)"
+      "Pet area"
     ],
     "pet area (unspecified)": [
-      "Pet area (unspecified)"
+      "Pet area"
     ],
     "pet decks": [
-      "Pet area (unspecified)"
+      "Pet area"
     ],
     "pet grooming room": [
       "Pet grooming station"
@@ -2875,14 +2895,14 @@
       "Pet grooming station"
     ],
     "pet lounge and outdoor pet terrace": [
-      "Pet area (unspecified)"
+      "Pet area"
     ],
     "pet park": [
       "Dog park / run"
     ],
     "pet park and pet spa open 24/7": [
       "Dog park / run",
-      "Pet spa (unspecified)"
+      "Pet spa"
     ],
     "pet park with relief area": [
       "Dog park / run",
@@ -2892,10 +2912,10 @@
       "Dog park / run"
     ],
     "pet patio": [
-      "Pet area (unspecified)"
+      "Pet area"
     ],
     "pet play area with a pet washing station": [
-      "Pet area (unspecified)",
+      "Pet area",
       "Pet wash station"
     ],
     "pet relief area": [
@@ -2903,32 +2923,32 @@
     ],
     "pet run and pet spas": [
       "Dog park / run",
-      "Pet spa (unspecified)"
+      "Pet spa"
     ],
     "pet spa": [
-      "Pet spa (unspecified)"
+      "Pet spa"
     ],
     "pet spa (unspecified)": [
-      "Pet spa (unspecified)"
+      "Pet spa"
     ],
     "pet spa and dog run": [
       "Dog park / run",
-      "Pet spa (unspecified)"
+      "Pet spa"
     ],
     "pet spa and outdoor pet deck": [
-      "Pet area (unspecified)",
-      "Pet spa (unspecified)"
+      "Pet area",
+      "Pet spa"
     ],
     "pet spa and outdoor run": [
       "Dog park / run",
-      "Pet spa (unspecified)"
+      "Pet spa"
     ],
     "pet spa open 24/7": [
-      "Pet spa (unspecified)"
+      "Pet spa"
     ],
     "pet spa open 8 a.m.–10 p.m. and 24-hour off-leash pet area": [
       "Dog park / run",
-      "Pet spa (unspecified)"
+      "Pet spa"
     ],
     "pet spa with dog wash stations": [
       "Pet wash station"
@@ -2980,11 +3000,11 @@
       "Picnic area"
     ],
     "picnic area with barbecue": [
-      "BBQ grills",
+      "BBQs",
       "Picnic area"
     ],
     "picnic/bbq area": [
-      "BBQ grills",
+      "BBQs",
       "Picnic area"
     ],
     "pilates studio": [
@@ -3014,15 +3034,15 @@
       "Poker tables"
     ],
     "pool": [
-      "Swimming pool"
+      "Pool"
     ],
     "pool and cabana": [
       "Cabanas",
-      "Swimming pool"
+      "Pool"
     ],
     "pool and spa": [
-      "Spa (unspecified)",
-      "Swimming pool"
+      "Spa",
+      "Pool"
     ],
     "pool table": [
       "Pool table"
@@ -3031,25 +3051,24 @@
       "Pool table"
     ],
     "pool with sundeck": [
-      "Outdoor terrace / patio",
-      "Swimming pool"
+      "Terrace / patio",
+      "Pool"
     ],
     "poolside kitchen": [
       "Shared kitchen"
     ],
     "prefunction suite with library and wet bar": [
-      "Bar / wet bar",
+      "Bar",
       "Event space",
       "Library"
     ],
     "presentation kitchen and dining room": [
-      "Demonstration kitchen",
-      "Shared dining area"
+      "Shared kitchen"
     ],
     "printer service": [],
     "private balconies": [],
     "private co-working offices": [
-      "Coworking space",
+      "Coworking",
       "Private workspace"
     ],
     "private conference room": [
@@ -3079,25 +3098,25 @@
       "Shared kitchen"
     ],
     "private dining suite and catering kitchen available for private reservations": [
-      "Catering kitchen",
+      "Shared kitchen",
       "Private dining room"
     ],
     "private event spaces with caterer's kitchen": [
-      "Catering kitchen",
+      "Shared kitchen",
       "Event space"
     ],
     "private garages available": [
-      "Garage parking"
+      "Parking"
     ],
     "private lakeside beach club with lounge, lockers, paddle boards, beach cruisers and yard games": [
       "Beach club",
       "Outdoor games",
       "Paddleboard access",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared bikes"
     ],
     "private outdoor lounge with tv": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "private resident theater": [
       "Movie theater"
@@ -3130,7 +3149,7 @@
       "Putting green"
     ],
     "reading lounge with record listening corner": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "recreation room": [
       "Recreation room"
@@ -3142,23 +3161,23 @@
       "Rehearsal room"
     ],
     "rentable resident storage": [
-      "Resident storage"
+      "Storage"
     ],
     "rentable storage lockers": [
-      "Resident storage"
+      "Storage"
     ],
     "rentable storage space": [
-      "Resident storage"
+      "Storage"
     ],
     "rentable storage space, subject to availability": [
-      "Resident storage"
+      "Storage"
     ],
     "rentable storage units in varying sizes": [
-      "Resident storage"
+      "Storage"
     ],
     "repair station (unspecified)": [],
     "reservable clubhouse": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "reservable entertainment/tasting room": [
       "Event space"
@@ -3177,10 +3196,10 @@
       "Event space"
     ],
     "reservable sky lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "reservable wine cellar lounge with wine storage lockers": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Wine storage"
     ],
     "reservation-only kayaks and paddle boards": [
@@ -3188,11 +3207,11 @@
       "Paddleboard access"
     ],
     "reserved automated garage parking": [
-      "Garage parking"
+      "Parking"
     ],
     "reserved garage parking, motorcycle parking, and ev chargers on roughly 20% of spaces": [
       "EV charging",
-      "Garage parking",
+      "Parking",
       "Motorcycle parking"
     ],
     "reserved resident parking and automated parking system": [
@@ -3200,7 +3219,7 @@
     ],
     "resident access to penelope spa and the beauty bar": [],
     "resident and entertainment lounges": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident bike room": [
       "Bike storage"
@@ -3211,30 +3230,30 @@
     "resident club rooms and lounges with a pool table and lobby fireplace": [
       "Fireplace",
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident clubhouse": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident clubhouse lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident clubhouse with entertaining kitchen, tv lounge and social game zone": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "resident clubhouse/lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident clubroom": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident clubrooms": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident cocktail lounge and patio": [
-      "Outdoor terrace / patio",
-      "Resident lounge / clubhouse"
+      "Terrace / patio",
+      "Resident lounge"
     ],
     "resident community events": [],
     "resident cooking events and nutritionist appointments": [],
@@ -3244,130 +3263,130 @@
     "resident entertaining areas": [],
     "resident events": [],
     "resident game room and lounge": [
-      "Game room / area",
-      "Resident lounge / clubhouse"
+      "Game room",
+      "Resident lounge"
     ],
     "resident game room with pool table and lounge": [
-      "Game room / area",
+      "Game room",
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident game room with pool table, television, games and lounge area": [
-      "Game room / area",
+      "Game room",
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident gardening plots": [
       "Gardening plots"
     ],
     "resident gathering lounge/library": [
       "Library",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident library": [
       "Library"
     ],
     "resident lobby lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident lounge / clubhouse": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident lounge and entertainment space with full kitchen, dining and sitting areas": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "resident lounge and kitchen": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "resident lounge and workstations": [
-      "Coworking space",
-      "Resident lounge / clubhouse"
+      "Coworking",
+      "Resident lounge"
     ],
     "resident lounge with bevi beverage service": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident lounge with billiards and foosball": [
       "Foosball",
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident lounge with coffee bar": [
       "Coffee bar",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident lounge with community kitchen and bar seating": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "resident lounge with community kitchen, tv, and games": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "resident lounge with complimentary coffee bar": [
       "Coffee bar",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident lounge with kitchen": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "resident lounge with kitchen and bar seating, media room and fireside lobby seating": [
       "Fireplace",
-      "Media lounge",
-      "Resident lounge / clubhouse",
+      "Movie theater",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "resident lounge with kitchen, dining and tv seating": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "resident lounge with kitchenette, coffee machine, mini-fridge, dining table and tv seating": [
       "Kitchenette",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident lounge with pool table, television, and private workspaces": [
       "Pool table",
       "Private workspace",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident lounge with presentation kitchen": [
-      "Demonstration kitchen",
-      "Resident lounge / clubhouse"
+      "Shared kitchen",
+      "Resident lounge"
     ],
     "resident lounge with presentation kitchen, pool table and shuffleboard": [
-      "Demonstration kitchen",
+      "Shared kitchen",
       "Pool table",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shuffleboard"
     ],
     "resident lounge with shuffleboard": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shuffleboard"
     ],
     "resident lounge with tv viewing area": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident lounges": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident lounges with games": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident lounges with kitchen and terrace access, poker tables, tv wall and billiards": [
-      "Outdoor terrace / patio",
+      "Terrace / patio",
       "Poker tables",
       "Pool table",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "resident lounges with televisions and full kitchens, including billiards": [
       "Pool table",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "resident paddleboards": [
@@ -3380,36 +3399,36 @@
       "Gardening plots"
     ],
     "resident sky lounge with pool table, kitchen and bar": [
-      "Bar / wet bar",
+      "Bar",
       "Pool table",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "resident social events": [],
     "resident social lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "resident social spaces": [],
     "resident spa": [
-      "Spa (unspecified)"
+      "Spa"
     ],
     "resident storage": [
-      "Resident storage"
+      "Storage"
     ],
     "resident storage available": [
-      "Resident storage"
+      "Storage"
     ],
     "resident storage available for rent": [
-      "Resident storage"
+      "Storage"
     ],
     "resident storage rooms": [
-      "Resident storage"
+      "Storage"
     ],
     "resident wellness program with personal training and weekly classes": [
       "Fitness classes"
     ],
     "resident wine bar": [
-      "Bar / wet bar"
+      "Bar"
     ],
     "roof deck": [
       "Rooftop deck"
@@ -3419,27 +3438,27 @@
     ],
     "rooftop": [],
     "rooftop bbq": [
-      "BBQ grills"
+      "BBQs"
     ],
     "rooftop bbq and fire pit": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit"
     ],
     "rooftop bbq area": [
-      "BBQ grills"
+      "BBQs"
     ],
     "rooftop bbqs": [
-      "BBQ grills"
+      "BBQs"
     ],
     "rooftop bbqs and lounges": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop lounge"
     ],
     "rooftop club room": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "rooftop clubroom and deck": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Rooftop deck"
     ],
     "rooftop community space": [],
@@ -3447,7 +3466,7 @@
       "Courtyard"
     ],
     "rooftop courtyard with bbq grills, lounge seating, and outdoor games": [
-      "BBQ grills",
+      "BBQs",
       "Courtyard",
       "Outdoor games"
     ],
@@ -3455,7 +3474,7 @@
       "Rooftop deck"
     ],
     "rooftop deck and clubhouse": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Rooftop deck"
     ],
     "rooftop deck and garden": [
@@ -3479,7 +3498,7 @@
       "Rooftop deck"
     ],
     "rooftop deck and terrace with grills": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop deck and terraces": [
@@ -3489,93 +3508,91 @@
       "Rooftop deck"
     ],
     "rooftop deck with bar seating, bbq grills, fire pit and two tvs": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "rooftop deck with barbecue and city views": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop deck with barbecue and seating": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop deck with barbecue, dining area, lounge chairs and firepit": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
-      "Outdoor dining area",
       "Rooftop deck"
     ],
     "rooftop deck with bbq": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop deck with bbq and fire pit": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "rooftop deck with bbq and outdoor lounge": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck",
       "Rooftop lounge"
     ],
     "rooftop deck with bbq area and fire pit": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "rooftop deck with bbq grills": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop deck with fire pits and grills": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "rooftop deck with fire pits, grilling stations and seating areas": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "rooftop deck with fire pits, outdoor seating, grills and games": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "rooftop deck with firepits and bbqs": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "rooftop deck with fireplace, grills and outdoor dining": [
-      "BBQ grills",
-      "Outdoor dining area",
+      "BBQs",
       "Outdoor fireplace",
       "Rooftop deck"
     ],
     "rooftop deck with grill, fireplaces and seating": [
-      "BBQ grills",
+      "BBQs",
       "Outdoor fireplace",
       "Rooftop deck"
     ],
     "rooftop deck with grills": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop deck with grills and fire pits": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "rooftop deck with grills and outdoor tv": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop deck with grills, fire pits and seating": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
@@ -3583,7 +3600,7 @@
       "Rooftop deck"
     ],
     "rooftop deck with outdoor fire pit and grilling stations": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
@@ -3604,17 +3621,17 @@
       "Rooftop lounge"
     ],
     "rooftop decks with bbq stations, fire pits and seating": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "rooftop decks with fire feature and grills": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "rooftop dog lounge": [
-      "Pet area (unspecified)"
+      "Pet area"
     ],
     "rooftop dog park": [
       "Dog park / run"
@@ -3631,7 +3648,7 @@
       "Pet wash station"
     ],
     "rooftop dog walk": [
-      "Pet area (unspecified)"
+      "Pet area"
     ],
     "rooftop entertainment lounge with tv": [
       "Rooftop lounge"
@@ -3640,7 +3657,7 @@
       "Fire pit"
     ],
     "rooftop fire pit and bbqs": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit"
     ],
     "rooftop fire pits": [
@@ -3653,7 +3670,7 @@
       "Fire pit"
     ],
     "rooftop fitness center": [
-      "Fitness center"
+      "Gym"
     ],
     "rooftop garden": [
       "Rooftop garden"
@@ -3667,30 +3684,29 @@
       "Rooftop lounge"
     ],
     "rooftop grilling": [
-      "BBQ grills"
+      "BBQs"
     ],
     "rooftop grilling area": [
-      "BBQ grills"
+      "BBQs"
     ],
     "rooftop grilling station": [
-      "BBQ grills"
+      "BBQs"
     ],
     "rooftop grilling stations and dining area": [
-      "BBQ grills",
-      "Outdoor dining area"
+      "BBQs"
     ],
     "rooftop gym": [
-      "Fitness center"
+      "Gym"
     ],
     "rooftop lounge": [
       "Rooftop lounge"
     ],
     "rooftop lounge and bbq grills": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop lounge"
     ],
     "rooftop lounge and grill": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop lounge"
     ],
     "rooftop lounge and outdoor terrace": [
@@ -3704,13 +3720,12 @@
       "Rooftop lounge"
     ],
     "rooftop lounge with bbqs": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop lounge"
     ],
     "rooftop lounge with built-in grill, communal dining tables, fire pit, and outdoor screen": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
-      "Outdoor dining area",
       "Rooftop lounge"
     ],
     "rooftop lounge with fireplace and skyline views": [
@@ -3718,7 +3733,7 @@
       "Rooftop lounge"
     ],
     "rooftop lounge with game tables and movie screening area": [
-      "Movie screening area",
+      "Movie theater",
       "Rooftop lounge"
     ],
     "rooftop lounges": [
@@ -3729,7 +3744,7 @@
       "Rooftop lounge"
     ],
     "rooftop media lounge": [
-      "Media lounge"
+      "Movie theater"
     ],
     "rooftop off-leash dog area": [
       "Dog park / run"
@@ -3738,18 +3753,18 @@
       "Rooftop deck"
     ],
     "rooftop patio with barbecue": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop patio with lounge seating, picnic table and grill": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop patio with waterfront and city views": [
       "Rooftop deck"
     ],
     "rooftop pet area": [
-      "Pet area (unspecified)"
+      "Pet area"
     ],
     "rooftop pet park": [
       "Dog park / run"
@@ -3768,15 +3783,15 @@
       "Rooftop deck"
     ],
     "rooftop pool": [
-      "Swimming pool"
+      "Pool"
     ],
     "rooftop pool and terrace": [
       "Rooftop deck",
-      "Swimming pool"
+      "Pool"
     ],
     "rooftop pub with bbq grills, fire pits, awning and outdoor tv lounge": [
-      "Bar / wet bar",
-      "BBQ grills",
+      "Bar",
+      "BBQs",
       "Fire pit",
       "Rooftop lounge"
     ],
@@ -3801,12 +3816,12 @@
       "Rooftop lounge"
     ],
     "rooftop sky lounge with fireplace and bar": [
-      "Bar / wet bar",
+      "Bar",
       "Fireplace",
       "Rooftop lounge"
     ],
     "rooftop skydeck with lounge seating, bbqs and firepits": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
@@ -3814,36 +3829,36 @@
       "Solarium"
     ],
     "rooftop spa": [
-      "Spa (unspecified)"
+      "Spa"
     ],
     "rooftop speakeasy and lounge": [
-      "Bar / wet bar",
+      "Bar",
       "Rooftop lounge"
     ],
     "rooftop sports lounge": [
       "Rooftop lounge"
     ],
     "rooftop sun deck": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "rooftop sundeck and grill area": [
-      "BBQ grills",
-      "Outdoor terrace / patio"
+      "BBQs",
+      "Terrace / patio"
     ],
     "rooftop sundeck with bay views": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "rooftop sundeck with city and mount rainier views": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "rooftop sundeck with city views": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "rooftop terrace": [
       "Rooftop deck"
     ],
     "rooftop terrace and garden with bbq grills": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck",
       "Rooftop garden"
     ],
@@ -3855,36 +3870,35 @@
       "Rooftop lounge"
     ],
     "rooftop terrace with barbecue": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop terrace with bbq": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop terrace with bbq and fire feature": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "rooftop terrace with bbqs": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop terrace with clubroom, patio grill, and seating": [
-      "BBQ grills",
-      "Resident lounge / clubhouse",
+      "BBQs",
+      "Resident lounge",
       "Rooftop deck"
     ],
     "rooftop terrace with fire pit and grills": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "rooftop terrace with fire pit, grills and outdoor dining": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
-      "Outdoor dining area",
       "Rooftop deck"
     ],
     "rooftop terrace with firepit, lounge seating and gazebo": [
@@ -3893,7 +3907,7 @@
       "Rooftop deck"
     ],
     "rooftop terrace with firepits and bbqs": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
@@ -3902,38 +3916,37 @@
       "Rooftop deck"
     ],
     "rooftop terrace with fireplace, outdoor tv, grills and outdoor dining": [
-      "BBQ grills",
-      "Outdoor dining area",
+      "BBQs",
       "Outdoor fireplace",
       "Rooftop deck"
     ],
     "rooftop terrace with fireplace, pizza oven and bbq grills": [
-      "BBQ grills",
+      "BBQs",
       "Outdoor fireplace",
       "Pizza oven",
       "Rooftop deck"
     ],
     "rooftop terrace with grilling stations": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop terrace with grills": [
-      "BBQ grills",
+      "BBQs",
       "Rooftop deck"
     ],
     "rooftop terrace with grills, pizza oven, fireplace and seating": [
-      "BBQ grills",
+      "BBQs",
       "Outdoor fireplace",
       "Pizza oven",
       "Rooftop deck"
     ],
     "rooftop terrace with lounge seating, firepits and bbq": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Rooftop deck"
     ],
     "rooftop terrace with outdoor kitchen, bbq grills, tv screen, firepits and lounge seating": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
       "Outdoor kitchen",
       "Rooftop deck"
@@ -3948,14 +3961,13 @@
       "Rooftop deck"
     ],
     "rpm training room": [
-      "Fitness studio"
+      "Gym"
     ],
     "sauna": [
       "Sauna"
     ],
     "sauna, steam room and tepidarium": [
       "Sauna",
-      "Steam room",
       "Tepidarium"
     ],
     "scheduled package delivery to apartment door": [
@@ -3965,13 +3977,13 @@
       "Movie theater"
     ],
     "seasonal outdoor pool at arrive magnolia west": [
-      "Swimming pool"
+      "Pool"
     ],
     "seasonal outdoor swimming pool": [
-      "Swimming pool"
+      "Pool"
     ],
     "seasonal pool": [
-      "Swimming pool"
+      "Pool"
     ],
     "seating areas": [],
     "secure 24/7 package lockers": [
@@ -3994,11 +4006,11 @@
       "Bike storage"
     ],
     "secure garage parking": [
-      "Garage parking"
+      "Parking"
     ],
     "secure garage parking with ev charging ports": [
       "EV charging",
-      "Garage parking"
+      "Parking"
     ],
     "secure package locker": [
       "Package lockers"
@@ -4018,14 +4030,14 @@
       "Package room"
     ],
     "secure parking garage": [
-      "Garage parking"
+      "Parking"
     ],
     "secure underground car and bicycle parking": [
       "Bike parking",
-      "Garage parking"
+      "Parking"
     ],
     "secure underground parking": [
-      "Garage parking"
+      "Parking"
     ],
     "secured access package lockers": [
       "Package lockers"
@@ -4037,7 +4049,7 @@
       "Package room"
     ],
     "secured underground parking garage": [
-      "Garage parking"
+      "Parking"
     ],
     "self-service dog wash": [
       "Pet wash station"
@@ -4058,11 +4070,9 @@
     "shared courtyards": [
       "Courtyard"
     ],
-    "shared dining area": [
-      "Shared dining area"
-    ],
+    "shared dining area": [],
     "shared indoor amenity spaces and outdoor patio": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "shared kitchen": [
       "Shared kitchen"
@@ -4083,7 +4093,7 @@
       "Rooftop deck"
     ],
     "shared workspace": [
-      "Coworking space"
+      "Coworking"
     ],
     "shuffleboard": [
       "Shuffleboard"
@@ -4096,78 +4106,78 @@
     ],
     "skee-ball game room": [
       "Arcade games",
-      "Game room / area"
+      "Game room"
     ],
     "sky club": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "sky deck": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "sky garden rooftop": [
       "Rooftop garden"
     ],
     "sky lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "sky lounge and deck": [
-      "Outdoor terrace / patio",
-      "Resident lounge / clubhouse"
+      "Terrace / patio",
+      "Resident lounge"
     ],
     "sky lounge and rooftop terrace": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Rooftop deck"
     ],
     "sky lounge with billiards": [
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "sky lounge with fire pits and bbqs": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "sky lounge with kitchen and indoor/outdoor seating": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "sky lounge with two-sided fireplace, kitchenette, dining nooks and big-screen media room": [
       "Fireplace",
       "Kitchenette",
-      "Media lounge",
-      "Resident lounge / clubhouse"
+      "Movie theater",
+      "Resident lounge"
     ],
     "sky lounge with workspaces": [
-      "Coworking space",
-      "Resident lounge / clubhouse"
+      "Coworking",
+      "Resident lounge"
     ],
     "sky terrace rooftop lounge": [
       "Rooftop deck",
       "Rooftop lounge"
     ],
     "skylounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "smart mirror workout room": [
-      "Fitness center"
+      "Gym"
     ],
     "social clubhouse": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "social lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "social lounge with dj booth, karaoke and tv": [
       "Karaoke",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "social lounge with kitchen and seating": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "social parlor with cocktail kitchen, lounge seating and bar seating": [
       "Kitchenette",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "social spaces": [],
     "solarium": [
@@ -4175,10 +4185,10 @@
     ],
     "soul fitness partnership": [],
     "spa": [
-      "Spa (unspecified)"
+      "Spa"
     ],
     "spa (unspecified)": [
-      "Spa (unspecified)"
+      "Spa"
     ],
     "spa tub": [
       "Hot tub"
@@ -4196,120 +4206,118 @@
       "Sports court"
     ],
     "sports lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "staffed lobby": [],
     "stage": [],
     "station lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "steam room": [
-      "Steam room"
+      "Sauna"
     ],
     "steam room and sauna": [
-      "Sauna",
-      "Steam room"
+      "Sauna"
     ],
     "storage": [
-      "Resident storage"
+      "Storage"
     ],
     "storage lockers": [
-      "Resident storage"
+      "Storage"
     ],
     "storage lockers and storage rooms": [
-      "Resident storage"
+      "Storage"
     ],
     "storage lockers, subject to availability": [
-      "Resident storage"
+      "Storage"
     ],
     "storage room": [
-      "Resident storage"
+      "Storage"
     ],
     "storage space rentals": [
-      "Resident storage"
+      "Storage"
     ],
     "storage spaces": [
-      "Resident storage"
+      "Storage"
     ],
     "storage units": [
-      "Resident storage"
+      "Storage"
     ],
     "study lounge": [
-      "Coworking space"
+      "Coworking"
     ],
     "subgrade parking": [
-      "Garage parking"
+      "Parking"
     ],
     "subterranean garage parking": [
-      "Garage parking"
+      "Parking"
     ],
     "sun deck": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "sun deck and terrace with fire pits and grills": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "sun deck with bbq and skyline views": [
-      "BBQ grills",
-      "Outdoor terrace / patio"
+      "BBQs",
+      "Terrace / patio"
     ],
     "sundeck": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "sundeck terrace": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "sunset deck with fire pits": [
       "Fire pit",
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "surface lot and controlled-access garage parking available for rent": [
-      "Garage parking",
       "Parking"
     ],
     "swimming pier": [
       "Swimming pier"
     ],
     "swimming pool": [
-      "Swimming pool"
+      "Pool"
     ],
     "swimming pool and hot tub": [
       "Hot tub",
-      "Swimming pool"
+      "Pool"
     ],
     "swimming pool and sundeck": [
-      "Outdoor terrace / patio",
-      "Swimming pool"
+      "Terrace / patio",
+      "Pool"
     ],
     "table tennis": [
       "Table tennis"
     ],
     "table tennis lounge": [
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Table tennis"
     ],
     "tepidarium": [
       "Tepidarium"
     ],
     "terrace lounge": [
-      "Outdoor terrace / patio",
-      "Resident lounge / clubhouse"
+      "Terrace / patio",
+      "Resident lounge"
     ],
     "terrace with bbq and firepit": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "the blend wi-fi lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "theater": [
       "Movie theater"
     ],
     "theater and game room": [
-      "Game room / area",
+      "Game room",
       "Movie theater"
     ],
     "theater room": [
@@ -4325,24 +4333,24 @@
     ],
     "top floor resident lounge with a pool table, kitchen bar, tv, seating, and wifi": [
       "Pool table",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "top-floor co-working space with private meeting rooms and work pods": [
-      "Coworking space",
+      "Coworking",
       "Meeting room",
       "Private workspace"
     ],
     "top-floor lounge with wet bar and games room with billiards, foosball, card tables, pinball and tvs": [
       "Arcade games",
-      "Bar / wet bar",
+      "Bar",
       "Foosball",
-      "Game room / area",
+      "Game room",
       "Pool table",
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "top-floor resident lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "trailhead room with books and maps": [],
     "treatment room": [
@@ -4350,37 +4358,36 @@
     ],
     "trx training": [],
     "tv lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "two 24-hour fitness centers": [
-      "Fitness center"
+      "Gym"
     ],
     "two clubrooms, one with a kitchen and one with a terrace": [
-      "Outdoor terrace / patio",
-      "Resident lounge / clubhouse",
+      "Terrace / patio",
+      "Resident lounge",
       "Shared kitchen"
     ],
     "two controlled-access parking garages": [
-      "Garage parking"
+      "Parking"
     ],
     "two fitness centers": [
-      "Fitness center"
+      "Gym"
     ],
     "two lobby social spaces, second-floor and rooftop lounges, and a resident lounge with workspaces and dining areas": [
-      "Coworking space",
-      "Resident lounge / clubhouse",
+      "Coworking",
+      "Resident lounge",
       "Rooftop lounge"
     ],
     "two outdoor terraces with lounge seating": [
-      "Outdoor terrace / patio"
+      "Terrace / patio"
     ],
     "two rooftop amenity spaces": [],
     "two rooftop decks": [
       "Rooftop deck"
     ],
     "two rooftop decks with wi-fi, grills and outdoor dining": [
-      "BBQ grills",
-      "Outdoor dining area",
+      "BBQs",
       "Rooftop deck"
     ],
     "two rooftop lounges/decks": [
@@ -4388,15 +4395,14 @@
       "Rooftop lounge"
     ],
     "two rooftop terraces with outdoor kitchens, grills, dining/lounge areas, tvs and a fire pit": [
-      "BBQ grills",
+      "BBQs",
       "Fire pit",
-      "Outdoor dining area",
       "Outdoor kitchen",
       "Rooftop deck"
     ],
     "two skyline lounges with wi-fi, a full kitchen, tvs, a fireplace and shuffleboard": [
       "Fireplace",
-      "Resident lounge / clubhouse",
+      "Resident lounge",
       "Shared kitchen",
       "Shuffleboard"
     ],
@@ -4404,28 +4410,28 @@
       "Climbing wall"
     ],
     "two-story fitness center": [
-      "Fitness center"
+      "Gym"
     ],
     "two-story rooftop lounge with fireplaces and outdoor grilling area": [
-      "BBQ grills",
+      "BBQs",
       "Fireplace",
       "Rooftop lounge"
     ],
     "underground garage": [
-      "Garage parking"
+      "Parking"
     ],
     "underground gated parking with reservable spaces": [
-      "Garage parking"
+      "Parking"
     ],
     "underground parking": [
-      "Garage parking"
+      "Parking"
     ],
     "underground parking garage": [
-      "Garage parking"
+      "Parking"
     ],
     "underground parking with designated electric vehicle spaces": [
-      "EV parking (unspecified)",
-      "Garage parking"
+      "EV parking",
+      "Parking"
     ],
     "urban garden with bocce ball and seating": [
       "Bocce court",
@@ -4441,36 +4447,36 @@
       "Valet trash service"
     ],
     "vault bar speakeasy with poker tables": [
-      "Bar / wet bar",
+      "Bar",
       "Poker tables"
     ],
     "vehicle charging stations in the parking garage": [
       "EV charging",
-      "Garage parking"
+      "Parking"
     ],
     "virtual reality room": [
-      "Virtual reality room"
+      "VR room"
     ],
     "vista lounge and deck": [
-      "Outdoor terrace / patio",
-      "Resident lounge / clubhouse"
+      "Terrace / patio",
+      "Resident lounge"
     ],
     "walking trails": [
       "Walking trails"
     ],
     "water feature": [],
     "waterfront sky lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "weight room": [
-      "Fitness center"
+      "Gym"
     ],
     "wellness and circuit studio with lululemon studio mirrors": [
-      "Fitness studio",
+      "Gym",
       "Wellness studio"
     ],
     "wellness lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "wellness studio": [
       "Wellness studio"
@@ -4486,38 +4492,38 @@
     "wifi in all community areas": [],
     "wifi throughout the building": [],
     "wine lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "wine storage": [
       "Wine storage"
     ],
     "work lounges": [
-      "Coworking space"
+      "Coworking"
     ],
     "work pods and shared/private workspaces": [
-      "Coworking space",
+      "Coworking",
       "Private workspace"
     ],
     "work-from-home lounge": [
-      "Coworking space"
+      "Coworking"
     ],
     "work-from-home lounge with conference room and study nooks": [
-      "Coworking space",
+      "Coworking",
       "Meeting room"
     ],
     "work-from-home spaces": [
-      "Coworking space"
+      "Coworking"
     ],
     "workout room": [
-      "Fitness center"
+      "Gym"
     ],
     "workshop / makerspace": [
-      "Workshop / makerspace"
+      "Makerspace"
     ],
     "workshop/hobby locker with bike repair and tools to borrow": [
-      "Bike repair station",
+      "Bike repair",
       "Tool lending",
-      "Workshop / makerspace"
+      "Makerspace"
     ],
     "workspace (unspecified)": [],
     "workspace pods and conference room": [
@@ -4525,26 +4531,26 @@
       "Private workspace"
     ],
     "year-round pool and spa": [
-      "Spa (unspecified)",
-      "Swimming pool"
+      "Spa",
+      "Pool"
     ],
     "yesler resident lounge": [
-      "Resident lounge / clubhouse"
+      "Resident lounge"
     ],
     "yoga / pilates studio": [
-      "Yoga / Pilates studio"
+      "Yoga/Pilates studio"
     ],
     "yoga / spin studio": [
-      "Yoga / spin studio"
+      "Yoga/spin studio"
     ],
     "yoga and pilates studio": [
-      "Yoga / Pilates studio"
+      "Yoga/Pilates studio"
     ],
     "yoga and spin studio": [
-      "Yoga / spin studio"
+      "Yoga/spin studio"
     ],
     "yoga and spin studio with five stationary bikes": [
-      "Yoga / spin studio"
+      "Yoga/spin studio"
     ],
     "yoga and wellness studio": [
       "Yoga studio"
@@ -4569,6 +4575,33 @@
     ],
     "yoga studios": [
       "Yoga studio"
+    ],
+    "barre/stretch studio": [
+      "Barre/stretch studio"
+    ],
+    "bbqs": [
+      "BBQs"
+    ],
+    "bike repair": [
+      "Bike repair"
+    ],
+    "coworking": [
+      "Coworking"
+    ],
+    "makerspace": [
+      "Makerspace"
+    ],
+    "terrace / patio": [
+      "Terrace / patio"
+    ],
+    "vr room": [
+      "VR room"
+    ],
+    "yoga/pilates studio": [
+      "Yoga/Pilates studio"
+    ],
+    "yoga/spin studio": [
+      "Yoga/spin studio"
     ]
   },
   "review_notes": {
@@ -4596,11 +4629,11 @@
     "ev parking": "EV parking does not establish charging or EV-ready infrastructure.",
     "ev parking (optional paid spaces)": "EV parking does not establish charging or EV-ready infrastructure.",
     "family outdoor recreation space": "Outdoor recreation space is too vague to identify a specific facility or activity.",
-    "fitness center and flex studio": "Flex studio purpose is unspecified; retained as a fitness studio.",
+    "fitness center and flex studio": "Flex studio purpose is unspecified; consolidated under Gym without promising equipment or a separate facility.",
     "fitness room with yoga facilities": "Yoga equipment or a dedicated yoga studio is unclear.",
-    "flex fitness space": "Exact facility type is unclear; mapped conservatively as Fitness studio.",
+    "flex fitness space": "Exact facility type is unclear; included in the approved broad Gym category without promising equipment.",
     "green roof gardens": "The name may describe a decorative green roof; usable resident garden access is not established.",
-    "gym access": "Gym access remains in source notes pending clarification of location and access arrangement; no on-site Fitness center inferred.",
+    "gym access": "Gym access remains in source notes pending clarification of location and access arrangement; no on-site Gym inferred.",
     "gym access (location unspecified)": "Withheld from main facility labels pending clarification of location and access arrangement.",
     "indoor/outdoor lounge with pool table and shared kitchen appliances": "Appliances do not confirm a distinct shared kitchen; Kitchenette is a conservative interpretation.",
     "indoor/outdoor sky lounge": "Sky lounge does not establish a rooftop facility.",
@@ -4675,21 +4708,19 @@
     },
     "personal training": {
       "attach_to_if_present": [
-        "Fitness center",
-        "Fitness studio"
+        "Gym"
       ],
       "note": "Fitness-program detail, not a separate facility. The source does not establish fees, booking conditions or guaranteed availability."
     },
     "resident wellness program with personal training and weekly classes": {
       "attach_to_if_present": [
-        "Fitness center",
-        "Fitness studio"
+        "Gym"
       ],
       "note": "Fitness-program detail, not a separate facility. The source does not establish fees, booking conditions or guaranteed availability."
     },
     "dj booth": {
       "attach_to_if_present": [
-        "Resident lounge / clubhouse",
+        "Resident lounge",
         "Rooftop lounge"
       ],
       "note": "Equipment detail of the lounge; keep explicit karaoke separately. This related detail does not establish a separate parent facility."
@@ -4702,7 +4733,7 @@
     },
     "locker room": {
       "attach_to_if_present": [
-        "Fitness center"
+        "Gym"
       ],
       "note": "Fitness-center detail; keep independently named sauna. This related detail does not establish a separate parent facility."
     },
@@ -4714,7 +4745,7 @@
     },
     "outdoor equipment repair station": {
       "attach_to_if_present": [
-        "Bike repair station"
+        "Bike repair"
       ],
       "note": "Keep other outdoor-equipment repair capabilities in the existing repair-facility description. This related detail does not establish a separate parent facility."
     },
@@ -4732,7 +4763,7 @@
     },
     "stage": {
       "attach_to_if_present": [
-        "Resident lounge / clubhouse",
+        "Resident lounge",
         "Rooftop lounge"
       ],
       "note": "Entertainment-lounge detail; no separate performance venue is established. This related detail does not establish a separate parent facility."
@@ -4742,6 +4773,81 @@
         "Rooftop lounge"
       ],
       "note": "Greenhouse describes the lounge setting; this is not evidence of a separate resident gardening greenhouse."
+    },
+    "courtyard outdoor dining area": {
+      "attach_to_if_present": [
+        "BBQs"
+      ],
+      "note": "Outdoor dining is retained as a detail of independently established BBQs. Dining seating alone does not establish grills."
+    },
+    "outdoor dining area": {
+      "attach_to_if_present": [
+        "BBQs"
+      ],
+      "note": "Outdoor dining is retained as a detail of independently established BBQs. Dining seating alone does not establish grills."
+    },
+    "outdoor semi-private dining area": {
+      "attach_to_if_present": [
+        "BBQs"
+      ],
+      "note": "Outdoor dining is retained as a detail of independently established BBQs. Dining seating alone does not establish grills."
+    },
+    "shared dining area": {
+      "attach_to_if_present": [
+        "Shared kitchen"
+      ],
+      "note": "Shared dining is seating associated with an independently established shared kitchen. Dining seating alone does not establish kitchen equipment."
+    }
+  },
+  "compact_label_review": {
+    "approved_at": "2026-10-09",
+    "renames_and_merges": {
+      "Fitness center": "Gym",
+      "Fitness studio": "Gym",
+      "Resident lounge / clubhouse": "Resident lounge",
+      "BBQ grills": "BBQs",
+      "Coworking space": "Coworking",
+      "Garage parking": "Parking",
+      "Resident storage": "Storage",
+      "Swimming pool": "Pool",
+      "Bar / wet bar": "Bar",
+      "Virtual reality room": "VR room",
+      "Outdoor terrace / patio": "Terrace / patio",
+      "Game room / area": "Game room",
+      "Workshop / makerspace": "Makerspace",
+      "Yoga / Pilates studio": "Yoga/Pilates studio",
+      "Yoga / spin studio": "Yoga/spin studio",
+      "Barre / stretch studio": "Barre/stretch studio",
+      "Bike repair station": "Bike repair",
+      "Media lounge": "Movie theater",
+      "Movie screening area": "Movie theater",
+      "EV parking (unspecified)": "EV parking",
+      "Pet area (unspecified)": "Pet area",
+      "Pet spa (unspecified)": "Pet spa",
+      "Spa (unspecified)": "Spa",
+      "Covered parking": "Parking",
+      "Bouldering wall": "Climbing wall",
+      "Catering kitchen": "Shared kitchen",
+      "Demonstration kitchen": "Shared kitchen",
+      "Business center": "Coworking",
+      "Steam room": "Sauna"
+    },
+    "unchanged_names": [
+      "Pet wash station",
+      "Dry cleaning service",
+      "Valet trash service",
+      "Outdoor movie screen"
+    ],
+    "preservation": "Source descriptions are unchanged. Reprocess original evidence, union descriptions of merged categories and deduplicate labels per building. Do not change directory membership.",
+    "folded_into_details": {
+      "Outdoor dining area": {
+        "parent": "BBQs",
+        "rule": "Remove the standalone dining label; retain original descriptions with independently established BBQs, using related_details for dining-only source entries. Do not infer BBQs from outdoor dining alone."
+      },
+      "Shared dining area": {
+        "parent": "Shared kitchen",
+        "rule": "Retain dining descriptions with independently established Shared kitchen, including catering and demonstration kitchens. Dining-only descriptions attach conditionally without establishing a kitchen."
+      }
     }
   }
 }
