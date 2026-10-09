@@ -1,7 +1,17 @@
 # Seattle-area rental apartments
 
-**337 apartment buildings** with names, addresses and coordinates, property and availability links, verified Google Maps listings, year built, management company, amenities and their details, approximate effective monthly one-bedroom costs, and driving time and distance from South Lake Union.
+**[Browser the directory in your browser](https://sokolsky.me/apartments/seattle/)**
 
-**[Browse Seattle Apartments](https://sokolsky.me/apartments/seattle/)**
+Core metadata for **337 apartment buildings**:
 
-[Download the apartment directory (JSON)](apartments.json)
+| Fields | Description |
+|---|---|
+| `name`, `address`, `location` | Building name, address, and coordinates |
+| `website`, `availability_url` | Property website and availability page |
+| `google_maps` | Verified Google Maps listing and link |
+| `year_built`, `management_company` | Construction year and property manager |
+| `amenities`, `amenity_details` | Amenities and supporting details |
+| `approx_1br_monthly_usd` | Approximate effective monthly one-bedroom cost in USD |
+| `drive_from_slu` | Driving time and distance from South Lake Union |
+
+[Download the metadata JSON](apartments.json)
