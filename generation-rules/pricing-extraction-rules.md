@@ -18,6 +18,12 @@
 
 **Exclusion registry:** generation-rules/excluded-apartments.json
 
+## Research snapshot
+
+Prices were researched on October 9, 2026. [Pricing research and calculations](pricing-research.json) retain every source, fee, promotion, lease assumption, extrapolation, and ratio input.
+
+The existing fallback estimates use median bedroom-price ratios calculated only from Seattle buildings in the original pricing-research cohort. These historical ratios and existing estimates are preserved when later eligibility filters remove buildings. For a new pricing refresh, follow [same-list ratio training](#12-same-list-ratio-training).
+
 ## Output
 
 **Field:** approx_1br_monthly_usd
@@ -248,7 +254,6 @@ As a last resort, remove buildings that still have N/A pricing from the active l
 - Update active building counts, direct/extrapolated/no-pricing counts, exclusion counts and documentation so they reconcile. No N/A values should remain in the final active directory.
 - Preserve construction-year, management-company, amenities and other historical audit sections, including their original research-scope counts. Clearly distinguish those historical counts from current active-directory counts.
 - Check ratio cohort membership. Removing unpriced buildings that were not ratio inputs does not require changing other buildings' prices; otherwise recompute affected ratios and estimates.
-- Do not reintroduce previously excluded buildings from an old research snapshot. Reinstatement requires a new decision within the user's requested scope.
 
 ### 16. Retain reproducible evidence
 
@@ -269,35 +274,27 @@ Keep enough evidence to reproduce and assess each estimate.
 Use as much useful parallel research as available to complete large lists quickly.
 
 - Assign independent buildings or batches to sub-agents, up to practical available concurrency. Use additional independent checks for uncertain prices, fees and N/A candidates.
-- Give each researcher a separate output file or explicitly assigned records. Avoid multiple agents overwriting the same batch file.
-- Have one integration step reconcile IDs, calculations, source conflicts and ratios before editing the active directory.
+- Follow the [shared concurrent-write rules](README.md#concurrent-writes); the central integration step must reconcile IDs, calculations, source conflicts, and ratios before editing the active directory.
 
 ### 18. Preserve concurrent work
 
 **Rule ID:** `preserve_concurrent_work`
 
-Merge pricing and authorized removals into the latest files without overwriting unrelated work.
-
-- Re-read the latest directory and audit files immediately before preparing a write. Do not replace them from a snapshot captured at the start of research.
-- Preserve unrelated fields, sources, notes, metadata and audit sections, including construction-year, management-name and amenities updates.
-- Compare current file contents or hashes with the versions used to prepare the changes immediately before replacement. If they changed, recompute the merge against the latest versions.
-- Use atomic file replacement where possible, retain recoverable pre-change copies, and validate the resulting cross-file state.
-- If directory membership changed during research, reconcile against the current membership rather than restoring removed entries or dropping new ones silently.
+Follow the [shared concurrent-write rules](README.md#concurrent-writes) when merging pricing and authorized removals.
 
 ### 19. Validate before finishing
 
 **Rule ID:** `validate_before_finishing`
 
-Verify the final data, calculations and preservation of other work.
+Apply the [shared validation checks](README.md#shared-validation), then verify pricing-specific requirements:
 
-- Parse all edited JSON and verify unique IDs, matching active-directory and active-pricing IDs, and complete coverage of the remaining list.
+- Verify matching active-directory and active-pricing IDs and complete coverage of the remaining list.
 - Require a positive numeric approx_1br_monthly_usd for every remaining active building; verify removed N/A records are archived.
 - Recompute each effective amount from rent, fees, concessions and term. Reconcile itemized included fees with their aggregates and nonzero concession totals with applied promotion evidence.
 - Verify published totals and effective rents have not had fees or promotions counted twice, and final rounding matches the calculation.
 - Verify ratio cohorts, inputs, medians and extrapolation math are reproducible and use only eligible buildings from the list.
-- Reconcile active and excluded counts and decision statuses. Confirm retained buildings' unrelated fields and historical audit sections remain intact.
-- Run git diff --check when working in this repository and inspect the scope of the changes.
+- Reconcile active and excluded counts and decision statuses.
 
 ## Readdition policy
 
-Before adding or merging any building into apartments.json, check generation-rules/excluded-apartments.json by id, current or previous name, address and property website. Do not automatically re-add a matching building, including under a new name or ID. Reinstatement requires an explicit user decision and a documented update to this registry; newly found prices or amenities alone do not override the exclusion.
+Follow the shared [directory eligibility and exclusion policy](README.md#directory-eligibility-and-exclusions) before adding or merging buildings.

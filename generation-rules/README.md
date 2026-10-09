@@ -20,9 +20,29 @@ Rules, research, and tooling that explain how the dataset was generated and supp
 
 The active directory contains 337 buildings and 112 normalized amenity types. Ten buildings without usable prices and eight buildings with only one normalized amenity other than a gym were excluded. Buildings normally require at least two normalized amenities; a single Gym qualifies as an exception. Removed records and pricing evidence remain in the [exclusion audit](research-audit.json).
 
-[Excluded apartments](excluded-apartments.json) records the 18 buildings removed on October 9, 2026, compared with commit `ce940cb`, with a reason and chat/audit provenance for each. Before adding buildings, check this registry by ID, current/former name, address and website. Do not automatically re-add matches, even under a new name or ID; reinstatement requires an explicit user decision and a documented registry update.
+[Excluded apartments](excluded-apartments.json) records the 18 buildings removed on October 9, 2026, compared with commit `ce940cb`, with a reason and chat/audit provenance for each. Before adding buildings, check this registry by ID, current/former name, address and website. Do not automatically re-add matches, even under a new name or ID; reinstatement requires an explicit user decision and a documented registry update. Newly found prices or amenities alone do not override the exclusion.
 
 Original research and exclusion records are historical evidence and retain the names used when recorded.
+
+## Shared update rules
+
+These rules apply to both extraction guides and other dataset updates; field-specific requirements stay in the relevant guide.
+
+### Concurrent writes
+
+- For parallel research, give each researcher a separate result file or assigned records. One central integration step reviews and applies results; researchers must not independently rewrite shared directory or audit files.
+- Re-read the latest directory, research, and audit files immediately before preparing a merge. Apply only authorized fields by stable building ID; never replace current data with an old full-file snapshot.
+- Preserve unrelated fields, sources, notes, metadata, and all existing audit sections. Append new decisions without rewriting historical evidence or restoring older labels over newer user-requested values.
+- If directory membership changed during research, reconcile against the current membership rather than silently restoring removed entries or dropping new ones. Follow the [exclusion policy](#directory-eligibility-and-exclusions) before adding records.
+- Compare file contents or hashes immediately before saving. If they changed, re-read and recompute against the newest versions. Retain recoverable pre-change copies and use atomic replacement where possible; atomic replacement prevents partial files but does not prevent stale-snapshot data loss.
+- For simultaneous writers, prefer a single writer or an agreed shared lock around read/merge/write. A brief hash check cannot guarantee protection against every race. Coordinate warnings with other chats when authorized by the user.
+- If an overwrite is suspected, compare snapshots and audit history, identify lost fields, and restore only confirmed authorized changes while retaining newer unrelated work. Do not replay an entire older directory.
+
+### Shared validation
+
+- Parse every edited JSON file, check required fields and source-support labels, and verify unique building IDs and cross-file consistency.
+- Compare IDs, order, membership, unrelated fields, and historical audit sections against the immediate pre-write snapshot. Changes must stay within the authorized scope. Reconcile and report actual current counts; historical totals are not permanent targets.
+- Review the task-specific diff against that snapshot, not only Git HEAD, which may include other chats' work. Run `git diff --check` and complete the relevant guide's field-specific checks.
 
 ## Google Maps listings
 
@@ -42,11 +62,7 @@ Use the actual research date for `--as-of`. `--input subset.json` accepts an arr
 
 ## One-bedroom pricing
 
-Each building has an `approx_1br_monthly_usd` field: an approximate effective monthly cost in USD for an unrestricted one-bedroom, rounded to the nearest $10. Prices were researched on October 9, 2026, using official property websites first and Zillow/Redfin as backups.
-
-The estimate includes disclosed mandatory recurring fees, nonrefundable move-in/application fees for one adult, and applicable standard rent concessions. It averages costs over the quoted lease term, using a documented 12-month assumption when an annual or longer-term quote is unavailable. Refundable deposits and optional expenses are excluded; undisclosed charges cannot be included. An explicitly labeled open or urban one-bedroom may be the lowest-priced option.
-
-When no usable one-bedroom quote exists, available studio or two-bedroom rents are converted using median bedroom-price ratios calculated only from Seattle buildings in the original pricing-research cohort. These historical ratios and existing estimates are preserved when later eligibility filters remove buildings. These are hypothetical one-bedroom estimates, not available-unit quotes. [Pricing research and calculations](pricing-research.json) include every source, fee, promotion, lease assumption, extrapolation, and ratio input.
+See the [pricing extraction rules](pricing-extraction-rules.md) for the field definition, source policy, fee and concession calculations, lease assumptions, and extrapolation method. The [research snapshot](pricing-extraction-rules.md#research-snapshot) describes the existing estimates and links to their evidence.
 
 ## Amenity normalization
 

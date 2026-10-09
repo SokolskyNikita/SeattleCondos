@@ -375,25 +375,20 @@
 
 ## Directory write and concurrency rules
 
-- Use separate per-building result files for parallel research. Research agents must not independently rewrite apartments.json or generation-rules/research-audit.json; a central merger reviews and applies results.
-- Read the latest shared files immediately before preparing a merge. Apply only the authorized fields by stable building ID; never write an old full-file snapshot over another chat's changes.
+Follow the [shared concurrent-write rules](README.md#concurrent-writes), with these management-specific constraints:
+
 - For extraction, update the manager, supporting source entries, necessary caveat notes and the relevant review date. For name-only cleanup, change only management_company and append a mapping audit. Do not alter construction years, pricing, amenities, eligibility, addresses or record membership.
 - When a source URL already exists on a building, merge management_company into supports and preserve the existing note/evidence. Do not delete unrelated sources or create avoidable duplicate URLs.
-- Preserve all existing audit sections. Append new audit decisions or normalization mappings; do not restore old researched names over newer user-requested display names.
-- Check file contents or hashes immediately before saving. If either file changed during preparation, re-read and recompute against the newest version. An atomic file replacement prevents a partial file but does not by itself prevent stale-snapshot data loss.
-- For simultaneous writers, prefer a single writer or an agreed shared lock around read/merge/write. Coordinate warnings with other chats when authorized by the user. Do not treat a brief hash check as a guarantee against every race.
-- If a suspected overwrite is found, compare snapshots and audit history, identify the lost fields and restore only confirmed authorized changes while retaining newer unrelated work. Do not replay an entire older directory.
 
 ## Validation checklist
 
-- Both affected JSON files parse successfully; required fields and source-support labels are correct.
+Apply the [shared validation checks](README.md#shared-validation), then verify management-specific requirements:
+
 - Each accepted manager has property-specific evidence. Unresolved entries use null and have an explicit reason; medium-confidence entries retain material caveats.
-- Building IDs, order and membership match the latest pre-write snapshot unless the user separately authorized record changes. Do not hard-code historical totals such as 355 or 345 as permanent requirements.
 - A name-only change preserves every other building field, source, note, metadata value and prior audit section. An extraction change stays within its documented field scope.
 - Previously populated management names have not been inadvertently reset to null. Existing blanks are resolved only where evidence supports an answer.
 - All consolidation and shortening aliases resolve to their final labels; the mapping is deterministic and idempotent. Shortening alone must not collapse two previously distinct companies.
 - The explicitly protected distinct names remain distinct. Check for accidental collisions after whitespace/case normalization and proposed suffix removal.
-- Review the task-specific diff against the immediate pre-write snapshot, not just Git HEAD, which can include other chats' work. Check whitespace/errors and report the actual current counts.
 
 ## Lessons from reviewed buildings
 
