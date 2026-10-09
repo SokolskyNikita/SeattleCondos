@@ -1,0 +1,384 @@
+{
+  "applied_at": "2026-10-09",
+  "rules_version": "1.5.0",
+  "status": "applied",
+  "audit_reference": "generation-rules/amenity-audit-all112-2026-10-09.json",
+  "approved_merges": {
+    "Outdoor fitness area": "Gym",
+    "Recreation room": "Resident lounge",
+    "EV parking": "Parking",
+    "Wellness studio": {
+      "beam": "Yoga studio",
+      "the-waverly": "Gym",
+      "vela": "Gym",
+      "rule": "Route named circuit/fitness facilities to Gym; BEAM has additional explicit yoga evidence. Bare wellness/zen wording alone must not create a facility."
+    },
+    "Picnic area": {
+      "target": "BBQs",
+      "rule": "Retain picnic wording with independently established BBQs. Dining-only inputs attach conditionally and never create grills."
+    }
+  },
+  "approved_renames": {
+    "Playroom": "Children's playroom",
+    "Poker tables": "Poker table",
+    "Gardening plots": "Resident gardening",
+    "Bocce court": "Bocce"
+  },
+  "rejected_renames": {
+    "Private dining room": "Private dining",
+    "Package service": "Package handling",
+    "Movie theater": "Media viewing area"
+  },
+  "approved_removals": [
+    "Pilates studio",
+    "Lakefront access",
+    "Walking trails"
+  ],
+  "merge_target_names_unchanged": [
+    "Gym",
+    "Resident lounge",
+    "Yoga studio",
+    "Parking",
+    "BBQs"
+  ],
+  "unrelated_record_corrections_applied": false,
+  "counts": {
+    "buildings_before": 337,
+    "buildings_after": 337,
+    "types_before": 112,
+    "types_after": 104,
+    "buildings_with_label_changes": 39,
+    "merges": 5,
+    "renames": 4,
+    "removals": 3
+  },
+  "evidence_additions": {
+    "beam": {
+      "source_description": "indoor/outdoor zen room for yoga postures",
+      "url": "https://www.beamapts.com/amenities",
+      "reason": "The October 9 all-type audit verified that the indoor/outdoor zen room is described for yoga postures; this supports the approved Wellness studio routing to Yoga studio."
+    },
+    "kirkland-crossing": {
+      "source_description": "BBQ/Picnic Area",
+      "url": "https://www.liveatkirklandcrossing.com/amenities/",
+      "reason": "The October 9 all-type audit verified explicit BBQ/Picnic Area wording. This independently establishes grills for the approved Picnic area consolidation; picnic seating alone is not used as grill evidence."
+    }
+  },
+  "preservation": "All pre-existing original descriptions, building IDs/order, prices, locations, management, maps and historical audit reports preserved. Clarendon discount added to notes. No membership filtering.",
+  "input_hashes": {
+    "apartments.json": "dfde59bf21aa82ba3e6a03ca5027447bcfb0f49e09a5aaa8b53fc1cdded6341f",
+    "generation-rules/amenity-consolidation-rules.json": "670d1fc1496b5c2707fe16f78b45bb35c3fbb4f1c8b28004268a9832f3a114b4",
+    "generation-rules/amenity-processing-report.json": "1cf73160d9c4ab9ce35656ad1f8df98e3aa592c493dd0888d626fd0c1d5884ad",
+    "generation-rules/README.md": "cb7d486fba21d15839cc6f2dde984b33ee3f80ccd3005681c8182259baf737ea"
+  },
+  "label_changes": [
+    {
+      "id": "700-broadway",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    },
+    {
+      "id": "anker-ballard",
+      "removed": [
+        "Gardening plots"
+      ],
+      "added": [
+        "Resident gardening"
+      ]
+    },
+    {
+      "id": "aperture-on-fifth",
+      "removed": [
+        "Bocce court"
+      ],
+      "added": [
+        "Bocce"
+      ]
+    },
+    {
+      "id": "arabella-apartment-homes",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    },
+    {
+      "id": "beam",
+      "removed": [
+        "Wellness studio"
+      ],
+      "added": [
+        "Yoga studio"
+      ]
+    },
+    {
+      "id": "century-plaza",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    },
+    {
+      "id": "clarendon",
+      "removed": [
+        "Pilates studio"
+      ],
+      "added": []
+    },
+    {
+      "id": "elements-apartments",
+      "removed": [
+        "Outdoor fitness area"
+      ],
+      "added": []
+    },
+    {
+      "id": "emerald-ridge",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    },
+    {
+      "id": "epicenter-apartments",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    },
+    {
+      "id": "equinox-apartments",
+      "removed": [
+        "Lakefront access"
+      ],
+      "added": []
+    },
+    {
+      "id": "expo",
+      "removed": [
+        "Recreation room"
+      ],
+      "added": [
+        "Resident lounge"
+      ]
+    },
+    {
+      "id": "foothill-commons",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    },
+    {
+      "id": "gables-queen-anne",
+      "removed": [
+        "EV parking"
+      ],
+      "added": []
+    },
+    {
+      "id": "green-leaf-shoreline",
+      "removed": [
+        "EV parking"
+      ],
+      "added": []
+    },
+    {
+      "id": "illumina-apartment-homes",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    },
+    {
+      "id": "juxt",
+      "removed": [
+        "Bocce court"
+      ],
+      "added": [
+        "Bocce"
+      ]
+    },
+    {
+      "id": "kiara",
+      "removed": [
+        "Walking trails"
+      ],
+      "added": []
+    },
+    {
+      "id": "kirkland-crossing",
+      "removed": [
+        "Picnic area",
+        "Walking trails"
+      ],
+      "added": [
+        "BBQs"
+      ]
+    },
+    {
+      "id": "mason-main",
+      "removed": [
+        "Poker tables"
+      ],
+      "added": [
+        "Poker table"
+      ]
+    },
+    {
+      "id": "modera-northgate",
+      "removed": [
+        "Bocce court",
+        "Playroom"
+      ],
+      "added": [
+        "Bocce",
+        "Children's playroom"
+      ]
+    },
+    {
+      "id": "north-hill",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    },
+    {
+      "id": "onni-south-lake-union",
+      "removed": [
+        "EV parking"
+      ],
+      "added": []
+    },
+    {
+      "id": "panorama-apartments",
+      "removed": [
+        "Bocce court"
+      ],
+      "added": [
+        "Bocce"
+      ]
+    },
+    {
+      "id": "queen-anne-flats",
+      "removed": [
+        "Gardening plots"
+      ],
+      "added": [
+        "Resident gardening"
+      ]
+    },
+    {
+      "id": "reverb-on-11th",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    },
+    {
+      "id": "rivet-apartments",
+      "removed": [
+        "Recreation room"
+      ],
+      "added": [
+        "Resident lounge"
+      ]
+    },
+    {
+      "id": "the-ayer",
+      "removed": [
+        "Poker tables"
+      ],
+      "added": [
+        "Poker table"
+      ]
+    },
+    {
+      "id": "the-leeann",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    },
+    {
+      "id": "the-loop-at-green-lake",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    },
+    {
+      "id": "the-marlborough",
+      "removed": [
+        "Gardening plots"
+      ],
+      "added": [
+        "Resident gardening"
+      ]
+    },
+    {
+      "id": "the-modern",
+      "removed": [
+        "Playroom"
+      ],
+      "added": [
+        "Children's playroom"
+      ]
+    },
+    {
+      "id": "the-park-at-northgate",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    },
+    {
+      "id": "the-shelby",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    },
+    {
+      "id": "the-waverly",
+      "removed": [
+        "Wellness studio"
+      ],
+      "added": []
+    },
+    {
+      "id": "the-waymark",
+      "removed": [
+        "EV parking"
+      ],
+      "added": [
+        "Parking"
+      ]
+    },
+    {
+      "id": "vela",
+      "removed": [
+        "Wellness studio"
+      ],
+      "added": []
+    },
+    {
+      "id": "vue-22-apartments",
+      "removed": [
+        "Bocce court"
+      ],
+      "added": [
+        "Bocce"
+      ]
+    },
+    {
+      "id": "zella-apartments",
+      "removed": [
+        "Picnic area"
+      ],
+      "added": []
+    }
+  ]
+}

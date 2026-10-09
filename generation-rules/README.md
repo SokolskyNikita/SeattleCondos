@@ -14,13 +14,15 @@ This folder contains the research behind `apartments.json` and the rules and scr
 | [google-maps-ratings-research.json](google-maps-ratings-research.json) | Current Google Maps ratings and review counts, with per-listing timestamps and raw Places API evidence. |
 | [research_maps_ratings.py](research_maps_ratings.py) | Read-only rating and review-count lookup for the directory's verified Google Maps listing IDs. |
 | [research-audit.json](research-audit.json) | Historical research, source evidence, decisions and 71 archived exclusions, including the 18 above. |
+| [amenity-audit-all112-2026-10-09.json](amenity-audit-all112-2026-10-09.json) | Historical full-type audit recommendations and evidence; user approval differs for three proposed renames. |
+| [amenity-audit-application-2026-10-09.json](amenity-audit-application-2026-10-09.json) | Applied user-approved subset, preserved names, counts and per-building label changes. |
 | [amenity-processing-report.json](amenity-processing-report.json) | Generated counts, exclusions and ambiguity report matching the current rules and directory. |
 | [process_amenities.py](process_amenities.py) | Applies amenity mappings while preserving original descriptions and details. |
 | [test_process_amenities.py](test_process_amenities.py) | Checks normalization, detail preservation and safe writes. |
 
 ## Directory eligibility and exclusions
 
-The active directory contains 337 buildings and 112 normalized amenity types. Ten buildings without usable prices and eight buildings with only one normalized amenity other than a gym were excluded. Buildings normally require at least two normalized amenities; a single Gym qualifies as an exception. Removed records and pricing evidence remain in the [exclusion audit](research-audit.json).
+The active directory contains 337 buildings and 104 normalized amenity types. Ten buildings without usable prices and eight buildings with only one normalized amenity other than a gym were excluded. Buildings normally require at least two normalized amenities; a single Gym qualifies as an exception. Removed records and pricing evidence remain in the [exclusion audit](research-audit.json).
 
 [Excluded apartments](excluded-apartments.json) records the 18 buildings removed on October 9, 2026, compared with commit `ce940cb`, with a reason and references to the chat or audit for each. Before adding buildings, check this registry by ID, current/former name, address and website. Do not automatically re-add matches, even under a new name or ID; reinstating a building requires an explicit user decision and an update to the registry. Newly found prices or amenities alone do not override the exclusion.
 
@@ -91,6 +93,8 @@ The rules file contains the naming policies, exclusions, canonical labels and ex
 The approved compact names and category merges are recorded in `compact_label_review` in the rules file. Gym includes general fitness studios; Movie theater includes media lounges and screening areas; Parking includes garages, covered parking and carports. Coworking includes business centers; Shared kitchen includes catering and demonstration kitchens; Climbing wall includes bouldering; Sauna includes steam rooms. Keep outdoor and shared dining descriptions as details of BBQs and kitchens only when the evidence also supports those amenities. Original descriptions preserve facility types, equipment and access restrictions.
 
 The approved rare-amenity review is recorded in the rules file's `rare_amenity_review` section. It removes vague or low-priority standalone labels, keeps minor components as details of larger facilities and retains useful distinctive amenities. Rarity alone is not an exclusion rule. `detail_attachments` can associate source context with existing parent labels without creating unsupported amenities.
+
+The later user-approved full audit is recorded in `full_amenity_audit_review` and takes precedence over earlier naming reviews. It merges Outdoor fitness area into Gym, Recreation room into Resident lounge and EV parking into Parking; folds Wellness studio into independently supported Gym or Yoga studio; and retains picnic wording as BBQ details only with explicit grill evidence. Playroom becomes Children’s playroom, Poker tables becomes Poker table, Gardening plots becomes Resident gardening, and Bocce court becomes Bocce. Private dining room, Package service and Movie theater keep their existing names, as do every merge target. The current Pilates studio, Lakefront access and Walking trails standalone assignments are removed, with original evidence and useful notes retained. The [application record](amenity-audit-application-2026-10-09.json) documents the approved scope; other building-level audit proposals remain unapplied.
 
 ```sh
 python3 generation-rules/process_amenities.py          # Preview counts without writing

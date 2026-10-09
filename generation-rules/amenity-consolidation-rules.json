@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "rules_version": "1.4.2",
+  "rules_version": "1.5.0",
   "updated_at": "2026-10-09",
   "scope": "Reusable rules for names-only normalization of shared amenities and the separately applied, user-approved building eligibility filter for the Seattle apartment directory. Exact mappings implement consolidation, renaming, splitting and component exclusions; the documented eligibility policy governs a subsequent membership decision. Neither stage establishes new researched property facts.",
   "execution": {
@@ -32,6 +32,7 @@
       "review_notes"
     ],
     "review_guidance_order": [
+      "Explicit user-approved decisions in full_amenity_audit_review (including rejected renames and conditional detail folds)",
       "Explicit approved renames and merges in compact_label_review",
       "Explicit approved decisions in rare_amenity_review",
       "General policies and excluded_components"
@@ -291,7 +292,7 @@
   "rare_amenity_review": {
     "reviewed_at": "2026-10-09",
     "based_on_rules_version": "1.0.0",
-    "scope": "User-approved names-only review of the 45 labels used by one active building each. Rarity alone is not an exclusion rule. Apply these explicit semantic decisions to all future reviewed mappings. Current label references reflect subsequent approved renames and merges; inventory_change remains the historical review count.",
+    "scope": "User-approved names-only review of the 45 labels used by one active building each. Rarity alone is not an exclusion rule. Apply these explicit semantic decisions to all future reviewed mappings. Current label references reflect subsequent approved renames and merges; inventory_change remains the historical review count. Later full_amenity_audit_review decisions supersede this historical review where they differ; original decisions and counts are preserved here.",
     "removed_standalone_labels": {
       "Cooking events": "Low-priority resident programming; retain source text rather than a separate amenity label.",
       "Creative studio": "Too vague to establish an art, music or workshop facility.",
@@ -525,6 +526,16 @@
         "Documented regeneration and versioning of the processing report; retained historical research and exclusion snapshots unchanged.",
         "No changes to amenity mappings or building membership."
       ]
+    },
+    {
+      "version": "1.5.0",
+      "date": "2026-10-09",
+      "changes": [
+        "Applied five approved merges and three standalone removals from the full 112-type audit; target names remain unchanged.",
+        "Renamed Playroom to Children’s playroom, Poker tables to Poker table, Gardening plots to Resident gardening, and Bocce court to Bocce.",
+        "User explicitly retained Private dining room, Package service and Movie theater.",
+        "Preserved all 337 buildings and all original descriptions; added two source statements required by approved merges and retained Clarendon’s resident discount in notes."
+      ]
     }
   ],
   "canonical_amenities": [
@@ -539,9 +550,10 @@
     "Bike repair",
     "Bike storage",
     "Bike wash",
-    "Bocce court",
+    "Bocce",
     "Bowling alley",
     "Cabanas",
+    "Children's playroom",
     "Climbing wall",
     "Coffee bar",
     "Cold plunge",
@@ -553,7 +565,6 @@
     "Dry cleaning service",
     "EV car share",
     "EV charging",
-    "EV parking",
     "Event space",
     "Fire pit",
     "Fireplace",
@@ -561,7 +572,6 @@
     "Foosball",
     "Game room",
     "Garden",
-    "Gardening plots",
     "Golf simulator",
     "Green screen studio",
     "Guest parking",
@@ -573,7 +583,6 @@
     "Karaoke",
     "Kayak access",
     "Kitchenette",
-    "Lakefront access",
     "Library",
     "Makerspace",
     "Meeting room",
@@ -581,7 +590,6 @@
     "Movie theater",
     "Music room",
     "Outdoor fireplace",
-    "Outdoor fitness area",
     "Outdoor games",
     "Outdoor kitchen",
     "Outdoor movie screen",
@@ -596,21 +604,18 @@
     "Pet relief area",
     "Pet spa",
     "Pet wash station",
-    "Picnic area",
-    "Pilates studio",
     "Pizza oven",
     "Playground",
-    "Playroom",
     "Podcast room",
-    "Poker tables",
+    "Poker table",
     "Pool",
     "Pool table",
     "Private dining room",
     "Private workspace",
     "Putting green",
-    "Recreation room",
     "Refrigerated package storage",
     "Rehearsal room",
+    "Resident gardening",
     "Resident lounge",
     "Rooftop deck",
     "Rooftop garden",
@@ -634,8 +639,6 @@
     "Treatment room",
     "Valet trash service",
     "VR room",
-    "Walking trails",
-    "Wellness studio",
     "Wine storage",
     "Yoga studio",
     "Yoga/Pilates studio",
@@ -676,8 +679,7 @@
       "Gym"
     ],
     "24-hour fitness center and wellness studio": [
-      "Gym",
-      "Wellness studio"
+      "Gym"
     ],
     "24-hour fitness center and yoga room": [
       "Gym",
@@ -878,8 +880,7 @@
       "Bar"
     ],
     "barbecue and picnic area": [
-      "BBQs",
-      "Picnic area"
+      "BBQs"
     ],
     "barbecue area": [
       "BBQs"
@@ -907,6 +908,9 @@
     "barre and stretch studio": [
       "Barre/stretch studio"
     ],
+    "barre/stretch studio": [
+      "Barre/stretch studio"
+    ],
     "basketball court": [
       "Basketball court"
     ],
@@ -918,8 +922,7 @@
       "Outdoor kitchen"
     ],
     "bbq and picnic area": [
-      "BBQs",
-      "Picnic area"
+      "BBQs"
     ],
     "bbq area": [
       "BBQs"
@@ -954,8 +957,10 @@
       "BBQs"
     ],
     "bbq/picnic area": [
-      "BBQs",
-      "Picnic area"
+      "BBQs"
+    ],
+    "bbqs": [
+      "BBQs"
     ],
     "beach club": [
       "Beach club"
@@ -1004,6 +1009,9 @@
     ],
     "bike racks": [
       "Bike parking"
+    ],
+    "bike repair": [
+      "Bike repair"
     ],
     "bike repair facility": [
       "Bike repair"
@@ -1103,18 +1111,21 @@
     "boardroom with pool table": [
       "Pool table"
     ],
+    "bocce": [
+      "Bocce"
+    ],
     "bocce and shuffleboard courts": [
-      "Bocce court",
+      "Bocce",
       "Shuffleboard"
     ],
     "bocce ball": [
-      "Bocce court"
+      "Bocce"
     ],
     "bocce ball court": [
-      "Bocce court"
+      "Bocce"
     ],
     "bocce court": [
-      "Bocce court"
+      "Bocce"
     ],
     "bouldering wall": [
       "Climbing wall"
@@ -1169,7 +1180,10 @@
       "Shared kitchen"
     ],
     "children's play studio": [
-      "Playroom"
+      "Children's playroom"
+    ],
+    "children's playroom": [
+      "Children's playroom"
     ],
     "climbing wall": [
       "Climbing wall"
@@ -1381,7 +1395,7 @@
       "Resident lounge"
     ],
     "community veggie and herb garden": [
-      "Gardening plots"
+      "Resident gardening"
     ],
     "community wi-fi": [],
     "community workspace": [
@@ -1544,6 +1558,9 @@
     ],
     "covered parking": [
       "Parking"
+    ],
+    "coworking": [
+      "Coworking"
     ],
     "coworking and conference spaces": [
       "Coworking",
@@ -1756,8 +1773,7 @@
     ],
     "elevated park with walking paths and firepits": [
       "Fire pit",
-      "Shared park",
-      "Walking trails"
+      "Shared park"
     ],
     "elevator": [],
     "enclosed dog park": [
@@ -1808,13 +1824,13 @@
       "EV charging"
     ],
     "ev parking": [
-      "EV parking"
+      "Parking"
     ],
     "ev parking (optional paid spaces)": [
-      "EV parking"
+      "Parking"
     ],
     "ev parking (unspecified)": [
-      "EV parking"
+      "Parking"
     ],
     "ev-ready and ev-capable parking stalls": [
       "Parking"
@@ -2097,7 +2113,7 @@
       "Terrace / patio"
     ],
     "gardening plots": [
-      "Gardening plots"
+      "Resident gardening"
     ],
     "gas bbqs": [
       "BBQs"
@@ -2124,7 +2140,6 @@
       "Parking"
     ],
     "gated garage, ev parking spaces and surface parking available for rent": [
-      "EV parking",
       "Parking"
     ],
     "gated multi-level parking garage": [
@@ -2254,7 +2269,7 @@
     ],
     "indoor children’s playroom with kitchenette, reading nooks and chalkboard room": [
       "Kitchenette",
-      "Playroom"
+      "Children's playroom"
     ],
     "indoor clubroom with chef's kitchen": [
       "Resident lounge",
@@ -2339,6 +2354,9 @@
     "indoor/outdoor sky lounge": [
       "Resident lounge"
     ],
+    "indoor/outdoor zen room for yoga postures": [
+      "Yoga studio"
+    ],
     "infrared sauna": [
       "Sauna"
     ],
@@ -2373,15 +2391,12 @@
       "Kitchenette"
     ],
     "koi pond": [],
-    "lakefront access": [
-      "Lakefront access"
-    ],
+    "lakefront access": [],
     "landscaped courtyard": [
       "Courtyard"
     ],
     "landscaped courtyard and indoor/outdoor zen room": [
-      "Courtyard",
-      "Wellness studio"
+      "Courtyard"
     ],
     "landscaped grounds": [],
     "landscaped terraces": [
@@ -2473,6 +2488,9 @@
       "Makerspace"
     ],
     "makers studio": [
+      "Makerspace"
+    ],
+    "makerspace": [
       "Makerspace"
     ],
     "media and gaming room": [
@@ -2646,7 +2664,7 @@
       "Outdoor fireplace"
     ],
     "outdoor fitness area": [
-      "Outdoor fitness area"
+      "Gym"
     ],
     "outdoor games": [
       "Outdoor games"
@@ -2996,20 +3014,14 @@
     "pet-washing station": [
       "Pet wash station"
     ],
-    "picnic area": [
-      "Picnic area"
-    ],
+    "picnic area": [],
     "picnic area with barbecue": [
-      "BBQs",
-      "Picnic area"
+      "BBQs"
     ],
     "picnic/bbq area": [
-      "BBQs",
-      "Picnic area"
+      "BBQs"
     ],
-    "pilates studio": [
-      "Pilates studio"
-    ],
+    "pilates studio": [],
     "ping-pong table": [
       "Table tennis"
     ],
@@ -3024,14 +3036,17 @@
       "Playground"
     ],
     "playroom": [
-      "Playroom"
+      "Children's playroom"
     ],
     "plunge shower": [],
     "podcast room": [
       "Podcast room"
     ],
+    "poker table": [
+      "Poker table"
+    ],
     "poker tables": [
-      "Poker tables"
+      "Poker table"
     ],
     "pool": [
       "Pool"
@@ -3152,7 +3167,7 @@
       "Resident lounge"
     ],
     "recreation room": [
-      "Recreation room"
+      "Resident lounge"
     ],
     "refrigerated package storage": [
       "Refrigerated package storage"
@@ -3276,8 +3291,11 @@
       "Pool table",
       "Resident lounge"
     ],
+    "resident gardening": [
+      "Resident gardening"
+    ],
     "resident gardening plots": [
-      "Gardening plots"
+      "Resident gardening"
     ],
     "resident gathering lounge/library": [
       "Library",
@@ -3379,7 +3397,7 @@
     ],
     "resident lounges with kitchen and terrace access, poker tables, tv wall and billiards": [
       "Terrace / patio",
-      "Poker tables",
+      "Poker table",
       "Pool table",
       "Resident lounge",
       "Shared kitchen"
@@ -3396,7 +3414,7 @@
       "Parking"
     ],
     "resident pea patch garden": [
-      "Gardening plots"
+      "Resident gardening"
     ],
     "resident sky lounge with pool table, kitchen and bar": [
       "Bar",
@@ -4301,6 +4319,9 @@
     "tepidarium": [
       "Tepidarium"
     ],
+    "terrace / patio": [
+      "Terrace / patio"
+    ],
     "terrace lounge": [
       "Terrace / patio",
       "Resident lounge"
@@ -4430,11 +4451,10 @@
       "Parking"
     ],
     "underground parking with designated electric vehicle spaces": [
-      "EV parking",
       "Parking"
     ],
     "urban garden with bocce ball and seating": [
-      "Bocce court",
+      "Bocce",
       "Garden"
     ],
     "valet trash and recycling service": [
@@ -4448,7 +4468,7 @@
     ],
     "vault bar speakeasy with poker tables": [
       "Bar",
-      "Poker tables"
+      "Poker table"
     ],
     "vehicle charging stations in the parking garage": [
       "EV charging",
@@ -4461,9 +4481,10 @@
       "Terrace / patio",
       "Resident lounge"
     ],
-    "walking trails": [
-      "Walking trails"
+    "vr room": [
+      "VR room"
     ],
+    "walking trails": [],
     "water feature": [],
     "waterfront sky lounge": [
       "Resident lounge"
@@ -4472,15 +4493,12 @@
       "Gym"
     ],
     "wellness and circuit studio with lululemon studio mirrors": [
-      "Gym",
-      "Wellness studio"
+      "Gym"
     ],
     "wellness lounge": [
       "Resident lounge"
     ],
-    "wellness studio": [
-      "Wellness studio"
-    ],
+    "wellness studio": [],
     "wellness/yoga room": [
       "Yoga studio"
     ],
@@ -4576,27 +4594,6 @@
     "yoga studios": [
       "Yoga studio"
     ],
-    "barre/stretch studio": [
-      "Barre/stretch studio"
-    ],
-    "bbqs": [
-      "BBQs"
-    ],
-    "bike repair": [
-      "Bike repair"
-    ],
-    "coworking": [
-      "Coworking"
-    ],
-    "makerspace": [
-      "Makerspace"
-    ],
-    "terrace / patio": [
-      "Terrace / patio"
-    ],
-    "vr room": [
-      "VR room"
-    ],
     "yoga/pilates studio": [
       "Yoga/Pilates studio"
     ],
@@ -4626,18 +4623,21 @@
     "dog spa and play area": "Dog spa/play area does not specify washing, grooming, or indoor location.",
     "entertainment suite": "Entertainment suite is treated as event space; exact use is unspecified.",
     "entertainment suites": "Entertainment suites are treated as event space; exact use is unspecified.",
-    "ev parking": "EV parking does not establish charging or EV-ready infrastructure.",
-    "ev parking (optional paid spaces)": "EV parking does not establish charging or EV-ready infrastructure.",
+    "ev parking": "EV-designated parking is included in Parking; the wording does not establish installed charging or EV-ready electrical infrastructure.",
+    "ev parking (optional paid spaces)": "EV-designated parking is included in Parking; the wording does not establish installed charging or EV-ready electrical infrastructure.",
+    "ev parking (unspecified)": "EV-designated parking is included in Parking; the wording does not establish installed charging or EV-ready electrical infrastructure.",
     "family outdoor recreation space": "Outdoor recreation space is too vague to identify a specific facility or activity.",
     "fitness center and flex studio": "Flex studio purpose is unspecified; consolidated under Gym without promising equipment or a separate facility.",
     "fitness room with yoga facilities": "Yoga equipment or a dedicated yoga studio is unclear.",
     "flex fitness space": "Exact facility type is unclear; included in the approved broad Gym category without promising equipment.",
+    "gated garage, ev parking spaces and surface parking available for rent": "EV-designated parking is included in Parking; the wording does not establish installed charging or EV-ready electrical infrastructure.",
     "green roof gardens": "The name may describe a decorative green roof; usable resident garden access is not established.",
     "gym access": "Gym access remains in source notes pending clarification of location and access arrangement; no on-site Gym inferred.",
     "gym access (location unspecified)": "Withheld from main facility labels pending clarification of location and access arrangement.",
     "indoor/outdoor lounge with pool table and shared kitchen appliances": "Appliances do not confirm a distinct shared kitchen; Kitchenette is a conservative interpretation.",
     "indoor/outdoor sky lounge": "Sky lounge does not establish a rooftop facility.",
-    "landscaped courtyard and indoor/outdoor zen room": "The function of the zen room is unclear.",
+    "lakefront access": "Withheld pending evidence of property-provided lakefront access; the reviewed Equinox claim does not distinguish a resident amenity from nearby public shoreline access. Original wording remains location context.",
+    "landscaped courtyard and indoor/outdoor zen room": "The zen-room phrase alone does not specify an activity. Retain its context with Yoga studio only when separate reviewed evidence explicitly establishes yoga use.",
     "movement space": "Withheld from main labels because the activity and facility type are unspecified.",
     "office space": "Withheld from main labels: resident coworking/private office use is not established.",
     "onsite dog walk": "Could mean a designated dog walking path or a dog run; mapped to the closest usable pet area label.",
@@ -4652,6 +4652,7 @@
     "pet spa and outdoor run": "“Pet spa” does not specify washing or grooming services.",
     "pet spa open 24/7": "Does not specify washing or grooming services.",
     "pet spa open 8 a.m.–10 p.m. and 24-hour off-leash pet area": "“Pet spa” does not specify washing or grooming services.",
+    "pilates studio": "This reviewed source refers to Clarendon’s attached commercial Pilates business with a 20% resident discount, not a shared resident studio. Preserve the benefit in building notes. Future genuine shared Pilates facilities require a separately reviewed mapping.",
     "pool and spa": "“Spa” may refer to a hot tub or a broader spa facility.",
     "poolside kitchen": "Kitchen retained; poolside does not establish indoor versus outdoor location.",
     "private dining kitchen": "Unclear whether this is a shared kitchen, a catering kitchen, or a dedicated dining room.",
@@ -4689,7 +4690,9 @@
     "tire air pump and repair station": "Repair/pump description retained in source notes; bike versus vehicle use is not established, so no repair-facility label is assigned.",
     "trailhead room with books and maps": "The name does not establish a library or other canonical facility.",
     "two rooftop lounges/decks": "Slash wording may refer to one combined type or separate lounge and deck features.",
-    "underground parking with designated electric vehicle spaces": "EV spaces are named, but installed chargers are not established.",
+    "underground parking with designated electric vehicle spaces": "EV-designated parking is included in Parking; the wording does not establish installed charging or EV-ready electrical infrastructure.",
+    "walking trails": "Withheld pending evidence of a property-provided route or resident-specific access at Kirkland Crossing. Preserve the wording as location context. Kiara’s independently named paths remain within Shared park details.",
+    "wellness studio": "Unspecified wellness branding is withheld as a standalone amenity; retain context only with an independently established Gym.",
     "workspace (unspecified)": "Withheld from main labels until resident-use workspace type is established.",
     "year-round pool and spa": "“Spa” does not identify a specific facility such as a hot tub or treatment room."
   },
@@ -4700,23 +4703,11 @@
       ],
       "note": "Lobby staffing is retained as a related service detail. It does not establish concierge service or 24/7 concierge availability; any hours here apply only to lobby staffing."
     },
-    "staffed lobby": {
+    "courtyard outdoor dining area": {
       "attach_to_if_present": [
-        "Concierge"
+        "BBQs"
       ],
-      "note": "Lobby staffing is retained as a related service detail. It does not establish concierge service or 24/7 concierge availability; any hours here apply only to lobby staffing."
-    },
-    "personal training": {
-      "attach_to_if_present": [
-        "Gym"
-      ],
-      "note": "Fitness-program detail, not a separate facility. The source does not establish fees, booking conditions or guaranteed availability."
-    },
-    "resident wellness program with personal training and weekly classes": {
-      "attach_to_if_present": [
-        "Gym"
-      ],
-      "note": "Fitness-program detail, not a separate facility. The source does not establish fees, booking conditions or guaranteed availability."
+      "note": "Outdoor dining is retained as a detail of independently established BBQs. Dining seating alone does not establish grills."
     },
     "dj booth": {
       "attach_to_if_present": [
@@ -4731,6 +4722,12 @@
       ],
       "note": "The source describes a greenhouse-style lounge, not a functional resident gardening greenhouse. This related detail does not establish a separate parent facility."
     },
+    "landscaped courtyard and indoor/outdoor zen room": {
+      "attach_to_if_present": [
+        "Yoga studio"
+      ],
+      "note": "Preserve the zen-room setting with independently documented yoga use; this phrase alone does not establish yoga."
+    },
     "locker room": {
       "attach_to_if_present": [
         "Gym"
@@ -4743,11 +4740,23 @@
       ],
       "note": "Yoga-studio detail; preserve the outdoor location. This related detail does not establish a separate parent facility."
     },
+    "outdoor dining area": {
+      "attach_to_if_present": [
+        "BBQs"
+      ],
+      "note": "Outdoor dining is retained as a detail of independently established BBQs. Dining seating alone does not establish grills."
+    },
     "outdoor equipment repair station": {
       "attach_to_if_present": [
         "Bike repair"
       ],
       "note": "Keep other outdoor-equipment repair capabilities in the existing repair-facility description. This related detail does not establish a separate parent facility."
+    },
+    "outdoor semi-private dining area": {
+      "attach_to_if_present": [
+        "BBQs"
+      ],
+      "note": "Outdoor dining is retained as a detail of independently established BBQs. Dining seating alone does not establish grills."
     },
     "oversized-package storage": {
       "attach_to_if_present": [
@@ -4755,11 +4764,47 @@
       ],
       "note": "A capacity/detail of the independently named package room; keep package lockers separately. This related detail does not establish a separate parent facility."
     },
+    "personal training": {
+      "attach_to_if_present": [
+        "Gym"
+      ],
+      "note": "Fitness-program detail, not a separate facility. The source does not establish fees, booking conditions or guaranteed availability."
+    },
+    "picnic area": {
+      "attach_to_if_present": [
+        "BBQs"
+      ],
+      "note": "Picnic seating is retained as context for independently established BBQs. Picnic seating alone does not establish grills."
+    },
     "plunge shower": {
       "attach_to_if_present": [
         "Sauna"
       ],
       "note": "Sauna detail; do not equate a shower to a cold-plunge tub. This related detail does not establish a separate parent facility."
+    },
+    "resident wellness program with personal training and weekly classes": {
+      "attach_to_if_present": [
+        "Gym"
+      ],
+      "note": "Fitness-program detail, not a separate facility. The source does not establish fees, booking conditions or guaranteed availability."
+    },
+    "rooftop greenhouse lounge and resident garden": {
+      "attach_to_if_present": [
+        "Rooftop lounge"
+      ],
+      "note": "Greenhouse describes the lounge setting; this is not evidence of a separate resident gardening greenhouse."
+    },
+    "shared dining area": {
+      "attach_to_if_present": [
+        "Shared kitchen"
+      ],
+      "note": "Shared dining is seating associated with an independently established shared kitchen. Dining seating alone does not establish kitchen equipment."
+    },
+    "staffed lobby": {
+      "attach_to_if_present": [
+        "Concierge"
+      ],
+      "note": "Lobby staffing is retained as a related service detail. It does not establish concierge service or 24/7 concierge availability; any hours here apply only to lobby staffing."
     },
     "stage": {
       "attach_to_if_present": [
@@ -4768,35 +4813,11 @@
       ],
       "note": "Entertainment-lounge detail; no separate performance venue is established. This related detail does not establish a separate parent facility."
     },
-    "rooftop greenhouse lounge and resident garden": {
+    "wellness studio": {
       "attach_to_if_present": [
-        "Rooftop lounge"
+        "Gym"
       ],
-      "note": "Greenhouse describes the lounge setting; this is not evidence of a separate resident gardening greenhouse."
-    },
-    "courtyard outdoor dining area": {
-      "attach_to_if_present": [
-        "BBQs"
-      ],
-      "note": "Outdoor dining is retained as a detail of independently established BBQs. Dining seating alone does not establish grills."
-    },
-    "outdoor dining area": {
-      "attach_to_if_present": [
-        "BBQs"
-      ],
-      "note": "Outdoor dining is retained as a detail of independently established BBQs. Dining seating alone does not establish grills."
-    },
-    "outdoor semi-private dining area": {
-      "attach_to_if_present": [
-        "BBQs"
-      ],
-      "note": "Outdoor dining is retained as a detail of independently established BBQs. Dining seating alone does not establish grills."
-    },
-    "shared dining area": {
-      "attach_to_if_present": [
-        "Shared kitchen"
-      ],
-      "note": "Shared dining is seating associated with an independently established shared kitchen. Dining seating alone does not establish kitchen equipment."
+      "note": "Unspecified wellness-studio context only; a generic wellness label does not establish a gym or specific activity."
     }
   },
   "compact_label_review": {
@@ -4849,5 +4870,45 @@
         "rule": "Retain dining descriptions with independently established Shared kitchen, including catering and demonstration kitchens. Dining-only descriptions attach conditionally without establishing a kitchen."
       }
     }
+  },
+  "full_amenity_audit_review": {
+    "approved_at": "2026-10-09",
+    "audit_file": "generation-rules/amenity-audit-all112-2026-10-09.json",
+    "application_file": "generation-rules/amenity-audit-application-2026-10-09.json",
+    "scope": "Apply the five proposed category merges, four approved renames and three standalone removals. Keep existing target names. Other property-specific correction proposals remain unapproved and unapplied.",
+    "renames": {
+      "Playroom": "Children's playroom",
+      "Poker tables": "Poker table",
+      "Gardening plots": "Resident gardening",
+      "Bocce court": "Bocce"
+    },
+    "unchanged_names": [
+      "Private dining room",
+      "Package service",
+      "Movie theater"
+    ],
+    "direct_merges": {
+      "Outdoor fitness area": "Gym",
+      "Recreation room": "Resident lounge",
+      "EV parking": "Parking"
+    },
+    "conditional_merges": {
+      "Wellness studio": {
+        "beam": "Yoga studio",
+        "the-waverly": "Gym",
+        "vela": "Gym",
+        "rule": "Route named circuit/fitness facilities to Gym; BEAM has additional explicit yoga evidence. Bare wellness/zen wording alone must not create a facility."
+      },
+      "Picnic area": {
+        "target": "BBQs",
+        "rule": "Retain picnic wording with independently established BBQs. Dining-only inputs attach conditionally and never create grills."
+      }
+    },
+    "removed_standalone_labels": {
+      "Pilates studio": "The current sole assignment is an attached commercial business. Preserve Clarendon’s 20% discount in notes; future shared resident studios require reviewed evidence.",
+      "Lakefront access": "Withhold Equinox’s current standalone assignment pending a verified property-provided benefit; preserve original location wording.",
+      "Walking trails": "Retain Kiara walking paths within Shared park details; withhold Kirkland Crossing’s standalone claim pending resident-specific route evidence."
+    },
+    "preservation": "Keep all original strings verbatim, all buildings and unrelated fields. Add only the reviewed BEAM yoga and Kirkland Crossing BBQ source statements required for approved merges. Preserve Clarendon’s commercial discount. Do not apply building eligibility filtering."
   }
 }

@@ -49,23 +49,23 @@
       "amenities_audit": "Shared amenities for buildings constructed in 2020 or later were rechecked on 2026-10-09, with one dedicated researcher per building. Per-amenity evidence, pages checked and unresolved questions are recorded in generation-rules/research-audit.json.",
       "amenity_consolidation": {
         "rules_file": "generation-rules/amenity-consolidation-rules.json",
-        "rules_version": "1.4.2",
-        "rules_sha256": "670d1fc1496b5c2707fe16f78b45bb35c3fbb4f1c8b28004268a9832f3a114b4",
+        "rules_version": "1.5.0",
+        "rules_sha256": "6cc8c276549e6f6e02b6f3144ee10feff2a59f34313de7911197da855a80ea2a",
         "processed_at": "2026-10-09",
         "report_file": "generation-rules/amenity-processing-report.json",
         "description": "Names-only normalization; no building research or inclusion changes. amenities contains deduplicated feature labels, not room counts or an amenity score. amenities_original is the reusable source of truth; amenity_details links each label to original descriptions, retaining shared-space relationships, quantities and all qualifiers. Ambiguous names remain conservative and are flagged.",
         "counts": {
           "buildings_processed": 337,
-          "original_amenity_entries": 2146,
-          "unique_original_source_names": 1167,
-          "unique_normalized_source_names": 1119,
-          "processed_amenity_entries": 2522,
-          "unique_canonical_amenities_in_use": 112,
-          "fully_excluded_source_entries": 98,
-          "fully_excluded_unique_source_names": 77,
-          "expanded_feature_mentions_before_deduplication": 2618,
-          "duplicate_feature_mentions_removed": 96,
-          "buildings_with_ambiguous_names": 82,
+          "original_amenity_entries": 2148,
+          "unique_original_source_names": 1169,
+          "unique_normalized_source_names": 1120,
+          "processed_amenity_entries": 2498,
+          "unique_canonical_amenities_in_use": 104,
+          "fully_excluded_source_entries": 108,
+          "fully_excluded_unique_source_names": 81,
+          "expanded_feature_mentions_before_deduplication": 2596,
+          "duplicate_feature_mentions_removed": 98,
+          "buildings_with_ambiguous_names": 86,
           "buildings_without_retained_amenities": 0,
           "buildings_removed": 0,
           "unmapped_source_names": 0
@@ -1211,7 +1211,6 @@
         "BBQs",
         "Courtyard",
         "Package lockers",
-        "Picnic area",
         "Resident lounge"
       ],
       "drive_from_slu": {
@@ -1273,11 +1272,6 @@
         "Package lockers": {
           "source_descriptions": [
             "package lockers"
-          ]
-        },
-        "Picnic area": {
-          "source_descriptions": [
-            "BBQ/picnic area"
           ]
         },
         "Resident lounge": {
@@ -3754,10 +3748,10 @@
         "Bike storage",
         "Coworking",
         "Fire pit",
-        "Gardening plots",
         "Gym",
         "Package room",
         "Pet wash station",
+        "Resident gardening",
         "Resident lounge",
         "Rooftop deck",
         "Shared kitchen"
@@ -3852,11 +3846,6 @@
             "rooftop deck with bbq and fire pit"
           ]
         },
-        "Gardening plots": {
-          "source_descriptions": [
-            "community veggie and herb garden"
-          ]
-        },
         "Gym": {
           "source_descriptions": [
             "fitness center"
@@ -3870,6 +3859,11 @@
         "Pet wash station": {
           "source_descriptions": [
             "pet wash station"
+          ]
+        },
+        "Resident gardening": {
+          "source_descriptions": [
+            "community veggie and herb garden"
           ]
         },
         "Resident lounge": {
@@ -4123,7 +4117,7 @@
       "amenities": [
         "Bike repair",
         "Bike storage",
-        "Bocce court",
+        "Bocce",
         "Courtyard",
         "Movie theater",
         "Table tennis"
@@ -4195,7 +4189,7 @@
             "bicycle storage and maintenance area"
           ]
         },
-        "Bocce court": {
+        "Bocce": {
           "source_descriptions": [
             "bocce ball"
           ]
@@ -4255,7 +4249,6 @@
       "amenities": [
         "BBQs",
         "Gym",
-        "Picnic area",
         "Rooftop deck"
       ],
       "drive_from_slu": {
@@ -4302,16 +4295,17 @@
         "BBQs": {
           "source_descriptions": [
             "BBQ area"
+          ],
+          "related_details": [
+            {
+              "source_description": "picnic area",
+              "note": "Picnic seating is retained as context for independently established BBQs. Picnic seating alone does not establish grills."
+            }
           ]
         },
         "Gym": {
           "source_descriptions": [
             "fitness center"
-          ]
-        },
-        "Picnic area": {
-          "source_descriptions": [
-            "picnic area"
           ]
         },
         "Rooftop deck": {
@@ -8097,7 +8091,7 @@
         "Pool table",
         "Resident lounge",
         "Terrace / patio",
-        "Wellness studio"
+        "Yoga studio"
       ],
       "drive_from_slu": {
         "duration_seconds": 624.0,
@@ -8148,6 +8142,13 @@
             "amenities"
           ],
           "note": "The amenities audit confirmed outdoor kitchen with grill; pool table in the lobby."
+        },
+        {
+          "url": "https://www.beamapts.com/amenities",
+          "supports": [
+            "amenities"
+          ],
+          "note": "The October 9 all-type audit verified that the indoor/outdoor zen room is described for yoga postures; this supports the approved Wellness studio routing to Yoga studio."
         }
       ],
       "last_verified": "2026-10-09",
@@ -8163,7 +8164,8 @@
         "pet-washing station",
         "pool table in the lobby",
         "rooftop sun deck",
-        "sky lounge with two-sided fireplace, kitchenette, dining nooks and big-screen media room"
+        "sky lounge with two-sided fireplace, kitchenette, dining nooks and big-screen media room",
+        "indoor/outdoor zen room for yoga postures"
       ],
       "amenity_details": {
         "BBQs": {
@@ -8251,16 +8253,22 @@
             "rooftop sun deck"
           ]
         },
-        "Wellness studio": {
+        "Yoga studio": {
           "source_descriptions": [
-            "landscaped courtyard and indoor/outdoor zen room"
+            "indoor/outdoor zen room for yoga postures"
+          ],
+          "related_details": [
+            {
+              "source_description": "landscaped courtyard and indoor/outdoor zen room",
+              "note": "Preserve the zen-room setting with independently documented yoga use; this phrase alone does not establish yoga."
+            }
           ]
         }
       },
       "amenity_review_notes": [
         {
           "source": "landscaped courtyard and indoor/outdoor zen room",
-          "reason": "The function of the zen room is unclear."
+          "reason": "The zen-room phrase alone does not specify an activity. Retain its context with Yoga studio only when separate reviewed evidence explicitly establishes yoga use."
         },
         {
           "source": "sky lounge with two-sided fireplace, kitchenette, dining nooks and big-screen media room",
@@ -10665,7 +10673,6 @@
       "amenities": [
         "BBQs",
         "Cabanas",
-        "Picnic area",
         "Pool"
       ],
       "drive_from_slu": {
@@ -10743,11 +10750,6 @@
         "Cabanas": {
           "source_descriptions": [
             "Cabana"
-          ]
-        },
-        "Picnic area": {
-          "source_descriptions": [
-            "Picnic area with barbecue"
           ]
         },
         "Pool": {
@@ -11440,7 +11442,6 @@
         "Bike storage",
         "Gym",
         "Pet wash station",
-        "Pilates studio",
         "Resident lounge",
         "Rooftop deck",
         "Rooftop lounge"
@@ -11456,7 +11457,8 @@
       },
       "eligibility_notes": "The current property site lists apartment floor plans, applications and market-rate rentals, plus shared rooftop and fitness amenities.",
       "notes": [
-        "The current Clarendon site replaces the old Broadstone Clarendon link. It lists affordable homes and standard floor plans."
+        "The current Clarendon site replaces the old Broadstone Clarendon link. It lists affordable homes and standard floor plans.",
+        "The attached commercial Club Pilates studio advertises a 20% resident discount. This benefit is retained as a note rather than a shared resident Pilates-studio amenity; classes and memberships are separately operated."
       ],
       "sources": [
         {
@@ -11482,6 +11484,13 @@
             "year_built"
           ],
           "note": "Encore Architects' project page identifies Broadstone Clarendon at 105 Warren Ave N as built in 2017."
+        },
+        {
+          "url": "https://www.clarendon-seattle.com/amenities",
+          "supports": [
+            "amenities"
+          ],
+          "note": "The October 9 all-type audit confirmed the attached Pilates studio and 20% resident discount. The approved review removes the shared-facility label while preserving this commercial resident benefit in notes."
         }
       ],
       "last_verified": "2026-10-09",
@@ -11517,11 +11526,6 @@
             "dog wash"
           ]
         },
-        "Pilates studio": {
-          "source_descriptions": [
-            "Pilates studio"
-          ]
-        },
         "Resident lounge": {
           "source_descriptions": [
             "lobby lounge"
@@ -11537,7 +11541,13 @@
             "rooftop lounge"
           ]
         }
-      }
+      },
+      "amenity_review_notes": [
+        {
+          "source": "Pilates studio",
+          "reason": "This reviewed source refers to Clarendon’s attached commercial Pilates business with a 20% resident discount, not a shared resident studio. Preserve the benefit in building notes. Future genuine shared Pilates facilities require a separately reviewed mapping."
+        }
+      ]
     },
     {
       "id": "colina-apartments",
@@ -14367,7 +14377,6 @@
         "Gym",
         "Meeting room",
         "Movie theater",
-        "Outdoor fitness area",
         "Pool",
         "Resident lounge",
         "Yoga studio"
@@ -14439,7 +14448,8 @@
         },
         "Gym": {
           "source_descriptions": [
-            "fitness center"
+            "fitness center",
+            "outdoor fitness area"
           ]
         },
         "Meeting room": {
@@ -14450,11 +14460,6 @@
         "Movie theater": {
           "source_descriptions": [
             "media and gaming room"
-          ]
-        },
-        "Outdoor fitness area": {
-          "source_descriptions": [
-            "outdoor fitness area"
           ]
         },
         "Pool": {
@@ -14606,7 +14611,6 @@
       "amenities": [
         "BBQs",
         "Gym",
-        "Picnic area",
         "Pool",
         "Resident lounge"
       ],
@@ -14654,16 +14658,17 @@
         "BBQs": {
           "source_descriptions": [
             "barbecue area"
+          ],
+          "related_details": [
+            {
+              "source_description": "picnic area",
+              "note": "Picnic seating is retained as context for independently established BBQs. Picnic seating alone does not establish grills."
+            }
           ]
         },
         "Gym": {
           "source_descriptions": [
             "fitness center"
-          ]
-        },
-        "Picnic area": {
-          "source_descriptions": [
-            "picnic area"
           ]
         },
         "Pool": {
@@ -14832,7 +14837,6 @@
         "Fire pit",
         "Package service",
         "Pet grooming station",
-        "Picnic area",
         "Rooftop deck"
       ],
       "drive_from_slu": {
@@ -14926,11 +14930,6 @@
             "pet grooming station"
           ]
         },
-        "Picnic area": {
-          "source_descriptions": [
-            "BBQ/picnic area"
-          ]
-        },
         "Rooftop deck": {
           "source_descriptions": [
             "rooftop deck"
@@ -14971,7 +14970,6 @@
         "Courtyard",
         "Coworking",
         "Gym",
-        "Lakefront access",
         "Resident lounge",
         "Rooftop deck",
         "Yoga studio"
@@ -15047,11 +15045,6 @@
             "24-hour fitness center"
           ]
         },
-        "Lakefront access": {
-          "source_descriptions": [
-            "lakefront access"
-          ]
-        },
         "Resident lounge": {
           "source_descriptions": [
             "community room"
@@ -15067,7 +15060,13 @@
             "yoga studio"
           ]
         }
-      }
+      },
+      "amenity_review_notes": [
+        {
+          "source": "lakefront access",
+          "reason": "Withheld pending evidence of property-provided lakefront access; the reviewed Equinox claim does not distinguish a resident amenity from nearby public shoreline access. Original wording remains location context."
+        }
+      ]
     },
     {
       "id": "evolve-apartments",
@@ -15410,7 +15409,7 @@
       "amenities": [
         "Garden",
         "Gym",
-        "Recreation room",
+        "Resident lounge",
         "Rooftop deck"
       ],
       "drive_from_slu": {
@@ -15477,7 +15476,7 @@
             "fitness center"
           ]
         },
-        "Recreation room": {
+        "Resident lounge": {
           "source_descriptions": [
             "recreation room"
           ]
@@ -15523,7 +15522,6 @@
         "BBQs",
         "Dog park / run",
         "Gym",
-        "Picnic area",
         "Pool",
         "Resident lounge",
         "Spa"
@@ -15575,6 +15573,12 @@
         "BBQs": {
           "source_descriptions": [
             "barbecue area"
+          ],
+          "related_details": [
+            {
+              "source_description": "picnic area",
+              "note": "Picnic seating is retained as context for independently established BBQs. Picnic seating alone does not establish grills."
+            }
           ]
         },
         "Dog park / run": {
@@ -15585,11 +15589,6 @@
         "Gym": {
           "source_descriptions": [
             "fitness center"
-          ]
-        },
-        "Picnic area": {
-          "source_descriptions": [
-            "picnic area"
           ]
         },
         "Pool": {
@@ -16134,7 +16133,6 @@
         "Cabanas",
         "Courtyard",
         "Coworking",
-        "EV parking",
         "Fire pit",
         "Game room",
         "Gym",
@@ -16233,11 +16231,6 @@
             "Coworking space"
           ]
         },
-        "EV parking": {
-          "source_descriptions": [
-            "ev parking (optional paid spaces)"
-          ]
-        },
         "Fire pit": {
           "source_descriptions": [
             "four rooftop terraces with outdoor kitchens and fire pits"
@@ -16266,6 +16259,7 @@
         },
         "Parking": {
           "source_descriptions": [
+            "ev parking (optional paid spaces)",
             "underground parking"
           ]
         },
@@ -16294,7 +16288,7 @@
       "amenity_review_notes": [
         {
           "source": "ev parking (optional paid spaces)",
-          "reason": "EV parking does not establish charging or EV-ready infrastructure."
+          "reason": "EV-designated parking is included in Parking; the wording does not establish installed charging or EV-ready electrical infrastructure."
         }
       ]
     },
@@ -16592,7 +16586,6 @@
       "management_company": "Green Leaf",
       "amenities": [
         "BBQs",
-        "EV parking",
         "Gym",
         "Outdoor fireplace",
         "Parking",
@@ -16660,11 +16653,6 @@
             "rooftop deck with fireplace, grills and outdoor dining"
           ]
         },
-        "EV parking": {
-          "source_descriptions": [
-            "gated garage, ev parking spaces and surface parking available for rent"
-          ]
-        },
         "Gym": {
           "source_descriptions": [
             "fitness center (1,000 sq. ft.)"
@@ -16695,7 +16683,13 @@
             "storage"
           ]
         }
-      }
+      },
+      "amenity_review_notes": [
+        {
+          "source": "gated garage, ev parking spaces and surface parking available for rent",
+          "reason": "EV-designated parking is included in Parking; the wording does not establish installed charging or EV-ready electrical infrastructure."
+        }
+      ]
     },
     {
       "id": "green-leaf-sky",
@@ -18297,7 +18291,6 @@
         "Kayak access",
         "Package service",
         "Parking",
-        "Picnic area",
         "Terrace / patio"
       ],
       "drive_from_slu": {
@@ -18374,11 +18367,6 @@
         "Parking": {
           "source_descriptions": [
             "garage parking"
-          ]
-        },
-        "Picnic area": {
-          "source_descriptions": [
-            "BBQ and picnic area"
           ]
         },
         "Terrace / patio": {
@@ -19699,7 +19687,7 @@
       "management_company": "Holland",
       "amenities": [
         "BBQs",
-        "Bocce court",
+        "Bocce",
         "Courtyard",
         "Outdoor movie screen",
         "Resident lounge",
@@ -19788,7 +19776,7 @@
             "rooftop terrace with grills"
           ]
         },
-        "Bocce court": {
+        "Bocce": {
           "source_descriptions": [
             "bocce ball court"
           ]
@@ -20086,8 +20074,7 @@
         "Pet area",
         "Resident lounge",
         "Rooftop deck",
-        "Shared park",
-        "Walking trails"
+        "Shared park"
       ],
       "drive_from_slu": {
         "duration_seconds": 89.0,
@@ -20194,11 +20181,6 @@
           ]
         },
         "Shared park": {
-          "source_descriptions": [
-            "elevated park with walking paths and firepits"
-          ]
-        },
-        "Walking trails": {
           "source_descriptions": [
             "elevated park with walking paths and firepits"
           ]
@@ -20345,12 +20327,11 @@
       "year_built": 2015,
       "management_company": "Cascadian Property Management",
       "amenities": [
+        "BBQs",
         "Coffee bar",
         "Gym",
         "Movie theater",
-        "Picnic area",
-        "Resident lounge",
-        "Walking trails"
+        "Resident lounge"
       ],
       "drive_from_slu": {
         "duration_seconds": 860.0,
@@ -20411,6 +20392,13 @@
             "year_built"
           ],
           "note": "City of Kirkland Planning and Building Department presentation for the October 20, 2015 council meeting states that in 2015 the South Kirkland Park and Ride TOD was completed and occupied; it names Polygon NW Kirkland Crossing and Imagine Housing Velocity as the 243-unit housing components. This independently corroborates 2015 at the overall-project level. Search-indexed official PDF evidence only: direct open failed."
+        },
+        {
+          "url": "https://www.liveatkirklandcrossing.com/amenities/",
+          "supports": [
+            "amenities"
+          ],
+          "note": "The October 9 all-type audit verified explicit BBQ/Picnic Area wording. This independently establishes grills for the approved Picnic area consolidation; picnic seating alone is not used as grill evidence."
         }
       ],
       "last_verified": "2026-10-09",
@@ -20421,9 +20409,21 @@
         "fitness center",
         "picnic area",
         "theater room",
-        "walking trails"
+        "walking trails",
+        "BBQ/Picnic Area"
       ],
       "amenity_details": {
+        "BBQs": {
+          "source_descriptions": [
+            "BBQ/Picnic Area"
+          ],
+          "related_details": [
+            {
+              "source_description": "picnic area",
+              "note": "Picnic seating is retained as context for independently established BBQs. Picnic seating alone does not establish grills."
+            }
+          ]
+        },
         "Coffee bar": {
           "source_descriptions": [
             "coffee bar"
@@ -20439,22 +20439,18 @@
             "theater room"
           ]
         },
-        "Picnic area": {
-          "source_descriptions": [
-            "picnic area"
-          ]
-        },
         "Resident lounge": {
           "source_descriptions": [
             "clubhouse"
           ]
-        },
-        "Walking trails": {
-          "source_descriptions": [
-            "walking trails"
-          ]
         }
-      }
+      },
+      "amenity_review_notes": [
+        {
+          "source": "walking trails",
+          "reason": "Withheld pending evidence of a property-provided route or resident-specific access at Kirkland Crossing. Preserve the wording as location context. Kiara’s independently named paths remain within Shared park details."
+        }
+      ]
     },
     {
       "id": "koz-at-othello-station",
@@ -22864,7 +22860,7 @@
         "Movie theater",
         "Parking",
         "Pet wash station",
-        "Poker tables",
+        "Poker table",
         "Private workspace",
         "Resident lounge",
         "Storage",
@@ -23033,7 +23029,7 @@
             "dog run and dog wash station"
           ]
         },
-        "Poker tables": {
+        "Poker table": {
           "source_descriptions": [
             "vault bar speakeasy with poker tables"
           ]
@@ -24330,7 +24326,8 @@
         "Bike repair",
         "Bike storage",
         "Bike wash",
-        "Bocce court",
+        "Bocce",
+        "Children's playroom",
         "Coffee bar",
         "Coworking",
         "Dog park / run",
@@ -24345,7 +24342,6 @@
         "Package lockers",
         "Parking",
         "Pet spa",
-        "Playroom",
         "Pool table",
         "Private dining room",
         "Refrigerated package storage",
@@ -24470,9 +24466,14 @@
             "controlled-access bike storage with repair and wash station"
           ]
         },
-        "Bocce court": {
+        "Bocce": {
           "source_descriptions": [
             "urban garden with bocce ball and seating"
+          ]
+        },
+        "Children's playroom": {
+          "source_descriptions": [
+            "indoor children’s playroom with kitchenette, reading nooks and chalkboard room"
           ]
         },
         "Coffee bar": {
@@ -24543,11 +24544,6 @@
         "Pet spa": {
           "source_descriptions": [
             "pet park and pet spa open 24/7"
-          ]
-        },
-        "Playroom": {
-          "source_descriptions": [
-            "indoor children’s playroom with kitchenette, reading nooks and chalkboard room"
           ]
         },
         "Pool table": {
@@ -25787,8 +25783,7 @@
       "year_built": 1989,
       "management_company": "Allied Residential",
       "amenities": [
-        "BBQs",
-        "Picnic area"
+        "BBQs"
       ],
       "drive_from_slu": {
         "duration_seconds": 1136.0,
@@ -25851,11 +25846,6 @@
       ],
       "amenity_details": {
         "BBQs": {
-          "source_descriptions": [
-            "Picnic area with barbecue"
-          ]
-        },
-        "Picnic area": {
           "source_descriptions": [
             "Picnic area with barbecue"
           ]
@@ -26792,7 +26782,6 @@
         "Concierge",
         "Coworking",
         "Dog park / run",
-        "EV parking",
         "Event space",
         "Fire pit",
         "Game room",
@@ -26954,11 +26943,6 @@
             "pet run and pet spas"
           ]
         },
-        "EV parking": {
-          "source_descriptions": [
-            "underground parking with designated electric vehicle spaces"
-          ]
-        },
         "Event space": {
           "source_descriptions": [
             "cascade event space",
@@ -27091,7 +27075,7 @@
         },
         {
           "source": "underground parking with designated electric vehicle spaces",
-          "reason": "EV spaces are named, but installed chargers are not established."
+          "reason": "EV-designated parking is included in Parking; the wording does not establish installed charging or EV-ready electrical infrastructure."
         }
       ]
     },
@@ -27728,7 +27712,7 @@
       "year_built": 1962,
       "management_company": "Asset Living",
       "amenities": [
-        "Bocce court",
+        "Bocce",
         "Fire pit",
         "Game room",
         "Gym",
@@ -27801,7 +27785,7 @@
         "swimming pool and sundeck"
       ],
       "amenity_details": {
-        "Bocce court": {
+        "Bocce": {
           "source_descriptions": [
             "bocce and shuffleboard courts"
           ]
@@ -29802,7 +29786,7 @@
       "amenities": [
         "Bike storage",
         "Fire pit",
-        "Gardening plots",
+        "Resident gardening",
         "Rooftop deck"
       ],
       "drive_from_slu": {
@@ -29865,7 +29849,7 @@
             "fire pit and lounge seating"
           ]
         },
-        "Gardening plots": {
+        "Resident gardening": {
           "source_descriptions": [
             "resident pea patch garden"
           ]
@@ -30658,8 +30642,7 @@
       "amenities": [
         "BBQs",
         "Concierge",
-        "Gym",
-        "Picnic area"
+        "Gym"
       ],
       "drive_from_slu": {
         "duration_seconds": 736.0,
@@ -30723,11 +30706,6 @@
         "Gym": {
           "source_descriptions": [
             "fitness center"
-          ]
-        },
-        "Picnic area": {
-          "source_descriptions": [
-            "BBQ/picnic area"
           ]
         }
       }
@@ -30883,7 +30861,7 @@
         "EV charging",
         "Gym",
         "Parking",
-        "Recreation room"
+        "Resident lounge"
       ],
       "drive_from_slu": {
         "duration_seconds": 220.0,
@@ -30955,7 +30933,7 @@
             "garage parking"
           ]
         },
-        "Recreation room": {
+        "Resident lounge": {
           "source_descriptions": [
             "recreation room"
           ]
@@ -34671,7 +34649,7 @@
         "Package lockers",
         "Parking",
         "Pet spa",
-        "Poker tables",
+        "Poker table",
         "Pool table",
         "Private workspace",
         "Resident lounge",
@@ -34784,7 +34762,7 @@
             "dog park and pet spa"
           ]
         },
-        "Poker tables": {
+        "Poker table": {
           "source_descriptions": [
             "resident lounges with kitchen and terrace access, poker tables, tv wall and billiards"
           ]
@@ -37210,7 +37188,6 @@
         "Parking",
         "Pet relief area",
         "Pet wash station",
-        "Picnic area",
         "Resident lounge",
         "Spin studio",
         "Storage"
@@ -37350,11 +37327,6 @@
         "Pet wash station": {
           "source_descriptions": [
             "dog wash room"
-          ]
-        },
-        "Picnic area": {
-          "source_descriptions": [
-            "barbecue and picnic area"
           ]
         },
         "Resident lounge": {
@@ -37837,7 +37809,6 @@
         "Package lockers",
         "Parking",
         "Pavilion",
-        "Picnic area",
         "Rooftop deck"
       ],
       "drive_from_slu": {
@@ -37896,6 +37867,12 @@
         "BBQs": {
           "source_descriptions": [
             "grills"
+          ],
+          "related_details": [
+            {
+              "source_description": "picnic area",
+              "note": "Picnic seating is retained as context for independently established BBQs. Picnic seating alone does not establish grills."
+            }
           ]
         },
         "Bike storage": {
@@ -37926,11 +37903,6 @@
         "Pavilion": {
           "source_descriptions": [
             "rooftop terrace with firepit, lounge seating and gazebo"
-          ]
-        },
-        "Picnic area": {
-          "source_descriptions": [
-            "picnic area"
           ]
         },
         "Rooftop deck": {
@@ -38328,9 +38300,9 @@
         "BBQs",
         "Coworking",
         "Fire pit",
-        "Gardening plots",
         "Guest suite",
         "Gym",
+        "Resident gardening",
         "Rooftop garden"
       ],
       "drive_from_slu": {
@@ -38412,11 +38384,6 @@
             "fire table"
           ]
         },
-        "Gardening plots": {
-          "source_descriptions": [
-            "resident gardening plots"
-          ]
-        },
         "Guest suite": {
           "source_descriptions": [
             "guest suite"
@@ -38425,6 +38392,11 @@
         "Gym": {
           "source_descriptions": [
             "24-hour fitness center"
+          ]
+        },
+        "Resident gardening": {
+          "source_descriptions": [
+            "resident gardening plots"
           ]
         },
         "Rooftop garden": {
@@ -38894,6 +38866,7 @@
       "amenities": [
         "Bar",
         "BBQs",
+        "Children's playroom",
         "Concierge",
         "EV car share",
         "EV charging",
@@ -38903,7 +38876,6 @@
         "Package service",
         "Pet area",
         "Pet spa",
-        "Playroom",
         "Private dining room",
         "Resident lounge",
         "Sauna",
@@ -38974,6 +38946,11 @@
             "12th-floor north and east terraces with outdoor dining, fire pits, grills, and lounge seating"
           ]
         },
+        "Children's playroom": {
+          "source_descriptions": [
+            "children's play studio"
+          ]
+        },
         "Concierge": {
           "source_descriptions": [
             "24/7 front desk with concierge support"
@@ -39017,11 +38994,6 @@
         "Pet spa": {
           "source_descriptions": [
             "pet spa and outdoor pet deck"
-          ]
-        },
-        "Playroom": {
-          "source_descriptions": [
-            "children's play studio"
           ]
         },
         "Private dining room": {
@@ -39378,7 +39350,6 @@
       "amenities": [
         "BBQs",
         "Gym",
-        "Picnic area",
         "Pool"
       ],
       "drive_from_slu": {
@@ -39424,16 +39395,17 @@
         "BBQs": {
           "source_descriptions": [
             "BBQ area"
+          ],
+          "related_details": [
+            {
+              "source_description": "picnic area",
+              "note": "Picnic seating is retained as context for independently established BBQs. Picnic seating alone does not establish grills."
+            }
           ]
         },
         "Gym": {
           "source_descriptions": [
             "fitness center"
-          ]
-        },
-        "Picnic area": {
-          "source_descriptions": [
-            "picnic area"
           ]
         },
         "Pool": {
@@ -40031,7 +40003,6 @@
       "amenities": [
         "BBQs",
         "Gym",
-        "Picnic area",
         "Resident lounge",
         "Terrace / patio"
       ],
@@ -40092,16 +40063,17 @@
         "BBQs": {
           "source_descriptions": [
             "outdoor grill and lounge"
+          ],
+          "related_details": [
+            {
+              "source_description": "picnic area",
+              "note": "Picnic seating is retained as context for independently established BBQs. Picnic seating alone does not establish grills."
+            }
           ]
         },
         "Gym": {
           "source_descriptions": [
             "fitness center"
-          ]
-        },
-        "Picnic area": {
-          "source_descriptions": [
-            "picnic area"
           ]
         },
         "Resident lounge": {
@@ -40830,8 +40802,7 @@
         "Shared kitchen",
         "Sports court",
         "Storage",
-        "Terrace / patio",
-        "Wellness studio"
+        "Terrace / patio"
       ],
       "drive_from_slu": {
         "duration_seconds": 105.0,
@@ -40981,11 +40952,6 @@
           "source_descriptions": [
             "outdoor terrace with firepits and BBQs"
           ]
-        },
-        "Wellness studio": {
-          "source_descriptions": [
-            "wellness and circuit studio with lululemon studio mirrors"
-          ]
         }
       },
       "amenity_review_notes": [
@@ -41032,8 +40998,8 @@
       "management_company": "Greystar",
       "amenities": [
         "Courtyard",
-        "EV parking",
-        "Gym"
+        "Gym",
+        "Parking"
       ],
       "drive_from_slu": {
         "duration_seconds": 909.0,
@@ -41088,21 +41054,21 @@
             "outdoor courtyards"
           ]
         },
-        "EV parking": {
-          "source_descriptions": [
-            "EV parking"
-          ]
-        },
         "Gym": {
           "source_descriptions": [
             "fitness center"
+          ]
+        },
+        "Parking": {
+          "source_descriptions": [
+            "EV parking"
           ]
         }
       },
       "amenity_review_notes": [
         {
           "source": "EV parking",
-          "reason": "EV parking does not establish charging or EV-ready infrastructure."
+          "reason": "EV-designated parking is included in Parking; the wording does not establish installed charging or EV-ready electrical infrastructure."
         }
       ]
     },
@@ -43021,7 +42987,6 @@
         "Rooftop deck",
         "Storage",
         "Terrace / patio",
-        "Wellness studio",
         "Yoga studio"
       ],
       "drive_from_slu": {
@@ -43212,11 +43177,6 @@
         "Terrace / patio": {
           "source_descriptions": [
             "garden patio and zen patio"
-          ]
-        },
-        "Wellness studio": {
-          "source_descriptions": [
-            "24-hour fitness center and wellness studio"
           ]
         },
         "Yoga studio": {
@@ -44387,7 +44347,7 @@
       "year_built": 2015,
       "management_company": "MG Properties",
       "amenities": [
-        "Bocce court",
+        "Bocce",
         "Courtyard",
         "Garden",
         "Gym",
@@ -44453,7 +44413,7 @@
         "yoga studio"
       ],
       "amenity_details": {
-        "Bocce court": {
+        "Bocce": {
           "source_descriptions": [
             "bocce court"
           ]
@@ -45761,7 +45721,6 @@
         "BBQs",
         "Gym",
         "Package lockers",
-        "Picnic area",
         "Resident lounge",
         "Rooftop deck"
       ],
@@ -45835,11 +45794,6 @@
         "Package lockers": {
           "source_descriptions": [
             "package lockers"
-          ]
-        },
-        "Picnic area": {
-          "source_descriptions": [
-            "picnic/BBQ area"
           ]
         },
         "Resident lounge": {

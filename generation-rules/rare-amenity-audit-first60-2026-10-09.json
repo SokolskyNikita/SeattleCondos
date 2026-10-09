@@ -1,0 +1,2734 @@
+{
+  "audit_date": "2026-10-09",
+  "status": "recommendations_only_not_applied",
+  "scope": {
+    "database": "apartments.json",
+    "database_sha256": "dfde59bf21aa82ba3e6a03ca5027447bcfb0f49e09a5aaa8b53fc1cdded6341f",
+    "rules_version": "1.4.2",
+    "active_buildings": 337,
+    "active_amenity_types": 112,
+    "reviewed_types": 60,
+    "dedicated_subagents": 60,
+    "new_batch_ranks": [
+      31,
+      60
+    ],
+    "selection": "Distinct active building count per normalized label, ascending by count then alphabetically. Both batches use the identical, unchanged database snapshot.",
+    "reviewed_frequency_distribution": {
+      "1": 21,
+      "2": 14,
+      "3": 11,
+      "4": 4,
+      "5": 4,
+      "6": 6
+    },
+    "equally_rare_types_after_rank60": [
+      "Refrigerated package storage",
+      "Shared laundry",
+      "Table tennis"
+    ],
+    "first_batch_report": "generation-rules/rare-amenity-audit-2026-10-09.json"
+  },
+  "method": "One dedicated sub-agent per amenity type compared saved descriptions, current source pages, related categories and normalization rules. The coordinator reconciled cross-type conflicts. Keep distinct resident functions; merge vague or redundant categories; avoid inferring facilities from nearby public amenities or unrelated commercial businesses. Web listings support advertising, not operational inspections.",
+  "action_counts": {
+    "keep": 48,
+    "remove": 3,
+    "merge": 4,
+    "rename": 5
+  },
+  "new_batch_action_counts": {
+    "merge": 3,
+    "keep": 23,
+    "remove": 1,
+    "rename": 3
+  },
+  "proposed_active_type_count": 105,
+  "reconciliation_notes": [
+    "Wellness studio is classified as a merge, because all supported facility information is rerouted to existing Gym or Yoga studio categories; it is not an outright loss of facilities.",
+    "The Sports court reviewer proposed absorbing Basketball court. This was not adopted: retain the named sport, consistent with the Basketball court review and other specific recreation categories. Correct explicit basketball assignments instead.",
+    "Gardening plots becomes Resident gardening rather than Garden, preserving the growing function while avoiding an unsupported promise of assigned plots.",
+    "Treatment room remains distinct from ambiguous Spa. Co-location does not by itself erase a function or establish that one facility belongs to another.",
+    "Walking trails applies the same property-provided-benefit standard as the first batch’s Lakefront access recommendation. Preserve Kiara’s paths within Shared park, and withhold the unestablished Kirkland Crossing assignment."
+  ],
+  "application_notes": [
+    "No database, mapping, building-membership, or historical evidence changes were applied.",
+    "Remove means retire the current standalone label and its unsupported assignment, while preserving original evidence and useful benefit/location notes.",
+    "A future verified resident Pilates studio or genuine property-provided lake access should be evaluated on its own evidence; these recommendations are based on current assignments.",
+    "If approved, update exact source mappings and review decisions, regenerate amenity details and the processing report, preserve source descriptions and unrelated fields, and do not reapply building eligibility."
+  ],
+  "record_level_followups": [
+    {
+      "building_id": "juxt",
+      "type": "Outdoor movie screen",
+      "finding": "Historical 2016 evidence supports the feature, but the current official amenities page does not reconfirm it. Absence from a page is not proof of removal; verify before changing this assignment.",
+      "sources": [
+        "https://www.djc.com/news/re/12090315.html",
+        "https://www.hollandresidential.com/wa/seattle/juxt/amenities"
+      ]
+    },
+    {
+      "building_id": "mason-main",
+      "type": "Poker tables",
+      "finding": "Architect evidence describes the tables, while the current leasing page names only the bar. Verify current availability; retain the category regardless because The Ayer confirms it.",
+      "sources": [
+        "https://ankrommoisan.com/projects/main/",
+        "https://www.masonandmainapartments.com/amenities"
+      ]
+    },
+    {
+      "building_ids": [
+        "cumulus-slu",
+        "o2"
+      ],
+      "type": "HIIT studio",
+      "finding": "Saved descriptions name HIIT, but current official amenity summaries do not reconfirm it. Verify these assignments; The Ivey supports keeping the category."
+    },
+    {
+      "building_ids": [
+        "seattle-house"
+      ],
+      "type": "Indoor pet play area",
+      "finding": "Explicit support is from an older official page; refresh the current source. REN and Rainier Square support keeping the category."
+    },
+    {
+      "building_ids": [
+        "ion-queen-anne"
+      ],
+      "type": "Outdoor games",
+      "finding": "Prior official gallery evidence supports cornhole; the current text view did not independently expose the asset. Recheck the image evidence."
+    },
+    {
+      "building_ids": [
+        "island-square"
+      ],
+      "type": "Podcast room",
+      "finding": "Official page was inaccessible during this audit; a current third-party listing corroborates saved evidence. Seek current primary confirmation."
+    },
+    {
+      "building_ids": [
+        "onni-south-lake-union"
+      ],
+      "type": "EV parking",
+      "finding": "Parking evidence is an older official fee schedule. Verify current EV-designated space availability; do not infer charging."
+    },
+    {
+      "building_ids": [
+        "ren"
+      ],
+      "type": "Foosball",
+      "finding": "The current official page confirms a games room but does not name foosball. Recheck this assignment."
+    },
+    {
+      "building_ids": [
+        "gables-queen-anne",
+        "century-plaza"
+      ],
+      "type": "Cabanas",
+      "finding": "Gables evidence differs between the overview and property-specific page. Century Plaza’s page body says Century Place; resolve the identity discrepancy before any record change."
+    },
+    {
+      "building_ids": [
+        "parque-kirkland",
+        "modera-northgate"
+      ],
+      "type": "Fitness classes",
+      "finding": "Separate equipment-delivered classes/on-demand content from a resident class program. Where only content access is established, retain it in Gym details instead of a standalone classes assignment."
+    },
+    {
+      "building_ids": [
+        "the-whittaker"
+      ],
+      "type": "Pavilion",
+      "finding": "The current official description names a glass-enclosed courtyard gathering room without reconfirming the pavilion term. Verify before changing the assignment."
+    },
+    {
+      "building_ids": [
+        "brio",
+        "onni-south-lake-union"
+      ],
+      "type": "Sports court",
+      "finding": "Current official descriptions establish basketball use. Review replacement with Basketball court for the same facility; avoid adding a duplicate general label. Keep unspecified courts at Quartz Creek, Terrace Station and The Waverly under Sports court."
+    }
+  ],
+  "reviews": [
+    {
+      "rank": 1,
+      "dedicated_agent": "/root/audit01_art",
+      "type": "Art studio",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Art-making is a specific resident function, distinct from general workshop or music facilities.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "stratus",
+          "name": "Stratus",
+          "saved_source_descriptions": [
+            "art studio"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Makerspace",
+        "Music room",
+        "Rehearsal room",
+        "Podcast room",
+        "Green screen studio"
+      ],
+      "source_urls": [
+        "https://www.windsorcommunities.com/properties/stratus/"
+      ],
+      "prior_decision": "No change. rules.json rare_amenity_review.retained_rare_labels explicitly includes Art studio; this recommendation confirms that prior decision."
+    },
+    {
+      "rank": 2,
+      "dedicated_agent": "/root/audit02_barre",
+      "type": "Barre/stretch studio",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "A named activity studio is more specific than Gym; no evidence makes barre/stretch synonymous with yoga or cycling.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "onni-south-lake-union",
+          "name": "Onni South Lake Union",
+          "saved_source_descriptions": [
+            "barre and stretch studio"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Gym",
+        "Spin studio",
+        "Yoga studio",
+        "HIIT studio",
+        "Pilates studio / Yoga/Pilates studio / Yoga/spin studio"
+      ],
+      "source_urls": [
+        "https://onnislu.com/amenities/"
+      ],
+      "prior_decision": "none; preserve the previously approved retained label"
+    },
+    {
+      "rank": 3,
+      "dedicated_agent": "/root/audit03_beach",
+      "type": "Beach club",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "A private lakeside recreation club is a distinct access benefit; the lounge and equipment are its components.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "boardwalk-kirkland",
+          "name": "Boardwalk Kirkland",
+          "saved_source_descriptions": [
+            "private lakeside beach club with lounge, lockers, paddle boards, beach cruisers and yard games"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Resident lounge",
+        "Lakefront access",
+        "Swimming pier",
+        "Paddleboard access",
+        "Shared bikes",
+        "Outdoor games"
+      ],
+      "source_urls": [
+        "https://kirklandboardwalk.com/amenities/"
+      ],
+      "prior_decision": "No change. rules.json explicitly lists Beach club among the retained rare labels, and the current official evidence supports that decision."
+    },
+    {
+      "rank": 4,
+      "dedicated_agent": "/root/audit04_bowling",
+      "type": "Bowling alley",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "A dedicated bowling facility is meaningfully different from generic game rooms or arcade equipment.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "cityline",
+          "name": "CityLine",
+          "saved_source_descriptions": [
+            "bowling alley"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Game room",
+        "Recreation room",
+        "Arcade games",
+        "Pool table"
+      ],
+      "source_urls": [
+        "https://www.udr.com/seattle-apartments/columbia-city/cityline/"
+      ],
+      "prior_decision": "No change. The 2026-10-09 rare amenity review already approved Bowling alley as a retained rare label, and rules.json still maps the exact source name to the same canonical label."
+    },
+    {
+      "rank": 5,
+      "dedicated_agent": "/root/audit05_cold",
+      "type": "Cold plunge",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Cold-water immersion differs from a pool or hot tub; the property advertises those facilities separately.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "onni-south-lake-union",
+          "name": "Onni South Lake Union",
+          "saved_source_descriptions": [
+            "indoor pool and two outdoor pools with hot tubs, cold tub, cabanas and lounge chairs"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Pool",
+        "Hot tub",
+        "Spa",
+        "Sauna"
+      ],
+      "source_urls": [
+        "https://onnislu.com/amenities/"
+      ],
+      "prior_decision": "No change. rules.json rare_amenity_review.retained_rare_labels explicitly includes Cold plunge; rules.json also keeps pool, hot tub, and cold plunge as distinct functions. Current official evidence supports that decision."
+    },
+    {
+      "rank": 6,
+      "dedicated_agent": "/root/audit06_doorman",
+      "type": "Doorman",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Door assistance and concierge service are separately advertised roles; merging would erase a supported distinction.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "the-residences-at-rainier-square",
+          "name": "The Residences at Rainier Square",
+          "saved_source_descriptions": [
+            "doorman"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Concierge",
+        "Staffed lobby / attended entry",
+        "Security / secured entry"
+      ],
+      "source_urls": [
+        "https://rainiersquare.stackflx.com/amenities/",
+        "https://liverainiersquare.com/residents/"
+      ],
+      "prior_decision": "No change. rules.json rare_amenity_review.retained_rare_labels explicitly retains Doorman, and current official sources support retaining it as distinct from Concierge."
+    },
+    {
+      "rank": 7,
+      "dedicated_agent": "/root/audit07_dry",
+      "type": "Dry cleaning service",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Dry cleaning is a distinct service, not shared laundry or ordinary parcel handling.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "ren",
+          "name": "REN",
+          "saved_source_descriptions": [
+            "brevvie kiosks and dry cleaning service"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Shared laundry",
+        "Package service",
+        "Concierge",
+        "Valet trash service"
+      ],
+      "source_urls": [
+        "https://renseattle.com/amenities/"
+      ],
+      "prior_decision": "No change: affirms the approved decision to retain Dry cleaning service under its existing name; current official evidence still supports it."
+    },
+    {
+      "rank": 8,
+      "dedicated_agent": "/root/audit08_green",
+      "type": "Green screen studio",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "A specifically equipped media studio is more informative than a generic creative-room label.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "traxx-apartments",
+          "name": "Traxx Apartments",
+          "saved_source_descriptions": [
+            "green screen studio"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Art studio",
+        "Podcast room",
+        "Creative studio",
+        "general/activity-specific studios"
+      ],
+      "source_urls": [
+        "https://www.traxxapts.com/apartments/wa/mountlake-terrace/amenities"
+      ],
+      "prior_decision": "No change: matches the prior approved decision to retain Green screen studio; no rename or merge indicated."
+    },
+    {
+      "rank": 9,
+      "dedicated_agent": "/root/audit09_lake",
+      "type": "Lakefront access",
+      "building_count": 1,
+      "recommended_action": "remove",
+      "target": null,
+      "assessment": "Withhold Lakefront access as a canonical amenity unless a resident-specific access benefit can be verified. Equinox's property website currently uses the phrase, but does not identify an on-site shoreline path, dock, gate, resident access terms, or any other property-provided facility. The same page frames the benefit as location, saying residents live steps from the shoreline; the current Greystar operator page's Community amenities list omits waterfront access. Nearby City shoreline access is a separate public amenity. The available record therefore does not distinguish property-provided access from proximity to public shoreline, and it should not be normalized as a building amenity on this evidence alone.",
+      "confidence": "medium",
+      "buildings": [
+        {
+          "id": "equinox-apartments",
+          "name": "Equinox Apartments",
+          "saved_source_descriptions": [
+            "lakefront access"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Beach club",
+        "Kayak access",
+        "Paddleboard access",
+        "Swimming pier",
+        "Rooftop deck / waterfront views"
+      ],
+      "source_urls": [
+        "https://www.equinoxseattle.com/",
+        "https://www.equinoxseattle.com/videos",
+        "https://www.greystar.com/equinox-seattle-wa/p_12364",
+        "https://www.seattle.gov/parks/parks/cheshiahud-lake-union-loop"
+      ],
+      "prior_decision": "Change prior decision. rules.json rare_amenity_review.retained_rare_labels includes Lakefront access, but the current official operator listing and source wording do not establish a property-provided resident amenity. This is an evidence-status revision, not a rarity-based reversal."
+    },
+    {
+      "rank": 10,
+      "dedicated_agent": "/root/audit10_motorcycle",
+      "type": "Motorcycle parking",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Motorcycle-specific parking is explicitly offered and separately priced; general Parking does not guarantee it.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "hilite",
+          "name": "Hilite",
+          "saved_source_descriptions": [
+            "reserved garage parking, motorcycle parking, and ev chargers on roughly 20% of spaces"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Parking",
+        "EV charging",
+        "EV parking",
+        "Guest parking"
+      ],
+      "source_urls": [
+        "https://www.hiliteapartments.com/faq/"
+      ],
+      "prior_decision": "No change. Motorcycle parking is explicitly included in the prior review's retained_rare_labels; current rules also retain it as a canonical amenity and map the saved source phrase to it."
+    },
+    {
+      "rank": 11,
+      "dedicated_agent": "/root/audit11_outdoorfit",
+      "type": "Outdoor fitness area",
+      "building_count": 1,
+      "recommended_action": "merge",
+      "target": "Gym",
+      "assessment": "Elements describes one indoor/outdoor fitness center and already has Gym. Fold the outdoor qualifier into Gym details; evidence does not resolve whether a physically separate outdoor zone exists.",
+      "confidence": "medium",
+      "buildings": [
+        {
+          "id": "elements-apartments",
+          "name": "Elements Apartments",
+          "saved_source_descriptions": [
+            "outdoor fitness area"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Gym",
+        "Yoga studio",
+        "Outdoor games",
+        "Sports court"
+      ],
+      "source_urls": [
+        "https://www.udr.com/seattle-apartments/bellevue/elements/amenities/"
+      ],
+      "prior_decision": "Change the 2026-10-09 rare_amenity_review decision, which explicitly retained Outdoor fitness area as a standalone rare label. Current UDR wording and Elements’ existing Gym label make a merge into Gym more consistent with the compact-label and location_and_subtypes rules; preserve the outdoor description as detail."
+    },
+    {
+      "rank": 12,
+      "dedicated_agent": "/root/audit12_pilates",
+      "type": "Pilates studio",
+      "building_count": 1,
+      "recommended_action": "remove",
+      "target": "No replacement facility label; retain the 20% resident discount as a building benefit note.",
+      "assessment": "Clarendon offers a discount at an attached commercial Pilates business. Remove its shared-facility label and preserve the discount in building notes; this is a scope correction, not removal of genuine resident Pilates rooms elsewhere.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "clarendon",
+          "name": "Clarendon",
+          "saved_source_descriptions": [
+            "Pilates studio"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Gym",
+        "Yoga studio",
+        "Yoga/Pilates studio",
+        "Spin studio / Barre/stretch studio"
+      ],
+      "source_urls": [
+        "https://www.clarendon-seattle.com/amenities",
+        "https://www.clubpilates.com/location/queenanne",
+        "https://www.moderasouthlakeunion.com/"
+      ],
+      "prior_decision": "Change the prior names-only rare-label decision that retained Pilates studio. Its approved activity-specific-studio rule applies to shared resident facilities; current official evidence establishes that this instance is a separate commercial class business with discounted paid access. The more specific public_or_commercial_surroundings exclusion and withheld gym/spa access precedents favor removing the facility label while preserving the resident discount as a benefit note."
+    },
+    {
+      "rank": 13,
+      "dedicated_agent": "/root/audit13_playground",
+      "type": "Playground",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "An outdoor playground is distinct from an indoor children’s playroom or general park.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "onni-south-lake-union",
+          "name": "Onni South Lake Union",
+          "saved_source_descriptions": [
+            "indoor and outdoor family lounge with outdoor playground"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Playroom",
+        "Shared park"
+      ],
+      "source_urls": [
+        "https://onnislu.com/amenities/"
+      ],
+      "prior_decision": "No. The 2026-10-09 rare-amenity review explicitly lists Playground among retained rare labels; this recommendation is consistent with that decision."
+    },
+    {
+      "rank": 14,
+      "dedicated_agent": "/root/audit14_rehearsal",
+      "type": "Rehearsal room",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Rehearsal is explicit, but music-specific use is not. Merging into Music room would assume an unsupported activity.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "onni-south-lake-union",
+          "name": "Onni South Lake Union",
+          "saved_source_descriptions": [
+            "rehearsal room"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Music room",
+        "Podcast room",
+        "Karaoke",
+        "Event space"
+      ],
+      "source_urls": [
+        "https://onnislu.com/amenities/"
+      ],
+      "prior_decision": "No. The 2026-10-09 rare-amenity review explicitly retained Rehearsal room, and the current official floor plan supports the distinct label."
+    },
+    {
+      "rank": 15,
+      "dedicated_agent": "/root/audit15_park",
+      "type": "Shared park",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "The advertised park is a usable resident space with multiple functions; neither generic garden nor walking-path labels fully describe it.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "kiara",
+          "name": "Kiara",
+          "saved_source_descriptions": [
+            "elevated park with walking paths and firepits"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Courtyard",
+        "Garden",
+        "Rooftop garden",
+        "Walking trails",
+        "Rooftop deck"
+      ],
+      "source_urls": [
+        "https://www.hollandresidential.com/wa/seattle/kiara/amenities"
+      ],
+      "prior_decision": "None. The user-approved rare-label review already retains Shared park; this audit reaffirms that decision with a current official-page check."
+    },
+    {
+      "rank": 16,
+      "dedicated_agent": "/root/audit16_pier",
+      "type": "Swimming pier",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "A swimming pier is a specific waterfront structure and use, beyond shoreline access or a swimming pool.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "lakefront-on-washington",
+          "name": "Lakefront on Washington",
+          "saved_source_descriptions": [
+            "swimming pier"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Lakefront access",
+        "Kayak access",
+        "Paddleboard access",
+        "Pool"
+      ],
+      "source_urls": [
+        "https://www.lakefrontonwashington.com/apartments/wa/seattle/amenities"
+      ],
+      "prior_decision": "none; retain the previously approved Swimming pier label"
+    },
+    {
+      "rank": 17,
+      "dedicated_agent": "/root/audit17_tepidarium",
+      "type": "Tepidarium",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "The property separately names a tepidarium and sauna. Retain the specific facility; evidence is insufficient for a more descriptive replacement name.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "seattle-house",
+          "name": "Seattle House",
+          "saved_source_descriptions": [
+            "sauna, steam room and tepidarium"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Sauna",
+        "Spa",
+        "Hot tub",
+        "Cold plunge",
+        "Steam room"
+      ],
+      "source_urls": [
+        "https://www.seattlehouse.com/apartments/amenities/",
+        "https://www.seattlehouse.com/apartments/amenities"
+      ],
+      "prior_decision": "No change. The approved rare-amenity review already retains Tepidarium; current official evidence reconfirms that decision."
+    },
+    {
+      "rank": 18,
+      "dedicated_agent": "/root/audit18_tools",
+      "type": "Tool lending",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Borrowing tools is a distinct benefit from access to a workshop or bike-repair equipment.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "hilite",
+          "name": "Hilite",
+          "saved_source_descriptions": [
+            "workshop/hobby locker with bike repair and tools to borrow"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Makerspace",
+        "Bike repair",
+        "Equipment lending"
+      ],
+      "source_urls": [
+        "https://www.hiliteapartments.com/",
+        "https://www.hiliteapartments.com/amenities/"
+      ],
+      "prior_decision": "No change. The approved rare_amenity_review explicitly retains Tool lending and renames Equipment lending to Tool lending; the rules also state that tools to borrow map to Tool lending."
+    },
+    {
+      "rank": 19,
+      "dedicated_agent": "/root/audit19_vr",
+      "type": "VR room",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Dedicated VR equipment/use is more specific than a generic game room or arcade.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "adara-at-seatac",
+          "name": "Adara at SeaTac",
+          "saved_source_descriptions": [
+            "Virtual reality room"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Game room",
+        "Arcade games",
+        "Movie theater",
+        "Golf simulator"
+      ],
+      "source_urls": [
+        "https://www.liveatadaraseatac.com/",
+        "https://www.liveatadaraseatac.com/amenities"
+      ],
+      "prior_decision": "No change. rules.json already retains VR room as a rare label and maps the source phrase Virtual reality room to this compact label; the current official site supports both the facility and the label (including a VR ROOM heading on the homepage)."
+    },
+    {
+      "rank": 20,
+      "dedicated_agent": "/root/audit20_wine",
+      "type": "Wine storage",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Wine lockers provide a separate storage function from the surrounding lounge and general storage units.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "parque-kirkland",
+          "name": "Parque Kirkland",
+          "saved_source_descriptions": [
+            "reservable wine cellar lounge with wine storage lockers"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Storage",
+        "Resident lounge"
+      ],
+      "source_urls": [
+        "https://www.parquekirkland.com/amenities"
+      ],
+      "prior_decision": "None. Confirms the prior rare-amenity decision to retain Wine storage and fold Wine lounge into Resident lounge; current official evidence supports keeping those functions distinct."
+    },
+    {
+      "rank": 21,
+      "dedicated_agent": "/root/audit21_yogapilates",
+      "type": "Yoga/Pilates studio",
+      "building_count": 1,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "The shared room explicitly supports yoga and Pilates. Preserve both activities without implying two physical studios.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "modera-south-lake-union",
+          "name": "Modera South Lake Union",
+          "saved_source_descriptions": [
+            "yoga and Pilates studio"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Yoga studio",
+        "Pilates studio",
+        "Yoga/spin studio",
+        "Spin studio",
+        "Gym",
+        "Wellness studio"
+      ],
+      "source_urls": [
+        "https://www.moderasouthlakeunion.com/"
+      ],
+      "prior_decision": "No change. rules.json rare_amenity_review.retained_rare_labels explicitly includes Yoga/Pilates studio, and compact_label_review maps the spelling variant Yoga / Pilates studio to this canonical label. Current official evidence supports keeping it."
+    },
+    {
+      "rank": 22,
+      "dedicated_agent": "/root/audit22_evshare",
+      "type": "EV car share",
+      "building_count": 2,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Shared electric vehicle access is a transportation service, distinct from parking or charging infrastructure.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "canopy",
+          "name": "Canopy",
+          "saved_source_descriptions": [
+            "ev car sharing via envoy"
+          ]
+        },
+        {
+          "id": "the-modern",
+          "name": "The Modern",
+          "saved_source_descriptions": [
+            "Envoy Tesla rentals"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "EV charging",
+        "EV parking",
+        "Shared bikes"
+      ],
+      "source_urls": [
+        "https://www.sheaapartments.com/apartments/canopy/",
+        "https://www.themodernseattle.com/amenities",
+        "https://www.envoythere.com/how-it-works/",
+        "https://www.envoythere.com/the-citizen/"
+      ],
+      "prior_decision": "No change: EV car share was not covered by the earlier names-only review of 45 labels used by one active building each. Its meaning aligns with that review’s principle to retain explicit, useful facilities and access amenities; rarity alone is not grounds for removal."
+    },
+    {
+      "rank": 23,
+      "dedicated_agent": "/root/audit23_golf",
+      "type": "Golf simulator",
+      "building_count": 2,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "A golf simulator is a specific recreation facility, different from a putting green or generic gaming room.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "adara-at-seatac",
+          "name": "Adara at SeaTac",
+          "saved_source_descriptions": [
+            "Golf simulator"
+          ]
+        },
+        {
+          "id": "the-residences-at-rainier-square",
+          "name": "The Residences at Rainier Square",
+          "saved_source_descriptions": [
+            "golf simulator available for private reservation"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Putting green",
+        "Game room",
+        "Arcade games"
+      ],
+      "source_urls": [
+        "https://www.liveatadaraseatac.com/amenities",
+        "https://rainiersquare.stackflx.com/amenities/"
+      ],
+      "prior_decision": "No change to an earlier category-level decision: none was recorded for Golf simulator. The prior rare-amenity review scoped itself to labels used by one building each; this type has two recorded buildings. Existing rules map both ‘golf simulator’ and ‘golf simulator available for private reservation’ to Golf simulator."
+    },
+    {
+      "rank": 24,
+      "dedicated_agent": "/root/audit24_guestparking",
+      "type": "Guest parking",
+      "building_count": 2,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Visitor parking serves a different user than resident parking. Preserve the after-office-hours limitation at Modera Overlake.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "110-roy",
+          "name": "110 Roy",
+          "saved_source_descriptions": [
+            "controlled access garage with guest parking and ev charging"
+          ]
+        },
+        {
+          "id": "modera-overlake",
+          "name": "Modera Overlake",
+          "saved_source_descriptions": [
+            "guest parking in designated future-resident spaces after office hours"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Parking",
+        "EV charging",
+        "EV parking"
+      ],
+      "source_urls": [
+        "https://www.110roy.com/amenities",
+        "https://www.moderaoverlake.com/redmond/modera-overlake/faqs/"
+      ],
+      "prior_decision": "No change recommended. The saved rules already retain Guest parking as a separate canonical amenity and the two reviewed mappings remain supported by current official sources."
+    },
+    {
+      "rank": 25,
+      "dedicated_agent": "/root/audit25_kayak",
+      "type": "Kayak access",
+      "building_count": 2,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Resident access to kayaks is explicit; retain the watercraft distinction from paddleboards and shoreline access.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "illumina-apartment-homes",
+          "name": "Illumina Apartment Homes",
+          "saved_source_descriptions": [
+            "Kayaks."
+          ]
+        },
+        {
+          "id": "one-lakefront",
+          "name": "One Lakefront",
+          "saved_source_descriptions": [
+            "reservation-only kayaks and paddle boards"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Paddleboard access",
+        "Lakefront access",
+        "Beach club"
+      ],
+      "source_urls": [
+        "https://www.leaselakeunion.com/",
+        "https://www.hollandresidential.com/wa/seattle/one-lakefront/amenities"
+      ],
+      "prior_decision": "No direct prior keep/merge/rename/remove decision for Kayak access was found. Existing rules treat explicit kayaks and paddleboards as independently useful functions; the general prior review says rarity alone is not an exclusion reason. This recommendation follows that approach."
+    },
+    {
+      "rank": 26,
+      "dedicated_agent": "/root/audit26_movie",
+      "type": "Outdoor movie screen",
+      "building_count": 2,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Retain the outdoor screening category. Westlake Steps currently supports it; Juxt has historical evidence requiring a separate currency check.",
+      "confidence": "medium-high",
+      "buildings": [
+        {
+          "id": "juxt",
+          "name": "Juxt",
+          "saved_source_descriptions": [
+            "outdoor cinema"
+          ]
+        },
+        {
+          "id": "westlake-steps",
+          "name": "Westlake Steps",
+          "saved_source_descriptions": [
+            "outdoor movie screen"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Movie theater",
+        "Rooftop lounge"
+      ],
+      "source_urls": [
+        "https://www.hollandresidential.com/wa/seattle/westlake-steps",
+        "https://www.hollandresidential.com/wa/seattle/juxt/amenities",
+        "https://www.djc.com/news/re/12090315.html"
+      ],
+      "prior_decision": "No taxonomy change. The approved compact_label_review lists Outdoor movie screen under unchanged_names and explicitly says Outdoor movie screen remains separate from Movie theater. The merits still support that distinction. Revisit Juxt's building-level evidence because its current page omits the historical feature."
+    },
+    {
+      "rank": 27,
+      "dedicated_agent": "/root/audit27_pizza",
+      "type": "Pizza oven",
+      "building_count": 2,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "An explicitly provided pizza oven offers a cooking capability beyond BBQ grills; it should not imply a full outdoor kitchen.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "boardwalk-kirkland",
+          "name": "Boardwalk Kirkland",
+          "saved_source_descriptions": [
+            "rooftop terrace with fireplace, pizza oven and bbq grills"
+          ]
+        },
+        {
+          "id": "true-north",
+          "name": "True North",
+          "saved_source_descriptions": [
+            "rooftop terrace with grills, pizza oven, fireplace and seating"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "BBQs",
+        "Outdoor kitchen",
+        "Outdoor fireplace",
+        "Rooftop deck"
+      ],
+      "source_urls": [
+        "https://kirklandboardwalk.com/amenities/",
+        "https://www.hollandresidential.com/wa/seattle/true-north/amenities"
+      ],
+      "prior_decision": "No change to prior decisions. The names-only rare review did not explicitly decide Pizza oven; the current semantic policy explicitly lists it as a distinct function in 'terrace/grills/fire pit/pizza oven.'"
+    },
+    {
+      "rank": 28,
+      "dedicated_agent": "/root/audit28_playroom",
+      "type": "Playroom",
+      "building_count": 2,
+      "recommended_action": "rename",
+      "target": "Children's playroom",
+      "assessment": "Both records describe child-focused indoor facilities. Add Children’s to distinguish the label from pet play and generic gaming spaces.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "modera-northgate",
+          "name": "Modera Northgate",
+          "saved_source_descriptions": [
+            "indoor children’s playroom with kitchenette, reading nooks and chalkboard room"
+          ]
+        },
+        {
+          "id": "the-modern",
+          "name": "The Modern",
+          "saved_source_descriptions": [
+            "children's play studio"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Playground",
+        "Indoor pet play area",
+        "Game room",
+        "Recreation room"
+      ],
+      "source_urls": [
+        "https://www.moderanorthgateseattle.com/seattle/modera-northgate/amenities/",
+        "https://www.themodernseattle.com/amenities"
+      ],
+      "prior_decision": "No direct rare-amenity keep/merge/rename/remove decision for Playroom was found: the prior rare_amenity_review covered one-building labels, while Playroom currently has two buildings. The saved rules do map both children's play studio and indoor children's playroom descriptions to Playroom, so this proposal is a label clarification that would require updating those mappings to Children's playroom; it does not change the decision to retain the facility."
+    },
+    {
+      "rank": 29,
+      "dedicated_agent": "/root/audit29_poker",
+      "type": "Poker tables",
+      "building_count": 2,
+      "recommended_action": "rename",
+      "target": "Poker table",
+      "assessment": "Use the singular type name to match Pool table, retaining source quantities in details. Do not infer a Game room from tables in a bar.",
+      "confidence": "medium-high",
+      "buildings": [
+        {
+          "id": "mason-main",
+          "name": "Mason & Main",
+          "saved_source_descriptions": [
+            "vault bar speakeasy with poker tables"
+          ]
+        },
+        {
+          "id": "the-ayer",
+          "name": "The Ayer",
+          "saved_source_descriptions": [
+            "resident lounges with kitchen and terrace access, poker tables, tv wall and billiards"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Pool table",
+        "Game room",
+        "Bar",
+        "Foosball",
+        "Arcade games"
+      ],
+      "source_urls": [
+        "https://www.hollandresidential.com/wa/seattle/the-ayer/amenities",
+        "https://ankrommoisan.com/projects/main/",
+        "https://www.masonandmainapartments.com/amenities"
+      ],
+      "prior_decision": "The one-building rare-label review did not explicitly assess Poker tables, which appears in two buildings. This proposes a new singular canonical name (Poker table), parallel to Pool table, while retaining the distinct game type and preserving plural source descriptions. It revisits no explicit prior keep/merge/remove decision."
+    },
+    {
+      "rank": 30,
+      "dedicated_agent": "/root/audit30_putting",
+      "type": "Putting green",
+      "building_count": 2,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "A physical putting surface is distinct from a digital golf simulator, a deck, or a general sports court.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "arlo",
+          "name": "Arlo",
+          "saved_source_descriptions": [
+            "rooftop putting green"
+          ]
+        },
+        {
+          "id": "park88-residences",
+          "name": "Park88 Residences",
+          "saved_source_descriptions": [
+            "putting green"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Golf simulator",
+        "Outdoor games",
+        "Sports court",
+        "Bocce court",
+        "Rooftop deck; Terrace / patio"
+      ],
+      "source_urls": [
+        "https://www.arloseattle.com/amenities",
+        "https://www.arloseattle.com/blog/the-modern-rooftop-deck-at-arlo",
+        "https://www.park88.com/"
+      ],
+      "prior_decision": "The rules file has no explicit rare_amenity_review decision for Putting green (that review covered one-building labels); the existing mapping is a separate canonical type. Recommendation leaves it unchanged."
+    },
+    {
+      "rank": 31,
+      "dedicated_agent": "/root/audit31_recreation",
+      "type": "Recreation room",
+      "building_count": 2,
+      "recommended_action": "merge",
+      "target": "Resident lounge",
+      "assessment": "Generic shared social-space wording belongs under Resident lounge. This does not assert that separately named rooms are physically identical; preserve recreation-room wording in details.",
+      "confidence": "medium-high",
+      "buildings": [
+        {
+          "id": "expo",
+          "name": "Expo",
+          "saved_source_descriptions": [
+            "recreation room"
+          ]
+        },
+        {
+          "id": "rivet-apartments",
+          "name": "Rivet Apartments",
+          "saved_source_descriptions": [
+            "recreation room"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Resident lounge",
+        "Game room"
+      ],
+      "source_urls": [
+        "https://www.essexapartmenthomes.com/apartments/seattle/expo",
+        "https://www.rivetseattle.com/amenities",
+        "https://www.rivetseattle.com/faq"
+      ],
+      "caveats": [
+        "Expo's page also names a clubroom and resident lounge; sources do not reconcile whether those are distinct rooms or updated/overlapping descriptions. The merge is at the taxonomy-function level only.",
+        "Rivet's current FAQ gives gaming context but does not unambiguously assign the equipment to the recreation room; do not upgrade the generic label to Game room based on this evidence."
+      ],
+      "prior_decision": {
+        "changed": true,
+        "detail": "Revises the exact mapping 'recreation room' -> 'Recreation room' to merge into the existing 'Resident lounge' category. Preserve the original phrase in source descriptions."
+      }
+    },
+    {
+      "rank": 32,
+      "dedicated_agent": "/root/audit32_bikes",
+      "type": "Shared bikes",
+      "building_count": 2,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Access to resident bikes differs from storage or repair facilities. Preserve private beach-club access context at Boardwalk.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "arlo",
+          "name": "Arlo",
+          "saved_source_descriptions": [
+            "shared community bikes"
+          ]
+        },
+        {
+          "id": "boardwalk-kirkland",
+          "name": "Boardwalk Kirkland",
+          "saved_source_descriptions": [
+            "private lakeside beach club with lounge, lockers, paddle boards, beach cruisers and yard games"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Bike storage",
+        "Bike repair",
+        "EV car share"
+      ],
+      "source_urls": [
+        "https://www.arloseattle.com/blog/sustainable-eco-apartments",
+        "https://kirklandboardwalk.com/amenities/"
+      ],
+      "caveats": [
+        "Boardwalk does not specify the number of beach cruisers or whether access requires a reservation or fee. The private beach-club context supports treating them as a resident amenity, but the exact terms are unstated.",
+        "Do not interpret this label as access to a public or municipal bike-share network."
+      ],
+      "prior_decision": "No change to prior decisions. The existing rules do not contain a merge, rename, or removal decision for Shared bikes."
+    },
+    {
+      "rank": 33,
+      "dedicated_agent": "/root/audit33_treatment",
+      "type": "Treatment room",
+      "building_count": 2,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Explicit treatment rooms are a distinct capability. Spa is too ambiguous to replace this label, and treatment rooms do not establish staffed services.",
+      "confidence": "medium-high",
+      "buildings": [
+        {
+          "id": "onni-south-lake-union",
+          "name": "Onni South Lake Union",
+          "saved_source_descriptions": [
+            "private treatment rooms"
+          ]
+        },
+        {
+          "id": "the-bravern",
+          "name": "The Bravern",
+          "saved_source_descriptions": [
+            "private treatment rooms"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Spa",
+        "Sauna",
+        "Hot tub",
+        "Cold plunge",
+        "Wellness studio"
+      ],
+      "source_urls": [
+        "https://onnislu.com/amenities/",
+        "https://www.windsorcommunities.com/properties/the-bravern/"
+      ],
+      "caveats": [
+        "Onni's current guide separately lists Private Treatment Rooms and an indoor pool/hot tub/cold tub/spa set on level 1. It does not specify treatments, booking access, or on-site providers.",
+        "The Bravern explicitly groups private treatment rooms within its Signature Spa. Retaining the room label does not imply treatment services or staffing."
+      ],
+      "prior_decision": "The first 30-type audit excluded Treatment room at the two-building cutoff; existing rules map 'treatment room' and 'private treatment rooms' to this canonical label. This audit's initial merge recommendation was reconsidered: because the rooms are explicitly named, spa is ambiguous, and Onni lists them separately, final recommendation is keep as a distinct type."
+    },
+    {
+      "rank": 34,
+      "dedicated_agent": "/root/audit34_trash",
+      "type": "Valet trash service",
+      "building_count": 2,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Doorstep household-waste collection is a distinct resident service.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "modera-broadway",
+          "name": "Modera Broadway",
+          "saved_source_descriptions": [
+            "valet trash pickup and recycling room"
+          ]
+        },
+        {
+          "id": "modera-northgate",
+          "name": "Modera Northgate",
+          "saved_source_descriptions": [
+            "valet trash and recycling service"
+          ]
+        }
+      ],
+      "comparison_types": "Keep separate from Package service / Package room / Package lockers: parcel receipt and storage are different resident services from household waste pickup. Also distinct from Dry cleaning service.",
+      "source_urls": [
+        "https://www.moderabroadway.com/seattle-wa-apartment/modera-broadway/faqs/",
+        "https://www.moderanorthgateseattle.com/seattle/modera-northgate/faqs/"
+      ],
+      "caveats": "Building websites establish the service exists, but do not specify exact pickup schedules, fees, or whether all recycling is collected at apartment doors. Preserve those details only if verified separately.",
+      "prior_decision": "No change. The compact-label rules already listed “Valet trash service” among unchanged names; current evidence supports keeping it as a standalone type."
+    },
+    {
+      "rank": 35,
+      "dedicated_agent": "/root/audit35_trails",
+      "type": "Walking trails",
+      "building_count": 2,
+      "recommended_action": "remove",
+      "target": null,
+      "assessment": "Fold Kiara’s paths into Shared park details. Withhold Kirkland Crossing’s assignment until a property-provided route or resident-specific access is established; retain the location claim in notes.",
+      "confidence": "medium",
+      "buildings": [
+        {
+          "id": "kiara",
+          "name": "Kiara",
+          "saved_source_descriptions": [
+            "elevated park with walking paths and firepits"
+          ]
+        },
+        {
+          "id": "kirkland-crossing",
+          "name": "Kirkland Crossing",
+          "saved_source_descriptions": [
+            "walking trails"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Shared park",
+        "Public trail access",
+        "Picnic area / Garden / Rooftop garden / Dog park / run"
+      ],
+      "source_urls": [
+        "https://www.hollandresidential.com/wa/seattle/kiara/amenities",
+        "https://www.liveatkirklandcrossing.com/amenities/",
+        "https://www.kirklandwa.gov/Government/Departments/Public-Works-Department/Cross-Kirkland-Corridor/Cross-Kirkland-Corridor-Interim-Trail"
+      ],
+      "caveats": [
+        "Preserve “walking paths” in Kiara’s Shared park source details; retiring the standalone label should not erase that feature description.",
+        "Kirkland Crossing’s amenity page uses the phrase as a community benefit, but the “surroundings” wording does not resolve whether the route is public, adjacent, or property-provided.",
+        "Do not infer exclusive access, an on-site trail network, hiking use, or trail ownership. Restore a standalone trail/access label only if those facts are verified."
+      ],
+      "prior_decision": "Changed from this audit’s provisional keep recommendation after applying the stricter property-provided shared-benefit test. The prior first-round audit listed Walking trails among equally rare types outside its 30-type cutoff; no earlier dedicated decision was found. Existing normalization mappings retain the label today."
+    },
+    {
+      "rank": 36,
+      "dedicated_agent": "/root/audit36_basketball",
+      "type": "Basketball court",
+      "building_count": 3,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Keep a verified basketball-specific facility distinct from generic courts whose sports are unknown.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "augusta-apartments",
+          "name": "Augusta Apartments",
+          "saved_source_descriptions": [
+            "basketball court"
+          ]
+        },
+        {
+          "id": "foster-greens",
+          "name": "Foster Greens",
+          "saved_source_descriptions": [
+            "Basketball court"
+          ]
+        },
+        {
+          "id": "harbor-steps-apartments",
+          "name": "Harbor Steps Apartments",
+          "saved_source_descriptions": [
+            "basketball court"
+          ]
+        }
+      ],
+      "comparison_types": "Sports court (5 buildings) is the nearest broader label. Keep generic sport courts under that name when the source does not specify the sport; retain Basketball court when basketball is explicit. This follows the taxonomy's principle to preserve distinct useful functions and the current mapping of basketball court to Basketball court.",
+      "source_urls": [
+        "https://www.bozzuto.com/apartments-for-rent/wa/seattle/augusta-apartments",
+        "https://washington.weidner.com/apartments/wa/tukwila/foster-greens-0/amenities",
+        "https://www.equityapartments.com/seattle/downtown-seattle/harbor-steps-apartments"
+      ],
+      "caveats": [],
+      "prior_decision": "No change to an earlier decision; Basketball court is not included in the prior rare-label review."
+    },
+    {
+      "rank": 37,
+      "dedicated_agent": "/root/audit37_gardening",
+      "type": "Gardening plots",
+      "building_count": 3,
+      "recommended_action": "rename",
+      "target": "Resident gardening",
+      "assessment": "Retain growing-garden functionality distinct from landscaped gardens, without promising individually allotted plots at every property.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "anker-ballard",
+          "name": "Anker Ballard",
+          "saved_source_descriptions": [
+            "community veggie and herb garden"
+          ]
+        },
+        {
+          "id": "queen-anne-flats",
+          "name": "Queen Anne Flats",
+          "saved_source_descriptions": [
+            "resident pea patch garden"
+          ]
+        },
+        {
+          "id": "the-marlborough",
+          "name": "The Marlborough",
+          "saved_source_descriptions": [
+            "resident gardening plots"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Garden",
+        "Rooftop garden"
+      ],
+      "source_urls": [
+        "https://ankerballard.com/amenities/",
+        "https://www.queenanneflats.com/",
+        "https://marlboroughseattle.com/amenities/"
+      ],
+      "caveats": [
+        "Anker's current page establishes a community veggie and herb garden but not individually assigned plots, reservable space, harvesting rights, or participation terms.",
+        "Queen Anne Flats and The Marlborough explicitly name pea patches or gardening plots; retain these exact source descriptions for users who need that level of detail."
+      ],
+      "prior_decision": {
+        "changed": true,
+        "detail": "Revised this audit's initial recommendation to merge into Garden. The supplied conservative_inference rule says not to infer gardening plots from decorative gardens, and the meaningful_splits/practical_and_distinctive policies favor retaining explicit resident growing use. Rename to Resident gardening to preserve that function without claiming a plot allotment at every building."
+      }
+    },
+    {
+      "rank": 38,
+      "dedicated_agent": "/root/audit38_hiit",
+      "type": "HIIT studio",
+      "building_count": 3,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Retain the activity-specific room category. The Ivey confirms it; Cumulus SLU and O2 need current assignment checks.",
+      "confidence": "medium-high",
+      "buildings": [
+        {
+          "id": "cumulus-slu",
+          "name": "Cumulus SLU",
+          "saved_source_descriptions": [
+            "high-intensity training studio"
+          ]
+        },
+        {
+          "id": "o2",
+          "name": "O2",
+          "saved_source_descriptions": [
+            "high-intensity training room"
+          ]
+        },
+        {
+          "id": "the-ivey-on-boren",
+          "name": "The Ivey on Boren",
+          "saved_source_descriptions": [
+            "24/7 fitness, yoga and hiit studios"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Gym",
+        "Fitness classes",
+        "Spin studio",
+        "Yoga studio",
+        "Yoga/spin studio",
+        "Barre/stretch studio"
+      ],
+      "source_urls": [
+        "https://www.liveatcumulus.com/amenities",
+        "https://www.o2apartments.com/amenities",
+        "https://www.hollandresidential.com/wa/seattle/the-ivey-on-boren/amenities"
+      ],
+      "caveats": [
+        "Current official pages for Cumulus SLU and O2 no longer name a HIIT room separately, even though the database source descriptions do. Their current assignments should be checked against the property or an updated official source before relying on them.",
+        "The category remains useful because The Ivey currently advertises a dedicated HIIT Studio; omission on other amenity pages alone does not prove the facilities were removed."
+      ],
+      "prior_decision": "No prior_decision was supplied for this type; the current recommendation is keep."
+    },
+    {
+      "rank": 39,
+      "dedicated_agent": "/root/audit39_petplay",
+      "type": "Indoor pet play area",
+      "building_count": 3,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Indoor pet play is distinct from outdoor exercise, toileting, and washing; Seattle House needs a current source refresh.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "ren",
+          "name": "REN",
+          "saved_source_descriptions": [
+            "dog spa with grooming stations, indoor play area and covered outdoor dog park with agility stations"
+          ]
+        },
+        {
+          "id": "seattle-house",
+          "name": "Seattle House",
+          "saved_source_descriptions": [
+            "pet spa with self-serve grooming and wash stations, indoor dog play area and 200 sq ft outdoor off-leash park"
+          ]
+        },
+        {
+          "id": "the-residences-at-rainier-square",
+          "name": "The Residences at Rainier Square",
+          "saved_source_descriptions": [
+            "indoor pet retreat and spa with separate play space and bathing and grooming stations"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Dog park / run",
+        "Pet area",
+        "Pet relief area",
+        "Pet grooming station / Pet wash station / Pet spa"
+      ],
+      "source_urls": [
+        "https://renseattle.com/faqs/",
+        "https://www.seattlehouse.com/apartments/amenities/",
+        "https://seattlehouse.com/amenities",
+        "https://rainiersquare.stackflx.com/amenities/"
+      ],
+      "caveats": [
+        "Seattle House's current official amenity page does not explicitly reconfirm the indoor play area; its explicit evidence is an older official page. Refresh that building assignment when better current evidence is available.",
+        "REN's current FAQ says covered outdoor play area and indoor play area, and describes the off-leash dog park as nearby. This differs from the older combined source description in the DB."
+      ],
+      "prior_decision": "No recommendation for this type appears in the prior first-30 audit; no prior decision changed."
+    },
+    {
+      "rank": 40,
+      "dedicated_agent": "/root/audit40_music",
+      "type": "Music room",
+      "building_count": 3,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Music-making space is a distinct function from general coworking, podcast recording, or social games.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "amli-arc",
+          "name": "AMLI Arc",
+          "saved_source_descriptions": [
+            "music studio"
+          ]
+        },
+        {
+          "id": "stratus",
+          "name": "Stratus",
+          "saved_source_descriptions": [
+            "music studio"
+          ]
+        },
+        {
+          "id": "the-victor",
+          "name": "The Victor",
+          "saved_source_descriptions": [
+            "music room"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Podcast room",
+        "Rehearsal room",
+        "Karaoke",
+        "Game room"
+      ],
+      "source_urls": [
+        "https://www.amli.com/apartments/seattle/downtown-seattle-apartments/amli-arc",
+        "https://www.windsorcommunities.com/properties/stratus/",
+        "https://www.thevictorseattle.com/amenities"
+      ],
+      "caveats": [
+        "Amenity pages establish that the facilities are advertised; public sources do not establish equipment access rules, soundproofing at all three sites, fees, reservation requirements, or current operating condition.",
+        "AMLI and Stratus use “music studio,” while The Victor uses “music room.” Keep the canonical label broad and preserve each source description."
+      ],
+      "prior_decision": "No earlier explicit rare-review decision for Music room was found. Existing rules map both “music room” and “music studio” to Music room; this audit confirms that canonical label and adds a specific evidence-backed keep decision."
+    },
+    {
+      "rank": 41,
+      "dedicated_agent": "/root/audit41_outdoorgames",
+      "type": "Outdoor games",
+      "building_count": 3,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Outdoor recreational games differ from a gaming room or structured sports court. Preserve the specific games where known.",
+      "confidence": "high for retaining the taxonomy type; medium for ION Queen Anne's individual assignment",
+      "buildings": [
+        {
+          "id": "adara-at-seatac",
+          "name": "Adara at SeaTac",
+          "saved_source_descriptions": [
+            "rooftop courtyard with bbq grills, lounge seating, and outdoor games"
+          ]
+        },
+        {
+          "id": "boardwalk-kirkland",
+          "name": "Boardwalk Kirkland",
+          "saved_source_descriptions": [
+            "private lakeside beach club with lounge, lockers, paddle boards, beach cruisers and yard games"
+          ]
+        },
+        {
+          "id": "ion-queen-anne",
+          "name": "ION Queen Anne",
+          "saved_source_descriptions": [
+            "cornhole game"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Game room",
+        "Sports court",
+        "Bocce court",
+        "Outdoor movie screen"
+      ],
+      "source_urls": [
+        "https://www.liveatadaraseatac.com/amenities",
+        "https://kirklandboardwalk.com/amenities/",
+        "https://www.ionqueenanne.com/photogallery",
+        "https://www.ionqueenanne.com/amenities"
+      ],
+      "caveats": [
+        "ION Queen Anne's current official amenity list omits cornhole; assignment depends on prior review of its official gallery. The gallery's current text view does not expose the individual asset for direct confirmation in this pass.",
+        "Adara does not specify which outdoor games are available; keep the source description generic rather than inferring particular equipment."
+      ],
+      "prior_decision": "No prior recommendation for Outdoor games was made in the completed first 30-type audit; this is a new recommendation, with no change to earlier decisions."
+    },
+    {
+      "rank": 42,
+      "dedicated_agent": "/root/audit42_paddle",
+      "type": "Paddleboard access",
+      "building_count": 3,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Provided paddleboards establish an equipment-access benefit, distinct from kayaks or shoreline proximity.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "boardwalk-kirkland",
+          "name": "Boardwalk Kirkland",
+          "saved_source_descriptions": [
+            "private lakeside beach club with lounge, lockers, paddle boards, beach cruisers and yard games"
+          ]
+        },
+        {
+          "id": "one-lakefront",
+          "name": "One Lakefront",
+          "saved_source_descriptions": [
+            "reservation-only kayaks and paddle boards"
+          ]
+        },
+        {
+          "id": "vela",
+          "name": "Vela",
+          "saved_source_descriptions": [
+            "resident paddleboards"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Kayak access",
+        "Beach club"
+      ],
+      "source_urls": [
+        "https://kirklandboardwalk.com/amenities/",
+        "https://www.hollandresidential.com/wa/seattle/one-lakefront/amenities",
+        "https://www.velakirkland.com/amenities"
+      ],
+      "caveats": [
+        "Boardwalk and Vela pages do not state whether paddleboard use requires reservations or carries a fee.",
+        "The One Lakefront page confirms reservation-only and free use for both kayaks and paddle boards."
+      ],
+      "prior_decision": "No change to an existing specific decision. Paddleboard access was not among the preceding top-30 audits; existing taxonomy guidance explicitly treats kayaks and paddleboards as distinct useful functions."
+    },
+    {
+      "rank": 43,
+      "dedicated_agent": "/root/audit43_podcast",
+      "type": "Podcast room",
+      "building_count": 3,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Podcast-use rooms are more specific than coworking or meeting rooms. Do not infer recording equipment.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "bowman",
+          "name": "Bowman",
+          "saved_source_descriptions": [
+            "podcast room"
+          ]
+        },
+        {
+          "id": "hilite",
+          "name": "Hilite",
+          "saved_source_descriptions": [
+            "co-working space with meeting rooms and an acoustic podcasting room"
+          ]
+        },
+        {
+          "id": "island-square",
+          "name": "Island Square",
+          "saved_source_descriptions": [
+            "Podcast room"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Coworking",
+        "Meeting room",
+        "Music room / Rehearsal room / Green screen studio"
+      ],
+      "source_urls": [
+        "https://bowmanstoneway.com/amenities/",
+        "https://www.hiliteapartments.com/amenities/",
+        "https://www.apartments.com/island-square-mercer-island-wa/bxj22hc/"
+      ],
+      "caveats": [
+        "Island Square's official site could not be retrieved during this audit; its current listing corroborates the saved amenity record but is not an official source.",
+        "No source reviewed specifies the recording equipment, booking rules, fees, or whether the rooms support video production."
+      ],
+      "prior_decision": "No change. Podcast room was not assigned an individual recommendation in the preceding top-30 review. The current rules already map the source wording to Podcast room; keeping that mapping preserves the explicit function without an unsupported upgrade."
+    },
+    {
+      "rank": 44,
+      "dedicated_agent": "/root/audit44_solarium",
+      "type": "Solarium",
+      "building_count": 3,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Retain the specifically named solarium subtype; sources do not sufficiently describe its functions to support a safe lounge or wellness merge.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "cascade-apartments",
+          "name": "Cascade Apartments",
+          "saved_source_descriptions": [
+            "solarium"
+          ]
+        },
+        {
+          "id": "the-danforth",
+          "name": "The Danforth",
+          "saved_source_descriptions": [
+            "rooftop solarium"
+          ]
+        },
+        {
+          "id": "verve",
+          "name": "Verve",
+          "saved_source_descriptions": [
+            "solarium"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Resident lounge",
+        "Rooftop lounge / Rooftop deck",
+        "Wellness studio / Garden"
+      ],
+      "source_urls": [
+        "https://www.equityapartments.com/seattle/south-lake-union/cascade-apartments",
+        "https://thedanforthseattle.com/amenities/",
+        "https://liveatverve.com/amenities/"
+      ],
+      "caveats": [
+        "The official sites provide little functional detail. Only The Danforth explicitly says rooftop; do not infer roof access, glazing, plantings, furnishings, direct sun exposure, or hours/access terms for the other properties.",
+        "Solarium is a less familiar term than sunroom, but renaming to Sunroom would imply a physical form that the listed sources do not verify and would not reduce taxonomy size."
+      ],
+      "prior_decision": "None. Solarium was not among the first 30 audited labels and is not listed in the prior rare_amenity_review decisions."
+    },
+    {
+      "rank": 45,
+      "dedicated_agent": "/root/audit45_wellness",
+      "type": "Wellness studio",
+      "building_count": 3,
+      "recommended_action": "merge",
+      "target": {
+        "beam": "Yoga studio",
+        "the-waverly": "Gym",
+        "vela": "Gym"
+      },
+      "assessment": "Replace vague Wellness studio with source-specific categories: BEAM’s documented yoga room goes to Yoga studio; The Waverly and Vela fold into Gym. Preserve room names and descriptions.",
+      "confidence": "medium-high",
+      "buildings": [
+        {
+          "id": "beam",
+          "name": "BEAM",
+          "saved_source_descriptions": [
+            "landscaped courtyard and indoor/outdoor zen room"
+          ]
+        },
+        {
+          "id": "the-waverly",
+          "name": "The Waverly",
+          "saved_source_descriptions": [
+            "wellness and circuit studio with lululemon studio mirrors"
+          ]
+        },
+        {
+          "id": "vela",
+          "name": "Vela",
+          "saved_source_descriptions": [
+            "24-hour fitness center and wellness studio"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Gym",
+        "Yoga studio",
+        "Fitness classes",
+        "HIIT studio",
+        "Yoga/spin studio"
+      ],
+      "source_urls": [
+        "https://www.beamapts.com/amenities",
+        "https://thewaverlyslu.com/amenities/",
+        "https://www.velakirkland.com/amenities",
+        "https://thewaverlyslu.com/assets/files/WVRLY-0031403-Site-Plan-Handout-021722-PRESS_compressed.pdf"
+      ],
+      "caveats": [
+        "The current official amenity pages establish advertised shared facilities, not resident access terms, reservations, fees, or operating condition.",
+        "Vela does not explain what differentiates its wellness studio from its fitness center; the recommendation avoids inventing a separate modality."
+      ],
+      "prior_decision": "No explicit earlier rare-label decision covered Wellness studio. This recommendation would replace existing mappings that emit Wellness studio for these three descriptions, while preserving their supported functions under Gym or Yoga studio."
+    },
+    {
+      "rank": 46,
+      "dedicated_agent": "/root/audit46_yogaspin",
+      "type": "Yoga/spin studio",
+      "building_count": 3,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Both activities are explicit in a combined studio. Preserve that shared-room relationship and avoid losing either activity.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "adara-at-seatac",
+          "name": "Adara at SeaTac",
+          "saved_source_descriptions": [
+            "yoga and spin studio with five stationary bikes"
+          ]
+        },
+        {
+          "id": "the-victor",
+          "name": "The Victor",
+          "saved_source_descriptions": [
+            "fitness center with dedicated spin and yoga studio"
+          ]
+        },
+        {
+          "id": "venn-at-main",
+          "name": "Venn at Main",
+          "saved_source_descriptions": [
+            "yoga and spin studio"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Gym",
+        "Yoga studio",
+        "Spin studio",
+        "Yoga/Pilates studio"
+      ],
+      "source_urls": [
+        "https://www.liveatadaraseatac.com/amenities",
+        "https://www.thevictorseattle.com/blog/the-victors-spin-yoga-studio",
+        "https://www.equityapartments.com/seattle/downtown-bellevue/venn-at-main-apartments"
+      ],
+      "caveats": [
+        "The Victor's current amenities index page omits the studio, though its official property article specifically describes it; the source is property-controlled and remains accessible on the current site."
+      ],
+      "prior_decision": "No change. The approved compact-label review maps wording variants such as ‘Yoga / spin studio’ to ‘Yoga/spin studio’; current official evidence supports the existing canonical type."
+    },
+    {
+      "rank": 47,
+      "dedicated_agent": "/root/audit47_climbing",
+      "type": "Climbing wall",
+      "building_count": 4,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Climbing/bouldering is a distinct activity; preserve wall subtype and any integration with a gym or court.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "onni-south-lake-union",
+          "name": "Onni South Lake Union",
+          "saved_source_descriptions": [
+            "indoor sport court with climbing wall and adjacent sport court lounge"
+          ]
+        },
+        {
+          "id": "the-blake-apartments",
+          "name": "The Blake Apartments",
+          "saved_source_descriptions": [
+            "bouldering wall"
+          ]
+        },
+        {
+          "id": "the-leeann",
+          "name": "The LeeAnn",
+          "saved_source_descriptions": [
+            "two-story climbing wall"
+          ]
+        },
+        {
+          "id": "true-north",
+          "name": "True North",
+          "saved_source_descriptions": [
+            "indoor bouldering wall"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Gym",
+        "Sports court",
+        "Bouldering wall"
+      ],
+      "source_urls": [
+        "https://onnislu.com/amenities/",
+        "https://www.theblakeapartments.com/",
+        "https://www.leeannapts.com/amenities.aspx",
+        "https://www.hollandresidential.com/wa/seattle/true-north/amenities"
+      ],
+      "caveats": [
+        "The source descriptions do not establish access hours, reservation requirements, supervision, or whether climbing equipment is provided; do not infer those details.",
+        "The wall is integrated with a sport court at Onni and with a fitness facility at The Blake; retain those relationships in details rather than discarding the climbing-wall label."
+      ],
+      "prior_decision": "No change. Existing rules normalize bouldering wall and indoor bouldering wall to Climbing wall, explicitly treat sports court/climbing wall as separately useful functions, and already map these source descriptions to the current label. This review confirms that decision."
+    },
+    {
+      "rank": 48,
+      "dedicated_agent": "/root/audit48_evparking",
+      "type": "EV parking",
+      "building_count": 4,
+      "recommended_action": "merge",
+      "target": "Parking",
+      "assessment": "EV-designated spaces establish parking, not installed chargers. Fold into Parking with the EV qualifier in details; never map to EV charging without explicit evidence.",
+      "confidence": "medium-high",
+      "buildings": [
+        {
+          "id": "gables-queen-anne",
+          "name": "Gables Queen Anne",
+          "saved_source_descriptions": [
+            "ev parking (optional paid spaces)"
+          ]
+        },
+        {
+          "id": "green-leaf-shoreline",
+          "name": "Green Leaf Shoreline",
+          "saved_source_descriptions": [
+            "gated garage, ev parking spaces and surface parking available for rent"
+          ]
+        },
+        {
+          "id": "onni-south-lake-union",
+          "name": "Onni South Lake Union",
+          "saved_source_descriptions": [
+            "underground parking with designated electric vehicle spaces"
+          ]
+        },
+        {
+          "id": "the-waymark",
+          "name": "The Waymark",
+          "saved_source_descriptions": [
+            "EV parking"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Parking",
+        "EV charging",
+        "EV car share"
+      ],
+      "source_urls": [
+        "https://www.gables.com/community/1846059/fees",
+        "https://www.greenleaf-shoreline.com/shoreline/shoreline/amenities/",
+        "https://s3.us-west-2.amazonaws.com/onnisouthlakeunion/general/Fee-Schedule-oslu-2.pdf",
+        "https://www.waymarkseattle.com/"
+      ],
+      "caveats": [
+        "EV parking fees, inventory, and availability can change; the Gables and Green Leaf pages present it as an optional paid parking product.",
+        "The source wording does not establish charging equipment, EV-ready electrical infrastructure, charger count, stall count, or whether availability is guaranteed.",
+        "Onni's direct parking evidence comes from an older official fee schedule; its current amenity guide omits EV parking, so verify before relying on that assignment as currently available."
+      ],
+      "prior_decision": "Proposed change to current mappings: the four source descriptions currently produce the standalone EV parking label; map them to Parking and preserve their original EV wording in details. This extends the existing rare-amenity decision that folds EV-ready parking into Parking. The current review note already says EV parking does not establish charging or EV-ready infrastructure, so keep the label distinct from EV charging only when a charger is explicitly documented."
+    },
+    {
+      "rank": 49,
+      "dedicated_agent": "/root/audit49_foosball",
+      "type": "Foosball",
+      "building_count": 4,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Specific foosball equipment remains useful separately from a general games room. Recheck REN’s assignment.",
+      "confidence": "high for retaining the type; medium-high for current assignment accuracy because REN's specific game is not confirmed on its current page",
+      "buildings": [
+        {
+          "id": "206-bell-apartments",
+          "name": "206 Bell Apartments",
+          "saved_source_descriptions": [
+            "resident lounge with billiards and foosball"
+          ]
+        },
+        {
+          "id": "ballard-yards",
+          "name": "Ballard Yards",
+          "saved_source_descriptions": [
+            "clubhouse with big-screen TV and foosball table"
+          ]
+        },
+        {
+          "id": "modera-northgate",
+          "name": "Modera Northgate",
+          "saved_source_descriptions": [
+            "lodge lounge and game room with wet bar, board games, billiards, shuffleboard and foosball"
+          ]
+        },
+        {
+          "id": "ren",
+          "name": "REN",
+          "saved_source_descriptions": [
+            "top-floor lounge with wet bar and games room with billiards, foosball, card tables, pinball and TVs"
+          ]
+        }
+      ],
+      "comparison_types": {
+        "Game room": "Do not merge: this describes the room or broader space; it does not identify which games are available. Two of the listed buildings already have both labels.",
+        "Pool table": "Keep separate: it is another explicitly named table game and appears alongside foosball at 206 Bell and Modera Northgate.",
+        "Arcade games": "Keep separate: foosball is a tabletop game, not an arcade game category.",
+        "Shuffleboard and Table tennis": "Keep separate as distinct game features, consistent with the existing taxonomy."
+      },
+      "source_urls": [
+        "https://www.206bell.com/",
+        "https://www.206bell.com/gallery/",
+        "https://ballardyards.com/blog/two-bedroom-apartments-ballard-seattle-wa",
+        "https://www.moderanorthgateseattle.com/seattle/modera-northgate/photos/",
+        "https://renseattle.com/amenities/"
+      ],
+      "caveats": [
+        "REN's current official wording supports a games room only. Recheck its foosball assignment before treating it as current; do not infer foosball from the broader room description.",
+        "Ballard Yards' explicit foosball claim is on an official property blog rather than its current amenities summary, which now describes games generally. The official blog still states the amenity is accessible to all residents."
+      ],
+      "prior_decision": "No category-level change to a prior decision. Existing mapping keeps foosball as its own label, and taxonomy rules retain explicitly named distinctive games. This audit adds a current-evidence caveat for REN's building-level assignment."
+    },
+    {
+      "rank": 50,
+      "dedicated_agent": "/root/audit50_dining",
+      "type": "Private dining room",
+      "building_count": 4,
+      "recommended_action": "rename",
+      "target": "Private dining",
+      "assessment": "Broaden the label to Private dining because some sources establish areas or a dining offering rather than a dedicated room.",
+      "confidence": "high for retaining private dining as a distinct type; medium-high for renaming to avoid implying a dedicated room",
+      "buildings": [
+        {
+          "id": "modera-northgate",
+          "name": "Modera Northgate",
+          "saved_source_descriptions": [
+            "6th-floor lounge with catering and demonstration kitchen, private dining areas, and outdoor terrace"
+          ]
+        },
+        {
+          "id": "onni-south-lake-union",
+          "name": "Onni South Lake Union",
+          "saved_source_descriptions": [
+            "private dining room with professional kitchen"
+          ]
+        },
+        {
+          "id": "the-modern",
+          "name": "The Modern",
+          "saved_source_descriptions": [
+            "private dining"
+          ]
+        },
+        {
+          "id": "the-residences-at-rainier-square",
+          "name": "The Residences at Rainier Square",
+          "saved_source_descriptions": [
+            "private dining suite and catering kitchen available for private reservations"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Event space",
+        "Shared kitchen",
+        "Meeting room",
+        "Resident lounge"
+      ],
+      "source_urls": [
+        "https://www.moderanorthgateseattle.com/seattle/modera-northgate/amenities/",
+        "https://onnislu.com/amenities/",
+        "https://www.themodernseattle.com/amenities",
+        "https://rainiersquare.stackflx.com/amenities/"
+      ],
+      "caveats": [
+        "Official listings confirm the advertised feature, not operating condition, resident reservation rights, fees, or availability.",
+        "The Modern does not describe a room or kitchen; the proposed broader label preserves that uncertainty."
+      ],
+      "prior_decision": "No earlier audit decision for this type was found; this is a new recommendation for the next-30 batch."
+    },
+    {
+      "rank": 51,
+      "dedicated_agent": "/root/audit51_bocce",
+      "type": "Bocce court",
+      "building_count": 5,
+      "recommended_action": "rename",
+      "target": "Bocce",
+      "assessment": "Name the established activity without promising court construction at properties whose source says only bocce.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "aperture-on-fifth",
+          "name": "Aperture on Fifth",
+          "saved_source_descriptions": [
+            "bocce ball"
+          ]
+        },
+        {
+          "id": "juxt",
+          "name": "Juxt",
+          "saved_source_descriptions": [
+            "bocce ball court"
+          ]
+        },
+        {
+          "id": "modera-northgate",
+          "name": "Modera Northgate",
+          "saved_source_descriptions": [
+            "urban garden with bocce ball and seating"
+          ]
+        },
+        {
+          "id": "panorama-apartments",
+          "name": "Panorama Apartments",
+          "saved_source_descriptions": [
+            "bocce and shuffleboard courts"
+          ]
+        },
+        {
+          "id": "vue-22-apartments",
+          "name": "Vue 22 Apartments",
+          "saved_source_descriptions": [
+            "bocce court"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Outdoor games",
+        "Sports court",
+        "Shuffleboard"
+      ],
+      "source_urls": [
+        "https://www.hollandresidential.com/wa/seattle/juxt/amenities",
+        "https://www.moderanorthgateseattle.com/seattle/modera-northgate/amenities/",
+        "https://www.livepanoramaapts.com/apartments/wa/seattle/amenities",
+        "https://www.vue22apts.com/amenities",
+        "https://www.apertureoffering.com/",
+        "https://www.apertureon5th.com/seattle/aperture-on-fifth/amenities/"
+      ],
+      "caveats": [
+        "Explicit court details remain in source descriptions where supported, including Juxt, Panorama, and Aperture on Fifth.",
+        "Modera Northgate and Vue 22 name bocce/bocce ball but do not specify a dedicated court."
+      ],
+      "prior_decision": "Recommends revising the existing canonical label and exact mappings from Bocce court to Bocce. This avoids inferring a dedicated court at every building while preserving original descriptions. No DB or rules edits made."
+    },
+    {
+      "rank": 52,
+      "dedicated_agent": "/root/audit52_cabanas",
+      "type": "Cabanas",
+      "building_count": 5,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Retain explicitly named cabanas across rooftop and pool settings; do not infer enclosure, reservations, or pool access.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "amli-waterfront",
+          "name": "AMLI Waterfront",
+          "saved_source_descriptions": [
+            "cabanas"
+          ]
+        },
+        {
+          "id": "century-plaza",
+          "name": "Century Plaza",
+          "saved_source_descriptions": [
+            "Cabana"
+          ]
+        },
+        {
+          "id": "gables-queen-anne",
+          "name": "Gables Queen Anne",
+          "saved_source_descriptions": [
+            "game room with cocktail-style lounge, outdoor cabana seating, and hibachi grill"
+          ]
+        },
+        {
+          "id": "onni-south-lake-union",
+          "name": "Onni South Lake Union",
+          "saved_source_descriptions": [
+            "indoor pool and two outdoor pools with hot tubs, cold tub, cabanas and lounge chairs"
+          ]
+        },
+        {
+          "id": "seattle-house",
+          "name": "Seattle House",
+          "saved_source_descriptions": [
+            "pool and cabana"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Pool",
+        "Rooftop deck / Terrace / patio / Resident lounge",
+        "Lounge chairs / ordinary furniture"
+      ],
+      "source_urls": [
+        "https://www.amli.com/apartments/seattle/downtown-seattle-apartments/amli-waterfront",
+        "https://www.centuryplazaapartmenthomes.com/amenities",
+        "https://www.gablesqueenanne.com/",
+        "https://onnislu.com/amenities/",
+        "https://www.seattlehouse.com/apartments/amenities/"
+      ],
+      "caveats": [
+        "Century Plaza's current page uses the phrase Century Place in its body despite the Century Plaza page title and address; verify property identity before applying building-level changes.",
+        "Gables Queen Anne's main Gables overview currently omits cabanas, while its active property-specific amenity page lists outdoor cabana seating; the individual building assignment merits follow-up if source recency is being audited separately.",
+        "The sources do not establish whether cabanas are reservable, enclosed, or available year-round."
+      ],
+      "prior_decision": "No earlier recommendation for Cabanas appears in the supplied first-30 audit context; retain the existing canonical type."
+    },
+    {
+      "rank": 53,
+      "dedicated_agent": "/root/audit53_petrelief",
+      "type": "Pet relief area",
+      "building_count": 5,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Designated pet toileting space is distinct from pet exercise, indoor play, or grooming.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "110-roy",
+          "name": "110 Roy",
+          "saved_source_descriptions": [
+            "rooftop pet relief area and self-service pet wash"
+          ]
+        },
+        {
+          "id": "helm",
+          "name": "Helm",
+          "saved_source_descriptions": [
+            "dog relief area"
+          ]
+        },
+        {
+          "id": "the-leeann",
+          "name": "The LeeAnn",
+          "saved_source_descriptions": [
+            "rooftop pet relief area"
+          ]
+        },
+        {
+          "id": "the-margot",
+          "name": "The Margot",
+          "saved_source_descriptions": [
+            "rooftop pet-relief area"
+          ]
+        },
+        {
+          "id": "traxx-apartments",
+          "name": "Traxx Apartments",
+          "saved_source_descriptions": [
+            "pet park with relief area"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Dog park / run",
+        "Indoor pet play area",
+        "Pet area",
+        "Pet wash station",
+        "Pet grooming station"
+      ],
+      "source_urls": [
+        "https://www.110roy.com/amenities",
+        "https://helmslu.com/amenities/",
+        "https://www.leeannapts.com/amenities.aspx",
+        "https://www.themargot.com/community",
+        "https://www.traxxapts.com/apartments/wa/mountlake-terrace/pet-friendly"
+      ],
+      "caveats": [
+        "At Traxx, pet park and relief area may be components of one physical space; preserve both labels only because the official source names both useful functions. Keep the phrase “pet park with relief area” in source details."
+      ],
+      "prior_decision": "No earlier individual review of this label was present in the preceding 30-type audit. The existing compact-label guidance says to preserve pet relief separately from dog runs and indoor play, so this recommendation follows the recorded taxonomy rule."
+    },
+    {
+      "rank": 54,
+      "dedicated_agent": "/root/audit54_sports",
+      "type": "Sports court",
+      "building_count": 5,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Retain a general category for courts with unspecified sports. Keep Basketball court separately when basketball is explicit; reconcile individual assignments instead of merging all courts.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "brio",
+          "name": "Brio",
+          "saved_source_descriptions": [
+            "sports court"
+          ]
+        },
+        {
+          "id": "onni-south-lake-union",
+          "name": "Onni South Lake Union",
+          "saved_source_descriptions": [
+            "indoor sport court with climbing wall and adjacent sport court lounge"
+          ]
+        },
+        {
+          "id": "quartz-creek",
+          "name": "Quartz Creek",
+          "saved_source_descriptions": [
+            "sports court"
+          ]
+        },
+        {
+          "id": "terrace-station-apartments",
+          "name": "Terrace Station Apartments",
+          "saved_source_descriptions": [
+            "sports court"
+          ]
+        },
+        {
+          "id": "the-waverly",
+          "name": "The Waverly",
+          "saved_source_descriptions": [
+            "outdoor sport court"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Basketball court",
+        "Bocce court"
+      ],
+      "source_urls": [
+        "https://www.udr.com/seattle-apartments/bellevue/brio/amenities/",
+        "https://onnislu.com/amenities/",
+        "https://www.quartzcreekapts.com/",
+        "https://www.terracestationapts.com/mountlake-terrace/terrace-station-west/amenities/",
+        "https://thewaverlyslu.com/amenities/"
+      ],
+      "caveats": "Quartz Creek, Terrace Station, and The Waverly have current official support only for a generic sports court; retain those three under Sports court and do not infer basketball. Terrace Station's court is in the East building rooftop deck.",
+      "prior_decision": "The earlier taxonomy-wide merge suggestion (Basketball court into Sports court) is considered and rejected. Keep both types; the two specific building records above should instead move to Basketball court, leaving three Sports court records."
+    },
+    {
+      "rank": 55,
+      "dedicated_agent": "/root/audit55_bikewash",
+      "type": "Bike wash",
+      "building_count": 6,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Bike washing is a distinct capability from storage, repair, and pet washing, including when facilities share a station.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "arlo",
+          "name": "Arlo",
+          "saved_source_descriptions": [
+            "pet and bike wash station"
+          ]
+        },
+        {
+          "id": "baldwyn",
+          "name": "Baldwyn",
+          "saved_source_descriptions": [
+            "bike storage and bike wash"
+          ]
+        },
+        {
+          "id": "modera-northgate",
+          "name": "Modera Northgate",
+          "saved_source_descriptions": [
+            "controlled-access bike storage with repair and wash station"
+          ]
+        },
+        {
+          "id": "modera-shoreline",
+          "name": "Modera Shoreline",
+          "saved_source_descriptions": [
+            "bicycle wash room"
+          ]
+        },
+        {
+          "id": "surrey-on-main",
+          "name": "Surrey on Main",
+          "saved_source_descriptions": [
+            "on-site bike wash"
+          ]
+        },
+        {
+          "id": "tower-12",
+          "name": "Tower 12",
+          "saved_source_descriptions": [
+            "bike wash and storage"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Bike repair",
+        "Bike storage",
+        "Pet wash station"
+      ],
+      "source_urls": [
+        "https://www.arloseattle.com/amenities",
+        "https://www.liveatbaldwyn.com/amenities",
+        "https://www.moderanorthgateseattle.com/seattle/modera-northgate/amenities/",
+        "https://www.moderashoreline.com/shoreline/modera-shoreline/amenities/",
+        "https://surreyonmain.com/amenities/",
+        "https://www.tower12.com/amenities"
+      ],
+      "caveats": "Arlo and Modera Northgate group washing with another function in a station/area; Baldwyn and Tower 12 pair it with bike storage. Preserve those combinations in source descriptions. The official pages establish shared community amenity use, but do not give access hours or usage rules.",
+      "prior_decision": "No direct prior type-level recommendation was found; this type was outside the previous one-building amenity audit. The existing taxonomy policy explicitly keeps bike storage, repair, and wash as separate functions, and this recommendation reaffirms that policy."
+    },
+    {
+      "rank": 56,
+      "dedicated_agent": "/root/audit56_classes",
+      "type": "Fitness classes",
+      "building_count": 6,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Retain explicit guided or organized fitness programming separately from facilities. Equipment-only class libraries require record-level review, not retirement of the category.",
+      "confidence": "medium-high",
+      "buildings": [
+        {
+          "id": "modera-broadway",
+          "name": "Modera Broadway",
+          "saved_source_descriptions": [
+            "guided virtual fitness classes with a live coach"
+          ]
+        },
+        {
+          "id": "modera-northgate",
+          "name": "Modera Northgate",
+          "saved_source_descriptions": [
+            "on-demand fitness"
+          ]
+        },
+        {
+          "id": "parque-kirkland",
+          "name": "Parque Kirkland",
+          "saved_source_descriptions": [
+            "fitness center with peloton classes and daily towel service"
+          ]
+        },
+        {
+          "id": "the-ivey-on-boren",
+          "name": "The Ivey on Boren",
+          "saved_source_descriptions": [
+            "resident wellness program with personal training and weekly classes"
+          ]
+        },
+        {
+          "id": "the-waverly",
+          "name": "The Waverly",
+          "saved_source_descriptions": [
+            "monthly resident events and group fitness classes"
+          ]
+        },
+        {
+          "id": "vela",
+          "name": "Vela",
+          "saved_source_descriptions": [
+            "guided fitness classes"
+          ]
+        }
+      ],
+      "comparison_types": "Gym identifies an exercise facility; Yoga studio, Spin studio, and HIIT studio identify activity-specific spaces. Fitness classes describes guided or organized programming and should coexist when explicitly offered. Do not infer a class room from the label. For Peloton class access and generic on-demand workout libraries, preserve these as Gym details unless the source establishes a distinct guided or resident class program.",
+      "source_urls": [
+        "https://www.moderabroadway.com/seattle-wa-apartment/modera-broadway/amenities/",
+        "https://www.moderanorthgateseattle.com/seattle/modera-northgate/amenities/",
+        "https://www.parquekirkland.com/amenities",
+        "https://www.hollandresidential.com/wa/seattle/the-ivey-on-boren/wellness",
+        "https://thewaverlyslu.com/amenities/",
+        "https://www.velakirkland.com/amenities"
+      ],
+      "caveats": "Evidence ranges from live-coach virtual classes and resident group programming to on-demand content delivered through gym equipment. Published pages do not consistently establish whether classes are free, fee-based, scheduled, or continuously available. The label should capture explicit resident fitness programming and class access, without implying that all six properties host instructor-led sessions or that access is included in rent.",
+      "prior_decision": "No change recommended. Current rules explicitly retain Fitness classes as a practical/distinctive category; rules also treat personal training and certain wellness-program details as Gym details. Preserve that boundary: retain explicit class offerings, but attach equipment-only/on-demand class content to Gym descriptions where there is no separate program."
+    },
+    {
+      "rank": 57,
+      "dedicated_agent": "/root/audit57_karaoke",
+      "type": "Karaoke",
+      "building_count": 6,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Retain the activity label across machines, corners, and rooms without promising a dedicated karaoke room.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "jack-apartments",
+          "name": "Jack Apartments",
+          "saved_source_descriptions": [
+            "Social lounge with DJ booth, karaoke and TV."
+          ]
+        },
+        {
+          "id": "mason-main",
+          "name": "Mason & Main",
+          "saved_source_descriptions": [
+            "karaoke corner"
+          ]
+        },
+        {
+          "id": "o2",
+          "name": "O2",
+          "saved_source_descriptions": [
+            "karaoke room"
+          ]
+        },
+        {
+          "id": "onni-south-lake-union",
+          "name": "Onni South Lake Union",
+          "saved_source_descriptions": [
+            "karaoke room"
+          ]
+        },
+        {
+          "id": "seattle-house",
+          "name": "Seattle House",
+          "saved_source_descriptions": [
+            "karaoke"
+          ]
+        },
+        {
+          "id": "woodworth",
+          "name": "Woodworth",
+          "saved_source_descriptions": [
+            "amp lounge with wet bar, private karaoke room, arcade games and stage"
+          ]
+        }
+      ],
+      "comparison_types": [
+        "Resident lounge",
+        "Game room"
+      ],
+      "source_urls": [
+        "https://jackapts.com/",
+        "https://www.masonandmainapartments.com/amenities",
+        "https://www.o2apartments.com/amenities",
+        "https://onnislu.com/amenities/",
+        "https://www.seattlehouse.com/apartments/amenities/",
+        "https://liveatwoodworth.com/community/"
+      ],
+      "caveats": "Preserve each original description so room-based facilities remain distinguishable from a karaoke machine or corner. The label does not promise a dedicated room, equipment quality, reservation terms, or unrestricted availability.",
+      "prior_decision": "No change to the supplied rules: Karaoke is already a canonical label, and the existing exact mappings keep 'karaoke', 'karaoke corner', 'karaoke room', and the social-lounge karaoke description under Karaoke. No rank-specific prior decision was found in the supplied files."
+    },
+    {
+      "rank": 58,
+      "dedicated_agent": "/root/audit58_kitchenette",
+      "type": "Kitchenette",
+      "building_count": 6,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Preserve the compact-kitchen distinction; a kitchenette or small refreshment station does not establish full cooking facilities.",
+      "confidence": "medium-high",
+      "buildings": [
+        {
+          "id": "baldwyn",
+          "name": "Baldwyn",
+          "saved_source_descriptions": [
+            "social parlor with cocktail kitchen, lounge seating and bar seating"
+          ]
+        },
+        {
+          "id": "beam",
+          "name": "BEAM",
+          "saved_source_descriptions": [
+            "sky lounge with two-sided fireplace, kitchenette, dining nooks and big-screen media room"
+          ]
+        },
+        {
+          "id": "boardwalk-kirkland",
+          "name": "Boardwalk Kirkland",
+          "saved_source_descriptions": [
+            "indoor/outdoor lounge with pool table and shared kitchen appliances"
+          ]
+        },
+        {
+          "id": "modera-northgate",
+          "name": "Modera Northgate",
+          "saved_source_descriptions": [
+            "indoor children’s playroom with kitchenette, reading nooks and chalkboard room"
+          ]
+        },
+        {
+          "id": "modera-overlake",
+          "name": "Modera Overlake",
+          "saved_source_descriptions": [
+            "theater room with HDTVs, lounge seating and micro kitchen"
+          ]
+        },
+        {
+          "id": "zinnia",
+          "name": "Zinnia",
+          "saved_source_descriptions": [
+            "resident lounge with kitchenette, coffee machine, mini-fridge, dining table and tv seating"
+          ]
+        }
+      ],
+      "comparison_types": "Shared kitchen (55 buildings) remains appropriate for explicitly communal, demonstration, catering, or gourmet kitchens. Outdoor kitchen remains a separate location/use label. Existing taxonomy guidance preserves kitchen versus kitchenette as meaningful subtypes and prohibits inferring a full kitchen from a kitchenette or appliance list.",
+      "source_urls": [
+        "https://www.liveatbaldwyn.com/amenities",
+        "https://www.beamapts.com/amenities",
+        "https://kirklandboardwalk.com/amenities/",
+        "https://www.moderanorthgateseattle.com/seattle/modera-northgate/amenities/",
+        "https://www.moderaoverlake.com/redmond/modera-overlake/amenities/",
+        "https://www.liveatzinnia.com/amenities"
+      ],
+      "caveats": [
+        "Some kitchenettes are ancillary to another space (Adventure Camp, theater, lounge) rather than a standalone kitchen room; preserve that context in source descriptions.",
+        "Do not imply stoves, ovens, cookware, meal-preparation capability, or unrestricted resident use unless the source states it. Boardwalk's appliance list and Zinnia's kitchenette caption establish only the named equipment.",
+        "Baldwyn's cocktail kitchen wording does not establish cooking equipment; retain the conservative Kitchenette interpretation and source wording."
+      ],
+      "prior_decision": "No Kitchenette decision appears in the prior rare-label review. This keeps the current label and aligns with the existing kitchen-versus-kitchenette policy."
+    },
+    {
+      "rank": 59,
+      "dedicated_agent": "/root/audit59_makerspace",
+      "type": "Makerspace",
+      "building_count": 6,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Resident maker rooms and DIY workshops support a consistent category distinct from tool lending, bike repair, and coworking.",
+      "confidence": "high",
+      "buildings": [
+        {
+          "id": "amli-arc",
+          "name": "AMLI Arc",
+          "saved_source_descriptions": [
+            "maker space"
+          ]
+        },
+        {
+          "id": "amli-bellevue-park",
+          "name": "AMLI Bellevue Park",
+          "saved_source_descriptions": [
+            "maker lab"
+          ]
+        },
+        {
+          "id": "amli-wallingford",
+          "name": "AMLI Wallingford",
+          "saved_source_descriptions": [
+            "DIY workshop"
+          ]
+        },
+        {
+          "id": "hilite",
+          "name": "Hilite",
+          "saved_source_descriptions": [
+            "workshop/hobby locker with bike repair and tools to borrow"
+          ]
+        },
+        {
+          "id": "mason-main",
+          "name": "Mason & Main",
+          "saved_source_descriptions": [
+            "makers studio"
+          ]
+        },
+        {
+          "id": "modera-overlake",
+          "name": "Modera Overlake",
+          "saved_source_descriptions": [
+            "DIY project room with music system"
+          ]
+        }
+      ],
+      "comparison_types": "Keep distinct from Art studio (art-specific space), Tool lending (a borrowing service), Bike repair (repair facility), and Coworking (work space). Hilite's workshop also supports bike repair and tools-to-borrow, but co-located functions do not make the maker facility synonymous with those services. Existing compact_label_review already maps Workshop / makerspace to Makerspace.",
+      "source_urls": [
+        "https://www.amli.com/apartments/seattle/downtown-seattle-apartments/amli-arc",
+        "https://www.amli.com/apartments/seattle/bellevue-apartments/amli-bellevue-park/amenities",
+        "https://www.amli.com/apartments/seattle/wallingford-apartments/amli-wallingford",
+        "https://www.hiliteapartments.com/amenities/",
+        "https://www.masonandmainapartments.com/amenities",
+        "https://www.moderaoverlake.com/redmond/modera-overlake/amenities/"
+      ],
+      "caveats": [
+        "Preserve the original facility wording and context; do not imply particular tools, machinery, materials, or classes beyond what each property's source states.",
+        "At Hilite, retain Makerspace alongside Bike repair and Tool lending only because the source separately describes a well-equipped workshop, bike repair, and tools to borrow; deduplicate each canonical label per building."
+      ],
+      "prior_decision": "No Makerspace recommendation appears in the previous rare-label review. The previously approved compact_label_review maps Workshop / makerspace to Makerspace; this audit affirms that canonical label."
+    },
+    {
+      "rank": 60,
+      "dedicated_agent": "/root/audit60_pavilion",
+      "type": "Pavilion",
+      "building_count": 6,
+      "recommended_action": "keep",
+      "target": null,
+      "assessment": "Keep explicitly named pavilions and gazebos with location and use details. Recheck The Whittaker’s historical pavilion wording.",
+      "confidence": "medium-high",
+      "buildings": [
+        {
+          "id": "arlo",
+          "name": "Arlo",
+          "saved_source_descriptions": [
+            "heated courtyard pavilion with grill station, fire pit, and outdoor dining"
+          ]
+        },
+        {
+          "id": "canopy",
+          "name": "Canopy",
+          "saved_source_descriptions": [
+            "pavilion"
+          ]
+        },
+        {
+          "id": "one-lakefront",
+          "name": "One Lakefront",
+          "saved_source_descriptions": [
+            "indoor pavilion with fireplace"
+          ]
+        },
+        {
+          "id": "shorewood",
+          "name": "Shorewood",
+          "saved_source_descriptions": [
+            "Outdoor sports pavilion"
+          ]
+        },
+        {
+          "id": "the-loop-at-green-lake",
+          "name": "The Loop at Green Lake",
+          "saved_source_descriptions": [
+            "rooftop terrace with firepit, lounge seating and gazebo"
+          ]
+        },
+        {
+          "id": "the-whittaker",
+          "name": "The Whittaker",
+          "saved_source_descriptions": [
+            "courtyard pavilion"
+          ]
+        }
+      ],
+      "comparison_types": "Courtyard (73), Rooftop deck (198), and Terrace / patio (56) describe the underlying outdoor area; Resident lounge (224) describes a gathering-room function; Event space (9) describes a venue/use. Keep Pavilion only when the source explicitly identifies a pavilion or gazebo structure. It may coexist with the parent outdoor-space label when both are explicit; do not infer Pavilion from covered seating, a pergola, generic lounge, courtyard, or event space alone. The Loop's gazebo is a pavilion-like structure; preserve its rooftop location in details.",
+      "source_urls": [
+        "https://www.arloseattle.com/blog/inside-out-arlos-heated-pavilion-courtyard",
+        "https://www.sheaapartments.com/apartments/canopy/",
+        "https://www.hollandresidential.com/wa/seattle/one-lakefront/amenities",
+        "https://www.shorewoodmercerisland.com/",
+        "https://www.theloopgreenlake.com/amenities",
+        "https://www.windsorcommunities.com/properties/the-whittaker/"
+      ],
+      "caveats": "The category spans indoor pavilion rooms, outdoor sports/event pavilions, and a rooftop gazebo, so keep each original description to retain location and purpose. Whittaker's current official listing no longer says pavilion and describes a glass-enclosed courtyard room; that one label needs source verification and should not be inferred from 'Jewelbox.' The Loop's evidence is from official gallery captions rather than the amenity bullets.",
+      "prior_decision": "No prior approved decision for Pavilion was found. Keep the category. The current official Whittaker source does not substantiate its recorded pavilion wording, so verify or remove that single building assignment; this does not justify removing the category."
+    }
+  ]
+}

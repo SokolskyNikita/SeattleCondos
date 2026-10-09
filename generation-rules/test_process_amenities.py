@@ -43,7 +43,7 @@ class AmenityProcessingTests(unittest.TestCase):
     def test_meaningful_subtype_distinctions(self):
         for source, expected in {
             "EV-ready parking": {"Parking"},
-            "EV parking": {"EV parking"},
+            "EV parking": {"Parking"},
             "bike racks": {"Bike parking"},
             "bike storage": {"Bike storage"},
             "rooftop pet relief area and self-service pet wash": {"Pet relief area", "Pet wash station"},
@@ -58,6 +58,37 @@ class AmenityProcessingTests(unittest.TestCase):
     def test_all_canonical_labels_can_be_reused_as_inputs(self):
         for label in self.rules["canonical_amenities"]:
             self.assertEqual(self.labels(label), {label})
+
+    def test_picnic_context_needs_independent_grill_evidence(self):
+        alone, _ = processor.process(self.fixture(["picnic area"]), self.rules)
+        self.assertEqual(alone["buildings"][0]["amenities"], [])
+        together, _ = processor.process(self.fixture(["picnic area", "BBQ/Picnic Area"]), self.rules)
+        details = together["buildings"][0]["amenity_details"]["BBQs"]
+        self.assertEqual(details["source_descriptions"], ["BBQ/Picnic Area"])
+        self.assertEqual(details["related_details"][0]["source_description"], "picnic area")
+
+    def test_wellness_routing_requires_explicit_activity(self):
+        zen = "landscaped courtyard and indoor/outdoor zen room"
+        alone, _ = processor.process(self.fixture([zen, "wellness studio"]), self.rules)
+        self.assertEqual(alone["buildings"][0]["amenities"], ["Courtyard"])
+        yoga = "indoor/outdoor zen room for yoga postures"
+        supported, _ = processor.process(self.fixture([zen, yoga]), self.rules)
+        details = supported["buildings"][0]["amenity_details"]["Yoga studio"]
+        self.assertEqual(details["source_descriptions"], [yoga])
+        self.assertEqual(details["related_details"][0]["source_description"], zen)
+
+    def test_full_audit_preserves_user_selected_names_and_source_context(self):
+        for label in ["Private dining room", "Package service", "Movie theater", "Gym",
+                      "Resident lounge", "Yoga studio", "Parking", "BBQs"]:
+            with self.subTest(label=label):
+                self.assertEqual(self.labels(label), {label})
+        sources = ["elevated park with walking paths and firepits", "Pilates studio", "lakefront access"]
+        result, _ = processor.process(self.fixture(sources), self.rules)
+        building = result["buildings"][0]
+        self.assertEqual(building["amenities"], ["Fire pit", "Shared park"])
+        self.assertEqual(building["amenities_original"], sources)
+        self.assertEqual(building["amenity_details"]["Shared park"]["source_descriptions"], sources[:1])
+        self.assertEqual({n["source"] for n in building["amenity_review_notes"]}, set(sources[1:]))
 
     def test_rare_components_fold_without_losing_parent_features(self):
         for source, expected in {

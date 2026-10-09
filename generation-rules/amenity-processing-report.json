@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
   "processed_at": "2026-10-09",
-  "rules_version": "1.4.2",
-  "rules_sha256": "670d1fc1496b5c2707fe16f78b45bb35c3fbb4f1c8b28004268a9832f3a114b4",
-  "original_names_sha256": "b8d13c673abcde3f06037dda0bcfcd30e3f231b1c8a63cf7cc7f126601d1638a",
+  "rules_version": "1.5.0",
+  "rules_sha256": "6cc8c276549e6f6e02b6f3144ee10feff2a59f34313de7911197da855a80ea2a",
+  "original_names_sha256": "a309c2d2a0cdcb3ab4f70b9b6745a94b35f6021956db914985ff483e509975bf",
   "summary": {
     "buildings_processed": 337,
-    "original_amenity_entries": 2146,
-    "unique_original_source_names": 1167,
-    "unique_normalized_source_names": 1119,
-    "processed_amenity_entries": 2522,
-    "unique_canonical_amenities_in_use": 112,
-    "fully_excluded_source_entries": 98,
-    "fully_excluded_unique_source_names": 77,
-    "expanded_feature_mentions_before_deduplication": 2618,
-    "duplicate_feature_mentions_removed": 96,
-    "buildings_with_ambiguous_names": 82,
+    "original_amenity_entries": 2148,
+    "unique_original_source_names": 1169,
+    "unique_normalized_source_names": 1120,
+    "processed_amenity_entries": 2498,
+    "unique_canonical_amenities_in_use": 104,
+    "fully_excluded_source_entries": 108,
+    "fully_excluded_unique_source_names": 81,
+    "expanded_feature_mentions_before_deduplication": 2596,
+    "duplicate_feature_mentions_removed": 98,
+    "buildings_with_ambiguous_names": 86,
     "buildings_without_retained_amenities": 0,
     "buildings_removed": 0,
     "unmapped_source_names": 0
@@ -53,6 +53,7 @@
     "gym access": 1,
     "hydration and beverage stations in lobby and wellness area": 1,
     "indoor/outdoor lobby": 1,
+    "lakefront access": 1,
     "landscaped grounds": 2,
     "large-format video wall for game days and entertainment": 1,
     "lobby": 1,
@@ -70,6 +71,8 @@
     "outdoor semi-private dining area": 1,
     "peloton": 1,
     "pet-friendly spaces": 2,
+    "picnic area": 7,
+    "pilates studio": 1,
     "planned social activities": 1,
     "printer service": 1,
     "private balconies": 1,
@@ -93,6 +96,7 @@
     "trailhead room with books and maps": 1,
     "trx training": 1,
     "two rooftop amenity spaces": 1,
+    "walking trails": 1,
     "water feature": 1,
     "wi-fi in common areas": 3,
     "wi-fi in several common areas": 1,
@@ -105,15 +109,16 @@
     "Bar": 14,
     "Barre/stretch studio": 1,
     "Basketball court": 3,
-    "BBQs": 191,
+    "BBQs": 192,
     "Beach club": 1,
     "Bike parking": 8,
     "Bike repair": 33,
     "Bike storage": 103,
     "Bike wash": 6,
-    "Bocce court": 5,
+    "Bocce": 5,
     "Bowling alley": 1,
     "Cabanas": 5,
+    "Children's playroom": 2,
     "Climbing wall": 4,
     "Coffee bar": 28,
     "Cold plunge": 1,
@@ -125,7 +130,6 @@
     "Dry cleaning service": 1,
     "EV car share": 2,
     "EV charging": 55,
-    "EV parking": 4,
     "Event space": 9,
     "Fire pit": 91,
     "Fireplace": 28,
@@ -133,7 +137,6 @@
     "Foosball": 4,
     "Game room": 33,
     "Garden": 11,
-    "Gardening plots": 3,
     "Golf simulator": 2,
     "Green screen studio": 1,
     "Guest parking": 2,
@@ -145,7 +148,6 @@
     "Karaoke": 6,
     "Kayak access": 2,
     "Kitchenette": 6,
-    "Lakefront access": 1,
     "Library": 8,
     "Makerspace": 6,
     "Meeting room": 45,
@@ -153,7 +155,6 @@
     "Movie theater": 44,
     "Music room": 3,
     "Outdoor fireplace": 15,
-    "Outdoor fitness area": 1,
     "Outdoor games": 3,
     "Outdoor kitchen": 13,
     "Outdoor movie screen": 2,
@@ -161,29 +162,26 @@
     "Package room": 23,
     "Package service": 20,
     "Paddleboard access": 3,
-    "Parking": 73,
+    "Parking": 74,
     "Pavilion": 6,
     "Pet area": 17,
     "Pet grooming station": 12,
     "Pet relief area": 5,
     "Pet spa": 19,
     "Pet wash station": 50,
-    "Picnic area": 15,
-    "Pilates studio": 1,
     "Pizza oven": 2,
     "Playground": 1,
-    "Playroom": 2,
     "Podcast room": 3,
-    "Poker tables": 2,
+    "Poker table": 2,
     "Pool": 34,
     "Pool table": 41,
     "Private dining room": 4,
     "Private workspace": 15,
     "Putting green": 2,
-    "Recreation room": 2,
     "Refrigerated package storage": 6,
     "Rehearsal room": 1,
-    "Resident lounge": 224,
+    "Resident gardening": 3,
+    "Resident lounge": 226,
     "Rooftop deck": 198,
     "Rooftop garden": 14,
     "Rooftop lounge": 54,
@@ -206,10 +204,8 @@
     "Treatment room": 2,
     "Valet trash service": 2,
     "VR room": 1,
-    "Walking trails": 2,
-    "Wellness studio": 3,
     "Wine storage": 1,
-    "Yoga studio": 38,
+    "Yoga studio": 39,
     "Yoga/Pilates studio": 1,
     "Yoga/spin studio": 3
   },
@@ -403,7 +399,7 @@
       "notes": [
         {
           "source": "landscaped courtyard and indoor/outdoor zen room",
-          "reason": "The function of the zen room is unclear."
+          "reason": "The zen-room phrase alone does not specify an activity. Retain its context with Yoga studio only when separate reviewed evidence explicitly establishes yoga use."
         },
         {
           "source": "sky lounge with two-sided fireplace, kitchenette, dining nooks and big-screen media room",
@@ -466,6 +462,16 @@
       ]
     },
     {
+      "id": "clarendon",
+      "name": "Clarendon",
+      "notes": [
+        {
+          "source": "Pilates studio",
+          "reason": "This reviewed source refers to Clarendon’s attached commercial Pilates business with a 20% resident discount, not a shared resident studio. Preserve the benefit in building notes. Future genuine shared Pilates facilities require a separately reviewed mapping."
+        }
+      ]
+    },
+    {
       "id": "colina-apartments",
       "name": "Colina Apartments",
       "notes": [
@@ -514,6 +520,16 @@
       ]
     },
     {
+      "id": "equinox-apartments",
+      "name": "Equinox Apartments",
+      "notes": [
+        {
+          "source": "lakefront access",
+          "reason": "Withheld pending evidence of property-provided lakefront access; the reviewed Equinox claim does not distinguish a resident amenity from nearby public shoreline access. Original wording remains location context."
+        }
+      ]
+    },
+    {
       "id": "excelsior-seattle",
       "name": "Excelsior Seattle",
       "notes": [
@@ -539,7 +555,17 @@
       "notes": [
         {
           "source": "ev parking (optional paid spaces)",
-          "reason": "EV parking does not establish charging or EV-ready infrastructure."
+          "reason": "EV-designated parking is included in Parking; the wording does not establish installed charging or EV-ready electrical infrastructure."
+        }
+      ]
+    },
+    {
+      "id": "green-leaf-shoreline",
+      "name": "Green Leaf Shoreline",
+      "notes": [
+        {
+          "source": "gated garage, ev parking spaces and surface parking available for rent",
+          "reason": "EV-designated parking is included in Parking; the wording does not establish installed charging or EV-ready electrical infrastructure."
         }
       ]
     },
@@ -672,6 +698,16 @@
       ]
     },
     {
+      "id": "kirkland-crossing",
+      "name": "Kirkland Crossing",
+      "notes": [
+        {
+          "source": "walking trails",
+          "reason": "Withheld pending evidence of a property-provided route or resident-specific access at Kirkland Crossing. Preserve the wording as location context. Kiara’s independently named paths remain within Shared park details."
+        }
+      ]
+    },
+    {
       "id": "mason-main",
       "name": "Mason & Main",
       "notes": [
@@ -771,7 +807,7 @@
         },
         {
           "source": "underground parking with designated electric vehicle spaces",
-          "reason": "EV spaces are named, but installed chargers are not established."
+          "reason": "EV-designated parking is included in Parking; the wording does not establish installed charging or EV-ready electrical infrastructure."
         }
       ]
     },
@@ -989,7 +1025,7 @@
       "notes": [
         {
           "source": "EV parking",
-          "reason": "EV parking does not establish charging or EV-ready infrastructure."
+          "reason": "EV-designated parking is included in Parking; the wording does not establish installed charging or EV-ready electrical infrastructure."
         }
       ]
     },
