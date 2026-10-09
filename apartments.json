@@ -63,6 +63,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 436.0,
+        "duration_minutes": 7.27,
         "distance_meters": 1783,
         "route": "Mercer St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -137,6 +138,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 322.0,
+        "duration_minutes": 5.37,
         "distance_meters": 1494,
         "route": "Westlake Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -194,6 +196,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 416.0,
+        "duration_minutes": 6.93,
         "distance_meters": 1310,
         "route": "Westlake Ave N and Lenora St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -269,6 +272,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 386.0,
+        "duration_minutes": 6.43,
         "distance_meters": 1903,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -331,6 +335,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 989.0,
+        "duration_minutes": 16.48,
         "distance_meters": 15958,
         "route": "I-5 Express N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -394,6 +399,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 963.0,
+        "duration_minutes": 16.05,
         "distance_meters": 10996,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -458,6 +464,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 956.0,
+        "duration_minutes": 15.93,
         "distance_meters": 11110,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -539,6 +546,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 473.0,
+        "duration_minutes": 7.88,
         "distance_meters": 2258,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -608,6 +616,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 436.0,
+        "duration_minutes": 7.27,
         "distance_meters": 2346,
         "route": "Thomas St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -671,6 +680,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 362.0,
+        "duration_minutes": 6.03,
         "distance_meters": 1246,
         "route": "9th Ave N and Mercer St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -763,6 +773,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 708.0,
+        "duration_minutes": 11.8,
         "distance_meters": 11814,
         "route": "I-90 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -820,6 +831,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 648.0,
+        "duration_minutes": 10.8,
         "distance_meters": 4267,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -898,6 +910,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 990.0,
+        "duration_minutes": 16.5,
         "distance_meters": 16224,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -961,6 +974,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 132.0,
+        "duration_minutes": 2.2,
         "distance_meters": 418,
         "route": "9th Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1027,6 +1041,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 583.0,
+        "duration_minutes": 9.72,
         "distance_meters": 5607,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1084,6 +1099,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1169.0,
+        "duration_minutes": 19.48,
         "distance_meters": 20378,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1138,6 +1154,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1150.0,
+        "duration_minutes": 19.17,
         "distance_meters": 23104,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1208,6 +1225,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 767.0,
+        "duration_minutes": 12.78,
         "distance_meters": 9997,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1269,6 +1287,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 132.0,
+        "duration_minutes": 2.2,
         "distance_meters": 456,
         "route": "Thomas St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1337,6 +1356,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 371.0,
+        "duration_minutes": 6.18,
         "distance_meters": 1541,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1402,6 +1422,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 844.0,
+        "duration_minutes": 14.07,
         "distance_meters": 10752,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1468,6 +1489,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 231.0,
+        "duration_minutes": 3.85,
         "distance_meters": 778,
         "route": "Thomas St and Fairview Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1541,6 +1563,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 269.0,
+        "duration_minutes": 4.48,
         "distance_meters": 932,
         "route": "Westlake Ave N and Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1612,6 +1635,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 986.0,
+        "duration_minutes": 16.43,
         "distance_meters": 14176,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1684,6 +1708,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 961.0,
+        "duration_minutes": 16.02,
         "distance_meters": 8030,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1744,6 +1769,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 603.0,
+        "duration_minutes": 10.05,
         "distance_meters": 6536,
         "route": "I-5 Express N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1809,6 +1835,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 601.0,
+        "duration_minutes": 10.02,
         "distance_meters": 1924,
         "route": "Westlake Ave N, Lenora St and Western Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1876,6 +1903,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 784.0,
+        "duration_minutes": 13.07,
         "distance_meters": 7322,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -1936,6 +1964,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 193.0,
+        "duration_minutes": 3.22,
         "distance_meters": 764,
         "route": "Westlake Ave N and Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2001,6 +2030,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 572.0,
+        "duration_minutes": 9.53,
         "distance_meters": 4544,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2077,6 +2107,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 253.0,
+        "duration_minutes": 4.22,
         "distance_meters": 1104,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2149,6 +2180,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 961.0,
+        "duration_minutes": 16.02,
         "distance_meters": 17616,
         "route": "I-5 Express N and I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2209,6 +2241,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 973.0,
+        "duration_minutes": 16.22,
         "distance_meters": 10955,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2280,6 +2313,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 449.0,
+        "duration_minutes": 7.48,
         "distance_meters": 3719,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2352,6 +2386,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 956.0,
+        "duration_minutes": 15.93,
         "distance_meters": 6899,
         "route": "Elliott Ave W and 15th Ave W",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2428,6 +2463,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 293.0,
+        "duration_minutes": 4.88,
         "distance_meters": 929,
         "route": "Westlake Ave N and Lenora St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2503,6 +2539,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 489.0,
+        "duration_minutes": 8.15,
         "distance_meters": 1662,
         "route": "Wall St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2570,6 +2607,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 508.0,
+        "duration_minutes": 8.47,
         "distance_meters": 2239,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2643,6 +2681,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 167.0,
+        "duration_minutes": 2.78,
         "distance_meters": 484,
         "route": "Thomas St and Boren Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2706,6 +2745,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 986.0,
+        "duration_minutes": 16.43,
         "distance_meters": 15398,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2768,6 +2808,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 269.0,
+        "duration_minutes": 4.48,
         "distance_meters": 949,
         "route": "Westlake Ave N, Denny Wy and Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2834,6 +2875,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 408.0,
+        "duration_minutes": 6.8,
         "distance_meters": 1885,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2904,6 +2946,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 987.0,
+        "duration_minutes": 16.45,
         "distance_meters": 20068,
         "route": "I-5 Express N and I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -2964,6 +3007,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 500.0,
+        "duration_minutes": 8.33,
         "distance_meters": 5211,
         "route": "I-5 Express N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3030,6 +3074,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 945.0,
+        "duration_minutes": 15.75,
         "distance_meters": 16020,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3094,6 +3139,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 406.0,
+        "duration_minutes": 6.77,
         "distance_meters": 1265,
         "route": "Wall St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3148,6 +3194,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1103.0,
+        "duration_minutes": 18.38,
         "distance_meters": 17019,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3204,6 +3251,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 960.0,
+        "duration_minutes": 16.0,
         "distance_meters": 15171,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3266,6 +3314,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1041.0,
+        "duration_minutes": 17.35,
         "distance_meters": 21285,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3323,6 +3372,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 754.0,
+        "duration_minutes": 12.57,
         "distance_meters": 11529,
         "route": "I-90 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3380,6 +3430,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 295.0,
+        "duration_minutes": 4.92,
         "distance_meters": 1397,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3446,6 +3497,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 753.0,
+        "duration_minutes": 12.55,
         "distance_meters": 6110,
         "route": "Westlake Ave N and Nickerson St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3523,6 +3575,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 838.0,
+        "duration_minutes": 13.97,
         "distance_meters": 11287,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3589,6 +3642,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1040.0,
+        "duration_minutes": 17.33,
         "distance_meters": 8279,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3648,6 +3702,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1036.0,
+        "duration_minutes": 17.27,
         "distance_meters": 9657,
         "route": "Aurora Ave N and N 65th St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3704,6 +3759,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 980.0,
+        "duration_minutes": 16.33,
         "distance_meters": 8090,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3764,6 +3820,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 599.0,
+        "duration_minutes": 9.98,
         "distance_meters": 2435,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3831,6 +3888,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 818.0,
+        "duration_minutes": 13.63,
         "distance_meters": 10624,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3899,6 +3957,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 624.0,
+        "duration_minutes": 10.4,
         "distance_meters": 5508,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -3963,6 +4022,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 993.0,
+        "duration_minutes": 16.55,
         "distance_meters": 15317,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4028,6 +4088,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1009.0,
+        "duration_minutes": 16.82,
         "distance_meters": 18604,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4075,6 +4136,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 377.0,
+        "duration_minutes": 6.28,
         "distance_meters": 1477,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4146,6 +4208,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 647.0,
+        "duration_minutes": 10.78,
         "distance_meters": 2193,
         "route": "Boren Ave and Pike St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4212,6 +4275,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1128.0,
+        "duration_minutes": 18.8,
         "distance_meters": 16744,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4271,6 +4335,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 457.0,
+        "duration_minutes": 7.62,
         "distance_meters": 4320,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4341,6 +4406,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 51.0,
+        "duration_minutes": 0.85,
         "distance_meters": 204,
         "route": "Westlake Ave N and John St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4415,6 +4481,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 956.0,
+        "duration_minutes": 15.93,
         "distance_meters": 16015,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4486,6 +4553,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 711.0,
+        "duration_minutes": 11.85,
         "distance_meters": 2860,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4563,6 +4631,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 673.0,
+        "duration_minutes": 11.22,
         "distance_meters": 7293,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4646,6 +4715,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1100.0,
+        "duration_minutes": 18.33,
         "distance_meters": 18505,
         "route": "I-5 Express N and I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4704,6 +4774,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 451.0,
+        "duration_minutes": 7.52,
         "distance_meters": 2611,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4774,6 +4845,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 629.0,
+        "duration_minutes": 10.48,
         "distance_meters": 3047,
         "route": "E Mercer St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4839,6 +4911,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 370.0,
+        "duration_minutes": 6.17,
         "distance_meters": 1452,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4913,6 +4986,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1182.0,
+        "duration_minutes": 19.7,
         "distance_meters": 16881,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -4965,6 +5039,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1168.0,
+        "duration_minutes": 19.47,
         "distance_meters": 22667,
         "route": "I-5 Express N and I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5020,6 +5095,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 232.0,
+        "duration_minutes": 3.87,
         "distance_meters": 1061,
         "route": "Thomas St and Eastlake Ave E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5084,6 +5160,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 124.0,
+        "duration_minutes": 2.07,
         "distance_meters": 440,
         "route": "Thomas St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5159,6 +5236,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 332.0,
+        "duration_minutes": 5.53,
         "distance_meters": 1087,
         "route": "Bell St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5223,6 +5301,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1132.0,
+        "duration_minutes": 18.87,
         "distance_meters": 19664,
         "route": "Hwy 99 S and State Rte 509 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5278,6 +5357,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 737.0,
+        "duration_minutes": 12.28,
         "distance_meters": 2791,
         "route": "Boren Ave and E Union St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5333,6 +5413,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 706.0,
+        "duration_minutes": 11.77,
         "distance_meters": 2884,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5397,6 +5478,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 465.0,
+        "duration_minutes": 7.75,
         "distance_meters": 3455,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5455,6 +5537,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 683.0,
+        "duration_minutes": 11.38,
         "distance_meters": 7406,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5513,6 +5596,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 703.0,
+        "duration_minutes": 11.72,
         "distance_meters": 2330,
         "route": "Boren Ave and Pike St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5574,6 +5658,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 870.0,
+        "duration_minutes": 14.5,
         "distance_meters": 10691,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5650,6 +5735,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 913.0,
+        "duration_minutes": 15.22,
         "distance_meters": 10619,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5728,6 +5814,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 311.0,
+        "duration_minutes": 5.18,
         "distance_meters": 1454,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5792,6 +5879,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 717.0,
+        "duration_minutes": 11.95,
         "distance_meters": 7673,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5863,6 +5951,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 443.0,
+        "duration_minutes": 7.38,
         "distance_meters": 4371,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -5953,6 +6042,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 631.0,
+        "duration_minutes": 10.52,
         "distance_meters": 2539,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6019,6 +6109,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 918.0,
+        "duration_minutes": 15.3,
         "distance_meters": 10788,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6082,6 +6173,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 794.0,
+        "duration_minutes": 13.23,
         "distance_meters": 5746,
         "route": "Elliott Ave W and 15th Ave W",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6146,6 +6238,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 463.0,
+        "duration_minutes": 7.72,
         "distance_meters": 1860,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6220,6 +6313,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 432.0,
+        "duration_minutes": 7.2,
         "distance_meters": 2070,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6278,6 +6372,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 575.0,
+        "duration_minutes": 9.58,
         "distance_meters": 6831,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6340,6 +6435,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 476.0,
+        "duration_minutes": 7.93,
         "distance_meters": 2150,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6399,6 +6495,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1042.0,
+        "duration_minutes": 17.37,
         "distance_meters": 14297,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6471,6 +6568,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 776.0,
+        "duration_minutes": 12.93,
         "distance_meters": 5689,
         "route": "Elliott Ave W and 15th Ave W",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6553,6 +6651,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 227.0,
+        "duration_minutes": 3.78,
         "distance_meters": 993,
         "route": "Harrison St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6628,6 +6727,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 708.0,
+        "duration_minutes": 11.8,
         "distance_meters": 2833,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6698,6 +6798,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 331.0,
+        "duration_minutes": 5.52,
         "distance_meters": 1265,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6763,6 +6864,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 426.0,
+        "duration_minutes": 7.1,
         "distance_meters": 1410,
         "route": "Bell St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6819,6 +6921,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 342.0,
+        "duration_minutes": 5.7,
         "distance_meters": 2938,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6886,6 +6989,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 382.0,
+        "duration_minutes": 6.37,
         "distance_meters": 1310,
         "route": "Bell St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -6962,6 +7066,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 431.0,
+        "duration_minutes": 7.18,
         "distance_meters": 1560,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7036,6 +7141,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 400.0,
+        "duration_minutes": 6.67,
         "distance_meters": 2426,
         "route": "Thomas St and Eastlake Ave E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7098,6 +7204,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 591.0,
+        "duration_minutes": 9.85,
         "distance_meters": 3709,
         "route": "Eastlake Ave E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7165,6 +7272,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 602.0,
+        "duration_minutes": 10.03,
         "distance_meters": 7047,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7237,6 +7345,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 878.0,
+        "duration_minutes": 14.63,
         "distance_meters": 10990,
         "route": "Hwy 99 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7310,6 +7419,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1051.0,
+        "duration_minutes": 17.52,
         "distance_meters": 15958,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7382,6 +7492,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 957.0,
+        "duration_minutes": 15.95,
         "distance_meters": 8013,
         "route": "Aurora Ave N and N Market St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7445,6 +7556,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 342.0,
+        "duration_minutes": 5.7,
         "distance_meters": 1551,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7502,6 +7614,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1083.0,
+        "duration_minutes": 18.05,
         "distance_meters": 19635,
         "route": "I-90 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7560,6 +7673,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 351.0,
+        "duration_minutes": 5.85,
         "distance_meters": 1158,
         "route": "Westlake Ave N and Lenora St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7626,6 +7740,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 596.0,
+        "duration_minutes": 9.93,
         "distance_meters": 4629,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7709,6 +7824,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 380.0,
+        "duration_minutes": 6.33,
         "distance_meters": 2166,
         "route": "Thomas St and Eastlake Ave E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7782,6 +7898,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 525.0,
+        "duration_minutes": 8.75,
         "distance_meters": 2188,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7868,6 +7985,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 409.0,
+        "duration_minutes": 6.82,
         "distance_meters": 1584,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -7940,6 +8058,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 417.0,
+        "duration_minutes": 6.95,
         "distance_meters": 1712,
         "route": "Mercer St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8013,6 +8132,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1132.0,
+        "duration_minutes": 18.87,
         "distance_meters": 17846,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8071,6 +8191,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 816.0,
+        "duration_minutes": 13.6,
         "distance_meters": 10035,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8140,6 +8261,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1014.0,
+        "duration_minutes": 16.9,
         "distance_meters": 19483,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8197,6 +8319,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 287.0,
+        "duration_minutes": 4.78,
         "distance_meters": 1002,
         "route": "9th Ave N and Bell St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8261,6 +8384,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 568.0,
+        "duration_minutes": 9.47,
         "distance_meters": 4961,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8327,6 +8451,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 529.0,
+        "duration_minutes": 8.82,
         "distance_meters": 4275,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8383,6 +8508,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1001.0,
+        "duration_minutes": 16.68,
         "distance_meters": 17654,
         "route": "I-5 Express N and I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8441,6 +8567,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 688.0,
+        "duration_minutes": 11.47,
         "distance_meters": 7530,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8498,6 +8625,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 972.0,
+        "duration_minutes": 16.2,
         "distance_meters": 17447,
         "route": "I-5 Express N and I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8566,6 +8694,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 885.0,
+        "duration_minutes": 14.75,
         "distance_meters": 10758,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8649,6 +8778,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 477.0,
+        "duration_minutes": 7.95,
         "distance_meters": 1583,
         "route": "Wall St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8715,6 +8845,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 654.0,
+        "duration_minutes": 10.9,
         "distance_meters": 4305,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8787,6 +8918,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1004.0,
+        "duration_minutes": 16.73,
         "distance_meters": 16101,
         "route": "I-5 Express N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8840,6 +8972,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 447.0,
+        "duration_minutes": 7.45,
         "distance_meters": 2159,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8909,6 +9042,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 452.0,
+        "duration_minutes": 7.53,
         "distance_meters": 3915,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -8981,6 +9115,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 571.0,
+        "duration_minutes": 9.52,
         "distance_meters": 1801,
         "route": "Westlake Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9042,6 +9177,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 404.0,
+        "duration_minutes": 6.73,
         "distance_meters": 1252,
         "route": "Westlake Ave N and Stewart St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9107,6 +9243,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 204.0,
+        "duration_minutes": 3.4,
         "distance_meters": 642,
         "route": "Westlake Ave N and Terry Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9177,6 +9314,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 593.0,
+        "duration_minutes": 9.88,
         "distance_meters": 5558,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9239,6 +9377,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 589.0,
+        "duration_minutes": 9.82,
         "distance_meters": 6319,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9307,6 +9446,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 432.0,
+        "duration_minutes": 7.2,
         "distance_meters": 2273,
         "route": "Thomas St and Eastlake Ave E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9382,6 +9522,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 545.0,
+        "duration_minutes": 9.08,
         "distance_meters": 2252,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9461,6 +9602,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 626.0,
+        "duration_minutes": 10.43,
         "distance_meters": 4529,
         "route": "Denny Wy and Elliott Ave W",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9525,6 +9667,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 795.0,
+        "duration_minutes": 13.25,
         "distance_meters": 12706,
         "route": "I-90 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9591,6 +9734,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 837.0,
+        "duration_minutes": 13.95,
         "distance_meters": 5869,
         "route": "Elliott Ave W and 15th Ave W",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9660,6 +9804,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 588.0,
+        "duration_minutes": 9.8,
         "distance_meters": 2394,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9766,6 +9911,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 450.0,
+        "duration_minutes": 7.5,
         "distance_meters": 2030,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9835,6 +9981,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 978.0,
+        "duration_minutes": 16.3,
         "distance_meters": 11187,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9899,6 +10046,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 869.0,
+        "duration_minutes": 14.48,
         "distance_meters": 10804,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -9955,6 +10103,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 842.0,
+        "duration_minutes": 14.03,
         "distance_meters": 10756,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10021,6 +10170,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 221.0,
+        "duration_minutes": 3.68,
         "distance_meters": 857,
         "route": "9th Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10117,6 +10267,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 336.0,
+        "duration_minutes": 5.6,
         "distance_meters": 1105,
         "route": "Westlake Ave N and Lenora St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10193,6 +10344,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 89.0,
+        "duration_minutes": 1.48,
         "distance_meters": 299,
         "route": "Westlake Ave N and John St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10255,6 +10407,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 235.0,
+        "duration_minutes": 3.92,
         "distance_meters": 865,
         "route": "Westlake Ave N and Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10320,6 +10473,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 860.0,
+        "duration_minutes": 14.33,
         "distance_meters": 13497,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10391,6 +10545,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1021.0,
+        "duration_minutes": 17.02,
         "distance_meters": 12703,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10452,6 +10607,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1020.0,
+        "duration_minutes": 17.0,
         "distance_meters": 8622,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10515,6 +10671,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1139.0,
+        "duration_minutes": 18.98,
         "distance_meters": 21976,
         "route": "I-5 Express N and I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10570,6 +10727,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 520.0,
+        "duration_minutes": 8.67,
         "distance_meters": 2953,
         "route": "Eastlake Ave E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10639,6 +10797,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 926.0,
+        "duration_minutes": 15.43,
         "distance_meters": 11315,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10695,6 +10854,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 624.0,
+        "duration_minutes": 10.4,
         "distance_meters": 4493,
         "route": "Westlake Ave N and Nickerson St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10765,6 +10925,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 436.0,
+        "duration_minutes": 7.27,
         "distance_meters": 2033,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10837,6 +10998,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 318.0,
+        "duration_minutes": 5.3,
         "distance_meters": 1421,
         "route": "9th Ave N and Dexter Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10893,6 +11055,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 559.0,
+        "duration_minutes": 9.32,
         "distance_meters": 5602,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -10960,6 +11123,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 440.0,
+        "duration_minutes": 7.33,
         "distance_meters": 4220,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11036,6 +11200,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 807.0,
+        "duration_minutes": 13.45,
         "distance_meters": 10389,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11104,6 +11269,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 577.0,
+        "duration_minutes": 9.62,
         "distance_meters": 2677,
         "route": "Thomas St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11176,6 +11342,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 801.0,
+        "duration_minutes": 13.35,
         "distance_meters": 12147,
         "route": "I-90 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11248,6 +11415,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 487.0,
+        "duration_minutes": 8.12,
         "distance_meters": 3940,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11311,6 +11479,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 872.0,
+        "duration_minutes": 14.53,
         "distance_meters": 3438,
         "route": "E John St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11368,6 +11537,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1135.0,
+        "duration_minutes": 18.92,
         "distance_meters": 14663,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11427,6 +11597,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 860.0,
+        "duration_minutes": 14.33,
         "distance_meters": 10606,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11495,6 +11666,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 87.0,
+        "duration_minutes": 1.45,
         "distance_meters": 216,
         "route": "Thomas St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11558,6 +11730,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 138.0,
+        "duration_minutes": 2.3,
         "distance_meters": 480,
         "route": "Thomas St and Fairview Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11636,6 +11809,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 328.0,
+        "duration_minutes": 5.47,
         "distance_meters": 1040,
         "route": "Westlake Ave N and Lenora St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11702,6 +11876,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 805.0,
+        "duration_minutes": 13.42,
         "distance_meters": 10179,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11777,6 +11952,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 588.0,
+        "duration_minutes": 9.8,
         "distance_meters": 4590,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11857,6 +12033,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 144.0,
+        "duration_minutes": 2.4,
         "distance_meters": 486,
         "route": "Westlake Ave N and 9th Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11932,6 +12109,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 293.0,
+        "duration_minutes": 4.88,
         "distance_meters": 910,
         "route": "Westlake Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -11998,6 +12176,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 958.0,
+        "duration_minutes": 15.97,
         "distance_meters": 16423,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12064,6 +12243,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 391.0,
+        "duration_minutes": 6.52,
         "distance_meters": 1864,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12132,6 +12312,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 484.0,
+        "duration_minutes": 8.07,
         "distance_meters": 4012,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12217,6 +12398,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 857.0,
+        "duration_minutes": 14.28,
         "distance_meters": 3661,
         "route": "Boren Ave and E Union St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12291,6 +12473,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 392.0,
+        "duration_minutes": 6.53,
         "distance_meters": 1341,
         "route": "Westlake Ave N, Lenora St and 4th Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12352,6 +12535,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 440.0,
+        "duration_minutes": 7.33,
         "distance_meters": 1681,
         "route": "Denny Wy and E Denny Way",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12416,6 +12600,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 895.0,
+        "duration_minutes": 14.92,
         "distance_meters": 11523,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12478,6 +12663,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1133.0,
+        "duration_minutes": 18.88,
         "distance_meters": 18780,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12531,6 +12717,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1051.0,
+        "duration_minutes": 17.52,
         "distance_meters": 17802,
         "route": "I-5 Express N and I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12592,6 +12779,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 185.0,
+        "duration_minutes": 3.08,
         "distance_meters": 540,
         "route": "9th Ave N and Harrison St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12648,6 +12836,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 981.0,
+        "duration_minutes": 16.35,
         "distance_meters": 11015,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12709,6 +12898,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 916.0,
+        "duration_minutes": 15.27,
         "distance_meters": 10875,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12777,6 +12967,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 238.0,
+        "duration_minutes": 3.97,
         "distance_meters": 948,
         "route": "9th Ave N and 8th Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12853,6 +13044,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 477.0,
+        "duration_minutes": 7.95,
         "distance_meters": 1831,
         "route": "Mercer St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12912,6 +13104,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1136.0,
+        "duration_minutes": 18.93,
         "distance_meters": 21611,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -12969,6 +13162,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 800.0,
+        "duration_minutes": 13.33,
         "distance_meters": 10266,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13036,6 +13230,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 428.0,
+        "duration_minutes": 7.13,
         "distance_meters": 2069,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13111,6 +13306,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 348.0,
+        "duration_minutes": 5.8,
         "distance_meters": 1202,
         "route": "Wall St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13184,6 +13380,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 554.0,
+        "duration_minutes": 9.23,
         "distance_meters": 1682,
         "route": "Westlake Ave N and Lenora St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13257,6 +13454,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 945.0,
+        "duration_minutes": 15.75,
         "distance_meters": 7646,
         "route": "Aurora Ave N and NW Leary Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13316,6 +13514,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 445.0,
+        "duration_minutes": 7.42,
         "distance_meters": 1906,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13387,6 +13586,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 327.0,
+        "duration_minutes": 5.45,
         "distance_meters": 1373,
         "route": "Westlake Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13464,6 +13664,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 135.0,
+        "duration_minutes": 2.25,
         "distance_meters": 400,
         "route": "Thomas St and Boren Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13529,6 +13730,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 837.0,
+        "duration_minutes": 13.95,
         "distance_meters": 10691,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13600,6 +13802,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 60.0,
+        "duration_minutes": 1.0,
         "distance_meters": 190,
         "route": "Thomas St and 9th Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13664,6 +13867,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 987.0,
+        "duration_minutes": 16.45,
         "distance_meters": 12291,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13739,6 +13943,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 611.0,
+        "duration_minutes": 10.18,
         "distance_meters": 2495,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13806,6 +14011,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 431.0,
+        "duration_minutes": 7.18,
         "distance_meters": 1602,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13883,6 +14089,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 890.0,
+        "duration_minutes": 14.83,
         "distance_meters": 14637,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -13948,6 +14155,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1075.0,
+        "duration_minutes": 17.92,
         "distance_meters": 14449,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14008,6 +14216,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1052.0,
+        "duration_minutes": 17.53,
         "distance_meters": 18646,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14062,6 +14271,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1162.0,
+        "duration_minutes": 19.37,
         "distance_meters": 16790,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14120,6 +14330,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 469.0,
+        "duration_minutes": 7.82,
         "distance_meters": 2452,
         "route": "Thomas St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14190,6 +14401,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 466.0,
+        "duration_minutes": 7.77,
         "distance_meters": 1816,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14260,6 +14472,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 440.0,
+        "duration_minutes": 7.33,
         "distance_meters": 1578,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14330,6 +14543,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 897.0,
+        "duration_minutes": 14.95,
         "distance_meters": 10570,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14397,6 +14611,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 568.0,
+        "duration_minutes": 9.47,
         "distance_meters": 1790,
         "route": "Westlake Ave N, Lenora St and Western Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14470,6 +14685,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 768.0,
+        "duration_minutes": 12.8,
         "distance_meters": 6466,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14553,6 +14769,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 311.0,
+        "duration_minutes": 5.18,
         "distance_meters": 1048,
         "route": "Westlake Ave N and 9th Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14634,6 +14851,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 452.0,
+        "duration_minutes": 7.53,
         "distance_meters": 4367,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14691,6 +14909,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1016.0,
+        "duration_minutes": 16.93,
         "distance_meters": 16147,
         "route": "I-5 Express N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14750,6 +14969,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1154.0,
+        "duration_minutes": 19.23,
         "distance_meters": 24349,
         "route": "I-5 Express N and I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14814,6 +15034,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 593.0,
+        "duration_minutes": 9.88,
         "distance_meters": 4459,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14872,6 +15093,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 518.0,
+        "duration_minutes": 8.63,
         "distance_meters": 2381,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -14937,6 +15159,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 127.0,
+        "duration_minutes": 2.12,
         "distance_meters": 381,
         "route": "Thomas St and Boren Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15011,6 +15234,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 471.0,
+        "duration_minutes": 7.85,
         "distance_meters": 4457,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15085,6 +15309,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 412.0,
+        "duration_minutes": 6.87,
         "distance_meters": 1905,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15145,6 +15370,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 161.0,
+        "duration_minutes": 2.68,
         "distance_meters": 601,
         "route": "Westlake Ave N and Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15209,6 +15435,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 653.0,
+        "duration_minutes": 10.88,
         "distance_meters": 2712,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15283,6 +15510,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 736.0,
+        "duration_minutes": 12.27,
         "distance_meters": 2832,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15354,6 +15582,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 708.0,
+        "duration_minutes": 11.8,
         "distance_meters": 2789,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15413,6 +15642,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 220.0,
+        "duration_minutes": 3.67,
         "distance_meters": 776,
         "route": "Thomas St and Minor Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15478,6 +15708,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 588.0,
+        "duration_minutes": 9.8,
         "distance_meters": 6962,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15545,6 +15776,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 451.0,
+        "duration_minutes": 7.52,
         "distance_meters": 2378,
         "route": "Thomas St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15613,6 +15845,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 693.0,
+        "duration_minutes": 11.55,
         "distance_meters": 2752,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15688,6 +15921,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 521.0,
+        "duration_minutes": 8.68,
         "distance_meters": 4007,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15758,6 +15992,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 188.0,
+        "duration_minutes": 3.13,
         "distance_meters": 673,
         "route": "Bell St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15828,6 +16063,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 414.0,
+        "duration_minutes": 6.9,
         "distance_meters": 1365,
         "route": "Westlake Ave N and Lenora St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15890,6 +16126,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 771.0,
+        "duration_minutes": 12.85,
         "distance_meters": 3405,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -15951,6 +16188,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1058.0,
+        "duration_minutes": 17.63,
         "distance_meters": 16284,
         "route": "I-90 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16010,6 +16248,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 255.0,
+        "duration_minutes": 4.25,
         "distance_meters": 888,
         "route": "9th Ave N, Bell St and 6th Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16085,6 +16324,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 112.0,
+        "duration_minutes": 1.87,
         "distance_meters": 464,
         "route": "Westlake Ave N and John St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16150,6 +16390,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 841.0,
+        "duration_minutes": 14.02,
         "distance_meters": 5823,
         "route": "Elliott Ave W and 15th Ave W",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16221,6 +16462,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1193.0,
+        "duration_minutes": 19.88,
         "distance_meters": 19738,
         "route": "I-90 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16275,6 +16517,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 717.0,
+        "duration_minutes": 11.95,
         "distance_meters": 6145,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16343,6 +16586,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1026.0,
+        "duration_minutes": 17.1,
         "distance_meters": 12609,
         "route": "I-5 N and Lake City Way NE",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16409,6 +16653,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1071.0,
+        "duration_minutes": 17.85,
         "distance_meters": 16866,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16482,6 +16727,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 889.0,
+        "duration_minutes": 14.82,
         "distance_meters": 10409,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16545,6 +16791,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 895.0,
+        "duration_minutes": 14.92,
         "distance_meters": 11435,
         "route": "Hwy 99 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16607,6 +16854,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 886.0,
+        "duration_minutes": 14.77,
         "distance_meters": 3717,
         "route": "Boren Ave and E Union St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16681,6 +16929,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 147.0,
+        "duration_minutes": 2.45,
         "distance_meters": 508,
         "route": "Westlake Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16743,6 +16992,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 434.0,
+        "duration_minutes": 7.23,
         "distance_meters": 1701,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16819,6 +17069,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 817.0,
+        "duration_minutes": 13.62,
         "distance_meters": 3449,
         "route": "E John St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16883,6 +17134,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1176.0,
+        "duration_minutes": 19.6,
         "distance_meters": 22494,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -16939,6 +17191,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 580.0,
+        "duration_minutes": 9.67,
         "distance_meters": 2201,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17014,6 +17267,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1100.0,
+        "duration_minutes": 18.33,
         "distance_meters": 17102,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17081,6 +17335,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1103.0,
+        "duration_minutes": 18.38,
         "distance_meters": 17094,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17147,6 +17402,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1141.0,
+        "duration_minutes": 19.02,
         "distance_meters": 21471,
         "route": "I-5 Express N and I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17200,6 +17456,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1188.0,
+        "duration_minutes": 19.8,
         "distance_meters": 22021,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17269,6 +17526,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 208.0,
+        "duration_minutes": 3.47,
         "distance_meters": 853,
         "route": "Westlake Ave N and Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17333,6 +17591,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 987.0,
+        "duration_minutes": 16.45,
         "distance_meters": 15384,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17412,6 +17671,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 985.0,
+        "duration_minutes": 16.42,
         "distance_meters": 20031,
         "route": "I-5 Express N and I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17476,6 +17736,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 459.0,
+        "duration_minutes": 7.65,
         "distance_meters": 1678,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17543,6 +17804,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 556.0,
+        "duration_minutes": 9.27,
         "distance_meters": 5525,
         "route": "I-5 Express N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17613,6 +17875,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1165.0,
+        "duration_minutes": 19.42,
         "distance_meters": 21532,
         "route": "I-5 Express N and I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17675,6 +17938,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 365.0,
+        "duration_minutes": 6.08,
         "distance_meters": 1664,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17740,6 +18004,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 163.0,
+        "duration_minutes": 2.72,
         "distance_meters": 632,
         "route": "Westlake Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17804,6 +18069,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 371.0,
+        "duration_minutes": 6.18,
         "distance_meters": 1541,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17865,6 +18131,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1004.0,
+        "duration_minutes": 16.73,
         "distance_meters": 11388,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -17932,6 +18199,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 958.0,
+        "duration_minutes": 15.97,
         "distance_meters": 16490,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18006,6 +18274,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 564.0,
+        "duration_minutes": 9.4,
         "distance_meters": 2134,
         "route": "Denny Wy and E Denny Way",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18072,6 +18341,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 209.0,
+        "duration_minutes": 3.48,
         "distance_meters": 789,
         "route": "Thomas St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18153,6 +18423,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 829.0,
+        "duration_minutes": 13.82,
         "distance_meters": 3554,
         "route": "Boren Ave and E Union St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18219,6 +18490,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 205.0,
+        "duration_minutes": 3.42,
         "distance_meters": 887,
         "route": "Westlake Ave N and Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18282,6 +18554,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1023.0,
+        "duration_minutes": 17.05,
         "distance_meters": 7871,
         "route": "Aurora Ave N and NW Leary Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18356,6 +18629,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 479.0,
+        "duration_minutes": 7.98,
         "distance_meters": 1933,
         "route": "Denny Wy and E Denny Way",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18429,6 +18703,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 526.0,
+        "duration_minutes": 8.77,
         "distance_meters": 2086,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18498,6 +18773,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 807.0,
+        "duration_minutes": 13.45,
         "distance_meters": 11212,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18555,6 +18831,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 605.0,
+        "duration_minutes": 10.08,
         "distance_meters": 3011,
         "route": "E Mercer St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18637,6 +18914,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 449.0,
+        "duration_minutes": 7.48,
         "distance_meters": 1459,
         "route": "Westlake Ave N and Lenora St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18727,6 +19005,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 774.0,
+        "duration_minutes": 12.9,
         "distance_meters": 11522,
         "route": "I-90 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18787,6 +19066,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 449.0,
+        "duration_minutes": 7.48,
         "distance_meters": 4385,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18850,6 +19130,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 412.0,
+        "duration_minutes": 6.87,
         "distance_meters": 1593,
         "route": "Denny Wy and E Denny Way",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18906,6 +19187,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 876.0,
+        "duration_minutes": 14.6,
         "distance_meters": 10684,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -18977,6 +19259,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 124.0,
+        "duration_minutes": 2.07,
         "distance_meters": 515,
         "route": "Westlake Ave N and Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19041,6 +19324,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 494.0,
+        "duration_minutes": 8.23,
         "distance_meters": 5382,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19098,6 +19382,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 342.0,
+        "duration_minutes": 5.7,
         "distance_meters": 1301,
         "route": "9th Ave N and Mercer St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19167,6 +19452,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 757.0,
+        "duration_minutes": 12.62,
         "distance_meters": 13891,
         "route": "I-5 Express N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19221,6 +19507,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1121.0,
+        "duration_minutes": 18.68,
         "distance_meters": 14645,
         "route": "Hwy 99 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19290,6 +19577,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 377.0,
+        "duration_minutes": 6.28,
         "distance_meters": 1606,
         "route": "Denny Wy and Bellevue Ave E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19365,6 +19653,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 436.0,
+        "duration_minutes": 7.27,
         "distance_meters": 1751,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19438,6 +19727,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 46.0,
+        "duration_minutes": 0.77,
         "distance_meters": 140,
         "route": "Thomas St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19505,6 +19795,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 918.0,
+        "duration_minutes": 15.3,
         "distance_meters": 11126,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19577,6 +19868,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 686.0,
+        "duration_minutes": 11.43,
         "distance_meters": 7664,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19635,6 +19927,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 922.0,
+        "duration_minutes": 15.37,
         "distance_meters": 7508,
         "route": "28th Ave W",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19693,6 +19986,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1015.0,
+        "duration_minutes": 16.92,
         "distance_meters": 14292,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19774,6 +20068,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 461.0,
+        "duration_minutes": 7.68,
         "distance_meters": 1851,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19853,6 +20148,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 723.0,
+        "duration_minutes": 12.05,
         "distance_meters": 11867,
         "route": "I-90 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19913,6 +20209,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1100.0,
+        "duration_minutes": 18.33,
         "distance_meters": 14547,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -19976,6 +20273,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 501.0,
+        "duration_minutes": 8.35,
         "distance_meters": 3318,
         "route": "Westlake Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20049,6 +20347,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 314.0,
+        "duration_minutes": 5.23,
         "distance_meters": 999,
         "route": "Westlake Ave N and Lenora St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20116,6 +20415,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 628.0,
+        "duration_minutes": 10.47,
         "distance_meters": 5114,
         "route": "Hwy 99 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20192,6 +20492,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 349.0,
+        "duration_minutes": 5.82,
         "distance_meters": 1073,
         "route": "Westlake Ave N and 7th Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20256,6 +20557,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 886.0,
+        "duration_minutes": 14.77,
         "distance_meters": 11518,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20313,6 +20615,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 587.0,
+        "duration_minutes": 9.78,
         "distance_meters": 4346,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20369,6 +20672,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 758.0,
+        "duration_minutes": 12.63,
         "distance_meters": 10003,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20435,6 +20739,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 552.0,
+        "duration_minutes": 9.2,
         "distance_meters": 4136,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20496,6 +20801,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1125.0,
+        "duration_minutes": 18.75,
         "distance_meters": 17892,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20554,6 +20860,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 368.0,
+        "duration_minutes": 6.13,
         "distance_meters": 1181,
         "route": "Westlake Ave N and Lenora St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20624,6 +20931,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 297.0,
+        "duration_minutes": 4.95,
         "distance_meters": 1021,
         "route": "9th Ave N and Bell St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20687,6 +20995,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1022.0,
+        "duration_minutes": 17.03,
         "distance_meters": 13222,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20766,6 +21075,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 468.0,
+        "duration_minutes": 7.8,
         "distance_meters": 1945,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20839,6 +21149,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 723.0,
+        "duration_minutes": 12.05,
         "distance_meters": 4776,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20913,6 +21224,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 105.0,
+        "duration_minutes": 1.75,
         "distance_meters": 381,
         "route": "Westlake Ave N and John St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -20976,6 +21288,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 909.0,
+        "duration_minutes": 15.15,
         "distance_meters": 7947,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21041,6 +21354,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 536.0,
+        "duration_minutes": 8.93,
         "distance_meters": 2115,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21117,6 +21431,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 835.0,
+        "duration_minutes": 13.92,
         "distance_meters": 10589,
         "route": "Hwy 99 S and W Seattle Brg",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21181,6 +21496,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 537.0,
+        "duration_minutes": 8.95,
         "distance_meters": 2098,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21245,6 +21561,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 856.0,
+        "duration_minutes": 14.27,
         "distance_meters": 11232,
         "route": "I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21302,6 +21619,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 388.0,
+        "duration_minutes": 6.47,
         "distance_meters": 1515,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21359,6 +21677,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 363.0,
+        "duration_minutes": 6.05,
         "distance_meters": 1167,
         "route": "Westlake Ave N and Lenora St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21429,6 +21748,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 982.0,
+        "duration_minutes": 16.37,
         "distance_meters": 19949,
         "route": "I-5 Express N and I-5 N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21493,6 +21813,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 229.0,
+        "duration_minutes": 3.82,
         "distance_meters": 1111,
         "route": "Harrison St and Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21578,6 +21899,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 741.0,
+        "duration_minutes": 12.35,
         "distance_meters": 3128,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21641,6 +21963,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 445.0,
+        "duration_minutes": 7.42,
         "distance_meters": 1708,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21705,6 +22028,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 258.0,
+        "duration_minutes": 4.3,
         "distance_meters": 959,
         "route": "Thomas St and Yale Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21763,6 +22087,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 278.0,
+        "duration_minutes": 4.63,
         "distance_meters": 1091,
         "route": "9th Ave N and Dexter Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21833,6 +22158,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 922.0,
+        "duration_minutes": 15.37,
         "distance_meters": 11878,
         "route": "Hwy 99 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21903,6 +22229,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 481.0,
+        "duration_minutes": 8.02,
         "distance_meters": 1865,
         "route": "Mercer St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -21969,6 +22296,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1199.0,
+        "duration_minutes": 19.98,
         "distance_meters": 17227,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22018,6 +22346,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 569.0,
+        "duration_minutes": 9.48,
         "distance_meters": 5247,
         "route": "I-5 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22072,6 +22401,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 464.0,
+        "duration_minutes": 7.73,
         "distance_meters": 2026,
         "route": "Mercer St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22142,6 +22472,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1070.0,
+        "duration_minutes": 17.83,
         "distance_meters": 16244,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22195,6 +22526,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 433.0,
+        "duration_minutes": 7.22,
         "distance_meters": 4311,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22257,6 +22589,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1077.0,
+        "duration_minutes": 17.95,
         "distance_meters": 14515,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22321,6 +22654,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 382.0,
+        "duration_minutes": 6.37,
         "distance_meters": 1297,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22390,6 +22724,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 226.0,
+        "duration_minutes": 3.77,
         "distance_meters": 748,
         "route": "Westlake Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22456,6 +22791,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 587.0,
+        "duration_minutes": 9.78,
         "distance_meters": 4864,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22527,6 +22863,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 407.0,
+        "duration_minutes": 6.78,
         "distance_meters": 1338,
         "route": "Westlake Ave N and Lenora St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22600,6 +22937,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 576.0,
+        "duration_minutes": 9.6,
         "distance_meters": 2344,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22663,6 +23001,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1167.0,
+        "duration_minutes": 19.45,
         "distance_meters": 16670,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22715,6 +23054,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 669.0,
+        "duration_minutes": 11.15,
         "distance_meters": 2789,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22785,6 +23125,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1166.0,
+        "duration_minutes": 19.43,
         "distance_meters": 18854,
         "route": "WA-520 E",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22837,6 +23178,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 436.0,
+        "duration_minutes": 7.27,
         "distance_meters": 1503,
         "route": "Wall St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22915,6 +23257,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 1021.0,
+        "duration_minutes": 17.02,
         "distance_meters": 16310,
         "route": "I-5 Express N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -22981,6 +23324,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 455.0,
+        "duration_minutes": 7.58,
         "distance_meters": 1447,
         "route": "Westlake Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -23055,6 +23399,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 319.0,
+        "duration_minutes": 5.32,
         "distance_meters": 1395,
         "route": "9th Ave N and Dexter Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -23124,6 +23469,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 747.0,
+        "duration_minutes": 12.45,
         "distance_meters": 5531,
         "route": "Westlake Ave N and Nickerson St",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -23191,6 +23537,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 834.0,
+        "duration_minutes": 13.9,
         "distance_meters": 7602,
         "route": "Aurora Ave N",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -23251,6 +23598,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 248.0,
+        "duration_minutes": 4.13,
         "distance_meters": 808,
         "route": "Westlake Ave N and 9th Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -23320,6 +23668,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 413.0,
+        "duration_minutes": 6.88,
         "distance_meters": 1978,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -23383,6 +23732,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 550.0,
+        "duration_minutes": 9.17,
         "distance_meters": 2239,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -23447,6 +23797,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 728.0,
+        "duration_minutes": 12.13,
         "distance_meters": 8976,
         "route": "Hwy 99 S",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -23504,6 +23855,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 474.0,
+        "duration_minutes": 7.9,
         "distance_meters": 2280,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -23568,6 +23920,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 378.0,
+        "duration_minutes": 6.3,
         "distance_meters": 1447,
         "route": "Denny Wy",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -23645,6 +23998,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 646.0,
+        "duration_minutes": 10.77,
         "distance_meters": 2405,
         "route": "Boren Ave",
         "routing_preference": "TRAFFIC_UNAWARE",
@@ -23723,6 +24077,7 @@
       ],
       "drive_from_slu": {
         "duration_seconds": 866.0,
+        "duration_minutes": 14.43,
         "distance_meters": 14367,
         "route": "I-5 Express N",
         "routing_preference": "TRAFFIC_UNAWARE",
