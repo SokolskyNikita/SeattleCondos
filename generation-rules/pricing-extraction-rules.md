@@ -1,82 +1,56 @@
 # Pricing extraction rules
 
-**Schema version:** 1
+Rules for researching and calculating monthly one-bedroom prices in this directory. They record the user's pricing instructions and the assumptions used during research. Newer user instructions take precedence.
 
-**Updated at:** 2026-10-09
-
-**Purpose:** Reusable rules for researching, calculating and maintaining approximate monthly one-bedroom apartment prices for this directory.
-
-**Basis:** The user's pricing, source, extrapolation, promotion and removal instructions, plus the documented working assumptions established during the research. Apply any newer user instructions before these defaults.
+Schema version 1. Updated October 9, 2026.
 
 ## Files
 
-**Active directory:** apartments.json
-
-**Active pricing research:** generation-rules/pricing-research.json
-
-**Exclusion and historical audit:** generation-rules/research-audit.json
-
-**Exclusion registry:** generation-rules/excluded-apartments.json
+The active records are in [apartments.json](../apartments.json) and [pricing-research.json](pricing-research.json). Removed records and historical evidence are in [research-audit.json](research-audit.json); [excluded-apartments.json](excluded-apartments.json) records exclusions to check before adding buildings.
 
 ## Research snapshot
 
-Prices were researched on October 9, 2026. [Pricing research and calculations](pricing-research.json) retain every source, fee, promotion, lease assumption, extrapolation, and ratio input.
+Prices were researched on October 9, 2026. [Pricing research and calculations](pricing-research.json) retain every source, fee, promotion, lease assumption, extrapolation and ratio input.
 
 The existing fallback estimates use median bedroom-price ratios calculated only from Seattle buildings in the original pricing-research cohort. These historical ratios and existing estimates are preserved when later eligibility filters remove buildings. For a new pricing refresh, follow [same-list ratio training](#12-same-list-ratio-training).
 
 ## Output
 
-**Field:** approx_1br_monthly_usd
+`approx_1br_monthly_usd` is the approximate effective monthly cost of an unrestricted whole one-bedroom apartment over the initial pricing period. Include disclosed required fees and standard concessions. Store a positive number in USD, rounded to the nearest $10.
 
-**Currency:** USD
-
-**Meaning:** Approximate effective monthly cost of an unrestricted whole one-bedroom apartment over the initial pricing period, including disclosed applicable fees and standard concessions.
-
-**Final value type:** positive number
-
-**Round to nearest USD:** 10
-
-**Temporary missing value:** N/A
-
-**Final missing value policy:** As a last resort, remove buildings still lacking usable pricing from the active directory and active pricing research, while preserving their records and reasons in the exclusion audit.
+Use `N/A` temporarily when no usable price is available. If the [missing-price checks](#14-missing-price-last-resort) still produce no estimate, [remove the building](#15-remove-remaining-na-buildings) from the active directory and pricing research. Preserve its record and the reason in the exclusion audit.
 
 ## Default assumptions
 
-**Adult applicants:** 1
+Calculate costs for one adult with no pets, optional parking or optional storage. Use 12 months when the lease term is unquoted. Choose the lowest supported effective cost among eligible one-bedroom options.
 
-**Pets:** 0
-
-**Optional parking:** false
-
-**Optional storage:** false
-
-**Unquoted lease months:** 12
-
-**Entry level price:** Prefer the lowest supported effective cost among eligible available one-bedroom options, rather than a building-wide average.
-
-**Move in date:** No fixed user move-in date is assumed. A future available unit may be used, but any promotion deadline must be compatible with that unit's availability.
-
-**Disclosure:** Record assumptions and missing costs per building; an estimate is not a guaranteed leasing quote.
+No move-in date is fixed. A future available unit can be used if the promotion deadline fits its availability. Record assumptions and missing costs for each building; the estimate is not a guaranteed leasing quote.
 
 ## Calculation
 
-**General formula:** `effective_monthly_usd = (total_rent_over_pricing_period + total_applicable_mandatory_fees_over_pricing_period - eligible_concessions_not_already_included) / pricing_period_months`
+Divide total costs over the pricing period by its length in months:
 
-**Constant monthly price formula:** `effective_monthly_usd = ((monthly_rent_basis_usd + mandatory_monthly_fees_not_already_included_usd) * lease_months + mandatory_nonmonthly_fees_total_usd - concession_total_not_already_included_usd) / lease_months`
+```text
+effective_monthly_usd = (total_rent_over_pricing_period + total_applicable_mandatory_fees_over_pricing_period - eligible_concessions_not_already_included) / pricing_period_months
+```
 
-**Nonmonthly fees:** Count required nonrefundable application, administrative, move-in and other nonmonthly charges due during the pricing period. For annual or other periodic charges, use their disclosed charging schedule over that period.
+For a constant monthly rent, this becomes:
 
-**Free months credit:** `contractual_monthly_base_rent_usd * free_months`
+```text
+effective_monthly_usd = ((monthly_rent_basis_usd + mandatory_monthly_fees_not_already_included_usd) * lease_months + mandatory_nonmonthly_fees_total_usd - concession_total_not_already_included_usd) / lease_months
+```
 
-**Free weeks credit:** `contractual_monthly_base_rent_usd * free_weeks * 12 / 52`
+Count required nonrefundable application, administrative, move-in and other nonmonthly charges due during the pricing period. Use the disclosed schedule for annual or other periodic charges.
 
-**Rounding:** Keep full precision during calculations and ratio estimation. Retain cents in the research audit; round only the final directory field to the nearest $10.
+Calculate free-month credits as `contractual_monthly_base_rent_usd * free_months`. For free weeks, use `contractual_monthly_base_rent_usd * free_weeks * 12 / 52`.
+
+Keep full precision during calculations and ratio estimation. Retain cents in the research audit; round only the final directory field.
 
 ## Rules
 
 ### 1. Research each building
 
-**Rule ID:** `research_each_building`
+Rule ID: `research_each_building`
 
 Research every building in the current active list and verify property identity.
 
@@ -86,20 +60,20 @@ Research every building in the current active list and verify property identity.
 
 ### 2. Source priority
 
-**Rule ID:** `source_priority`
+Rule ID: `source_priority`
 
 Prefer the building's own website; use Zillow or Redfin as secondary pricing sources.
 
 - Official sources include property and operator websites and leasing platforms linked by them, such as their availability widgets, resident-management listings or floorplan feeds.
-- Check official availability, the homepage or specials page, and linked fee disclosures. Follow unit detail pages and embedded leasing tools when the landing page omits prices.
+- Check official availability, the homepage or specials page and linked fee disclosures. Follow unit detail pages and embedded leasing tools when the landing page omits prices.
 - Use current Zillow or Redfin listings when official pricing is inaccessible, missing or insufficiently specific. Document why the fallback was needed and any conflicting official evidence.
 - Do not use other rental aggregators, outside market averages, Zestimate-style estimates or unrelated listings as rent inputs. Search results may help locate an allowed source.
 
 ### 3. Verify live evidence
 
-**Rule ID:** `verify_live_evidence`
+Rule ID: `verify_live_evidence`
 
-Resolve important price and availability conflicts with current page evidence.
+Check live pages when prices or availability conflict.
 
 - Search-index snippets and cached pages can contain older rents or promotions. Refresh the actual allowed-source page before finalizing a conflicting quote or an N/A decision.
 - Use BrightData MCP, the available browser, or local Google Chrome depending on which successfully exposes the public listing and its terms.
@@ -108,9 +82,9 @@ Resolve important price and availability conflicts with current page evidence.
 
 ### 4. Available eligible whole apartment
 
-**Rule ID:** `available_eligible_whole_apartment`
+Rule ID: `available_eligible_whole_apartment`
 
-Use current unrestricted whole-apartment asking rents with an identifiable bedroom type.
+Use current asking rents for unrestricted whole apartments. Establish the bedroom type for each quote.
 
 - An active listing with an earliest availability date in the past is still usable. A past date alone is not evidence that the listing is unavailable.
 - Exclude explicitly unavailable, historical, off-market, waitlist-only and price-on-request units as direct price inputs.
@@ -120,7 +94,7 @@ Use current unrestricted whole-apartment asking rents with an identifiable bedro
 
 ### 5. Select one bedroom
 
-**Rule ID:** `select_one_bedroom`
+Rule ID: `select_one_bedroom`
 
 Find the lowest supported effective one-bedroom cost under the stated assumptions.
 
@@ -132,20 +106,20 @@ Find the lowest supported effective one-bedroom cost under the stated assumption
 
 ### 6. Lease term and denominator
 
-**Rule ID:** `lease_term_and_denominator`
+Rule ID: `lease_term_and_denominator`
 
-Use first-period total cost divided by the corresponding number of months, and choose the cheapest supported lease option.
+Divide the total cost for the initial lease by its length in months. Choose the cheapest supported lease option.
 
 - Normally calculate the first 12 months divided by 12.
 - If the applicable quote or concession requires 13, 14, 15, 16, 18 or another longer lease, calculate costs over that actual term and divide by that term's months.
-- Compare available quoted terms of at least 12 months, including cheaper longer-term rents and their eligible concessions, and choose the lowest effective monthly cost.
+- Compare available quoted terms of at least 12 months, including cheaper longer-term rents and their eligible concessions and choose the lowest effective monthly cost.
 - Do not invent a longer-term rent by extending a rate quoted for a different term merely to qualify for a larger promotion.
 - If the term is not disclosed, assume 12 months and mark that assumption.
 - Do not mark a building N/A solely because only a shorter lease is priced. As a low-confidence fallback, an annual approximation may assume its quoted monthly rate continues for 12 months, explicitly noting that renewal pricing is unverified. Do not apply an unverified annual or longer-term promotion to that assumption.
 
 ### 7. Mandatory fees
 
-**Rule ID:** `mandatory_fees`
+Rule ID: `mandatory_fees`
 
 Include every disclosed, quantifiable fee applicable under the stated household and lease assumptions.
 
@@ -158,7 +132,7 @@ Include every disclosed, quantifiable fee applicable under the stated household 
 
 ### 8. Exclude non costs and optional charges
 
-**Rule ID:** `exclude_non_costs_and_optional_charges`
+Rule ID: `exclude_non_costs_and_optional_charges`
 
 Distinguish actual required costs from refundable, credited, optional or contingent payments.
 
@@ -170,7 +144,7 @@ Distinguish actual required costs from refundable, credited, optional or conting
 
 ### 9. Standard promotions
 
-**Rule ID:** `standard_promotions`
+Rule ID: `standard_promotions`
 
 Include applicable ordinary leasing concessions, but exclude special financial-product or personal-eligibility deals.
 
@@ -183,7 +157,7 @@ Include applicable ordinary leasing concessions, but exclude special financial-p
 
 ### 10. Uncertain promotion eligibility
 
-**Rule ID:** `uncertain_promotion_eligibility`
+Rule ID: `uncertain_promotion_eligibility`
 
 Make promotion eligibility and assumptions visible instead of presenting an advertised maximum as guaranteed.
 
@@ -194,7 +168,7 @@ Make promotion eligibility and assumptions visible instead of presenting an adve
 
 ### 11. Avoid double counting
 
-**Rule ID:** `avoid_double_counting`
+Rule ID: `avoid_double_counting`
 
 Keep base rent, total monthly price and advertised effective rent distinct.
 
@@ -205,7 +179,7 @@ Keep base rent, total monthly price and advertised effective rent distinct.
 
 ### 12. Same list ratio training
 
-**Rule ID:** `same_list_ratio_training`
+Rule ID: `same_list_ratio_training`
 
 Derive bedroom-price ratios only from other buildings in the current directory.
 
@@ -219,7 +193,7 @@ Derive bedroom-price ratios only from other buildings in the current directory.
 
 ### 13. Extrapolate missing one bedroom
 
-**Rule ID:** `extrapolate_missing_one_bedroom`
+Rule ID: `extrapolate_missing_one_bedroom`
 
 If no usable one-bedroom price exists, estimate it from a usable studio or two-bedroom price at that building.
 
@@ -232,19 +206,19 @@ If no usable one-bedroom price exists, estimate it from a usable studio or two-b
 
 ### 14. Missing price last resort
 
-**Rule ID:** `missing_price_last_resort`
+Rule ID: `missing_price_last_resort`
 
 Use N/A only after the permitted direct and extrapolation routes have been exhausted.
 
 - Check the official availability channel, linked leasing platform and applicable fee/special pages; then search or inspect matching Zillow and Redfin listings.
 - When access or cached results prevent a conclusion, make a targeted second attempt using a working tool or live detail page before declaring pricing unavailable.
-- Look for an eligible studio or two-bedroom price if no one-bedroom is priced, and try the same-list extrapolation method before giving up.
+- Look for an eligible studio or two-bedroom price if no one-bedroom is priced and try the same-list extrapolation method before marking the price N/A.
 - If only unavailable, restricted, per-person, untyped or request-only prices remain, record why no defensible whole-apartment estimate can be made.
 - Do not fabricate a price merely to keep a building in the list. Record temporary N/A with dated evidence and a reason.
 
 ### 15. Remove remaining na buildings
 
-**Rule ID:** `remove_remaining_na_buildings`
+Rule ID: `remove_remaining_na_buildings`
 
 As a last resort, remove buildings that still have N/A pricing from the active list.
 
@@ -257,9 +231,9 @@ As a last resort, remove buildings that still have N/A pricing from the active l
 
 ### 16. Retain reproducible evidence
 
-**Rule ID:** `retain_reproducible_evidence`
+Rule ID: `retain_reproducible_evidence`
 
-Keep enough evidence to reproduce and assess each estimate.
+Save the inputs needed to check each estimate.
 
 - Record building ID, research date, source URLs and types, selected unit/floorplan, bedroom type, availability and the quoted price basis.
 - Record the actual or assumed lease term, itemized included and excluded fees, applied and unapplied offers, eligibility conditions and total concession value.
@@ -269,29 +243,29 @@ Keep enough evidence to reproduce and assess each estimate.
 
 ### 17. Parallel research
 
-**Rule ID:** `parallel_research`
+Rule ID: `parallel_research`
 
-Use as much useful parallel research as available to complete large lists quickly.
+Research independent buildings in parallel when agents are available.
 
 - Assign independent buildings or batches to sub-agents, up to practical available concurrency. Use additional independent checks for uncertain prices, fees and N/A candidates.
-- Follow the [shared concurrent-write rules](README.md#concurrent-writes); the central integration step must reconcile IDs, calculations, source conflicts, and ratios before editing the active directory.
+- Follow the [shared concurrent-write rules](README.md#concurrent-writes); the central integration step must reconcile IDs, calculations, source conflicts and ratios before editing the active directory.
 
 ### 18. Preserve concurrent work
 
-**Rule ID:** `preserve_concurrent_work`
+Rule ID: `preserve_concurrent_work`
 
 Follow the [shared concurrent-write rules](README.md#concurrent-writes) when merging pricing and authorized removals.
 
 ### 19. Validate before finishing
 
-**Rule ID:** `validate_before_finishing`
+Rule ID: `validate_before_finishing`
 
 Apply the [shared validation checks](README.md#shared-validation), then verify pricing-specific requirements:
 
 - Verify matching active-directory and active-pricing IDs and complete coverage of the remaining list.
 - Require a positive numeric approx_1br_monthly_usd for every remaining active building; verify removed N/A records are archived.
 - Recompute each effective amount from rent, fees, concessions and term. Reconcile itemized included fees with their aggregates and nonzero concession totals with applied promotion evidence.
-- Verify published totals and effective rents have not had fees or promotions counted twice, and final rounding matches the calculation.
+- Verify published totals and effective rents have not had fees or promotions counted twice and final rounding matches the calculation.
 - Verify ratio cohorts, inputs, medians and extrapolation math are reproducible and use only eligible buildings from the list.
 - Reconcile active and excluded counts and decision statuses.
 

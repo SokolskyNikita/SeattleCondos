@@ -1,36 +1,22 @@
 # Management-company extraction rules
 
-**Schema version:** 1
+Rules for identifying property managers and choosing their display names in the Seattle-area apartment directory.
 
-**Created at:** 2026-10-09
-
-**Updated at:** 2026-10-09
-
-**Purpose:** Repeatable management-company extraction, evidence review, name consolidation and display-name shortening for the Seattle-area apartment directory, based on the decisions in this conversation.
+Schema version 1. Created and updated October 9, 2026.
 
 ## Scope
 
-**Directory file:** apartments.json
+Set `management_company` on records in the `buildings` array of [apartments.json](../apartments.json). It names the current residential property manager or day-to-day operator for the building or community. Use a short, consistent display name. Leave it `null` when the evidence does not establish a manager.
 
-**Record collection:** buildings
-
-**Target field:** management_company
-
-**Target meaning:** The current building/community-level residential property manager or day-to-day operator, stored under a concise, consistent display name.
-
-**Audit file:** generation-rules/research-audit.json
-
-**Null meaning:** No management company has been established with sufficient evidence; never a placeholder company name.
-
-**Instruction precedence:** Apply these as project guidance; follow the user's current task scope and explicit instructions when they differ. Do not treat old mappings or example findings as proof of current management.
+Record the research in [research-audit.json](research-audit.json). Follow the user's current scope and instructions when they differ from this guide. Old mappings and examples do not prove who manages a building now.
 
 ## Workflow
 
-1. Read the latest directory and audit; enumerate the requested building IDs and existing management values. Match the building name, address, former names and official website before searching.
-2. For a thorough multi-building extraction audit, assign one dedicated research agent per building. Run in waves when concurrency is limited. Each agent returns a separate result; one central reviewer merges the shared directory.
+1. Read the latest directory and audit; list the requested building IDs and existing management values. Match the building name, address, former names and official website before searching.
+2. When auditing management across multiple buildings, assign one dedicated research agent per building. Run in waves when concurrency is limited. Each agent returns a separate result; one central reviewer merges the shared directory.
 3. Research actual management using current public evidence: official property website, footer/logo links, contact/legal pages, application and resident portals, then the operator portfolio and relevant corroborating records. Do not submit forms or contact anyone unless separately authorized.
 4. Match the exact property/address and identify each named company's role. Follow material conflicts through live pages or another available retrieval method instead of guessing after a failed fetch.
-5. Record findings, source URLs, evidence strength, dates, conflicts, confidence and a resolution rationale. Preserve raw company names in the research result.
+5. Record findings, source URLs, evidence strength, dates, conflicts, confidence and the reason for the decision. Preserve raw company names in the research result.
 6. Central review accepts a supported high- or medium-confidence manager, or leaves null if unresolved. Only then apply the display-name mappings and shortening policy.
 7. Merge only the intended management field, its supporting sources and necessary caveat notes into the latest data. Append the audit result; validate scope and concurrent edits before saving.
 
@@ -41,7 +27,7 @@
 - A current official property or property-linked leasing page explicitly naming the manager, including an unambiguous Managed By logo/label.
 - An operator's current exact-property portfolio combined with a reciprocal property-site affiliation, resident portal, matching contact or explicit manager statement.
 - Official property-management registration records with documented field meanings. Account for filing dates and the possibility of a later change.
-- Current exact-property rental-platform records that explicitly identify the manager, corroborated where possible by the property/operator site or a genuinely separate source.
+- Current rental-platform records for the exact property that name the manager. Check them against the property or operator site, or an independent source, when possible.
 
 ### Supporting but not decisive alone
 
@@ -58,13 +44,13 @@
 
 ### Identity checks
 
-- Confirm address and property identity, not only a matching name. A misleading URL slug or search-result card can refer to another building; inspect the actual page.
+- Check the address and property identity as well as the name. A misleading URL slug or search-result card can refer to another building; inspect the actual page.
 - For shared websites or multi-community records, establish coverage of each represented community rather than extrapolating from one plan or one address.
 - Do not use generic directory summaries, nearby listing labels or corporate homepages alone as property-specific management evidence.
 
-**Independence:** Prefer two strong confirmations when available, but judge substance rather than counting URLs. HotPads and Realtor.com may share Zillow data; ApartmentHomeLiving, Apartment Finder and Apartments.com may share CoStar data. Multiple pages in one feed are not independent confirmations.
+Prefer two strong confirmations when available, but judge substance rather than counting URLs. HotPads and Realtor.com may share Zillow data; ApartmentHomeLiving, Apartment Finder and Apartments.com may share CoStar data. Multiple pages in one feed are not independent confirmations.
 
-**Retrieval failures:** A blocked page, missing text extraction, CAPTCHA or empty result is not evidence of a manager change or absence. Use an available search/fetch/browser alternative or record the access limitation.
+A blocked page, missing text extraction, CAPTCHA or empty result is not evidence of a manager change or absence. Use an available search/fetch/browser alternative or record the access limitation.
 
 ## Dates and currentness
 
@@ -76,57 +62,36 @@
 
 ## Conflict resolution
 
-- List competing companies and sources explicitly; first test for different roles, legal-entity versus public-brand labels, historical versus current evidence, building versus unit-level management, and incorrect property matching.
+- List competing companies and sources explicitly; first test for different roles, legal-entity versus public-brand labels, historical versus current evidence, building versus unit-level management and incorrect property matching.
 - An explicit rental-platform manager field can still contain an owner/account label. Resolve it using property-specific operating evidence; do not automatically accept or dismiss it.
 - Corporate affiliation or acquisition alone does not prove a particular property transferred managers. Combine company-level evidence with property-specific records.
 - A public registration naming one entity and a live listing naming another can be consistent when official disclosures connect the legal entity and public brand; preserve both raw names and any uncertainty about the contracting party.
 - Mark an interpretation as an inference when sources do not state it directly. Keep material contrary evidence in the audit even when one conclusion is favored.
-- If genuinely competing current operators cannot be distinguished, leave management_company null and record candidates and an unresolved_reason. The best-guess permission for name cleanup is not permission to invent the actual manager.
+- If the evidence does not resolve competing claims about the current operator, leave `management_company` null and record candidates and an `unresolved_reason`. The best-guess permission for name cleanup is not permission to invent the actual manager.
 
 ## Confidence rules
 
-**High:** Strong exact-property evidence establishes the operator, with corroboration where available and no material unexplained competing operator claim. A legal contract is not required; explain any public-brand/legal-entity distinction.
+### High
 
-**Medium:** Credible property-specific evidence favors one operator, but meaningful conflicting or timing-limited evidence remains. Record the rationale and a concise management caveat on the building; preserve full conflicts in the audit.
+Evidence for the exact property identifies the operator. Check it against other sources when available and resolve any conflicting claim that could change the result. A legal contract is not required; explain any public-brand/legal-entity distinction.
 
-**Low or unresolved:** Evidence is insufficient, inaccessible or materially contradictory without a defensible resolution. Use status unresolved and management_company null; retain candidates in the audit instead of the display field.
+### Medium
 
-**Rule:** Confidence describes the evidence for the actual manager. It is separate from confidence in a heuristic display-name consolidation.
+Credible property-specific evidence favors one operator, but meaningful conflicting or timing-limited evidence remains. Record the rationale and a concise management caveat on the building; preserve full conflicts in the audit.
+
+### Low or unresolved
+
+Use this level when evidence is insufficient or inaccessible, or when conflicting sources cannot be resolved. Set `status` to `unresolved` and `management_company` to null; retain candidates in the audit instead of the display field.
+
+Confidence describes the evidence for the actual manager. It is separate from confidence in a best-guess grouping of display names.
 
 ## Research result format
 
-### Required fields
+Required fields are `id`, `name`, `management_company`, `status`, `confidence`, `checked_at`, `summary`, `sources`, `conflicts`, `search_queries` and `unresolved_reason`.
 
-- id
-- name
-- management_company
-- status
-- confidence
-- checked_at
-- summary
-- sources
-- conflicts
-- search_queries
-- unresolved_reason
+Optional fields are `raw_management_company`, `candidate_companies`, `evidence`, `source_dates` and `inferences`.
 
-### Optional fields
-
-- raw_management_company
-- candidate_companies
-- evidence
-- source_dates
-- inferences
-
-### Status values
-
-- verified
-- unresolved
-
-### Confidence values
-
-- high
-- medium
-- low
+Use `verified` or `unresolved` for status and `high`, `medium` or `low` for confidence.
 
 ### Source record
 
@@ -136,87 +101,50 @@
   "supports": [
     "management_company"
   ],
-  "note": "<observed property/address match, manager statement or affiliation, and material date/role caveat>"
+  "note": "<observed property/address match, manager statement or affiliation and material date/role caveat>"
 }
 ```
 
-**Source supports rule:** Use the schema field name management_company in supports, not a company name.
+Put `management_company` in `supports`. Company names belong in the field value.
 
-**Quoting rule:** Prefer concise factual paraphrases and short evidence excerpts. Preserve exact company names without copying whole source pages.
+Prefer concise factual paraphrases and short evidence excerpts. Preserve exact company names without copying whole source pages.
 
 ## Display name policy
 
-**Mode:** Best-guess cleanup using existing names and local evidence; no new research solely to normalize or shorten names unless the user asks for it.
+Use existing names and local evidence to make a best-guess cleanup. Research solely for name normalization or shortening requires a user request.
 
-### Sequence
+Establish the raw operator name from evidence, then apply the recorded alias consolidation and display-name shortening. Keep the raw name and reasoning in the audit.
 
-- Establish the raw operator name from evidence.
-- Apply the recorded alias consolidation.
-- Apply the later display-name shortening.
-- Preserve the raw name and reasoning in evidence/audit records.
+### Suffixes and filler
 
-### Legal suffix candidates
+Legal suffixes that may be removed include Inc., Incorporated, LLC, Ltd., Limited, LLP, PLC, Corp., Corporation, Company and Co. Other candidates include Holdings, Group, Services, Property Company, Management Company, Residential and Apartment Homes.
 
-- Inc.
-- Incorporated
-- LLC
-- Ltd.
-- Limited
-- LLP
-- PLC
-- Corp.
-- Corporation
-- Company
-- Co.
+Review each name before removing words. Remove suffixes and corporate wording only when the remaining name is recognizable and does not lose a useful distinction. Use the exact mappings below for names already reviewed.
 
-### Other possible filler
+The mappings group company names and brands for display. They do not establish that every alias is the same legal entity. Do not extend a merger, owner or subsidiary mapping to an unrelated company based only on generic overlapping words.
 
-- Holdings
-- Group
-- Services
-- Property Company
-- Management Company
-- Residential
-- Apartment Homes
+Preserve established brand capitalization and punctuation, including 11Residential, AMLI, CONAM, CWS, NAREIG, UDR and Cushman & Wakefield. Do not invent abbreviations or blindly title-case acronyms.
 
-**Removal rule:** These are candidates, not a global stop-word list. Remove suffixes and corporate wording only when the remaining name is recognizable and does not lose a useful distinction. Use the exact mappings below for names already reviewed.
+The reference inventory is not a whitelist. Keep a newly verified company under a sensible concise name; add an explicit mapping and audit note when changing an existing display convention.
 
-**Identity rule:** Company-group/brand consolidations below are directory display conventions; they do not assert that every alias is the same legal entity. Do not extend a merger, owner or subsidiary mapping to an unrelated company based only on generic overlapping words.
-
-**Capitalization:** Preserve established brand capitalization and punctuation, including 11Residential, AMLI, CONAM, CWS, NAREIG, UDR and Cushman & Wakefield. Do not invent abbreviations or blindly title-case acronyms.
-
-**New names:** The reference inventory is not a whitelist. Keep a newly verified company under a sensible concise name; add an explicit mapping and audit note when changing an existing display convention.
-
-**Historical text:** Do not rename company mentions in source notes, quotations, URLs, legal-entity evidence or earlier audit results. The latest display mapping supersedes earlier field labels without rewriting history.
+Do not rename company mentions in source notes, quotations, URLs, legal-entity evidence or earlier audit results. The latest display mapping supersedes earlier field labels without rewriting history.
 
 ### Keep distinct
 
-| Names | Reason |
-|---|---|
-| Pillar Communities<br>Pillar Properties | These remained separate in this conversation; dropping the second word would merge distinguishable companies. |
-| Coast Real Estate<br>North Coast Living<br>Two Coast Living | Shared Coast wording is not evidence of one company. |
-| AGM<br>MG Properties<br>GRE Management<br>CRL Property Management | Preserve these separate initials/brands; similarity is not an alias rule. |
+Keep Pillar Communities and Pillar Properties separate. Retain Coast Real Estate, North Coast Living and Two Coast Living as separate names too; a shared word does not establish common management. AGM, MG Properties, GRE Management and CRL Property Management are separate brands whose initials must be preserved.
 
 ## Existing mapping changes
 
-**As of:** 2026-10-09
+Mappings as of October 9, 2026. Their history is in [research-audit.json](research-audit.json): `management_company_name_normalization.groups` records consolidations and `management_company_display_name_shortening.mappings` records shortenings.
 
-### Provenance
-
-**File:** generation-rules/research-audit.json
-
-**Consolidations section:** management_company_name_normalization.groups
-
-**Shortenings section:** management_company_display_name_shortening.mappings
-
-**Precedence:** The 24 consolidation groups below record their historical canonical_name. The 38 later shortenings supersede those display labels. final_alias_to_display_name is the flattened one-step lookup for new writes; values are terminal display names.
+The 24 consolidation groups below retain their historical `canonical_name`. The 38 later shortenings replace those display labels. Use [Final alias to display name](#final-alias-to-display-name) for new writes; its values are the final names.
 
 ### Lookup rules
 
-- Prefer exact full-name lookup; normalize leading/trailing whitespace and repeated whitespace for matching. A case-insensitive full-name lookup is acceptable only when it resolves unambiguously to one target.
+- Prefer exact full-name lookup; normalize leading/trailing whitespace and repeated whitespace for matching. Ignore case only when the full name matches a single target.
 - Do not use substring replacement or unrestricted fuzzy matching. Unknown names require judgment under the display-name policy.
-- Use the flattened lookup once. If replaying history, run consolidation once, then shortening once; never recursively follow a combined historical graph. Tarragon -&gt; Tarragon Property Services -&gt; Tarragon is an intentional historical round trip, not a loop to keep applying.
-- Unmapped current display names pass through unchanged. Reapplying the final lookup must be idempotent and must not reintroduce a long historical name.
+- Apply the final lookup once. If replaying history, run consolidation once, then shortening once; never recursively follow a combined historical graph. Tarragon -&gt; Tarragon Property Services -&gt; Tarragon is an intentional historical round trip, not a loop to keep applying.
+- Unmapped current display names pass through unchanged. Reapplying the final lookup must leave the result unchanged and must not reintroduce a long historical name.
 
 ### Consolidations
 
@@ -370,7 +298,7 @@
 
 - Vivmark consolidates Equity Residential and AvalonBay labels because existing local source notes explicitly describe them as one combined operator.
 - Pinnacle/Cushman, Asset Living/FPI, Essex and Holland composites are treated as group/brand aliases for this requested display-name deduplication; original entity-specific evidence remains in the audit and property sources.
-- CWS Capital Partners/CWS Apartment Homes, Forge Management/Forge Property Management, and similar distinctive brand-root variants are best-guess groupings, not newly researched identity claims.
+- CWS Capital Partners/CWS Apartment Homes, Forge Management/Forge Property Management and similar distinctive brand-root variants are best-guess groupings, not newly researched identity claims.
 - Pillar Communities and Pillar Properties remain separate: the shared generic word is insufficient to infer one company. Coast Real Estate and North Coast Living also remain separate.
 
 ## Directory write and concurrency rules
@@ -387,242 +315,52 @@ Apply the [shared validation checks](README.md#shared-validation), then verify m
 - Each accepted manager has property-specific evidence. Unresolved entries use null and have an explicit reason; medium-confidence entries retain material caveats.
 - A name-only change preserves every other building field, source, note, metadata value and prior audit section. An extraction change stays within its documented field scope.
 - Previously populated management names have not been inadvertently reset to null. Existing blanks are resolved only where evidence supports an answer.
-- All consolidation and shortening aliases resolve to their final labels; the mapping is deterministic and idempotent. Shortening alone must not collapse two previously distinct companies.
-- The explicitly protected distinct names remain distinct. Check for accidental collisions after whitespace/case normalization and proposed suffix removal.
+- All consolidation and shortening aliases resolve to their final labels; the same input always gives the same output and a second pass leaves it unchanged. Shortening alone must not collapse two previously distinct companies.
+- The explicitly protected distinct names remain distinct. Check whether removing suffixes or normalizing whitespace and case would collapse separate names.
 
 ## Lessons from reviewed buildings
 
+These reviews were completed on October 9, 2026. Evidence is in `management_company_audit.results` in [research-audit.json](research-audit.json), under the building IDs below.
+
 ### Arrive Magnolia and Arrive Magnolia West
 
-**Building id:** arrive-magnolia-and-arrive-magnolia-west
-
-**Building name:** Arrive Magnolia and Arrive Magnolia West
-
-**Reviewed on:** 2026-10-09
-
-**Accepted research name:** Trinity Property Consultants
-
-**Display name:** Trinity
-
-**Confidence at review:** high
-
-**Lesson:** Verify every community represented by a combined record.
-
-**Explanation:** The dedicated agent checked both a main-community plan and an explicitly labeled Magnolia West plan in the official leasing portal. Both named Trinity Property Consultants, whose current display name is Trinity.
-
-#### Evidence reference
-
-**File:** generation-rules/research-audit.json
-
-**Section:** management_company_audit.results
-
-**Match id:** arrive-magnolia-and-arrive-magnolia-west
+Check every community in a combined record. The researcher checked a main-community plan and an explicitly labeled Magnolia West plan in the official leasing portal. Both named Trinity Property Consultants, displayed as Trinity. The review recorded high confidence for `arrive-magnolia-and-arrive-magnolia-west`.
 
 ### Monarch Apartments
 
-**Building id:** monarch-apartments
-
-**Building name:** Monarch Apartments
-
-**Reviewed on:** 2026-10-09
-
-**Accepted research name:** Cyzner Properties West
-
-**Display name:** Cyzner Properties West
-
-**Confidence at review:** high
-
-**Lesson:** Recognize shared listing feeds and platform vendors.
-
-**Explanation:** Exact-address listings explicitly named Cyzner Properties West; multiple CoStar sites are related evidence, not independent confirmations. MarketApts and ManageBuilding references identified vendors, not the manager.
-
-#### Evidence reference
-
-**File:** generation-rules/research-audit.json
-
-**Section:** management_company_audit.results
-
-**Match id:** monarch-apartments
+Listings for the exact address named Cyzner Properties West, which was accepted with high confidence for `monarch-apartments`. The CoStar sites shared a listing feed, so their agreement did not count as independent confirmation. MarketApts and ManageBuilding were vendors.
 
 ### Parque Kirkland
 
-**Building id:** parque-kirkland
-
-**Building name:** Parque Kirkland
-
-**Reviewed on:** 2026-10-09
-
-**Accepted research name:** Aspire Properties Northwest
-
-**Display name:** Aspire Properties Northwest
-
-**Confidence at review:** high
-
-**Lesson:** Separate residential management from owner or developer oversight.
-
-**Explanation:** Property leasing contacts and rental criteria identified Aspire Properties Northwest; broader Henbart portfolio wording referred to a different ownership/development context. The property-specific residential evidence drove the choice.
-
-#### Evidence reference
-
-**File:** generation-rules/research-audit.json
-
-**Section:** management_company_audit.results
-
-**Match id:** parque-kirkland
+Leasing contacts and rental criteria identified Aspire Properties Northwest. Henbart's portfolio described ownership and development. The review used the residential management evidence and accepted Aspire Properties Northwest with high confidence for `parque-kirkland`.
 
 ### Pike Motorworks
 
-**Building id:** pike-motorworks
-
-**Building name:** Pike Motorworks
-
-**Reviewed on:** 2026-10-09
-
-**Accepted research name:** Greystar
-
-**Display name:** Greystar
-
-**Confidence at review:** medium
-
-**Lesson:** Favor a supported operating manager over an owner/account label, but retain the inference and competing evidence.
-
-**Explanation:** The live property site, Greystar portfolio and screening links supported Greystar; RentCafe and text consent named owner/investor TA Realty. The owner/account explanation was an inference, so the accepted result retained medium confidence.
-
-#### Evidence reference
-
-**File:** generation-rules/research-audit.json
-
-**Section:** management_company_audit.results
-
-**Match id:** pike-motorworks
+The live property site, Greystar portfolio and screening links supported Greystar. RentCafe and text consent named owner/investor TA Realty. Treating TA Realty as an owner/account label was an inference; the review retained that caveat and accepted Greystar with medium confidence for `pike-motorworks`.
 
 ### Sofi at Somerset
 
-**Building id:** sofi-at-somerset
-
-**Building name:** Sofi at Somerset
-
-**Reviewed on:** 2026-10-09
-
-**Accepted research name:** Asset Living
-
-**Display name:** Asset Living
-
-**Confidence at review:** medium
-
-**Lesson:** Inspect live pages when indexed portfolios disagree.
-
-**Explanation:** Live property-site legal links and the explicit RentCafe manager field supported Asset Living. An Avenue5-hosted portfolio still listed the property, so the accepted result retained medium confidence; a crawl date alone did not decide the outcome.
-
-#### Evidence reference
-
-**File:** generation-rules/research-audit.json
-
-**Section:** management_company_audit.results
-
-**Match id:** sofi-at-somerset
+Live property-site legal links and RentCafe's manager field supported Asset Living, but an Avenue5-hosted portfolio still listed the property. The review accepted Asset Living with medium confidence for `sofi-at-somerset`. A crawl date alone did not settle the conflict.
 
 ### The Residences at 3295
 
-**Building id:** the-residences-at-3295
-
-**Building name:** The Residences at 3295
-
-**Reviewed on:** 2026-10-09
-
-**Accepted research name:** Asset Living (FPI Management, Inc.)
-
-**Display name:** Asset Living
-
-**Confidence at review:** high
-
-**Lesson:** Reconcile public brand and registered management entity without claiming an unseen contract.
-
-**Explanation:** The live listing named Asset Living, Seattle registration named FPI Management as the management contact, and Asset Living disclosures listed FPI in Washington. The researched label was Asset Living (FPI Management, Inc.); display normalization later reduced it to Asset Living. The precise contracting entity was not independently confirmed.
-
-#### Evidence reference
-
-**File:** generation-rules/research-audit.json
-
-**Section:** management_company_audit.results
-
-**Match id:** the-residences-at-3295
+The live listing named Asset Living. Seattle registration named FPI Management as the management contact and Asset Living's disclosures listed FPI in Washington. The review accepted Asset Living (FPI Management, Inc.) with high confidence for `the-residences-at-3295`; the display name was later shortened to Asset Living. The precise contracting entity was not independently confirmed.
 
 ### Uptown 11
 
-**Building id:** uptown-11
-
-**Building name:** Uptown 11
-
-**Reviewed on:** 2026-10-09
-
-**Accepted research name:** NAREIG Property Management
-
-**Display name:** NAREIG
-
-**Confidence at review:** high
-
-**Lesson:** Separate building-level management from possible unit-level listing representation.
-
-**Explanation:** The official resident link led to NAREIG AppFolio, supported by the NAREIG portfolio and matching contact information. Syndicated WJL unit listings were retained as a caveat, not automatically treated as a replacement building manager.
-
-#### Evidence reference
-
-**File:** generation-rules/research-audit.json
-
-**Section:** management_company_audit.results
-
-**Match id:** uptown-11
+The official resident link led to NAREIG AppFolio. The NAREIG portfolio and matching contact information also supported NAREIG Property Management, displayed as NAREIG. The review accepted it with high confidence for `uptown-11` and kept the syndicated WJL unit listings as a caveat about who represented those units.
 
 ## Historical run statistics
 
-### Initial missing name audit
+The initial audit reviewed all 18 missing management names in a directory of 355 buildings. It filled all 18 and left none unresolved.
 
-**Reviewed:** 18
+Consolidation then reduced 114 distinct names to 80 across 355 buildings. It grouped 24 sets of aliases and changed the names on 63 buildings. No prior audit entries were restored.
 
-**Filled:** 18
-
-**Unresolved:** 0
-
-**Initial audit directory size:** 355
-
-### Consolidation
-
-**Buildings:** 355
-
-**Distinct names before:** 114
-
-**Distinct names after:** 80
-
-**Alias groups:** 24
-
-**Building names normalized:** 63
-
-**Prior audit entries restored:** 0
-
-### Shortening
-
-**Buildings:** 345
-
-**Distinct companies before:** 78
-
-**Distinct companies after:** 78
-
-**Company labels shortened:** 38
-
-**Building records updated:** 203
-
-**Note:** These are historical snapshots, not fixed future targets. Other authorized directory work reduced the included buildings from 355 to 345 between naming stages; the change from 80 to 78 distinct names was not an extra merger performed by the shortening step.
+The later shortening pass covered 345 buildings. It shortened 38 company labels on 203 records and left the distinct-company count at 78. Other authorized work had removed buildings between passes, which explains the change from 80 to 78 companies. The shortening pass did not merge more companies.
 
 ## Current display name reference
 
-**Snapshot date:** 2026-10-09
-
-**Building count:** 345
-
-**Distinct name count:** 78
-
-**Missing count:** 0
+The October 9, 2026 snapshot had 345 buildings, 78 distinct management names and no missing names. These are historical counts. Refresh the inventory from the live directory for future work; new verified companies are allowed.
 
 ### Names
 
@@ -704,5 +442,3 @@ Apply the [shared validation checks](README.md#shared-validation), then verify m
 - Willow Bridge
 - Wilshire Residential
 - Windsor
-
-**Note:** Reference inventory at file creation; refresh from the live directory during future work. New verified companies are allowed.
